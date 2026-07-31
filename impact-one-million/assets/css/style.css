@@ -641,6 +641,10 @@ video {
   margin-bottom: 1rem;
 }
 
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
 .mb-8 {
   margin-bottom: 2rem;
 }
@@ -683,8 +687,22 @@ video {
   height: 1.5rem;
 }
 
+.size-\[13\.5px\] {
+  width: 13.5px;
+  height: 13.5px;
+}
+
+.size-\[18px\] {
+  width: 18px;
+  height: 18px;
+}
+
 .h-8 {
   height: 2rem;
+}
+
+.h-\[4\.5rem\] {
+  height: 4.5rem;
 }
 
 .h-auto {
@@ -711,8 +729,16 @@ video {
   width: 100%;
 }
 
+.min-w-0 {
+  min-width: 0px;
+}
+
 .max-w-\[1440px\] {
   max-width: 1440px;
+}
+
+.max-w-\[7\.5rem\] {
+  max-width: 7.5rem;
 }
 
 .max-w-full {
@@ -729,6 +755,10 @@ video {
 
 .max-w-xl {
   max-width: 36rem;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
 }
 
 .shrink-0 {
@@ -751,6 +781,10 @@ video {
   align-items: flex-start;
 }
 
+.items-end {
+  align-items: flex-end;
+}
+
 .items-center {
   align-items: center;
 }
@@ -759,12 +793,24 @@ video {
   align-items: stretch;
 }
 
+.justify-end {
+  justify-content: flex-end;
+}
+
 .justify-center {
   justify-content: center;
 }
 
 .justify-between {
   justify-content: space-between;
+}
+
+.gap-10 {
+  gap: 2.5rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .gap-3 {
@@ -884,9 +930,9 @@ video {
   padding-bottom: 3rem;
 }
 
-.py-2\.5 {
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .py-3\.5 {
@@ -963,6 +1009,10 @@ video {
 
 .tracking-\[0\.02em\] {
   letter-spacing: 0.02em;
+}
+
+.tracking-\[1px\] {
+  letter-spacing: 1px;
 }
 
 .tracking-\[2px\] {
@@ -1083,10 +1133,6 @@ body {
     right: 12%;
   }
 
-  .lg\:block {
-    display: block;
-  }
-
   .lg\:flex {
     display: flex;
   }
@@ -1095,8 +1141,8 @@ body {
     display: none;
   }
 
-  .lg\:h-10 {
-    height: 2.5rem;
+  .lg\:h-\[7rem\] {
+    height: 7rem;
   }
 
   .lg\:min-h-\[52\.5rem\] {
@@ -1111,6 +1157,10 @@ body {
     max-width: 36.625rem;
   }
 
+  .lg\:max-w-\[9\.25rem\] {
+    max-width: 9.25rem;
+  }
+
   .lg\:flex-row {
     flex-direction: row;
   }
@@ -1119,12 +1169,20 @@ body {
     align-items: flex-start;
   }
 
+  .lg\:items-end {
+    align-items: flex-end;
+  }
+
   .lg\:justify-end {
     justify-content: flex-end;
   }
 
   .lg\:justify-between {
     justify-content: space-between;
+  }
+
+  .lg\:gap-20 {
+    gap: 5rem;
   }
 
   .lg\:gap-8 {
@@ -1155,9 +1213,9 @@ body {
     padding-bottom: 5rem;
   }
 
-  .lg\:py-5 {
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
+  .lg\:py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
   }
 
   .lg\:text-title {

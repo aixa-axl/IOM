@@ -6,75 +6,89 @@
             "key": "field_iom_header_logo",
             "label": "Logo",
             "name": "header_logo",
-            "aria-label": "",
             "type": "image",
-            "instructions": "Optional. Falls back to the site title text if empty.",
+            "instructions": "Optional. Falls back to the theme logo asset if empty.",
             "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
             "return_format": "id",
             "library": "all",
             "preview_size": "medium"
         },
         {
+            "key": "field_iom_header_utility_links",
+            "label": "Utility Links",
+            "name": "header_utility_links",
+            "type": "repeater",
+            "instructions": "Top blue bar links (e.g. Subscribe, Contact). Search and language are separate fields.",
+            "required": 0,
+            "layout": "table",
+            "button_label": "Add Link",
+            "sub_fields": [
+                {
+                    "key": "field_iom_header_utility_link",
+                    "label": "Link",
+                    "name": "link",
+                    "type": "link",
+                    "required": 1,
+                    "return_format": "array",
+                    "parent_repeater": "field_iom_header_utility_links"
+                }
+            ]
+        },
+        {
+            "key": "field_iom_header_search_link",
+            "label": "Search Link",
+            "name": "header_search_link",
+            "type": "link",
+            "instructions": "Optional. Shows Search with icon in the utility bar.",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_iom_header_language_link",
+            "label": "Language Link",
+            "name": "header_language_link",
+            "type": "link",
+            "instructions": "Optional. Shows the globe icon in the utility bar.",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
             "key": "field_iom_header_nav_links",
             "label": "Nav Links",
             "name": "header_nav_links",
-            "aria-label": "",
             "type": "repeater",
-            "instructions": "Primary navigation. If empty, the WordPress Primary Menu is used as a fallback.",
+            "instructions": "Primary navigation (e.g. What We Do, About Us). If empty, the WordPress Primary Menu is used.",
             "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
             "layout": "table",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "field_iom_header_nav_link",
             "button_label": "Add Link",
-            "rows_per_page": 20,
             "sub_fields": [
                 {
                     "key": "field_iom_header_nav_link",
                     "label": "Link",
                     "name": "link",
-                    "aria-label": "",
                     "type": "link",
-                    "instructions": "",
                     "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
                     "return_format": "array",
                     "parent_repeater": "field_iom_header_nav_links"
                 }
             ]
         },
         {
-            "key": "field_iom_header_cta",
-            "label": "CTA",
-            "name": "header_cta",
-            "aria-label": "",
+            "key": "field_iom_header_secondary_cta",
+            "label": "Secondary CTA",
+            "name": "header_secondary_cta",
             "type": "link",
-            "instructions": "Optional header button.",
+            "instructions": "Outline button (e.g. Members Login).",
             "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_iom_header_primary_cta",
+            "label": "Primary CTA",
+            "name": "header_primary_cta",
+            "type": "link",
+            "instructions": "Filled red button (e.g. Join Now).",
+            "required": 0,
             "return_format": "array"
         }
     ],
@@ -94,7 +108,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Site-wide header (Appearance → Theme Settings).",
+    "description": "Site-wide header — Figma two-tier navbar.",
     "show_in_rest": 0,
-    "modified": 1753980000
+    "modified": 1753983600
 }
