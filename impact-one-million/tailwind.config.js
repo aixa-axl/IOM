@@ -27,9 +27,11 @@ module.exports = {
         label: ['20px', { lineHeight: '1.2' }],
         'card-title': ['24px', { lineHeight: '1' }],
         headline: ['56px', { lineHeight: '1.2' }],
+        title: ['72px', { lineHeight: '1.1', letterSpacing: '0.02em' }],
       },
       borderRadius: {
         btn: '4px',
+        card: '8px',
       },
       maxWidth: {
         site: '1440px',

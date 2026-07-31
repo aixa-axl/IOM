@@ -8,7 +8,7 @@
             "name": "page_sections",
             "aria-label": "",
             "type": "flexible_content",
-            "instructions": "Add page sections from Figma. Layouts will be added as they are built.",
+            "instructions": "Add page sections from Figma.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -16,7 +16,68 @@
                 "class": "",
                 "id": ""
             },
-            "layouts": [],
+            "layouts": {
+                "layout_iom_hero": {
+                    "key": "layout_iom_hero",
+                    "name": "hero",
+                    "label": "Hero",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_hero_background_image",
+                            "label": "Background Image",
+                            "name": "background_image",
+                            "type": "image",
+                            "instructions": "Full-bleed photo behind the content card.",
+                            "required": 0,
+                            "return_format": "id",
+                            "preview_size": "medium",
+                            "library": "all"
+                        },
+                        {
+                            "key": "field_iom_hero_logo",
+                            "label": "Logo",
+                            "name": "logo",
+                            "type": "image",
+                            "instructions": "Optional. Falls back to the theme logo asset if empty.",
+                            "required": 0,
+                            "return_format": "id",
+                            "preview_size": "medium",
+                            "library": "all"
+                        },
+                        {
+                            "key": "field_iom_hero_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 0,
+                            "rows": 3,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_iom_hero_primary_cta",
+                            "label": "Primary CTA",
+                            "name": "primary_cta",
+                            "type": "link",
+                            "instructions": "Filled red button (e.g. Join the Movement).",
+                            "required": 0,
+                            "return_format": "array"
+                        },
+                        {
+                            "key": "field_iom_hero_secondary_cta",
+                            "label": "Secondary CTA",
+                            "name": "secondary_cta",
+                            "type": "link",
+                            "instructions": "Outline button (e.g. Track your impact).",
+                            "required": 0,
+                            "return_format": "array"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
             "min": "",
             "max": "",
             "button_label": "Add Section"
@@ -40,5 +101,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1753981200
+    "modified": 1753982400
 }
