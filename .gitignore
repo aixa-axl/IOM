@@ -1,0 +1,6 @@
+.DS_Store
+*.log
+.env
+.env.local
+impact-one-million/node_modules/
+impact-one-million/*.map

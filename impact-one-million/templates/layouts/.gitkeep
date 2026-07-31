@@ -1,0 +1,3 @@
+# ACF layout partials go here.
+# Create layout files matching your ACF Flexible Content field layout slugs.
+# Example: hero.php, testimonials.php, cta.php, etc.

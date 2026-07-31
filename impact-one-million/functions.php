@@ -1,0 +1,82 @@
+<?php
+/**
+ * Impact One Million Theme Functions
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Theme Setup
+ */
+function iom_theme_setup() {
+	add_theme_support( 'title-tag' );
+	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'html5', array( 'search-form', 'gallery', 'caption', 'style', 'script' ) );
+
+	register_nav_menus(
+		array(
+			'primary' => __( 'Primary Menu', 'impact-one-million' ),
+			'footer'  => __( 'Footer Menu', 'impact-one-million' ),
+		)
+	);
+
+	load_theme_textdomain( 'impact-one-million', get_template_directory() . '/languages' );
+}
+add_action( 'after_setup_theme', 'iom_theme_setup' );
+
+/**
+ * Enqueue Styles and Scripts
+ */
+function iom_enqueue_assets() {
+	$compiled_css_rel_path = '/assets/css/style.css';
+	$compiled_css_abs_path = get_stylesheet_directory() . $compiled_css_rel_path;
+	$compiled_css_uri      = get_stylesheet_directory_uri() . $compiled_css_rel_path;
+	$main_js_rel_path      = '/assets/js/main.js';
+	$main_js_abs_path      = get_stylesheet_directory() . $main_js_rel_path;
+	$main_js_uri           = get_stylesheet_directory_uri() . $main_js_rel_path;
+	$theme_version         = wp_get_theme()->get( 'Version' );
+	$css_version           = file_exists( $compiled_css_abs_path ) ? filemtime( $compiled_css_abs_path ) : $theme_version;
+	$js_version            = file_exists( $main_js_abs_path ) ? filemtime( $main_js_abs_path ) : $theme_version;
+
+	wp_enqueue_style(
+		'iom-style',
+		$compiled_css_uri,
+		array(),
+		$css_version
+	);
+
+	wp_enqueue_script(
+		'iom-main',
+		$main_js_uri,
+		array(),
+		$js_version,
+		true
+	);
+}
+add_action( 'wp_enqueue_scripts', 'iom_enqueue_assets' );
+
+/**
+ * ACF JSON save/load paths — field groups live in the repo.
+ */
+add_filter(
+	'acf/settings/save_json',
+	function () {
+		return get_stylesheet_directory() . '/acf-json';
+	}
+);
+
+add_filter(
+	'acf/settings/load_json',
+	function ( $paths ) {
+		$paths[] = get_stylesheet_directory() . '/acf-json';
+		return $paths;
+	}
+);
+
+/**
+ * Light hardening
+ */
+remove_action( 'wp_head', 'wp_generator' );
+add_filter( 'xmlrpc_enabled', '__return_false' );

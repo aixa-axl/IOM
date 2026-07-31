@@ -1,0 +1,84 @@
+{
+  "key": "group_iom_page_sections",
+  "title": "Page Sections",
+  "fields": [
+    {
+      "key": "field_iom_page_sections",
+      "label": "Page Sections",
+      "name": "page_sections",
+      "aria-label": "",
+      "type": "flexible_content",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layouts": {
+        "layout_iom_hero": {
+          "key": "layout_iom_hero",
+          "name": "hero",
+          "label": "Hero",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_iom_hero_heading",
+              "label": "Heading",
+              "name": "heading",
+              "type": "text"
+            },
+            {
+              "key": "field_iom_hero_subheading",
+              "label": "Subheading",
+              "name": "subheading",
+              "type": "textarea",
+              "rows": 3
+            },
+            {
+              "key": "field_iom_hero_background_image",
+              "label": "Background Image",
+              "name": "background_image",
+              "type": "image",
+              "return_format": "id",
+              "preview_size": "medium",
+              "library": "all"
+            },
+            {
+              "key": "field_iom_hero_cta",
+              "label": "CTA",
+              "name": "cta",
+              "type": "link",
+              "return_format": "array"
+            }
+          ],
+          "min": "",
+          "max": ""
+        }
+      },
+      "min": "",
+      "max": "",
+      "button_label": "Add Section"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "page"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Flexible content sections for Impact One Million pages.",
+  "show_in_rest": 0,
+  "modified": 1753974000
+}

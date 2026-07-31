@@ -1,0 +1,11 @@
+node_modules/
+.DS_Store
+*.map
+.git
+.gitignore
+README.md
+.github
+src/
+tailwind.config.js
+package.json
+package-lock.json

@@ -1,0 +1,37 @@
+name: Deploy to WP Engine
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: impact-one-million/package-lock.json
+
+      - name: Install theme dependencies
+        run: npm ci
+        working-directory: impact-one-million
+
+      - name: Build Tailwind assets
+        run: npm run build
+        working-directory: impact-one-million
+
+      - name: Deploy theme to WP Engine
+        uses: wpengine/github-action-wpe-site-deploy@v3
+        with:
+          WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
+          WPE_ENV: iomstg
+          SRC_PATH: "impact-one-million/"
+          REMOTE_PATH: "wp-content/themes/impact-one-million/"
+          FLAGS: -avz --inplace --delete --exclude-from=impact-one-million/.deployignore
+          CACHE_CLEAR: true

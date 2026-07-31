@@ -1,0 +1,40 @@
+---
+description: Impact One Million WordPress theme conventions ? applies to all theme work
+alwaysApply: true
+---
+
+# Impact One Million Theme Conventions
+
+Custom WordPress theme. Tailwind CSS v3 + ACF Pro Flexible Content. Pattern matches yellow-bolts. No page builders, no jQuery.
+
+Figma (AXL team): https://www.figma.com/design/Qo7IPDKjiJr4NhNf02Mk93/Impact-One-Million
+WP Engine staging env: `iomstg`
+
+## Workflow: Figma ? layout
+
+When given a Figma section (via Figma MCP on **AXL**, not Simpatica), produce exactly two artefacts:
+
+1. **Template part** at `templates/layouts/{layout_name}.php` (underscored filename matching ACF layout name)
+2. **ACF layout** added to `acf-json/group_iom_page_sections.json` (keys prefixed `field_iom_{layout}_{field}`)
+
+`templates/layouts/hero.php` is the reference ? match its structure, escaping, and commenting style.
+
+## Rules
+
+- Read sub-fields with `get_sub_field()` at the top; escape at output: `esc_html()`, `esc_url()`, `wp_kses_post()` for wysiwyg.
+- Images: ACF image fields return **IDs**. Render with `wp_get_attachment_image()`. Hero/above-fold: `'fetchpriority' => 'high'`; else `'loading' => 'lazy'`.
+- Links: ACF link fields return `{url, title, target}` ? output all three; `rel="noopener noreferrer"` on `_blank`.
+- Optional fields guard their own markup ? no empty tags.
+- Tailwind utilities only. Colours/fonts via tokens in `tailwind.config.js`. Prefer tokens over arbitrary values.
+- Repeating items = ACF repeater + `have_rows()` / `the_row()`.
+- Layout variants = `true_false` or `select` toggling classes ? never duplicate layouts.
+- Mobile-first: base = mobile, scale with `lg:`. Figma MCP is desktop ? always add mobile.
+- Text domain: `impact-one-million`. Wrap user-facing strings in `__()` / `esc_html_e()` for zh later.
+- Figma MCP returns React/HTML ? translate to PHP partials; keep Tailwind classes.
+
+## Don't
+
+- No inline `<style>` / `<script>` in layout partials.
+- No page builders. No new top-level templates unless required ? pages use `page.php` ? `page_sections`.
+- Never commit ACF Pro zip or license keys.
+- Never edit compiled `assets/css/style.css` by hand ? run `npm run build` / `watch`.
