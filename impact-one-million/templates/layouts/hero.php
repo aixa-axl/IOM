@@ -77,7 +77,7 @@ $btn_outline = 'inline-flex items-center justify-center rounded-btn border-[1.5p
 			<?php endif; ?>
 
 			<?php if ( ! empty( $primary_cta['url'] ) || ! empty( $secondary_cta['url'] ) ) : ?>
-				<div class="flex flex-col items-stretch gap-4 sm:flex-row sm:items-start sm:gap-4">
+				<div class="flex flex-col items-stretch gap-4 sm:flex-row sm:items-start sm:gap-4 whitespace-nowrap">
 					<?php
 					if ( ! empty( $primary_cta['url'] ) ) {
 						iom_render_link(
