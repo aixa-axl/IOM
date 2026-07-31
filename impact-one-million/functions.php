@@ -76,6 +76,55 @@ add_filter(
 );
 
 /**
+ * Site-wide Theme Settings (header / footer) — not page Flexible Content.
+ */
+function iom_register_acf_options_page() {
+	if ( ! function_exists( 'acf_add_options_page' ) ) {
+		return;
+	}
+
+	acf_add_options_page(
+		array(
+			'page_title' => __( 'Theme Settings', 'impact-one-million' ),
+			'menu_title' => __( 'Theme Settings', 'impact-one-million' ),
+			'menu_slug'  => 'iom-theme-settings',
+			'capability' => 'edit_theme_options',
+			'redirect'   => false,
+			'position'   => 61,
+			'icon_url'   => 'dashicons-admin-customizer',
+		)
+	);
+}
+add_action( 'acf/init', 'iom_register_acf_options_page' );
+
+/**
+ * Render an ACF link array as an <a>, or nothing if URL is empty.
+ *
+ * @param array|false $link    ACF link field value.
+ * @param string      $class   CSS classes.
+ * @param string      $fallback_title Optional title when link title is empty.
+ */
+function iom_render_link( $link, $class = '', $fallback_title = '' ) {
+	if ( empty( $link['url'] ) ) {
+		return;
+	}
+
+	$title  = ! empty( $link['title'] ) ? $link['title'] : $fallback_title;
+	$target = ! empty( $link['target'] ) ? $link['target'] : '';
+	$rel    = '_blank' === $target ? 'noopener noreferrer' : '';
+	?>
+	<a
+		href="<?php echo esc_url( $link['url'] ); ?>"
+		class="<?php echo esc_attr( $class ); ?>"
+		<?php echo $target ? 'target="' . esc_attr( $target ) . '"' : ''; ?>
+		<?php echo $rel ? 'rel="' . esc_attr( $rel ) . '"' : ''; ?>
+	>
+		<?php echo esc_html( $title ); ?>
+	</a>
+	<?php
+}
+
+/**
  * Light hardening
  */
 remove_action( 'wp_head', 'wp_generator' );
