@@ -125,10 +125,10 @@ $btn_primary     = 'inline-flex items-center justify-center rounded-btn bg-accen
 					</div>
 				<?php endif; ?>
 
-				<div class="flex flex-wrap items-center justify-end gap-8">
-					<nav aria-label="<?php echo esc_attr__( 'Primary', 'impact-one-million' ); ?>">
+				<div class="flex flex-nowrap items-center justify-end gap-8">
+					<nav class="min-w-0" aria-label="<?php echo esc_attr__( 'Primary', 'impact-one-million' ); ?>">
 						<?php if ( $has_acf_nav ) : ?>
-							<ul class="m-0 flex list-none flex-wrap items-center justify-end gap-8 p-0">
+							<ul class="m-0 flex list-none flex-nowrap items-center gap-8 p-0">
 								<?php foreach ( $header_nav as $row ) : ?>
 									<?php
 									$link = isset( $row['link'] ) ? $row['link'] : null;
@@ -136,8 +136,8 @@ $btn_primary     = 'inline-flex items-center justify-center rounded-btn bg-accen
 										continue;
 									}
 									?>
-									<li>
-										<?php iom_render_link( $link, $nav_link_class ); ?>
+									<li class="shrink-0">
+										<?php iom_render_link( $link, $nav_link_class . ' whitespace-nowrap' ); ?>
 									</li>
 								<?php endforeach; ?>
 							</ul>
@@ -147,7 +147,7 @@ $btn_primary     = 'inline-flex items-center justify-center rounded-btn bg-accen
 								array(
 									'theme_location' => 'primary',
 									'container'      => false,
-									'menu_class'     => 'm-0 flex list-none flex-wrap items-center justify-end gap-8 p-0',
+									'menu_class'     => 'm-0 flex list-none flex-nowrap items-center gap-8 p-0',
 									'fallback_cb'    => false,
 								)
 							);
@@ -156,19 +156,19 @@ $btn_primary     = 'inline-flex items-center justify-center rounded-btn bg-accen
 					</nav>
 
 					<?php if ( ! empty( $secondary_cta['url'] ) || ! empty( $primary_cta['url'] ) ) : ?>
-						<div class="flex items-center gap-3">
+						<div class="flex shrink-0 flex-nowrap items-center gap-3">
 							<?php
 							if ( ! empty( $secondary_cta['url'] ) ) {
 								iom_render_link(
 									$secondary_cta,
-									$btn_outline,
+									$btn_outline . ' whitespace-nowrap',
 									__( 'Members Login', 'impact-one-million' )
 								);
 							}
 							if ( ! empty( $primary_cta['url'] ) ) {
 								iom_render_link(
 									$primary_cta,
-									$btn_primary,
+									$btn_primary . ' whitespace-nowrap',
 									__( 'Join Now', 'impact-one-million' )
 								);
 							}
