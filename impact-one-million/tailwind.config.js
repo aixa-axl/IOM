@@ -28,6 +28,7 @@ module.exports = {
         label: ['20px', { lineHeight: '1.2' }],
         'card-title': ['24px', { lineHeight: '1' }],
         'stat-label': ['32px', { lineHeight: '1.2', letterSpacing: '0.04em' }],
+        'feature-title': ['48px', { lineHeight: '39px' }],
         number: ['60px', { lineHeight: '1' }],
         headline: ['56px', { lineHeight: '1.2' }],
         title: ['72px', { lineHeight: '1.1', letterSpacing: '0.02em' }],

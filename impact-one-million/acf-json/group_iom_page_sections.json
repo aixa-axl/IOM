@@ -166,6 +166,117 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_challenge": {
+                    "key": "layout_iom_challenge",
+                    "name": "challenge",
+                    "label": "Challenge",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_challenge_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. The challenge we are solving",
+                            "required": 0,
+                            "default_value": ""
+                        },
+                        {
+                            "key": "field_iom_challenge_cards",
+                            "label": "Cards",
+                            "name": "cards",
+                            "type": "repeater",
+                            "instructions": "Three fact cards + one CTA card (style = CTA).",
+                            "required": 0,
+                            "layout": "block",
+                            "button_label": "Add Card",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_challenge_card_style",
+                                    "label": "Style",
+                                    "name": "style",
+                                    "type": "select",
+                                    "required": 1,
+                                    "choices": {
+                                        "fact": "Fact",
+                                        "cta": "CTA"
+                                    },
+                                    "default_value": "fact",
+                                    "return_format": "value",
+                                    "parent_repeater": "field_iom_challenge_cards"
+                                },
+                                {
+                                    "key": "field_iom_challenge_card_icon",
+                                    "label": "Icon",
+                                    "name": "icon",
+                                    "type": "image",
+                                    "instructions": "Optional. If empty, the preset icon is used.",
+                                    "required": 0,
+                                    "return_format": "id",
+                                    "preview_size": "thumbnail",
+                                    "library": "all",
+                                    "parent_repeater": "field_iom_challenge_cards"
+                                },
+                                {
+                                    "key": "field_iom_challenge_card_icon_preset",
+                                    "label": "Icon Preset",
+                                    "name": "icon_preset",
+                                    "type": "select",
+                                    "required": 0,
+                                    "choices": {
+                                        "people": "People",
+                                        "coins": "Coins",
+                                        "people_group": "People Group",
+                                        "arrows": "Arrows (CTA)"
+                                    },
+                                    "default_value": "people",
+                                    "allow_null": 1,
+                                    "return_format": "value",
+                                    "parent_repeater": "field_iom_challenge_cards"
+                                },
+                                {
+                                    "key": "field_iom_challenge_card_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "type": "text",
+                                    "required": 1,
+                                    "parent_repeater": "field_iom_challenge_cards"
+                                },
+                                {
+                                    "key": "field_iom_challenge_card_body",
+                                    "label": "Body",
+                                    "name": "body",
+                                    "type": "textarea",
+                                    "required": 0,
+                                    "rows": 3,
+                                    "new_lines": "",
+                                    "parent_repeater": "field_iom_challenge_cards"
+                                },
+                                {
+                                    "key": "field_iom_challenge_card_link",
+                                    "label": "CTA Link",
+                                    "name": "link",
+                                    "type": "link",
+                                    "instructions": "Only used when Style is CTA.",
+                                    "required": 0,
+                                    "return_format": "array",
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_iom_challenge_card_style",
+                                                "operator": "==",
+                                                "value": "cta"
+                                            }
+                                        ]
+                                    ],
+                                    "parent_repeater": "field_iom_challenge_cards"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -191,5 +302,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755356400
+    "modified": 1755357600
 }
