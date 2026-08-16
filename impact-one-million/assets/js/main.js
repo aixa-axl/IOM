@@ -181,18 +181,13 @@
 })();
 
 /**
- * Programme pillars — mobile carousel dots follow scroll position.
+ * Programme pillars / benefits — mobile carousel dots follow scroll position.
  */
 (function () {
-	const carousels = document.querySelectorAll('[data-pillars-carousel]');
-	if (!carousels.length) {
-		return;
-	}
-
-	carousels.forEach(function (carousel) {
-		const track = carousel.querySelector('[data-pillars-track]');
-		const slides = carousel.querySelectorAll('[data-pillars-slide]');
-		const dots = carousel.querySelectorAll('[data-pillars-dot]');
+	function bindSnapCarousel(carousel, selectors) {
+		const track = carousel.querySelector(selectors.track);
+		const slides = carousel.querySelectorAll(selectors.slide);
+		const dots = carousel.querySelectorAll(selectors.dot);
 
 		if (!track || !slides.length || !dots.length) {
 			return;
@@ -230,6 +225,22 @@
 		track.addEventListener('scroll', updateFromScroll, { passive: true });
 		window.addEventListener('resize', updateFromScroll);
 		updateFromScroll();
+	}
+
+	document.querySelectorAll('[data-pillars-carousel]').forEach(function (carousel) {
+		bindSnapCarousel(carousel, {
+			track: '[data-pillars-track]',
+			slide: '[data-pillars-slide]',
+			dot: '[data-pillars-dot]',
+		});
+	});
+
+	document.querySelectorAll('[data-benefits-carousel]').forEach(function (carousel) {
+		bindSnapCarousel(carousel, {
+			track: '[data-benefits-track]',
+			slide: '[data-benefits-slide]',
+			dot: '[data-benefits-dot]',
+		});
 	});
 })();
 
