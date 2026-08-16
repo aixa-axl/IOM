@@ -1165,6 +1165,92 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_other_pillars": {
+                    "key": "layout_iom_other_pillars",
+                    "name": "other_pillars",
+                    "label": "Other Pillars",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_op_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. Explore Our Other Pillars",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_op_cards",
+                            "label": "Cards",
+                            "name": "cards",
+                            "type": "repeater",
+                            "required": 0,
+                            "layout": "block",
+                            "button_label": "Add Card",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_op_card_icon",
+                                    "label": "Icon",
+                                    "name": "icon",
+                                    "type": "image",
+                                    "instructions": "Optional custom icon. If empty, the preset is used.",
+                                    "required": 0,
+                                    "return_format": "id",
+                                    "preview_size": "thumbnail",
+                                    "library": "all",
+                                    "parent_repeater": "field_iom_op_cards"
+                                },
+                                {
+                                    "key": "field_iom_op_card_icon_preset",
+                                    "label": "Icon Preset",
+                                    "name": "icon_preset",
+                                    "type": "select",
+                                    "required": 0,
+                                    "choices": {
+                                        "family": "Family & ECD",
+                                        "gender": "Gender Equality",
+                                        "education": "Education & Skills",
+                                        "financial": "Financial Well-Being",
+                                        "healthcare": "Healthcare"
+                                    },
+                                    "default_value": "family",
+                                    "allow_null": 1,
+                                    "return_format": "value",
+                                    "parent_repeater": "field_iom_op_cards"
+                                },
+                                {
+                                    "key": "field_iom_op_card_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "type": "text",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_op_cards"
+                                },
+                                {
+                                    "key": "field_iom_op_card_body",
+                                    "label": "Body",
+                                    "name": "body",
+                                    "type": "textarea",
+                                    "required": 0,
+                                    "rows": 3,
+                                    "new_lines": "",
+                                    "parent_repeater": "field_iom_op_cards"
+                                },
+                                {
+                                    "key": "field_iom_op_card_link",
+                                    "label": "Link",
+                                    "name": "link",
+                                    "type": "link",
+                                    "required": 0,
+                                    "return_format": "array",
+                                    "parent_repeater": "field_iom_op_cards"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -1190,5 +1276,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755370800
+    "modified": 1755371400
 }
