@@ -67,13 +67,13 @@ $btn_styles = array(
 	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-10">
 		<div class="flex w-full max-w-[40rem] flex-col items-center gap-2 px-10 text-center lg:px-0">
 			<?php if ( $heading ) : ?>
-				<h2 class="m-0 font-display text-headline leading-[1.2] text-blue lg:text-ink">
+				<h2 class="m-0 font-display text-headline leading-[1.2] text-navy">
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 			<?php endif; ?>
 
 			<?php if ( $intro ) : ?>
-				<p class="m-0 font-sans text-label leading-[1.5] text-ink">
+				<p class="m-0 font-sans text-label leading-[1.5] text-navy">
 					<?php echo esc_html( $intro ); ?>
 				</p>
 			<?php endif; ?>
