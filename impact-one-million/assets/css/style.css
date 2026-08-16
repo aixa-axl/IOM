@@ -2614,6 +2614,11 @@ body {
     padding-right: 60px;
   }
 
+  .lg\:px-\[7\.5rem\] {
+    padding-left: 7.5rem;
+    padding-right: 7.5rem;
+  }
+
   .lg\:px-gutter {
     padding-left: 80px;
     padding-right: 80px;
