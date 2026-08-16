@@ -637,6 +637,10 @@ video {
   margin-right: auto;
 }
 
+.-mt-\[4\.5rem\] {
+  margin-top: -4.5rem;
+}
+
 .mb-10 {
   margin-bottom: 2.5rem;
 }
@@ -719,6 +723,10 @@ video {
   height: 2rem;
 }
 
+.h-\[260px\] {
+  height: 260px;
+}
+
 .h-\[4\.5rem\] {
   height: 4.5rem;
 }
@@ -735,12 +743,8 @@ video {
   min-height: 3rem;
 }
 
-.min-h-\[70vh\] {
-  min-height: 70vh;
-}
-
-.w-\[7\.5rem\] {
-  width: 7.5rem;
+.w-\[4\.875rem\] {
+  width: 4.875rem;
 }
 
 .w-\[min\(100\%\2c 16rem\)\] {
@@ -767,6 +771,10 @@ video {
   max-width: 1440px;
 }
 
+.max-w-\[21\.75rem\] {
+  max-width: 21.75rem;
+}
+
 .max-w-\[7\.5rem\] {
   max-width: 7.5rem;
 }
@@ -781,10 +789,6 @@ video {
 
 .max-w-site {
   max-width: 1440px;
-}
-
-.max-w-xl {
-  max-width: 36rem;
 }
 
 .flex-1 {
@@ -815,10 +819,6 @@ video {
 
 .flex-nowrap {
   flex-wrap: nowrap;
-}
-
-.items-start {
-  align-items: flex-start;
 }
 
 .items-end {
@@ -867,6 +867,14 @@ video {
 
 .gap-8 {
   gap: 2rem;
+}
+
+.gap-\[3\.75rem\] {
+  gap: 3.75rem;
+}
+
+.self-center {
+  align-self: center;
 }
 
 .overflow-hidden {
@@ -953,6 +961,11 @@ video {
      object-fit: cover;
 }
 
+.object-\[center_30\%\] {
+  -o-object-position: center 30%;
+     object-position: center 30%;
+}
+
 .object-left {
   -o-object-position: left;
      object-position: left;
@@ -984,6 +997,11 @@ video {
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+.px-\[1\.625rem\] {
+  padding-left: 1.625rem;
+  padding-right: 1.625rem;
 }
 
 .py-1 {
@@ -1021,12 +1039,16 @@ video {
   padding-bottom: 1.5rem;
 }
 
-.pl-5 {
-  padding-left: 1.25rem;
+.pb-12 {
+  padding-bottom: 3rem;
 }
 
-.pt-5 {
-  padding-top: 1.25rem;
+.pt-0 {
+  padding-top: 0px;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .font-display {
@@ -1040,10 +1062,6 @@ video {
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
-}
-
-.text-\[2\.5rem\] {
-  font-size: 2.5rem;
 }
 
 .text-body {
@@ -1069,6 +1087,12 @@ video {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-title {
+  font-size: 72px;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
 }
 
 .font-bold {
@@ -1139,12 +1163,6 @@ video {
 .antialiased {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.shadow-sm {
-  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .ring-1 {
@@ -1263,22 +1281,27 @@ body {
     flex-direction: row;
   }
 
-  .sm\:items-start {
-    align-items: flex-start;
-  }
-
   .sm\:items-center {
     align-items: center;
-  }
-
-  .sm\:gap-4 {
-    gap: 1rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .lg\:right-\[12\%\] {
-    right: 12%;
+  .lg\:absolute {
+    position: absolute;
+  }
+
+  .lg\:inset-y-0 {
+    top: 0px;
+    bottom: 0px;
+  }
+
+  .lg\:left-0 {
+    left: 0px;
+  }
+
+  .lg\:mt-0 {
+    margin-top: 0px;
   }
 
   .lg\:flex {
@@ -1293,6 +1316,10 @@ body {
     height: 7rem;
   }
 
+  .lg\:h-auto {
+    height: auto;
+  }
+
   .lg\:min-h-\[52\.5rem\] {
     min-height: 52.5rem;
   }
@@ -1301,8 +1328,24 @@ body {
     width: 11.1875rem;
   }
 
+  .lg\:w-\[75\%\] {
+    width: 75%;
+  }
+
+  .lg\:w-\[min\(100\%\2c 67\.5rem\)\] {
+    width: min(100%, 67.5rem);
+  }
+
+  .lg\:w-auto {
+    width: auto;
+  }
+
   .lg\:max-w-\[36\.625rem\] {
     max-width: 36.625rem;
+  }
+
+  .lg\:max-w-\[75\%\] {
+    max-width: 75%;
   }
 
   .lg\:max-w-\[9\.25rem\] {
@@ -1321,6 +1364,10 @@ body {
     align-items: flex-end;
   }
 
+  .lg\:items-center {
+    align-items: center;
+  }
+
   .lg\:justify-end {
     justify-content: flex-end;
   }
@@ -1337,8 +1384,21 @@ body {
     gap: 2rem;
   }
 
-  .lg\:p-10 {
-    padding: 2.5rem;
+  .lg\:self-auto {
+    align-self: auto;
+  }
+
+  .lg\:whitespace-nowrap {
+    white-space: nowrap;
+  }
+
+  .lg\:object-cover {
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+
+  .lg\:p-5 {
+    padding: 1.25rem;
   }
 
   .lg\:px-\[60px\] {
@@ -1366,10 +1426,16 @@ body {
     padding-bottom: 0.75rem;
   }
 
-  .lg\:text-title {
-    font-size: 72px;
-    line-height: 1.1;
-    letter-spacing: 0.02em;
+  .lg\:pl-5 {
+    padding-left: 1.25rem;
+  }
+
+  .lg\:pt-5 {
+    padding-top: 1.25rem;
+  }
+
+  .lg\:text-left {
+    text-align: left;
   }
 }
 
