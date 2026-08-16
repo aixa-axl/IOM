@@ -959,6 +959,10 @@ video {
   min-width: 0px;
 }
 
+.min-w-\[7\.5rem\] {
+  min-width: 7.5rem;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -981,6 +985,10 @@ video {
 
 .max-w-\[21\.75rem\] {
   max-width: 21.75rem;
+}
+
+.max-w-\[37\.5rem\] {
+  max-width: 37.5rem;
 }
 
 .max-w-\[40rem\] {
@@ -1098,6 +1106,10 @@ video {
   flex-wrap: nowrap;
 }
 
+.content-center {
+  align-content: center;
+}
+
 .items-start {
   align-items: flex-start;
 }
@@ -1180,6 +1192,10 @@ video {
 
 .gap-\[3\.75rem\] {
   gap: 3.75rem;
+}
+
+.gap-section {
+  gap: 120px;
 }
 
 .gap-x-10 {
