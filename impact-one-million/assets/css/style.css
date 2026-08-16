@@ -2323,10 +2323,6 @@ body {
     border-radius: 8px;
   }
 
-  .lg\:rounded-none {
-    border-radius: 0px;
-  }
-
   .lg\:border-0 {
     border-width: 0px;
   }
@@ -2448,6 +2444,10 @@ body {
     text-align: left;
   }
 
+  .lg\:text-\[7\.5rem\] {
+    font-size: 7.5rem;
+  }
+
   .lg\:text-body {
     font-size: 18px;
     line-height: 1.2;
@@ -2472,6 +2472,14 @@ body {
 
   .lg\:leading-\[39px\] {
     line-height: 39px;
+  }
+
+  .lg\:leading-none {
+    line-height: 1;
+  }
+
+  .lg\:tracking-normal {
+    letter-spacing: 0em;
   }
 }
 

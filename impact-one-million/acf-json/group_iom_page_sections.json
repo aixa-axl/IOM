@@ -903,6 +903,42 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_why_it_matters": {
+                    "key": "layout_iom_why_it_matters",
+                    "name": "why_it_matters",
+                    "label": "Why It Matters",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_wim_eyebrow",
+                            "label": "Eyebrow",
+                            "name": "eyebrow",
+                            "type": "text",
+                            "instructions": "e.g. Why it matters",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_wim_stat",
+                            "label": "Stat",
+                            "name": "stat",
+                            "type": "text",
+                            "instructions": "Large display value, e.g. 1 in 5",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_wim_body",
+                            "label": "Body",
+                            "name": "body",
+                            "type": "textarea",
+                            "instructions": "Supporting line under the stat.",
+                            "required": 0,
+                            "rows": 3,
+                            "new_lines": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -928,5 +964,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755368400
+    "modified": 1755369000
 }
