@@ -76,6 +76,96 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_impact_stats": {
+                    "key": "layout_iom_impact_stats",
+                    "name": "impact_stats",
+                    "label": "Impact Stats",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_impact_stats_items",
+                            "label": "Stats",
+                            "name": "stats",
+                            "type": "repeater",
+                            "instructions": "Desktop order is left-to-right. Mobile reorders people → countries → funds when presets are used.",
+                            "required": 0,
+                            "layout": "block",
+                            "button_label": "Add Stat",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_impact_stats_icon",
+                                    "label": "Icon",
+                                    "name": "icon",
+                                    "type": "image",
+                                    "instructions": "Optional custom icon. If empty, the preset icon is used.",
+                                    "required": 0,
+                                    "return_format": "id",
+                                    "preview_size": "thumbnail",
+                                    "library": "all",
+                                    "parent_repeater": "field_iom_impact_stats_items"
+                                },
+                                {
+                                    "key": "field_iom_impact_stats_icon_preset",
+                                    "label": "Icon Preset",
+                                    "name": "icon_preset",
+                                    "type": "select",
+                                    "instructions": "Used when Icon is empty, and for mobile sort order.",
+                                    "required": 0,
+                                    "choices": {
+                                        "people": "People",
+                                        "coins": "Coins",
+                                        "globe": "Globe"
+                                    },
+                                    "default_value": "people",
+                                    "allow_null": 1,
+                                    "return_format": "value",
+                                    "parent_repeater": "field_iom_impact_stats_items"
+                                },
+                                {
+                                    "key": "field_iom_impact_stats_value",
+                                    "label": "Value",
+                                    "name": "value",
+                                    "type": "number",
+                                    "instructions": "Numeric value that counts up on scroll (e.g. 999999).",
+                                    "required": 1,
+                                    "min": 0,
+                                    "step": 1,
+                                    "parent_repeater": "field_iom_impact_stats_items"
+                                },
+                                {
+                                    "key": "field_iom_impact_stats_prefix",
+                                    "label": "Prefix",
+                                    "name": "prefix",
+                                    "type": "text",
+                                    "instructions": "Optional, e.g. $",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_impact_stats_items"
+                                },
+                                {
+                                    "key": "field_iom_impact_stats_label",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "type": "text",
+                                    "instructions": "e.g. people impacted",
+                                    "required": 1,
+                                    "parent_repeater": "field_iom_impact_stats_items"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_iom_impact_stats_description",
+                            "label": "Description",
+                            "name": "description",
+                            "type": "textarea",
+                            "instructions": "Centered blurb below the stats.",
+                            "required": 0,
+                            "rows": 3,
+                            "new_lines": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -101,5 +191,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1753982400
+    "modified": 1755356400
 }
