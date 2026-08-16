@@ -392,6 +392,98 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_where_we_work": {
+                    "key": "layout_iom_where_we_work",
+                    "name": "where_we_work",
+                    "label": "Where We Work",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_www_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. Where we work",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_www_helper_text",
+                            "label": "Helper Text",
+                            "name": "helper_text",
+                            "type": "text",
+                            "instructions": "Shown above the country list.",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_www_countries",
+                            "label": "Countries",
+                            "name": "countries",
+                            "type": "repeater",
+                            "instructions": "Slug must match map IDs: china, vietnam, indonesia, india, bangladesh, sri-lanka.",
+                            "required": 0,
+                            "layout": "block",
+                            "button_label": "Add Country",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_www_country_name",
+                                    "label": "Name",
+                                    "name": "name",
+                                    "type": "text",
+                                    "required": 1,
+                                    "parent_repeater": "field_iom_www_countries"
+                                },
+                                {
+                                    "key": "field_iom_www_country_slug",
+                                    "label": "Slug",
+                                    "name": "slug",
+                                    "type": "text",
+                                    "instructions": "e.g. vietnam",
+                                    "required": 1,
+                                    "parent_repeater": "field_iom_www_countries"
+                                },
+                                {
+                                    "key": "field_iom_www_country_workers",
+                                    "label": "Workers Reached",
+                                    "name": "workers_reached",
+                                    "type": "text",
+                                    "instructions": "e.g. 12,450 workers reached",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_www_countries"
+                                },
+                                {
+                                    "key": "field_iom_www_country_factories",
+                                    "label": "Factories Line",
+                                    "name": "factories",
+                                    "type": "text",
+                                    "instructions": "e.g. across 24 factories",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_www_countries"
+                                },
+                                {
+                                    "key": "field_iom_www_country_description",
+                                    "label": "Description",
+                                    "name": "description",
+                                    "type": "textarea",
+                                    "required": 0,
+                                    "rows": 3,
+                                    "new_lines": "",
+                                    "parent_repeater": "field_iom_www_countries"
+                                },
+                                {
+                                    "key": "field_iom_www_country_link",
+                                    "label": "Programmes Link",
+                                    "name": "link",
+                                    "type": "link",
+                                    "required": 0,
+                                    "return_format": "array",
+                                    "parent_repeater": "field_iom_www_countries"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -417,5 +509,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755358800
+    "modified": 1755360000
 }

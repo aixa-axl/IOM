@@ -232,3 +232,104 @@
 		updateFromScroll();
 	});
 })();
+
+/**
+ * Where we work — SVG map + country list + detail panel sync.
+ */
+(function () {
+	const section = document.querySelector('[data-where-we-work]');
+	if (!section) {
+		return;
+	}
+
+	const jsonEl = section.querySelector('[data-countries-json]');
+	let countries = {};
+	try {
+		countries = JSON.parse(jsonEl ? jsonEl.textContent : '{}');
+	} catch (e) {
+		countries = {};
+	}
+
+	const mapCountries = section.querySelectorAll('.iom-map-country');
+	const tabs = section.querySelectorAll('[data-country-tab]');
+	const panels = section.querySelectorAll('[data-country-panel], [data-country-panel-mobile]');
+
+	function setCountry(slug) {
+		if (!countries[slug]) {
+			return;
+		}
+
+		const data = countries[slug];
+		section.setAttribute('data-active-country', slug);
+
+		mapCountries.forEach(function (path) {
+			const active = path.getAttribute('data-country') === slug;
+			path.classList.toggle('is-active', active);
+			path.setAttribute('aria-pressed', active ? 'true' : 'false');
+		});
+
+		tabs.forEach(function (tab) {
+			const active = tab.getAttribute('data-country') === slug;
+			tab.setAttribute('aria-pressed', active ? 'true' : 'false');
+			tab.classList.toggle('border-navy', active);
+			tab.classList.toggle('border-transparent', !active);
+		});
+
+		panels.forEach(function (panel) {
+			const name = panel.querySelector('[data-panel-name]');
+			const workers = panel.querySelector('[data-panel-workers]');
+			const factories = panel.querySelector('[data-panel-factories]');
+			const description = panel.querySelector('[data-panel-description]');
+			const link = panel.querySelector('[data-panel-link]');
+			const linkLabel = panel.querySelector('[data-panel-link-label]');
+
+			if (name) {
+				name.textContent = data.name || '';
+			}
+			if (workers) {
+				workers.textContent = data.workers_reached || '';
+			}
+			if (factories) {
+				factories.textContent = data.factories || '';
+			}
+			if (description) {
+				description.textContent = data.description || '';
+			}
+			if (link) {
+				link.href = data.link_url || '#';
+				if (data.link_target) {
+					link.setAttribute('target', data.link_target);
+					link.setAttribute('rel', 'noopener noreferrer');
+				} else {
+					link.removeAttribute('target');
+					link.removeAttribute('rel');
+				}
+			}
+			if (linkLabel) {
+				linkLabel.textContent =
+					data.link_title || 'See programmes in ' + (data.name || '');
+			}
+		});
+	}
+
+	mapCountries.forEach(function (path) {
+		function activate() {
+			setCountry(path.getAttribute('data-country'));
+		}
+		path.addEventListener('click', activate);
+		path.addEventListener('keydown', function (event) {
+			if (event.key === 'Enter' || event.key === ' ') {
+				event.preventDefault();
+				activate();
+			}
+		});
+	});
+
+	tabs.forEach(function (tab) {
+		tab.addEventListener('click', function () {
+			setCountry(tab.getAttribute('data-country'));
+		});
+	});
+
+	setCountry(section.getAttribute('data-active-country') || 'vietnam');
+})();
