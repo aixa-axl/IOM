@@ -165,14 +165,12 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 		<?php endif; ?>
 
 		<div class="relative w-full max-w-[75rem]">
-			<div class="relative aspect-[1024/546] overflow-hidden rounded-card border border-solid border-[#dfe8ff] lg:aspect-auto lg:h-[40rem]">
-				<div class="absolute inset-0 bg-white p-2 lg:p-4">
-					<?php require locate_template( 'templates/parts/where-we-work-map.php' ); ?>
-				</div>
+			<div class="relative bg-white">
+				<?php require locate_template( 'templates/parts/where-we-work-map.php' ); ?>
 
-				<!-- Desktop overlay panel -->
+				<!-- Desktop overlay panel — mid-left over the map (Figma) -->
 				<aside
-					class="absolute bottom-8 left-8 z-10 hidden w-[21.25rem] flex-col gap-6 rounded-xl border border-solid border-[#dfe8ff] bg-white p-8 lg:flex"
+					class="absolute left-8 top-1/2 z-10 hidden w-[21.25rem] -translate-y-1/2 flex-col gap-6 rounded-xl border border-solid border-[#dfe8ff] bg-white p-8 lg:flex"
 					data-country-panel
 					aria-live="polite"
 				>

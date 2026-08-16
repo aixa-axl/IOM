@@ -9,9 +9,9 @@ $map_base  = get_template_directory_uri() . '/assets/images/maps/where-we-work-m
 $map_dir   = get_template_directory_uri() . '/assets/images/maps';
 $countries = array( 'china', 'vietnam', 'indonesia', 'india', 'bangladesh', 'sri-lanka' );
 ?>
-<div class="relative h-full w-full cursor-pointer" data-work-map>
+<div class="relative w-full cursor-pointer" data-work-map>
 	<img
-		class="pointer-events-none h-full w-full object-contain object-center"
+		class="pointer-events-none block h-auto w-full"
 		src="<?php echo esc_url( $map_base ); ?>"
 		alt="<?php echo esc_attr__( 'Map of countries where we work', 'impact-one-million' ); ?>"
 		width="1024"
@@ -23,7 +23,7 @@ $countries = array( 'china', 'vietnam', 'indonesia', 'india', 'bangladesh', 'sri
 
 	<?php foreach ( $countries as $slug ) : ?>
 		<img
-			class="iom-map-highlight pointer-events-none absolute inset-0 h-full w-full object-contain object-center opacity-0 transition-opacity duration-200"
+			class="iom-map-highlight pointer-events-none absolute inset-0 h-full w-full object-fill opacity-0 transition-opacity duration-200"
 			src="<?php echo esc_url( $map_dir . '/highlight-' . $slug . '.png' ); ?>"
 			alt=""
 			width="1024"
