@@ -419,6 +419,104 @@
 })();
 
 /**
+ * Impact timeline — horizontal card carousel with prev/next controls.
+ */
+(function () {
+	const sections = document.querySelectorAll('[data-impact-timeline]');
+	if (!sections.length) {
+		return;
+	}
+
+	sections.forEach(function (section) {
+		const track = section.querySelector('[data-timeline-track]');
+		const slides = section.querySelectorAll('[data-timeline-slide]');
+		const prevBtns = section.querySelectorAll('[data-timeline-prev]');
+		const nextBtns = section.querySelectorAll('[data-timeline-next]');
+
+		if (!track || !slides.length) {
+			return;
+		}
+
+		function slideWidth() {
+			const first = slides[0];
+			if (!first) {
+				return track.clientWidth;
+			}
+			const styles = window.getComputedStyle(track);
+			const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+			return first.getBoundingClientRect().width + gap;
+		}
+
+		function currentIndex() {
+			const w = slideWidth();
+			if (w <= 0) {
+				return 0;
+			}
+			return Math.round(track.scrollLeft / w);
+		}
+
+		function updateUI() {
+			const index = currentIndex();
+			const max = slides.length - 1;
+
+			slides.forEach(function (slide, i) {
+				slide.setAttribute('data-active', i === index ? 'true' : 'false');
+			});
+
+			prevBtns.forEach(function (btn) {
+				btn.disabled = index <= 0;
+				btn.classList.toggle('text-blue', index > 0);
+				btn.classList.toggle('text-accent-blue', index <= 0);
+			});
+
+			nextBtns.forEach(function (btn) {
+				btn.disabled = index >= max;
+				btn.classList.toggle('text-blue', index < max);
+				btn.classList.toggle('text-accent-blue', index >= max);
+			});
+		}
+
+		function goTo(index) {
+			const clamped = Math.max(0, Math.min(slides.length - 1, index));
+			track.scrollTo({
+				left: clamped * slideWidth(),
+				behavior: 'smooth',
+			});
+		}
+
+		prevBtns.forEach(function (btn) {
+			btn.addEventListener('click', function () {
+				goTo(currentIndex() - 1);
+			});
+		});
+
+		nextBtns.forEach(function (btn) {
+			btn.addEventListener('click', function () {
+				goTo(currentIndex() + 1);
+			});
+		});
+
+		let scrollTick = null;
+		track.addEventListener(
+			'scroll',
+			function () {
+				if (scrollTick) {
+					return;
+				}
+				scrollTick = window.requestAnimationFrame(function () {
+					scrollTick = null;
+					updateUI();
+				});
+			},
+			{ passive: true }
+		);
+
+		window.addEventListener('resize', updateUI);
+		updateUI();
+	});
+})();
+
+/**
  * Featured story — play video inline in the media square.
  */
 (function () {
