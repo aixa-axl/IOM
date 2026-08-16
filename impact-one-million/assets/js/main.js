@@ -19,6 +19,11 @@
 		mobilePanel.hidden = !open;
 	}
 
+	function isSearchOpen(widget) {
+		const form = widget.querySelector('[data-search-form]');
+		return Boolean(form && !form.classList.contains('hidden'));
+	}
+
 	function setSearchOpen(widget, open) {
 		const toggle = widget.querySelector('[data-search-toggle]');
 		const form = widget.querySelector('[data-search-form]');
@@ -28,9 +33,11 @@
 			return;
 		}
 
-		toggle.hidden = open;
+		toggle.classList.toggle('hidden', open);
 		toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-		form.hidden = !open;
+
+		form.classList.toggle('hidden', !open);
+		form.classList.toggle('flex', open);
 
 		if (open && input) {
 			window.requestAnimationFrame(function () {
@@ -70,7 +77,9 @@
 		}
 
 		if (close) {
-			close.addEventListener('click', function () {
+			close.addEventListener('click', function (event) {
+				event.preventDefault();
+				event.stopPropagation();
 				setSearchOpen(widget, false);
 				if (toggle) {
 					toggle.focus();
@@ -88,8 +97,7 @@
 
 	document.addEventListener('click', function (event) {
 		searchWidgets.forEach(function (widget) {
-			const form = widget.querySelector('[data-search-form]');
-			if (!form || form.hidden) {
+			if (!isSearchOpen(widget)) {
 				return;
 			}
 			if (!widget.contains(event.target)) {

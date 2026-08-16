@@ -30,10 +30,9 @@ $iom_inline_id = wp_unique_id( 'iom-inline-search-' );
 		id="<?php echo esc_attr( $iom_inline_id ); ?>"
 		role="search"
 		method="get"
-		class="flex w-[min(100%,16rem)] items-center gap-2"
+		class="hidden w-[min(100%,16rem)] items-center gap-2"
 		action="<?php echo esc_url( home_url( '/' ) ); ?>"
 		data-search-form
-		hidden
 	>
 		<img
 			src="<?php echo esc_url( $icon_search_uri ); ?>"
