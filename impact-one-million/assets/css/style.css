@@ -749,6 +749,10 @@ video {
   display: none;
 }
 
+.aspect-\[549\/379\] {
+  aspect-ratio: 549/379;
+}
+
 .aspect-\[560\/550\] {
   aspect-ratio: 560/550;
 }
@@ -2154,6 +2158,10 @@ body {
     height: 22.2rem;
   }
 
+  .lg\:h-\[23\.6875rem\] {
+    height: 23.6875rem;
+  }
+
   .lg\:h-\[26\.25rem\] {
     height: 26.25rem;
   }
@@ -2184,6 +2192,10 @@ body {
 
   .lg\:w-\[11\.1875rem\] {
     width: 11.1875rem;
+  }
+
+  .lg\:w-\[34\.3125rem\] {
+    width: 34.3125rem;
   }
 
   .lg\:w-\[35rem\] {
@@ -2340,6 +2352,10 @@ body {
 
   .lg\:gap-\[5\.75rem\] {
     gap: 5.75rem;
+  }
+
+  .lg\:gap-\[6\.25rem\] {
+    gap: 6.25rem;
   }
 
   .lg\:gap-gutter {

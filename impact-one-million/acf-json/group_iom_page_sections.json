@@ -1099,6 +1099,72 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_programme_in_action": {
+                    "key": "layout_iom_programme_in_action",
+                    "name": "programme_in_action",
+                    "label": "Programme in Action",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_pia_eyebrow",
+                            "label": "Eyebrow",
+                            "name": "eyebrow",
+                            "type": "text",
+                            "instructions": "e.g. Story: Mai & Linh",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_pia_heading",
+                            "label": "Heading / Quote",
+                            "name": "heading",
+                            "type": "textarea",
+                            "instructions": "Include quotation marks if desired.",
+                            "required": 0,
+                            "rows": 3,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_iom_pia_body",
+                            "label": "Body",
+                            "name": "body",
+                            "type": "textarea",
+                            "required": 0,
+                            "rows": 4,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_iom_pia_image",
+                            "label": "Image",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "Desktop: right. Mobile: top. 8px corners.",
+                            "required": 0,
+                            "return_format": "id",
+                            "preview_size": "medium",
+                            "library": "all"
+                        },
+                        {
+                            "key": "field_iom_pia_primary_cta",
+                            "label": "Primary CTA",
+                            "name": "primary_cta",
+                            "type": "link",
+                            "instructions": "Accent blue filled button (e.g. Get involved).",
+                            "required": 0,
+                            "return_format": "array"
+                        },
+                        {
+                            "key": "field_iom_pia_secondary_cta",
+                            "label": "Secondary CTA",
+                            "name": "secondary_cta",
+                            "type": "link",
+                            "instructions": "Navy outline button (e.g. Read more).",
+                            "required": 0,
+                            "return_format": "array"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -1124,5 +1190,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755370200
+    "modified": 1755370800
 }
