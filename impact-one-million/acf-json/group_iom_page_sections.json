@@ -28,7 +28,7 @@
                             "label": "Background Color",
                             "name": "background_color",
                             "type": "select",
-                            "instructions": "Navy = top-of-page hero. Accent blue = mid-page CTA (Figma 623:18990).",
+                            "instructions": "Navy = page hero. Accent blue = mid-page CTA.",
                             "required": 0,
                             "choices": {
                                 "navy": "Navy",
@@ -50,15 +50,50 @@
                             "library": "all"
                         },
                         {
+                            "key": "field_iom_hero_show_logo",
+                            "label": "Show Logo",
+                            "name": "show_logo",
+                            "type": "true_false",
+                            "instructions": "Homepage: on. Pillar pages: off (use subtitle instead).",
+                            "required": 0,
+                            "default_value": 1,
+                            "ui": 1
+                        },
+                        {
                             "key": "field_iom_hero_logo",
                             "label": "Logo",
                             "name": "logo",
                             "type": "image",
-                            "instructions": "Optional. On Navy, falls back to the theme logo if empty. On Accent Blue, leave empty to hide.",
+                            "instructions": "Optional. When Show Logo is on and this is empty, the theme logo is used (Navy only).",
                             "required": 0,
                             "return_format": "id",
                             "preview_size": "medium",
-                            "library": "all"
+                            "library": "all",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_iom_hero_show_logo",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_iom_hero_subtitle_parent",
+                            "label": "Subtitle Parent",
+                            "name": "subtitle_parent",
+                            "type": "text",
+                            "instructions": "Optional eyebrow parent, e.g. What We Do (muted, before the slash).",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_hero_subtitle",
+                            "label": "Subtitle",
+                            "name": "subtitle",
+                            "type": "text",
+                            "instructions": "Optional eyebrow above the title, e.g. Family & Early Childhood Development.",
+                            "required": 0
                         },
                         {
                             "key": "field_iom_hero_heading",
@@ -71,11 +106,36 @@
                             "new_lines": ""
                         },
                         {
+                            "key": "field_iom_hero_body",
+                            "label": "Body",
+                            "name": "body",
+                            "type": "textarea",
+                            "instructions": "Optional supporting paragraph under the heading.",
+                            "required": 0,
+                            "rows": 4,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_iom_hero_primary_cta_style",
+                            "label": "Primary CTA Style",
+                            "name": "primary_cta_style",
+                            "type": "select",
+                            "instructions": "Homepage uses Accent (red). Pillar pages use Accent Blue.",
+                            "required": 0,
+                            "choices": {
+                                "accent": "Accent (Red)",
+                                "accent_blue": "Accent Blue"
+                            },
+                            "default_value": "accent",
+                            "allow_null": 0,
+                            "return_format": "value"
+                        },
+                        {
                             "key": "field_iom_hero_primary_cta",
                             "label": "Primary CTA",
                             "name": "primary_cta",
                             "type": "link",
-                            "instructions": "Filled red button (e.g. Join the Movement).",
+                            "instructions": "Filled button (e.g. Join the Movement).",
                             "required": 0,
                             "return_format": "array"
                         },
@@ -868,5 +928,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755367800
+    "modified": 1755368400
 }

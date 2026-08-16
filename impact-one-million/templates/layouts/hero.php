@@ -2,37 +2,61 @@
 /**
  * Layout: hero
  *
- * ACF layout name: hero
- * Fields: background_color, background_image (ID), logo (ID), heading, primary_cta (link), secondary_cta (link)
+ * Reused on homepage + pillar pages (Family & ECD, etc.).
  *
- * Figma desktop: 606:17106 (navy) / 623:18990 (accent blue)
- * Figma mobile:  671:40553 (navy) / 671:40741 (accent blue)
+ * Fields: background_color, background_image, show_logo, logo, subtitle_parent,
+ *         subtitle, heading, body, primary_cta_style, primary_cta, secondary_cta
+ *
+ * Figma: 606:17106 / 671:40553 (homepage navy)
+ *        623:18990 / 671:40741 (mid-page accent blue)
+ *        623:18563 / 677:41851 (pillar page with subtitle + body)
  */
 
-$background_color = get_sub_field( 'background_color' );
-$background_image = get_sub_field( 'background_image' );
-$logo_id          = get_sub_field( 'logo' );
-$heading          = get_sub_field( 'heading' );
-$primary_cta      = get_sub_field( 'primary_cta' );
-$secondary_cta    = get_sub_field( 'secondary_cta' );
+$background_color  = get_sub_field( 'background_color' );
+$background_image  = get_sub_field( 'background_image' );
+$show_logo         = get_sub_field( 'show_logo' );
+$logo_id           = get_sub_field( 'logo' );
+$subtitle_parent   = get_sub_field( 'subtitle_parent' );
+$subtitle          = get_sub_field( 'subtitle' );
+$heading           = get_sub_field( 'heading' );
+$body              = get_sub_field( 'body' );
+$primary_cta_style = get_sub_field( 'primary_cta_style' );
+$primary_cta        = get_sub_field( 'primary_cta' );
+$secondary_cta     = get_sub_field( 'secondary_cta' );
 
 if ( ! in_array( $background_color, array( 'navy', 'accent_blue' ), true ) ) {
 	$background_color = 'navy';
 }
 
-$is_accent = ( 'accent_blue' === $background_color );
+if ( ! in_array( $primary_cta_style, array( 'accent', 'accent_blue' ), true ) ) {
+	$primary_cta_style = 'accent';
+}
+
+// Existing rows may not have show_logo yet — default on.
+if ( null === $show_logo ) {
+	$show_logo = true;
+}
+$show_logo = (bool) $show_logo;
+
+$is_accent   = ( 'accent_blue' === $background_color );
+$has_eyebrow = ( $subtitle_parent || $subtitle );
+$has_body    = (bool) $body;
+$is_content  = ( $has_eyebrow || $has_body );
 
 $bg_class = $is_accent ? 'bg-accent-blue' : 'bg-navy';
 
 $default_logo_uri = get_stylesheet_directory_uri() . '/assets/images/impact-one-million-logo.png';
 $default_logo_abs = get_stylesheet_directory() . '/assets/images/impact-one-million-logo.png';
-$has_default_logo = ! $is_accent && file_exists( $default_logo_abs );
+$has_default_logo = $show_logo && ! $is_accent && file_exists( $default_logo_abs );
 
-// Mid-page accent variant uses h2; top-of-page navy hero uses h1.
+// Mid-page accent variant uses h2; page heroes use h1.
 $heading_tag = $is_accent ? 'h2' : 'h1';
 
-$btn_primary = 'inline-flex w-full items-center justify-center rounded-btn bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 lg:w-auto';
+$primary_bg  = ( 'accent_blue' === $primary_cta_style ) ? 'bg-accent-blue' : 'bg-accent';
+$btn_primary = 'inline-flex w-full items-center justify-center rounded-btn ' . $primary_bg . ' px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 lg:w-auto';
 $btn_outline = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-80 lg:w-auto';
+
+$heading_align = $is_content ? 'text-left' : 'text-center lg:text-left';
 
 $img_wrap_class = $is_accent
 	? 'relative h-[251px] w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-auto lg:w-[min(100%,67.5rem)] lg:max-w-[75%]'
@@ -42,9 +66,13 @@ $outer_class = $is_accent
 	? 'relative z-10 mx-auto flex w-full max-w-site flex-col px-8 pb-8 pt-0 lg:min-h-[41.75rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20'
 	: 'relative z-10 mx-auto flex w-full max-w-site flex-col px-[1.625rem] pb-12 pt-0 lg:min-h-[52.5rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20';
 
-$card_class = $is_accent
-	? 'mt-0 flex w-full flex-col items-center gap-8 self-center rounded-card bg-white p-6 lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:self-auto lg:p-5'
-	: '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-center gap-[3.75rem] self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:gap-8 lg:self-auto lg:p-5';
+if ( $is_accent ) {
+	$card_class = 'mt-0 flex w-full flex-col items-center gap-8 self-center rounded-card bg-white p-6 lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:self-auto lg:p-5';
+} elseif ( $is_content ) {
+	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-start gap-8 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:self-auto lg:rounded-none lg:p-5';
+} else {
+	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-center gap-[3.75rem] self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:gap-8 lg:self-auto lg:p-5';
+}
 ?>
 
 <section class="relative overflow-hidden <?php echo esc_attr( $bg_class ); ?>">
@@ -69,7 +97,7 @@ $card_class = $is_accent
 
 	<div class="<?php echo esc_attr( $outer_class ); ?>">
 		<div class="<?php echo esc_attr( $card_class ); ?>">
-			<?php if ( $logo_id ) : ?>
+			<?php if ( $logo_id && $show_logo ) : ?>
 				<div class="lg:pl-5 lg:pt-5">
 					<?php
 					echo wp_get_attachment_image(
@@ -97,10 +125,30 @@ $card_class = $is_accent
 				</div>
 			<?php endif; ?>
 
+			<?php if ( $has_eyebrow ) : ?>
+				<p class="m-0 flex flex-wrap items-start gap-2 font-display text-body uppercase tracking-[1px]">
+					<?php if ( $subtitle_parent ) : ?>
+						<span class="text-muted"><?php echo esc_html( $subtitle_parent ); ?></span>
+						<?php if ( $subtitle ) : ?>
+							<span class="text-muted" aria-hidden="true">/</span>
+						<?php endif; ?>
+					<?php endif; ?>
+					<?php if ( $subtitle ) : ?>
+						<span class="text-ink"><?php echo esc_html( $subtitle ); ?></span>
+					<?php endif; ?>
+				</p>
+			<?php endif; ?>
+
 			<?php if ( $heading ) : ?>
-				<<?php echo esc_attr( $heading_tag ); ?> class="w-full text-center font-display text-title leading-[1.1] tracking-[0.02em] text-blue lg:text-left">
+				<<?php echo esc_attr( $heading_tag ); ?> class="m-0 w-full font-display text-title leading-[1.1] tracking-[0.02em] text-blue <?php echo esc_attr( $heading_align ); ?>">
 					<?php echo esc_html( $heading ); ?>
 				</<?php echo esc_attr( $heading_tag ); ?>>
+			<?php endif; ?>
+
+			<?php if ( $has_body ) : ?>
+				<p class="m-0 w-full font-sans text-body leading-[1.2] text-ink">
+					<?php echo esc_html( $body ); ?>
+				</p>
 			<?php endif; ?>
 
 			<?php if ( ! empty( $primary_cta['url'] ) || ! empty( $secondary_cta['url'] ) ) : ?>
