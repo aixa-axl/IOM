@@ -1251,6 +1251,170 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_roi_calculator": {
+                    "key": "layout_iom_roi_calculator",
+                    "name": "roi_calculator",
+                    "label": "ROI Calculator",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_roic_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. ROI Calculator",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_roic_audiences",
+                            "label": "Audiences",
+                            "name": "audiences",
+                            "type": "repeater",
+                            "instructions": "Metric values are at the Baseline Amount (default $100,000) and scale with the slider.",
+                            "required": 0,
+                            "layout": "block",
+                            "button_label": "Add Audience",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_roic_audience_label",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "type": "text",
+                                    "instructions": "e.g. Buyers",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_roic_audiences"
+                                },
+                                {
+                                    "key": "field_iom_roic_audience_workers",
+                                    "label": "Workers (at baseline)",
+                                    "name": "workers",
+                                    "type": "number",
+                                    "required": 0,
+                                    "min": 0,
+                                    "step": 1,
+                                    "parent_repeater": "field_iom_roic_audiences"
+                                },
+                                {
+                                    "key": "field_iom_roic_audience_families",
+                                    "label": "Families (at baseline)",
+                                    "name": "families",
+                                    "type": "number",
+                                    "required": 0,
+                                    "min": 0,
+                                    "step": 1,
+                                    "parent_repeater": "field_iom_roic_audiences"
+                                },
+                                {
+                                    "key": "field_iom_roic_audience_factories",
+                                    "label": "Factories (at baseline)",
+                                    "name": "factories",
+                                    "type": "number",
+                                    "required": 0,
+                                    "min": 0,
+                                    "step": 1,
+                                    "parent_repeater": "field_iom_roic_audiences"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_iom_roic_min_amount",
+                            "label": "Min Amount",
+                            "name": "min_amount",
+                            "type": "number",
+                            "instructions": "Default 25000",
+                            "required": 0,
+                            "default_value": 25000,
+                            "min": 0,
+                            "step": 1000
+                        },
+                        {
+                            "key": "field_iom_roic_max_amount",
+                            "label": "Max Amount",
+                            "name": "max_amount",
+                            "type": "number",
+                            "instructions": "Default 500000",
+                            "required": 0,
+                            "default_value": 500000,
+                            "min": 0,
+                            "step": 1000
+                        },
+                        {
+                            "key": "field_iom_roic_default_amount",
+                            "label": "Default Amount",
+                            "name": "default_amount",
+                            "type": "number",
+                            "instructions": "Default 100000",
+                            "required": 0,
+                            "default_value": 100000,
+                            "min": 0,
+                            "step": 1000
+                        },
+                        {
+                            "key": "field_iom_roic_step_amount",
+                            "label": "Step Amount",
+                            "name": "step_amount",
+                            "type": "number",
+                            "instructions": "Default 5000",
+                            "required": 0,
+                            "default_value": 5000,
+                            "min": 1,
+                            "step": 1000
+                        },
+                        {
+                            "key": "field_iom_roic_baseline_amount",
+                            "label": "Baseline Amount",
+                            "name": "baseline_amount",
+                            "type": "number",
+                            "instructions": "Amount the audience metric values are defined at (default 100000).",
+                            "required": 0,
+                            "default_value": 100000,
+                            "min": 1,
+                            "step": 1000
+                        },
+                        {
+                            "key": "field_iom_roic_metric_workers_label",
+                            "label": "Workers Metric Label",
+                            "name": "metric_workers_label",
+                            "type": "text",
+                            "required": 0,
+                            "default_value": "Workers reached"
+                        },
+                        {
+                            "key": "field_iom_roic_metric_families_label",
+                            "label": "Families Metric Label",
+                            "name": "metric_families_label",
+                            "type": "text",
+                            "required": 0,
+                            "default_value": "Families supported"
+                        },
+                        {
+                            "key": "field_iom_roic_metric_factories_label",
+                            "label": "Factories Metric Label",
+                            "name": "metric_factories_label",
+                            "type": "text",
+                            "required": 0,
+                            "default_value": "Factories covered"
+                        },
+                        {
+                            "key": "field_iom_roic_primary_cta",
+                            "label": "Primary CTA",
+                            "name": "primary_cta",
+                            "type": "link",
+                            "required": 0,
+                            "return_format": "array"
+                        },
+                        {
+                            "key": "field_iom_roic_secondary_cta",
+                            "label": "Secondary CTA",
+                            "name": "secondary_cta",
+                            "type": "link",
+                            "required": 0,
+                            "return_format": "array"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -1276,5 +1440,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755371400
+    "modified": 1755372000
 }

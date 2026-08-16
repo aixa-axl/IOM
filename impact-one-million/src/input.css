@@ -146,3 +146,86 @@ body {
     display: none;
   }
 }
+
+/* ROI Calculator — range slider */
+.iom-roi-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 42px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.iom-roi-slider:focus {
+  outline: none;
+}
+
+.iom-roi-slider:focus-visible {
+  outline: 2px solid #153a81;
+  outline-offset: 4px;
+}
+
+.iom-roi-slider::-webkit-slider-runnable-track {
+  height: 10px;
+  border-radius: 100px;
+  border: 1px solid #153a81;
+  background: linear-gradient(
+    to right,
+    #5ba6dd 0%,
+    #5ba6dd var(--roi-pct, 0%),
+    #dfe8ff var(--roi-pct, 0%),
+    #dfe8ff 100%
+  );
+}
+
+.iom-roi-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 42px;
+  height: 42px;
+  margin-top: -17px;
+  border-radius: 100px;
+  border: 1px solid #153a81;
+  background: #5ba6dd;
+  box-shadow: none;
+}
+
+.iom-roi-slider::-moz-range-track {
+  height: 10px;
+  border-radius: 100px;
+  border: 1px solid #153a81;
+  background: #dfe8ff;
+}
+
+.iom-roi-slider::-moz-range-progress {
+  height: 10px;
+  border-radius: 100px;
+  border: 1px solid #153a81;
+  background: #5ba6dd;
+}
+
+.iom-roi-slider::-moz-range-thumb {
+  width: 42px;
+  height: 42px;
+  border-radius: 100px;
+  border: 1px solid #153a81;
+  background: #5ba6dd;
+  box-shadow: none;
+}
+
+@media (max-width: 1023px) {
+  .iom-roi-slider {
+    height: 20px;
+  }
+
+  .iom-roi-slider::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
+    margin-top: -6px;
+  }
+
+  .iom-roi-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+  }
+}
