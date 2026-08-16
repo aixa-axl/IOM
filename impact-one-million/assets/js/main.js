@@ -415,5 +415,5 @@
 		});
 	});
 
-	setCountry(section.getAttribute('data-active-country') || 'vietnam');
+	setCountry(section.getAttribute('data-active-country') || 'china');
 })();

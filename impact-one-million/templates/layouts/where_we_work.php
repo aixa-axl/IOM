@@ -97,20 +97,20 @@ if ( ! is_array( $countries ) || empty( $countries ) ) {
 	);
 }
 
-$default_slug = 'vietnam';
-$has_vietnam  = false;
+$default_slug = 'china';
+$has_china    = false;
 foreach ( $countries as $c ) {
 	$slug = ! empty( $c['slug'] ) ? sanitize_title( $c['slug'] ) : sanitize_title( isset( $c['name'] ) ? $c['name'] : '' );
-	if ( 'vietnam' === $slug ) {
-		$has_vietnam  = true;
-		$default_slug = 'vietnam';
+	if ( 'china' === $slug ) {
+		$has_china    = true;
+		$default_slug = 'china';
 		break;
 	}
 }
-if ( ! $has_vietnam && ! empty( $countries[0] ) ) {
+if ( ! $has_china && ! empty( $countries[0] ) ) {
 	$default_slug = ! empty( $countries[0]['slug'] )
 		? sanitize_title( $countries[0]['slug'] )
-		: sanitize_title( isset( $countries[0]['name'] ) ? $countries[0]['name'] : 'vietnam' );
+		: sanitize_title( isset( $countries[0]['name'] ) ? $countries[0]['name'] : 'china' );
 }
 
 $countries_json = array();
@@ -168,9 +168,9 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 			<div class="relative bg-white">
 				<?php require locate_template( 'templates/parts/where-we-work-map.php' ); ?>
 
-				<!-- Desktop overlay panel — mid-left over the map (Figma) -->
+				<!-- Desktop overlay panel — lower-left over the map -->
 				<aside
-					class="absolute left-8 top-1/2 z-10 hidden w-[21.25rem] -translate-y-1/2 flex-col gap-6 rounded-xl border border-solid border-[#dfe8ff] bg-white p-8 lg:flex"
+					class="absolute bottom-8 left-8 z-10 hidden w-[21.25rem] flex-col gap-6 rounded-xl border border-solid border-[#dfe8ff] bg-white p-8 lg:flex"
 					data-country-panel
 					aria-live="polite"
 				>
