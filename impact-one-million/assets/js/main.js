@@ -179,3 +179,56 @@
 		observer.observe(section);
 	});
 })();
+
+/**
+ * Programme pillars — mobile carousel dots follow scroll position.
+ */
+(function () {
+	const carousels = document.querySelectorAll('[data-pillars-carousel]');
+	if (!carousels.length) {
+		return;
+	}
+
+	carousels.forEach(function (carousel) {
+		const track = carousel.querySelector('[data-pillars-track]');
+		const slides = carousel.querySelectorAll('[data-pillars-slide]');
+		const dots = carousel.querySelectorAll('[data-pillars-dot]');
+
+		if (!track || !slides.length || !dots.length) {
+			return;
+		}
+
+		function setActive(index) {
+			dots.forEach(function (dot, i) {
+				if (i === index) {
+					dot.setAttribute('data-active', 'true');
+				} else {
+					dot.removeAttribute('data-active');
+				}
+			});
+		}
+
+		function updateFromScroll() {
+			const trackRect = track.getBoundingClientRect();
+			const center = trackRect.left + trackRect.width / 2;
+			let closest = 0;
+			let closestDist = Infinity;
+
+			slides.forEach(function (slide, index) {
+				const rect = slide.getBoundingClientRect();
+				const slideCenter = rect.left + rect.width / 2;
+				const dist = Math.abs(slideCenter - center);
+				if (dist < closestDist) {
+					closestDist = dist;
+					closest = index;
+				}
+			});
+
+			setActive(closest);
+		}
+
+		track.addEventListener('scroll', updateFromScroll, { passive: true });
+		window.addEventListener('resize', updateFromScroll);
+		updateFromScroll();
+	});
+})();

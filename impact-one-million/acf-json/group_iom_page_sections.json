@@ -277,6 +277,121 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_how_it_works": {
+                    "key": "layout_iom_how_it_works",
+                    "name": "how_it_works",
+                    "label": "How It Works",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_hiw_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. How Impact On Million works",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_hiw_steps",
+                            "label": "Steps",
+                            "name": "steps",
+                            "type": "repeater",
+                            "instructions": "White process bars under the heading.",
+                            "required": 0,
+                            "layout": "table",
+                            "button_label": "Add Step",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_hiw_step_text",
+                                    "label": "Text",
+                                    "name": "text",
+                                    "type": "text",
+                                    "required": 1,
+                                    "parent_repeater": "field_iom_hiw_steps"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_iom_hiw_pillars_heading",
+                            "label": "Pillars Heading",
+                            "name": "pillars_heading",
+                            "type": "text",
+                            "instructions": "e.g. Our Programme Pillars",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_hiw_pillars",
+                            "label": "Programme Pillars",
+                            "name": "pillars",
+                            "type": "repeater",
+                            "instructions": "Desktop wraps as a grid. Mobile is a horizontal carousel.",
+                            "required": 0,
+                            "layout": "block",
+                            "button_label": "Add Pillar",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_hiw_pillar_icon",
+                                    "label": "Icon",
+                                    "name": "icon",
+                                    "type": "image",
+                                    "instructions": "Optional. If empty, the preset icon is used.",
+                                    "required": 0,
+                                    "return_format": "id",
+                                    "preview_size": "thumbnail",
+                                    "library": "all",
+                                    "parent_repeater": "field_iom_hiw_pillars"
+                                },
+                                {
+                                    "key": "field_iom_hiw_pillar_icon_preset",
+                                    "label": "Icon Preset",
+                                    "name": "icon_preset",
+                                    "type": "select",
+                                    "required": 0,
+                                    "choices": {
+                                        "family": "Family",
+                                        "gender": "Gender",
+                                        "education": "Education",
+                                        "financial": "Financial",
+                                        "healthcare": "Healthcare"
+                                    },
+                                    "default_value": "family",
+                                    "allow_null": 1,
+                                    "return_format": "value",
+                                    "parent_repeater": "field_iom_hiw_pillars"
+                                },
+                                {
+                                    "key": "field_iom_hiw_pillar_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "type": "text",
+                                    "required": 1,
+                                    "parent_repeater": "field_iom_hiw_pillars"
+                                },
+                                {
+                                    "key": "field_iom_hiw_pillar_body",
+                                    "label": "Body",
+                                    "name": "body",
+                                    "type": "textarea",
+                                    "required": 0,
+                                    "rows": 3,
+                                    "new_lines": "",
+                                    "parent_repeater": "field_iom_hiw_pillars"
+                                },
+                                {
+                                    "key": "field_iom_hiw_pillar_link",
+                                    "label": "Learn More Link",
+                                    "name": "link",
+                                    "type": "link",
+                                    "required": 0,
+                                    "return_format": "array",
+                                    "parent_repeater": "field_iom_hiw_pillars"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -302,5 +417,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755357600
+    "modified": 1755358800
 }
