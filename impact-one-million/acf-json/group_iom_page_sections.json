@@ -546,6 +546,85 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_trusted_by": {
+                    "key": "layout_iom_trusted_by",
+                    "name": "trusted_by",
+                    "label": "Trusted By (Logo Marquee)",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_tb_heading_primary",
+                            "label": "Primary Heading",
+                            "name": "heading_primary",
+                            "type": "text",
+                            "instructions": "e.g. 20 years of delivery.",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_tb_heading_secondary",
+                            "label": "Secondary Heading",
+                            "name": "heading_secondary",
+                            "type": "text",
+                            "instructions": "e.g. 150,000+ workers reached across 6 countries.",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_tb_logos",
+                            "label": "Logos",
+                            "name": "logos",
+                            "type": "repeater",
+                            "instructions": "Optional. Leave empty to use the default partner logo set. Upload an image or pick a preset.",
+                            "required": 0,
+                            "layout": "table",
+                            "button_label": "Add Logo",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_tb_logo_image",
+                                    "label": "Logo Image",
+                                    "name": "image",
+                                    "type": "image",
+                                    "required": 0,
+                                    "return_format": "id",
+                                    "preview_size": "thumbnail",
+                                    "library": "all",
+                                    "parent_repeater": "field_iom_tb_logos"
+                                },
+                                {
+                                    "key": "field_iom_tb_logo_preset",
+                                    "label": "Preset",
+                                    "name": "preset",
+                                    "type": "select",
+                                    "required": 0,
+                                    "choices": {
+                                        "": "—",
+                                        "mcdonalds": "McDonald's",
+                                        "fisher-price": "Fisher-Price",
+                                        "pokemon": "Pokémon",
+                                        "lego": "LEGO",
+                                        "scholastic": "Scholastic",
+                                        "target": "Target",
+                                        "walmart": "Walmart",
+                                        "argos": "Argos",
+                                        "disney": "Disney"
+                                    },
+                                    "default_value": "",
+                                    "allow_null": 1,
+                                    "parent_repeater": "field_iom_tb_logos"
+                                },
+                                {
+                                    "key": "field_iom_tb_logo_alt",
+                                    "label": "Alt Text",
+                                    "name": "alt",
+                                    "type": "text",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_tb_logos"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -571,5 +650,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755361800
+    "modified": 1755362400
 }

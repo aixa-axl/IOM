@@ -111,3 +111,38 @@ body {
 .font-display {
   font-weight: 900;
 }
+
+/* Trusted By — continuous logo marquee */
+@keyframes iom-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.iom-marquee-track {
+  animation: iom-marquee 40s linear infinite;
+  will-change: transform;
+}
+
+.iom-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iom-marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 90rem;
+    margin-inline: auto;
+    row-gap: 1.5rem;
+  }
+
+  .iom-marquee-track [aria-hidden='true'] {
+    display: none;
+  }
+}

@@ -636,6 +636,10 @@ video {
   z-index: 10;
 }
 
+.z-20 {
+  z-index: 20;
+}
+
 .z-50 {
   z-index: 50;
 }
@@ -802,6 +806,10 @@ video {
   height: 4.5rem;
 }
 
+.h-\[4\.6875rem\] {
+  height: 4.6875rem;
+}
+
 .h-\[5\.4375rem\] {
   height: 5.4375rem;
 }
@@ -824,6 +832,10 @@ video {
 
 .max-h-20 {
   max-height: 5rem;
+}
+
+.max-h-\[4\.6875rem\] {
+  max-height: 4.6875rem;
 }
 
 .max-h-full {
@@ -874,6 +886,11 @@ video {
   width: 100%;
 }
 
+.w-max {
+  width: -moz-max-content;
+  width: max-content;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -898,6 +915,10 @@ video {
   max-width: 56.25rem;
 }
 
+.max-w-\[67\.5rem\] {
+  max-width: 67.5rem;
+}
+
 .max-w-\[7\.1875rem\] {
   max-width: 7.1875rem;
 }
@@ -908,6 +929,10 @@ video {
 
 .max-w-\[75rem\] {
   max-width: 75rem;
+}
+
+.max-w-\[8\.75rem\] {
+  max-width: 8.75rem;
 }
 
 .max-w-full {
@@ -1762,6 +1787,43 @@ body {
   font-weight: 900;
 }
 
+/* Trusted By — continuous logo marquee */
+
+@keyframes iom-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.iom-marquee-track {
+  animation: iom-marquee 40s linear infinite;
+  will-change: transform;
+}
+
+.iom-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iom-marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 90rem;
+    margin-inline: auto;
+    row-gap: 1.5rem;
+  }
+
+  .iom-marquee-track [aria-hidden='true'] {
+    display: none;
+  }
+}
+
 .placeholder\:text-muted::-moz-placeholder {
   --tw-text-opacity: 1;
   color: rgb(68 70 81 / var(--tw-text-opacity, 1));
@@ -2015,10 +2077,6 @@ body {
     align-items: center;
   }
 
-  .lg\:items-stretch {
-    align-items: stretch;
-  }
-
   .lg\:justify-start {
     justify-content: flex-start;
   }
@@ -2057,6 +2115,10 @@ body {
 
   .lg\:gap-\[3\.75rem\] {
     gap: 3.75rem;
+  }
+
+  .lg\:gap-\[5\.75rem\] {
+    gap: 5.75rem;
   }
 
   .lg\:gap-gutter {
@@ -2101,10 +2163,6 @@ body {
     padding: 1.25rem;
   }
 
-  .lg\:p-6 {
-    padding: 1.5rem;
-  }
-
   .lg\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
@@ -2113,6 +2171,11 @@ body {
   .lg\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
+  }
+
+  .lg\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .lg\:px-\[60px\] {
