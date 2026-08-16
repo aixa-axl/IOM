@@ -775,6 +775,59 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_stories_from_the_field": {
+                    "key": "layout_iom_stories_from_the_field",
+                    "name": "stories_from_the_field",
+                    "label": "Stories from the Field",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_sff_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. Stories from the field",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_sff_quote",
+                            "label": "Quote",
+                            "name": "quote",
+                            "type": "textarea",
+                            "instructions": "Include quotation marks if desired.",
+                            "required": 0,
+                            "rows": 4,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_iom_sff_name",
+                            "label": "Name",
+                            "name": "name",
+                            "type": "text",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_sff_role",
+                            "label": "Role / Location",
+                            "name": "role",
+                            "type": "text",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_sff_image",
+                            "label": "Image",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "Portrait or field photo. Desktop: left side. Mobile: top.",
+                            "required": 0,
+                            "return_format": "id",
+                            "preview_size": "medium",
+                            "library": "all"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -800,5 +853,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755363600
+    "modified": 1755367200
 }

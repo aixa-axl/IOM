@@ -790,6 +790,11 @@ video {
   height: 4.75rem;
 }
 
+.size-full {
+  width: 100%;
+  height: 100%;
+}
+
 .h-11 {
   height: 2.75rem;
 }
@@ -800,6 +805,10 @@ video {
 
 .h-7 {
   height: 1.75rem;
+}
+
+.h-\[185px\] {
+  height: 185px;
 }
 
 .h-\[2\.8rem\] {
@@ -1082,8 +1091,16 @@ video {
   justify-content: space-between;
 }
 
+.gap-1 {
+  gap: 0.25rem;
+}
+
 .gap-10 {
   gap: 2.5rem;
+}
+
+.gap-12 {
+  gap: 3rem;
 }
 
 .gap-14 {
@@ -1162,6 +1179,10 @@ video {
 
 .whitespace-nowrap {
   white-space: nowrap;
+}
+
+.rounded-2xl {
+  border-radius: 1rem;
 }
 
 .rounded-btn {
@@ -1377,6 +1398,10 @@ video {
 
 .p-8 {
   padding: 2rem;
+}
+
+.p-\[60px\] {
+  padding: 60px;
 }
 
 .px-0 {
@@ -2101,6 +2126,10 @@ body {
     width: 35rem;
   }
 
+  .lg\:w-\[549px\] {
+    width: 549px;
+  }
+
   .lg\:w-\[75\%\] {
     width: 75%;
   }
@@ -2257,6 +2286,10 @@ body {
     align-self: auto;
   }
 
+  .lg\:self-stretch {
+    align-self: stretch;
+  }
+
   .lg\:overflow-visible {
     overflow: visible;
   }
@@ -2285,6 +2318,10 @@ body {
   .lg\:object-cover {
     -o-object-fit: cover;
        object-fit: cover;
+  }
+
+  .lg\:p-16 {
+    padding: 4rem;
   }
 
   .lg\:p-5 {
@@ -2349,6 +2386,11 @@ body {
   .lg\:py-5 {
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
+  }
+
+  .lg\:py-\[100px\] {
+    padding-top: 100px;
+    padding-bottom: 100px;
   }
 
   .lg\:py-\[3\.75rem\] {
