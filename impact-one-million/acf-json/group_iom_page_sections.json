@@ -1442,6 +1442,70 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_audience_hero": {
+                    "key": "layout_iom_audience_hero",
+                    "name": "audience_hero",
+                    "label": "Audience Hero",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_ah_subtitle_parent",
+                            "label": "Subtitle Parent",
+                            "name": "subtitle_parent",
+                            "type": "text",
+                            "instructions": "e.g. Join the movement",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_ah_subtitle",
+                            "label": "Subtitle",
+                            "name": "subtitle",
+                            "type": "text",
+                            "instructions": "Current audience, e.g. Buyers",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_ah_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "textarea",
+                            "required": 0,
+                            "rows": 2,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_iom_ah_body",
+                            "label": "Body",
+                            "name": "body",
+                            "type": "textarea",
+                            "required": 0,
+                            "rows": 3,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_iom_ah_image",
+                            "label": "Image",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "Rounded image. Desktop: right. Mobile: below content.",
+                            "required": 0,
+                            "return_format": "id",
+                            "preview_size": "medium",
+                            "library": "all"
+                        },
+                        {
+                            "key": "field_iom_ah_cta",
+                            "label": "CTA",
+                            "name": "cta",
+                            "type": "link",
+                            "instructions": "Blue filled button (e.g. Nominate a Supplier).",
+                            "required": 0,
+                            "return_format": "array"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -1467,5 +1531,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755372600
+    "modified": 1755373800
 }
