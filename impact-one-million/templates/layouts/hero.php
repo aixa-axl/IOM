@@ -69,7 +69,7 @@ $outer_class = $is_accent
 if ( $is_accent ) {
 	$card_class = 'mt-0 flex w-full flex-col items-center gap-8 self-center rounded-card bg-white p-6 lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:self-auto lg:p-5';
 } elseif ( $is_content ) {
-	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-start gap-8 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:self-auto lg:rounded-none lg:p-5';
+	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-start gap-8 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:self-auto lg:p-5';
 } else {
 	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-center gap-[3.75rem] self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:gap-8 lg:self-auto lg:p-5';
 }
