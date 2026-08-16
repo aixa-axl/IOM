@@ -417,3 +417,54 @@
 
 	setCountry(section.getAttribute('data-active-country') || 'china');
 })();
+
+/**
+ * Featured story — play video inline in the media square.
+ */
+(function () {
+	const blocks = document.querySelectorAll('[data-featured-story-media]');
+	if (!blocks.length) {
+		return;
+	}
+
+	blocks.forEach(function (media) {
+		const playBtn = media.querySelector('[data-featured-story-play]');
+		const poster = media.querySelector('[data-featured-story-poster]');
+		const player = media.querySelector('[data-featured-story-player]');
+		const type = media.getAttribute('data-video-type');
+		const src = media.getAttribute('data-video-src');
+
+		if (!playBtn || !player || !src || !type) {
+			return;
+		}
+
+		playBtn.addEventListener('click', function () {
+			player.innerHTML = '';
+			player.classList.remove('hidden');
+
+			if (type === 'video') {
+				const video = document.createElement('video');
+				video.className = 'absolute inset-0 h-full w-full object-cover';
+				video.src = src;
+				video.controls = true;
+				video.autoplay = true;
+				video.playsInline = true;
+				player.appendChild(video);
+			} else {
+				const iframe = document.createElement('iframe');
+				iframe.className = 'absolute inset-0 h-full w-full border-0';
+				iframe.src = src;
+				iframe.title = 'Featured story video';
+				iframe.allow =
+					'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+				iframe.allowFullscreen = true;
+				player.appendChild(iframe);
+			}
+
+			if (poster) {
+				poster.classList.add('hidden');
+			}
+			playBtn.classList.add('hidden');
+		});
+	});
+})();

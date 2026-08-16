@@ -46,12 +46,45 @@ $cta_target = ! empty( $cta['target'] ) ? $cta['target'] : '';
 $btn_class = 'inline-flex items-center justify-center rounded-btn bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 
 $play_label = __( 'Play video', 'impact-one-million' );
+
+/**
+ * Build an inline-playable embed URL (YouTube / Vimeo) or return a file URL.
+ *
+ * @param string $url Raw video URL from ACF.
+ * @return array{type:string,src:string}|null
+ */
+$iom_fs_embed = null;
+if ( $video_url ) {
+	$video_url = trim( $video_url );
+	if ( preg_match( '#(?:youtube\.com/(?:watch\?v=|embed/|shorts/)|youtu\.be/)([A-Za-z0-9_-]{6,})#', $video_url, $m ) ) {
+		$iom_fs_embed = array(
+			'type' => 'iframe',
+			'src'  => 'https://www.youtube.com/embed/' . rawurlencode( $m[1] ) . '?autoplay=1&rel=0',
+		);
+	} elseif ( preg_match( '#vimeo\.com/(?:video/)?(\d+)#', $video_url, $m ) ) {
+		$iom_fs_embed = array(
+			'type' => 'iframe',
+			'src'  => 'https://player.vimeo.com/video/' . rawurlencode( $m[1] ) . '?autoplay=1',
+		);
+	} elseif ( preg_match( '#\.(mp4|webm|ogg)(\?|$)#i', $video_url ) ) {
+		$iom_fs_embed = array(
+			'type' => 'video',
+			'src'  => $video_url,
+		);
+	} else {
+		// Unknown host — still try iframe embed of the given URL.
+		$iom_fs_embed = array(
+			'type' => 'iframe',
+			'src'  => $video_url,
+		);
+	}
+}
 ?>
 
 <section class="bg-blue px-10 py-20 lg:px-gutter lg:py-gutter">
-	<div class="mx-auto flex w-full max-w-site flex-col overflow-hidden rounded-card border-2 border-solid border-[#dfe8ff] lg:flex-row lg:items-stretch lg:gap-20 lg:overflow-visible lg:border-0">
+	<div class="mx-auto flex w-full max-w-site flex-col overflow-hidden rounded-card border-2 border-solid border-[#dfe8ff] lg:flex-row lg:items-center lg:gap-20 lg:overflow-visible lg:border-0">
 		<!-- Copy card -->
-		<div class="flex w-full flex-col items-start justify-center gap-8 rounded-t-card bg-white p-6 lg:flex-1 lg:gap-8 lg:rounded-card lg:p-6">
+		<div class="flex w-full flex-col items-start gap-8 rounded-t-card bg-white px-6 py-4 lg:flex-1 lg:gap-8 lg:rounded-card lg:px-6 lg:py-5">
 			<div class="flex w-full flex-col gap-4">
 				<?php if ( $heading ) : ?>
 					<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">
@@ -84,64 +117,80 @@ $play_label = __( 'Play video', 'impact-one-million' );
 		</div>
 
 		<!-- Media / video -->
-		<div class="relative aspect-[560/550] w-full shrink-0 overflow-hidden rounded-b-card lg:aspect-auto lg:h-[34.375rem] lg:w-[35rem] lg:rounded-card">
-			<?php if ( $image_id ) : ?>
-				<?php
-				echo wp_get_attachment_image(
-					$image_id,
-					'large',
-					false,
-					array(
-						'class'   => 'absolute inset-0 h-full w-full object-cover',
-						'loading' => 'lazy',
-						'alt'     => '',
-					)
-				);
-				?>
-			<?php elseif ( file_exists( $fallback_abs ) ) : ?>
-				<img
-					class="absolute inset-0 h-full w-full object-cover"
-					src="<?php echo esc_url( $fallback ); ?>"
-					alt=""
-					width="560"
-					height="550"
-					loading="lazy"
-					decoding="async"
-				/>
-			<?php else : ?>
-				<div class="absolute inset-0 bg-navy" aria-hidden="true"></div>
+		<div
+			class="relative aspect-[560/550] w-full shrink-0 overflow-hidden rounded-b-card bg-navy lg:aspect-auto lg:h-[34.375rem] lg:w-[35rem] lg:rounded-card"
+			data-featured-story-media
+			<?php if ( $iom_fs_embed ) : ?>
+				data-video-type="<?php echo esc_attr( $iom_fs_embed['type'] ); ?>"
+				data-video-src="<?php echo esc_url( $iom_fs_embed['src'] ); ?>"
 			<?php endif; ?>
+		>
+			<div class="absolute inset-0" data-featured-story-poster>
+				<?php if ( $image_id ) : ?>
+					<?php
+					echo wp_get_attachment_image(
+						$image_id,
+						'large',
+						false,
+						array(
+							'class'   => 'absolute inset-0 h-full w-full object-cover',
+							'loading' => 'lazy',
+							'alt'     => '',
+						)
+					);
+					?>
+				<?php elseif ( file_exists( $fallback_abs ) ) : ?>
+					<img
+						class="absolute inset-0 h-full w-full object-cover"
+						src="<?php echo esc_url( $fallback ); ?>"
+						alt=""
+						width="560"
+						height="550"
+						loading="lazy"
+						decoding="async"
+					/>
+				<?php else : ?>
+					<div class="absolute inset-0 bg-navy" aria-hidden="true"></div>
+				<?php endif; ?>
 
-			<div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-40" aria-hidden="true"></div>
+				<div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-40" aria-hidden="true"></div>
+			</div>
 
-			<?php if ( $video_url ) : ?>
-				<a
-					class="absolute inset-0 z-10 flex items-center justify-center no-underline"
-					href="<?php echo esc_url( $video_url ); ?>"
-					target="_blank"
-					rel="noopener noreferrer"
+			<div class="absolute inset-0 z-10 hidden" data-featured-story-player></div>
+
+			<?php if ( $iom_fs_embed ) : ?>
+				<button
+					type="button"
+					class="absolute inset-0 z-20 flex cursor-pointer items-center justify-center border-0 bg-transparent p-0"
+					data-featured-story-play
 					aria-label="<?php echo esc_attr( $play_label ); ?>"
 				>
+					<span
+						class="flex size-[4.75rem] items-center justify-center rounded-full border-2 border-solid border-[#dfe8ff] bg-accent shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] lg:size-24 lg:border-0 lg:bg-blue"
+						aria-hidden="true"
+					>
+						<img
+							src="<?php echo esc_url( $play_uri ); ?>"
+							alt=""
+							width="22"
+							height="28"
+							class="ml-0.5 h-7 w-[1.375rem]"
+						/>
+					</span>
+				</button>
 			<?php else : ?>
 				<div class="absolute inset-0 z-10 flex items-center justify-center" aria-hidden="true">
-			<?php endif; ?>
-
-				<span
-					class="flex size-[4.75rem] items-center justify-center rounded-full border-2 border-solid border-[#dfe8ff] bg-accent shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] lg:size-24 lg:border-0 lg:bg-blue"
-				>
-					<img
-						src="<?php echo esc_url( $play_uri ); ?>"
-						alt=""
-						width="22"
-						height="28"
-						class="ml-0.5 h-7 w-[1.375rem]"
-						aria-hidden="true"
-					/>
-				</span>
-
-			<?php if ( $video_url ) : ?>
-				</a>
-			<?php else : ?>
+					<span
+						class="flex size-[4.75rem] items-center justify-center rounded-full border-2 border-solid border-[#dfe8ff] bg-accent shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] lg:size-24 lg:border-0 lg:bg-blue"
+					>
+						<img
+							src="<?php echo esc_url( $play_uri ); ?>"
+							alt=""
+							width="22"
+							height="28"
+							class="ml-0.5 h-7 w-[1.375rem]"
+						/>
+					</span>
 				</div>
 			<?php endif; ?>
 		</div>
