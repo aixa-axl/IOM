@@ -3,7 +3,7 @@
  * Layout: where_we_work
  *
  * Interactive regional map + country detail panel.
- * Map: inline SVG (clickable countries). List + map stay in sync via JS.
+ * Map: geography PNG + highlight overlays + SVG hit targets. List stays in sync via JS.
  *
  * Figma desktop: 623:18893 — Figma mobile: 671:40634
  */
@@ -165,7 +165,7 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 		<?php endif; ?>
 
 		<div class="relative w-full max-w-[75rem]">
-			<div class="relative aspect-[650/347] overflow-hidden rounded-card border border-solid border-[#dfe8ff] lg:aspect-auto lg:h-[40rem]">
+			<div class="relative aspect-[1024/546] overflow-hidden rounded-card border border-solid border-[#dfe8ff] lg:aspect-auto lg:h-[40rem]">
 				<div class="absolute inset-0 bg-white p-2 lg:p-4">
 					<?php require locate_template( 'templates/parts/where-we-work-map.php' ); ?>
 				</div>

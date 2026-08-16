@@ -234,7 +234,8 @@
 })();
 
 /**
- * Where we work — SVG map + country list + detail panel sync.
+ * Where we work — map highlights + country list + detail panel sync.
+ * Map clicks use highlight PNG alpha masks (pixel-perfect vs geography art).
  */
 (function () {
 	const section = document.querySelector('[data-where-we-work]');
@@ -250,9 +251,85 @@
 		countries = {};
 	}
 
-	const mapCountries = section.querySelectorAll('.iom-map-country');
+	const map = section.querySelector('[data-work-map]');
+	const baseImg = section.querySelector('[data-map-base]');
+	const mapHighlights = section.querySelectorAll('.iom-map-highlight');
 	const tabs = section.querySelectorAll('[data-country-tab]');
 	const panels = section.querySelectorAll('[data-country-panel], [data-country-panel-mobile]');
+
+	// Smaller / nested regions first so Bangladesh wins over India, etc.
+	const hitOrder = [
+		'bangladesh',
+		'sri-lanka',
+		'vietnam',
+		'indonesia',
+		'india',
+		'china',
+	];
+	const MAP_W = 1024;
+	const MAP_H = 546;
+	const masks = {};
+
+	function loadMask(img) {
+		const slug = img.getAttribute('data-country');
+		if (!slug) {
+			return;
+		}
+		const canvas = document.createElement('canvas');
+		canvas.width = MAP_W;
+		canvas.height = MAP_H;
+		const ctx = canvas.getContext('2d', { willReadFrequently: true });
+		if (!ctx) {
+			return;
+		}
+		try {
+			ctx.clearRect(0, 0, MAP_W, MAP_H);
+			ctx.drawImage(img, 0, 0, MAP_W, MAP_H);
+			masks[slug] = ctx.getImageData(0, 0, MAP_W, MAP_H);
+		} catch (err) {
+			// Cross-origin or decode failure — map clicks fall back to tabs only.
+		}
+	}
+
+	mapHighlights.forEach(function (img) {
+		if (img.complete && img.naturalWidth) {
+			loadMask(img);
+		} else {
+			img.addEventListener('load', function () {
+				loadMask(img);
+			});
+		}
+	});
+
+	function mapPointFromEvent(event) {
+		if (!baseImg) {
+			return null;
+		}
+		const rect = baseImg.getBoundingClientRect();
+		const scale = Math.min(rect.width / MAP_W, rect.height / MAP_H);
+		const dispW = MAP_W * scale;
+		const dispH = MAP_H * scale;
+		const offX = rect.left + (rect.width - dispW) / 2;
+		const offY = rect.top + (rect.height - dispH) / 2;
+		const x = Math.floor((event.clientX - offX) / scale);
+		const y = Math.floor((event.clientY - offY) / scale);
+		if (x < 0 || y < 0 || x >= MAP_W || y >= MAP_H) {
+			return null;
+		}
+		return { x: x, y: y };
+	}
+
+	function countryAtPoint(pt) {
+		const i = (pt.y * MAP_W + pt.x) * 4 + 3;
+		for (let n = 0; n < hitOrder.length; n++) {
+			const slug = hitOrder[n];
+			const data = masks[slug];
+			if (data && data.data[i] > 10 && countries[slug]) {
+				return slug;
+			}
+		}
+		return null;
+	}
 
 	function setCountry(slug) {
 		if (!countries[slug]) {
@@ -262,10 +339,11 @@
 		const data = countries[slug];
 		section.setAttribute('data-active-country', slug);
 
-		mapCountries.forEach(function (path) {
-			const active = path.getAttribute('data-country') === slug;
-			path.classList.toggle('is-active', active);
-			path.setAttribute('aria-pressed', active ? 'true' : 'false');
+		mapHighlights.forEach(function (img) {
+			const active = img.getAttribute('data-country') === slug;
+			img.classList.toggle('is-active', active);
+			img.classList.toggle('opacity-0', !active);
+			img.classList.toggle('opacity-100', active);
 		});
 
 		tabs.forEach(function (tab) {
@@ -312,18 +390,24 @@
 		});
 	}
 
-	mapCountries.forEach(function (path) {
-		function activate() {
-			setCountry(path.getAttribute('data-country'));
-		}
-		path.addEventListener('click', activate);
-		path.addEventListener('keydown', function (event) {
-			if (event.key === 'Enter' || event.key === ' ') {
-				event.preventDefault();
-				activate();
+	if (map) {
+		map.addEventListener('click', function (event) {
+			const pt = mapPointFromEvent(event);
+			if (!pt) {
+				return;
+			}
+			const slug = countryAtPoint(pt);
+			if (slug) {
+				setCountry(slug);
 			}
 		});
-	});
+
+		map.addEventListener('mousemove', function (event) {
+			const pt = mapPointFromEvent(event);
+			const slug = pt ? countryAtPoint(pt) : null;
+			map.style.cursor = slug ? 'pointer' : 'default';
+		});
+	}
 
 	tabs.forEach(function (tab) {
 		tab.addEventListener('click', function () {
