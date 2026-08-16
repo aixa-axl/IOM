@@ -24,6 +24,21 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_iom_hero_background_color",
+                            "label": "Background Color",
+                            "name": "background_color",
+                            "type": "select",
+                            "instructions": "Navy = top-of-page hero. Accent blue = mid-page CTA (Figma 623:18990).",
+                            "required": 0,
+                            "choices": {
+                                "navy": "Navy",
+                                "accent_blue": "Accent Blue"
+                            },
+                            "default_value": "navy",
+                            "allow_null": 0,
+                            "return_format": "value"
+                        },
+                        {
                             "key": "field_iom_hero_background_image",
                             "label": "Background Image",
                             "name": "background_image",
@@ -39,7 +54,7 @@
                             "label": "Logo",
                             "name": "logo",
                             "type": "image",
-                            "instructions": "Optional. Falls back to the theme logo asset if empty.",
+                            "instructions": "Optional. On Navy, falls back to the theme logo if empty. On Accent Blue, leave empty to hide.",
                             "required": 0,
                             "return_format": "id",
                             "preview_size": "medium",
@@ -853,5 +868,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755367200
+    "modified": 1755367800
 }
