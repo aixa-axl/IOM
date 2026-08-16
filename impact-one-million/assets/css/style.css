@@ -1728,6 +1728,10 @@ body {
     display: flex;
   }
 
+  .lg\:grid {
+    display: grid;
+  }
+
   .lg\:hidden {
     display: none;
   }
@@ -1778,10 +1782,6 @@ body {
     min-width: 0px;
   }
 
-  .lg\:min-w-\[25rem\] {
-    min-width: 25rem;
-  }
-
   .lg\:max-w-\[18\.75rem\] {
     max-width: 18.75rem;
   }
@@ -1830,16 +1830,16 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .lg\:flex-row {
     flex-direction: row;
   }
 
   .lg\:flex-col {
     flex-direction: column;
-  }
-
-  .lg\:flex-wrap {
-    flex-wrap: wrap;
   }
 
   .lg\:items-start {

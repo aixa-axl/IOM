@@ -122,7 +122,7 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 			<?php if ( ! empty( $pillars ) ) : ?>
 				<div class="w-full" data-pillars-carousel>
 					<ul
-						class="m-0 flex list-none gap-10 overflow-x-auto scroll-smooth px-[10%] pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:flex-wrap lg:justify-start lg:gap-10 lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
+						class="m-0 flex list-none gap-10 overflow-x-auto scroll-smooth px-[10%] pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-10 lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
 						data-pillars-track
 					>
 						<?php foreach ( $pillars as $index => $pillar ) : ?>
@@ -135,7 +135,7 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 							$icon_uri = ( $preset && isset( $icon_map[ $preset ] ) ) ? $icon_map[ $preset ] : '';
 							?>
 							<li
-								class="flex w-[min(280px,80vw)] shrink-0 snap-center flex-col justify-between rounded-card bg-off-white p-6 text-blue lg:h-[22.2rem] lg:min-w-[25rem] lg:flex-1"
+								class="flex w-[min(280px,80vw)] shrink-0 snap-center flex-col justify-between rounded-card bg-off-white p-6 text-blue lg:h-[22.2rem] lg:w-auto lg:min-w-0"
 								data-pillars-slide
 							>
 								<div class="flex flex-col gap-4">
