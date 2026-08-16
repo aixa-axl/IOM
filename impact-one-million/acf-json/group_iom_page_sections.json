@@ -484,6 +484,68 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_featured_story": {
+                    "key": "layout_iom_featured_story",
+                    "name": "featured_story",
+                    "label": "Featured Story",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_fs_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. A message from Ida Hyllested,",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_fs_role",
+                            "label": "Role / Subheading",
+                            "name": "role",
+                            "type": "text",
+                            "instructions": "e.g. Senior Adviser - UNICEF",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_fs_body",
+                            "label": "Body",
+                            "name": "body",
+                            "type": "textarea",
+                            "required": 0,
+                            "rows": 4,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_iom_fs_cta",
+                            "label": "CTA",
+                            "name": "cta",
+                            "type": "link",
+                            "required": 0,
+                            "return_format": "array"
+                        },
+                        {
+                            "key": "field_iom_fs_image",
+                            "label": "Portrait / Thumbnail",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "Video poster image. Returns attachment ID.",
+                            "required": 0,
+                            "return_format": "id",
+                            "preview_size": "medium",
+                            "library": "all"
+                        },
+                        {
+                            "key": "field_iom_fs_video_url",
+                            "label": "Video URL",
+                            "name": "video_url",
+                            "type": "url",
+                            "instructions": "Optional. Play button links here (YouTube, Vimeo, etc.).",
+                            "required": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -509,5 +571,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755360000
+    "modified": 1755361800
 }
