@@ -2,7 +2,7 @@
 /**
  * Search Form
  *
- * Used by get_search_form() and the header search panel.
+ * Used by get_search_form() (e.g. search results page).
  */
 
 $iom_search_id = wp_unique_id( 'iom-search-' );
