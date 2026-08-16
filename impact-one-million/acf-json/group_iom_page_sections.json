@@ -625,6 +625,85 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_get_involved": {
+                    "key": "layout_iom_get_involved",
+                    "name": "get_involved",
+                    "label": "Get Involved",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_gi_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. Get involved",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_gi_intro",
+                            "label": "Intro",
+                            "name": "intro",
+                            "type": "textarea",
+                            "required": 0,
+                            "rows": 2,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_iom_gi_cards",
+                            "label": "Cards",
+                            "name": "cards",
+                            "type": "repeater",
+                            "required": 0,
+                            "layout": "block",
+                            "button_label": "Add Card",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_gi_card_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "type": "text",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_gi_cards"
+                                },
+                                {
+                                    "key": "field_iom_gi_card_body",
+                                    "label": "Body",
+                                    "name": "body",
+                                    "type": "textarea",
+                                    "required": 0,
+                                    "rows": 3,
+                                    "new_lines": "",
+                                    "parent_repeater": "field_iom_gi_cards"
+                                },
+                                {
+                                    "key": "field_iom_gi_card_button_style",
+                                    "label": "Button Style",
+                                    "name": "button_style",
+                                    "type": "select",
+                                    "required": 0,
+                                    "choices": {
+                                        "accent": "Red (accent)",
+                                        "blue": "Navy blue",
+                                        "accent_blue": "Light blue"
+                                    },
+                                    "default_value": "accent",
+                                    "parent_repeater": "field_iom_gi_cards"
+                                },
+                                {
+                                    "key": "field_iom_gi_card_link",
+                                    "label": "Button Link",
+                                    "name": "link",
+                                    "type": "link",
+                                    "required": 0,
+                                    "return_format": "array",
+                                    "parent_repeater": "field_iom_gi_cards"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -650,5 +729,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755362400
+    "modified": 1755363000
 }
