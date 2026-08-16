@@ -79,7 +79,7 @@ $link_class = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-displ
 
 		<?php if ( ! empty( $cards ) ) : ?>
 			<ul
-				class="m-0 flex w-full list-none gap-4 overflow-x-auto scroll-smooth px-10 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:flex-wrap lg:justify-center lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
+				class="m-0 flex w-full list-none gap-4 overflow-x-auto scroll-smooth px-10 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-5 lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
 			>
 				<?php foreach ( $cards as $card ) : ?>
 					<?php
@@ -91,7 +91,7 @@ $link_class = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-displ
 					$icon_uri = ( $preset && isset( $icon_map[ $preset ] ) ) ? $icon_map[ $preset ] : '';
 					?>
 					<li
-						class="flex w-[min(100%,25rem)] shrink-0 snap-center flex-col justify-between gap-4 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-6 lg:h-[22.2rem] lg:w-[min(100%,25rem)] lg:snap-align-none"
+						class="flex w-[min(100%,25rem)] shrink-0 snap-center flex-col justify-between gap-4 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-6 lg:h-[22.2rem] lg:w-auto lg:min-w-0 lg:snap-align-none"
 					>
 						<div class="flex flex-col gap-4">
 							<div class="flex flex-col gap-4">
