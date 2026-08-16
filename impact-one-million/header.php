@@ -16,7 +16,8 @@ $primary_cta     = function_exists( 'get_field' ) ? get_field( 'header_primary_c
 
 $has_acf_nav   = is_array( $header_nav ) && ! empty( $header_nav );
 $has_utility   = is_array( $utility_links ) && ! empty( $utility_links );
-$has_util_bar  = $has_utility || ! empty( $search_link['url'] ) || ! empty( $language_link['url'] );
+$search_label  = ! empty( $search_link['title'] ) ? $search_link['title'] : __( 'Search', 'impact-one-million' );
+$has_util_bar  = true;
 
 $theme_uri         = get_stylesheet_directory_uri();
 $default_logo_uri  = $theme_uri . '/assets/images/impact-one-million-logo.png';
@@ -87,23 +88,23 @@ $btn_primary     = 'inline-flex items-center justify-center rounded-btn bg-accen
 							<?php endforeach; ?>
 						<?php endif; ?>
 
-						<?php if ( ! empty( $search_link['url'] ) ) : ?>
-							<a
-								href="<?php echo esc_url( $search_link['url'] ); ?>"
-								class="inline-flex items-center gap-2 <?php echo esc_attr( $util_link_class ); ?>"
-								<?php echo ! empty( $search_link['target'] ) ? 'target="' . esc_attr( $search_link['target'] ) . '" rel="noopener noreferrer"' : ''; ?>
-							>
-								<img
-									src="<?php echo esc_url( $icon_search_uri ); ?>"
-									alt=""
-									width="14"
-									height="14"
-									class="size-[13.5px] shrink-0"
-									aria-hidden="true"
-								/>
-								<span><?php echo esc_html( ! empty( $search_link['title'] ) ? $search_link['title'] : __( 'Search', 'impact-one-million' ) ); ?></span>
-							</a>
-						<?php endif; ?>
+						<button
+							type="button"
+							class="inline-flex items-center gap-2 border-0 bg-transparent p-0 <?php echo esc_attr( $util_link_class ); ?>"
+							data-search-toggle
+							aria-expanded="false"
+							aria-controls="header-search-panel"
+						>
+							<img
+								src="<?php echo esc_url( $icon_search_uri ); ?>"
+								alt=""
+								width="14"
+								height="14"
+								class="size-[13.5px] shrink-0"
+								aria-hidden="true"
+							/>
+							<span><?php echo esc_html( $search_label ); ?></span>
+						</button>
 
 						<?php if ( ! empty( $language_link['url'] ) ) : ?>
 							<a
@@ -212,23 +213,23 @@ $btn_primary     = 'inline-flex items-center justify-center rounded-btn bg-accen
 						<?php endforeach; ?>
 					<?php endif; ?>
 
-					<?php if ( ! empty( $search_link['url'] ) ) : ?>
-						<a
-							href="<?php echo esc_url( $search_link['url'] ); ?>"
-							class="inline-flex items-center gap-2 <?php echo esc_attr( $util_link_class ); ?>"
-							<?php echo ! empty( $search_link['target'] ) ? 'target="' . esc_attr( $search_link['target'] ) . '" rel="noopener noreferrer"' : ''; ?>
-						>
-							<img
-								src="<?php echo esc_url( $icon_search_uri ); ?>"
-								alt=""
-								width="14"
-								height="14"
-								class="size-[13.5px] shrink-0"
-								aria-hidden="true"
-							/>
-							<span><?php echo esc_html( ! empty( $search_link['title'] ) ? $search_link['title'] : __( 'Search', 'impact-one-million' ) ); ?></span>
-						</a>
-					<?php endif; ?>
+					<button
+						type="button"
+						class="inline-flex items-center gap-2 border-0 bg-transparent p-0 <?php echo esc_attr( $util_link_class ); ?>"
+						data-search-toggle
+						aria-expanded="false"
+						aria-controls="header-search-panel"
+					>
+						<img
+							src="<?php echo esc_url( $icon_search_uri ); ?>"
+							alt=""
+							width="14"
+							height="14"
+							class="size-[13.5px] shrink-0"
+							aria-hidden="true"
+						/>
+						<span><?php echo esc_html( $search_label ); ?></span>
+					</button>
 
 					<?php if ( ! empty( $language_link['url'] ) ) : ?>
 						<a
@@ -299,5 +300,28 @@ $btn_primary     = 'inline-flex items-center justify-center rounded-btn bg-accen
 					?>
 				</div>
 			<?php endif; ?>
+		</div>
+
+		<div
+			id="header-search-panel"
+			class="border-t border-black/10 bg-off-white"
+			data-search-panel
+			hidden
+		>
+			<div class="mx-auto flex w-full max-w-site items-start gap-4 px-5 py-5 lg:px-gutter lg:py-6">
+				<div class="min-w-0 flex-1">
+					<?php get_search_form(); ?>
+				</div>
+				<button
+					type="button"
+					class="inline-flex size-12 shrink-0 items-center justify-center rounded-btn border-[1.5px] border-solid border-blue text-navy transition-opacity hover:opacity-70"
+					data-search-close
+					aria-label="<?php echo esc_attr__( 'Close search', 'impact-one-million' ); ?>"
+				>
+					<svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+						<path stroke-linecap="round" stroke-width="1.5" d="M6 6l12 12M18 6L6 18" />
+					</svg>
+				</button>
+			</div>
 		</div>
 	</header>

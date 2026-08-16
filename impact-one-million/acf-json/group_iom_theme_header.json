@@ -36,10 +36,10 @@
         },
         {
             "key": "field_iom_header_search_link",
-            "label": "Search Link",
+            "label": "Search Label",
             "name": "header_search_link",
             "type": "link",
-            "instructions": "Optional. Shows Search with icon in the utility bar.",
+            "instructions": "Optional. Title is used as the Search button label (defaults to “Search”). URL is unused — clicking Search opens the site search bar.",
             "required": 0,
             "return_format": "array"
         },
@@ -110,5 +110,5 @@
     "active": true,
     "description": "Site-wide header — Figma two-tier navbar.",
     "show_in_rest": 0,
-    "modified": 1753983600
+    "modified": 1755353400
 }
