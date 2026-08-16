@@ -98,34 +98,36 @@ $marquee_logos = array_merge( $resolved, $resolved );
 ?>
 
 <section class="overflow-hidden bg-white py-section" aria-label="<?php echo esc_attr__( 'Trusted by', 'impact-one-million' ); ?>">
-	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-10 px-10 lg:px-gutter">
-		<div class="flex max-w-[67.5rem] flex-col items-center gap-3 text-center">
-			<?php if ( $heading_primary ) : ?>
-				<p class="m-0 font-display text-number text-navy">
-					<?php echo esc_html( $heading_primary ); ?>
-				</p>
-			<?php endif; ?>
-			<?php if ( $heading_secondary ) : ?>
-				<p class="m-0 font-display text-headline leading-[1.2] text-blue">
-					<?php echo esc_html( $heading_secondary ); ?>
-				</p>
-			<?php endif; ?>
+	<div class="flex w-full flex-col items-center gap-10">
+		<div class="mx-auto flex w-full max-w-site flex-col items-center px-10 lg:px-gutter">
+			<div class="flex max-w-[67.5rem] flex-col items-center gap-3 text-center">
+				<?php if ( $heading_primary ) : ?>
+					<p class="m-0 font-display text-number text-navy">
+						<?php echo esc_html( $heading_primary ); ?>
+					</p>
+				<?php endif; ?>
+				<?php if ( $heading_secondary ) : ?>
+					<p class="m-0 font-display text-headline leading-[1.2] text-blue">
+						<?php echo esc_html( $heading_secondary ); ?>
+					</p>
+				<?php endif; ?>
+			</div>
 		</div>
-	</div>
 
-	<div class="relative w-full overflow-hidden py-3" data-logo-marquee>
-		<div class="iom-marquee-track flex w-max items-center gap-8 lg:gap-[5.75rem]" data-logo-marquee-track>
-			<?php foreach ( $marquee_logos as $i => $logo ) : ?>
-				<div class="flex h-[4.6875rem] shrink-0 items-center justify-center" <?php echo $i >= count( $resolved ) ? 'aria-hidden="true"' : ''; ?>>
-					<img
-						src="<?php echo esc_url( $logo['src'] ); ?>"
-						alt="<?php echo $i >= count( $resolved ) ? '' : esc_attr( $logo['alt'] ); ?>"
-						class="max-h-[4.6875rem] w-auto max-w-[8.75rem] object-contain"
-						loading="lazy"
-						decoding="async"
-					/>
-				</div>
-			<?php endforeach; ?>
+		<div class="relative w-full overflow-hidden py-3" data-logo-marquee>
+			<div class="iom-marquee-track flex w-max items-center gap-8 lg:gap-[5.75rem]" data-logo-marquee-track>
+				<?php foreach ( $marquee_logos as $i => $logo ) : ?>
+					<div class="flex h-[4.6875rem] shrink-0 items-center justify-center" <?php echo $i >= count( $resolved ) ? 'aria-hidden="true"' : ''; ?>>
+						<img
+							src="<?php echo esc_url( $logo['src'] ); ?>"
+							alt="<?php echo $i >= count( $resolved ) ? '' : esc_attr( $logo['alt'] ); ?>"
+							class="max-h-[4.6875rem] w-auto max-w-[8.75rem] object-contain"
+							loading="lazy"
+							decoding="async"
+						/>
+					</div>
+				<?php endforeach; ?>
+			</div>
 		</div>
 	</div>
 </section>
