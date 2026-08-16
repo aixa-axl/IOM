@@ -6,16 +6,9 @@
             "key": "field_iom_footer_logo",
             "label": "Logo",
             "name": "footer_logo",
-            "aria-label": "",
             "type": "image",
-            "instructions": "Optional. Falls back to the site title text if empty.",
+            "instructions": "White logo preferred. Falls back to the theme white logo asset if empty.",
             "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
             "return_format": "id",
             "library": "all",
             "preview_size": "medium"
@@ -24,121 +17,91 @@
             "key": "field_iom_footer_tagline",
             "label": "Tagline",
             "name": "footer_tagline",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
+            "type": "textarea",
+            "instructions": "Mission blurb under the logo.",
             "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_iom_footer_partner_logo",
+            "label": "Partner Logo",
+            "name": "footer_partner_logo",
+            "type": "image",
+            "instructions": "e.g. Ethical Supply Chain Program / Founded by ICTI. Falls back to the theme asset if empty.",
+            "required": 0,
+            "return_format": "id",
+            "library": "all",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_iom_footer_columns",
+            "label": "Link Columns",
+            "name": "footer_columns",
+            "type": "repeater",
+            "instructions": "Four columns in Figma: Programmes, About Us, Resources, Get Involved.",
+            "required": 0,
+            "layout": "block",
+            "button_label": "Add Column",
+            "sub_fields": [
+                {
+                    "key": "field_iom_footer_column_heading",
+                    "label": "Heading",
+                    "name": "heading",
+                    "type": "text",
+                    "required": 1,
+                    "parent_repeater": "field_iom_footer_columns"
+                },
+                {
+                    "key": "field_iom_footer_column_links",
+                    "label": "Links",
+                    "name": "links",
+                    "type": "repeater",
+                    "required": 0,
+                    "layout": "table",
+                    "button_label": "Add Link",
+                    "parent_repeater": "field_iom_footer_columns",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_footer_column_link",
+                            "label": "Link",
+                            "name": "link",
+                            "type": "link",
+                            "required": 1,
+                            "return_format": "array",
+                            "parent_repeater": "field_iom_footer_column_links"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "key": "field_iom_footer_copyright",
             "label": "Copyright Text",
             "name": "footer_copyright",
-            "aria-label": "",
             "type": "text",
-            "instructions": "Optional. Year is prepended automatically. Falls back to site name + “All rights reserved.”",
+            "instructions": "Shown as-is in the bottom bar (include © and year if desired). Falls back to “© {year} Impact One Million. ESCP Initiative.”",
             "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "default_value": ""
         },
         {
-            "key": "field_iom_footer_nav_links",
-            "label": "Nav Links",
-            "name": "footer_nav_links",
-            "aria-label": "",
+            "key": "field_iom_footer_legal_links",
+            "label": "Legal Links",
+            "name": "footer_legal_links",
             "type": "repeater",
-            "instructions": "If empty, the WordPress Footer Menu is used as a fallback.",
+            "instructions": "Bottom bar links (e.g. Privacy Policy, Terms of Service, Contact).",
             "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
             "layout": "table",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "field_iom_footer_nav_link",
             "button_label": "Add Link",
-            "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_iom_footer_nav_link",
+                    "key": "field_iom_footer_legal_link",
                     "label": "Link",
                     "name": "link",
-                    "aria-label": "",
                     "type": "link",
-                    "instructions": "",
                     "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
                     "return_format": "array",
-                    "parent_repeater": "field_iom_footer_nav_links"
-                }
-            ]
-        },
-        {
-            "key": "field_iom_footer_social_links",
-            "label": "Social Links",
-            "name": "footer_social_links",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "table",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "field_iom_footer_social_link",
-            "button_label": "Add Social Link",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_iom_footer_social_link",
-                    "label": "Link",
-                    "name": "link",
-                    "aria-label": "",
-                    "type": "link",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "parent_repeater": "field_iom_footer_social_links"
+                    "parent_repeater": "field_iom_footer_legal_links"
                 }
             ]
         }
@@ -159,7 +122,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Site-wide footer (Appearance → Theme Settings).",
+    "description": "Site-wide footer — Figma node 606:11632.",
     "show_in_rest": 0,
-    "modified": 1753980001
+    "modified": 1755355200
 }
