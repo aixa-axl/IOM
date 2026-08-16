@@ -1197,6 +1197,129 @@ video {
 
 /* Custom styles — keep tokens in tailwind.config.js */
 
+@font-face {
+  font-family: 'Londrina Solid';
+
+  src: url('../fonts/londrina-solid/LondrinaSolid-Thin.ttf') format('truetype');
+
+  font-weight: 100;
+
+  font-style: normal;
+
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Londrina Solid';
+
+  src: url('../fonts/londrina-solid/LondrinaSolid-Light.ttf') format('truetype');
+
+  font-weight: 300;
+
+  font-style: normal;
+
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Londrina Solid';
+
+  src: url('../fonts/londrina-solid/LondrinaSolid-Regular.ttf') format('truetype');
+
+  font-weight: 400;
+
+  font-style: normal;
+
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Londrina Solid';
+
+  src: url('../fonts/londrina-solid/LondrinaSolid-Black.ttf') format('truetype');
+
+  font-weight: 900;
+
+  font-style: normal;
+
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Foundry Context';
+
+  src:
+    url('../fonts/foundry-context/FoundryContext-Regular.woff2') format('woff2'),
+    url('../fonts/foundry-context/FoundryContext-Regular.woff') format('woff'),
+    url('../fonts/foundry-context/FoundryContext-Regular.ttf') format('truetype');
+
+  font-weight: 400;
+
+  font-style: normal;
+
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Foundry Context';
+
+  src:
+    url('../fonts/foundry-context/FoundryContext-Medium.woff2') format('woff2'),
+    url('../fonts/foundry-context/FoundryContext-Medium.woff') format('woff'),
+    url('../fonts/foundry-context/FoundryContext-Medium.ttf') format('truetype');
+
+  font-weight: 500;
+
+  font-style: normal;
+
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Foundry Context';
+
+  src:
+    url('../fonts/foundry-context/FoundryContext-Demi.woff2') format('woff2'),
+    url('../fonts/foundry-context/FoundryContext-Demi.woff') format('woff'),
+    url('../fonts/foundry-context/FoundryContext-Demi.ttf') format('truetype');
+
+  font-weight: 600;
+
+  font-style: normal;
+
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Foundry Context';
+
+  src:
+    url('../fonts/foundry-context/FoundryContext-Bold.woff2') format('woff2'),
+    url('../fonts/foundry-context/FoundryContext-Bold.woff') format('woff'),
+    url('../fonts/foundry-context/FoundryContext-Bold.ttf') format('truetype');
+
+  font-weight: 700;
+
+  font-style: normal;
+
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Foundry Context';
+
+  src:
+    url('../fonts/foundry-context/FoundryContext-ExtraBold.woff2') format('woff2'),
+    url('../fonts/foundry-context/FoundryContext-ExtraBold.woff') format('woff'),
+    url('../fonts/foundry-context/FoundryContext-ExtraBold.ttf') format('truetype');
+
+  font-weight: 800;
+
+  font-style: normal;
+
+  font-display: swap;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -1205,10 +1328,18 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: 'Foundry Context', system-ui, sans-serif;
+  font-weight: 400;
 }
 
 .site-main {
   flex: 1 0 auto;
+}
+
+/* Figma display type uses Londrina Solid Black */
+
+.font-display {
+  font-weight: 900;
 }
 
 .placeholder\:text-muted::-moz-placeholder {

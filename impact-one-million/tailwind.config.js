@@ -18,8 +18,9 @@ module.exports = {
         paper: '#F0F7FE',
       },
       fontFamily: {
-        // Londrina Solid = display / labels; Foundry Context = body (self-host later)
+        // Londrina Solid = display / labels (self-hosted in assets/fonts)
         display: ['"Londrina Solid"', 'Impact', 'sans-serif'],
+        // Foundry Context = body (self-hosted in assets/fonts)
         sans: ['"Foundry Context"', 'system-ui', 'sans-serif'],
       },
       fontSize: {
