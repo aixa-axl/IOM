@@ -1034,6 +1034,71 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_roi_proof": {
+                    "key": "layout_iom_roi_proof",
+                    "name": "roi_proof",
+                    "label": "ROI Proof",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_roi_eyebrow",
+                            "label": "Eyebrow",
+                            "name": "eyebrow",
+                            "type": "text",
+                            "instructions": "e.g. Stats",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_roi_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. Evidence you can measure",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_roi_stats",
+                            "label": "Stats",
+                            "name": "stats",
+                            "type": "repeater",
+                            "required": 0,
+                            "layout": "block",
+                            "button_label": "Add Stat",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_roi_stat_value",
+                                    "label": "Value",
+                                    "name": "value",
+                                    "type": "text",
+                                    "instructions": "e.g. 20 or [X,XXX]",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_roi_stats"
+                                },
+                                {
+                                    "key": "field_iom_roi_stat_label",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "type": "textarea",
+                                    "required": 0,
+                                    "rows": 3,
+                                    "new_lines": "",
+                                    "parent_repeater": "field_iom_roi_stats"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_iom_roi_cta",
+                            "label": "CTA",
+                            "name": "cta",
+                            "type": "link",
+                            "instructions": "Blue filled button (e.g. How can I make an impact?).",
+                            "required": 0,
+                            "return_format": "array"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -1059,5 +1124,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755369600
+    "modified": 1755370200
 }
