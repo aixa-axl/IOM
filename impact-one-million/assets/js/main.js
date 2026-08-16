@@ -242,6 +242,14 @@
 			dot: '[data-benefits-dot]',
 		});
 	});
+
+	document.querySelectorAll('[data-why-join-carousel]').forEach(function (carousel) {
+		bindSnapCarousel(carousel, {
+			track: '[data-why-join-track]',
+			slide: '[data-why-join-slide]',
+			dot: '[data-why-join-dot]',
+		});
+	});
 })();
 
 /**

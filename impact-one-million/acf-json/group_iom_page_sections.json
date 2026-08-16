@@ -1506,6 +1506,74 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_why_join": {
+                    "key": "layout_iom_why_join",
+                    "name": "why_join",
+                    "label": "Why Join",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_wj_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. Why Buyers Join",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_wj_cards",
+                            "label": "Cards",
+                            "name": "cards",
+                            "type": "repeater",
+                            "required": 0,
+                            "layout": "block",
+                            "button_label": "Add Card",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_wj_card_icon",
+                                    "label": "Icon",
+                                    "name": "icon",
+                                    "type": "image",
+                                    "instructions": "Optional. Falls back to the accent arrow icon.",
+                                    "required": 0,
+                                    "return_format": "id",
+                                    "preview_size": "thumbnail",
+                                    "library": "all",
+                                    "parent_repeater": "field_iom_wj_cards"
+                                },
+                                {
+                                    "key": "field_iom_wj_card_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "type": "text",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_wj_cards"
+                                },
+                                {
+                                    "key": "field_iom_wj_card_body",
+                                    "label": "Body",
+                                    "name": "body",
+                                    "type": "textarea",
+                                    "required": 0,
+                                    "rows": 3,
+                                    "new_lines": "",
+                                    "parent_repeater": "field_iom_wj_cards"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_iom_wj_cta",
+                            "label": "CTA",
+                            "name": "cta",
+                            "type": "link",
+                            "instructions": "Blue filled button (e.g. Nominate a Supplier).",
+                            "required": 0,
+                            "return_format": "array"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -1531,5 +1599,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755373800
+    "modified": 1755374400
 }

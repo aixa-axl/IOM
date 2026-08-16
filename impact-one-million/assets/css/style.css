@@ -2338,6 +2338,10 @@ body {
     min-height: 11.3rem;
   }
 
+  .lg\:min-h-\[17rem\] {
+    min-height: 17rem;
+  }
+
   .lg\:min-h-\[41\.75rem\] {
     min-height: 41.75rem;
   }
