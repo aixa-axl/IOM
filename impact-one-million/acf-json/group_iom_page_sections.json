@@ -120,11 +120,12 @@
                             "label": "Primary CTA Style",
                             "name": "primary_cta_style",
                             "type": "select",
-                            "instructions": "Homepage uses Accent (red). Pillar pages use Accent Blue.",
+                            "instructions": "Homepage: Accent (red). Pillar: Accent Blue. Join CTA with 3 audience buttons: Navy.",
                             "required": 0,
                             "choices": {
                                 "accent": "Accent (Red)",
-                                "accent_blue": "Accent Blue"
+                                "accent_blue": "Accent Blue",
+                                "navy": "Navy"
                             },
                             "default_value": "accent",
                             "allow_null": 0,
@@ -135,16 +136,42 @@
                             "label": "Primary CTA",
                             "name": "primary_cta",
                             "type": "link",
-                            "instructions": "Filled button (e.g. Join the Movement).",
+                            "instructions": "First filled button.",
                             "required": 0,
                             "return_format": "array"
+                        },
+                        {
+                            "key": "field_iom_hero_secondary_cta_style",
+                            "label": "Secondary CTA Style",
+                            "name": "secondary_cta_style",
+                            "type": "select",
+                            "instructions": "Outline = border button. Or match a filled colour (e.g. Navy for Buyers / Factories / Foundations).",
+                            "required": 0,
+                            "choices": {
+                                "outline": "Outline",
+                                "accent": "Accent (Red)",
+                                "accent_blue": "Accent Blue",
+                                "navy": "Navy"
+                            },
+                            "default_value": "outline",
+                            "allow_null": 0,
+                            "return_format": "value"
                         },
                         {
                             "key": "field_iom_hero_secondary_cta",
                             "label": "Secondary CTA",
                             "name": "secondary_cta",
                             "type": "link",
-                            "instructions": "Outline button (e.g. Track your impact).",
+                            "instructions": "Second button (optional).",
+                            "required": 0,
+                            "return_format": "array"
+                        },
+                        {
+                            "key": "field_iom_hero_tertiary_cta",
+                            "label": "Tertiary CTA",
+                            "name": "tertiary_cta",
+                            "type": "link",
+                            "instructions": "Optional third filled button (uses Primary CTA Style). e.g. Foundations.",
                             "required": 0,
                             "return_format": "array"
                         }
@@ -1440,5 +1467,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755372000
+    "modified": 1755372600
 }

@@ -1486,11 +1486,6 @@ video {
   padding-right: 1.5rem;
 }
 
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
 .px-\[1\.625rem\] {
   padding-left: 1.625rem;
   padding-right: 1.625rem;
@@ -1570,6 +1565,10 @@ video {
   padding-bottom: 0.25rem;
 }
 
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
 .pb-12 {
   padding-bottom: 3rem;
 }
@@ -1584,10 +1583,6 @@ video {
 
 .pb-4 {
   padding-bottom: 1rem;
-}
-
-.pb-8 {
-  padding-bottom: 2rem;
 }
 
 .pl-11 {
@@ -1799,6 +1794,10 @@ video {
   --tw-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.outline {
+  outline-style: solid;
 }
 
 .ring-1 {
@@ -2436,6 +2435,10 @@ body {
 
   .lg\:flex-col {
     flex-direction: column;
+  }
+
+  .lg\:flex-wrap {
+    flex-wrap: wrap;
   }
 
   .lg\:items-start {
