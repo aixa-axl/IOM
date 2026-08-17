@@ -2,21 +2,26 @@
 /**
  * Layout: ambassador_stories
  *
- * Blue band — featured quote + image, then highlight columns.
+ * Featured quote + image, then highlight columns.
  * Desktop: quote | image, then 3-col highlights. Mobile: stacked.
  *
- * Figma desktop: 663:31935 (no mobile frame — stacked adaptation)
+ * Figma desktop (blue): 663:31935 — Figma desktop (accent blue): 668:36104
  */
 
-$quote     = get_sub_field( 'quote' );
-$featured  = get_sub_field( 'featured' );
-$campaign  = get_sub_field( 'campaign' );
-$image_id  = get_sub_field( 'image' );
-$highlights = get_sub_field( 'highlights' );
+$background_color = get_sub_field( 'background_color' );
+$quote            = get_sub_field( 'quote' );
+$featured         = get_sub_field( 'featured' );
+$campaign         = get_sub_field( 'campaign' );
+$image_id         = get_sub_field( 'image' );
+$highlights       = get_sub_field( 'highlights' );
 
 $theme_uri    = get_stylesheet_directory_uri();
 $fallback     = $theme_uri . '/assets/images/ambassador-stories/story.jpg';
 $fallback_abs = get_stylesheet_directory() . '/assets/images/ambassador-stories/story.jpg';
+
+if ( ! in_array( $background_color, array( 'blue', 'accent_blue' ), true ) ) {
+	$background_color = 'blue';
+}
 
 if ( ! $quote ) {
 	$quote = __( "Seeing the impact of IOM's work first-hand has been a life-changing experience. Every migrant has a story of resilience, and it's our honor to tell it.", 'impact-one-million' );
@@ -41,9 +46,10 @@ $img_attrs = array(
 );
 
 $has_image = $image_id || file_exists( $fallback_abs );
+$bg_class  = ( 'accent_blue' === $background_color ) ? 'bg-accent-blue' : 'bg-blue';
 ?>
 
-<section class="bg-blue px-10 py-section text-white lg:px-16">
+<section class="<?php echo esc_attr( $bg_class ); ?> px-10 py-section text-white lg:px-16">
 	<div class="mx-auto flex w-full max-w-site flex-col gap-16">
 		<div class="flex w-full flex-col items-stretch gap-8 lg:flex-row lg:items-center lg:gap-8">
 			<div class="flex min-w-0 flex-1 flex-col items-start gap-10">

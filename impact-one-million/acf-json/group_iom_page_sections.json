@@ -2078,6 +2078,20 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_iom_as_background_color",
+                            "label": "Background Colour",
+                            "name": "background_color",
+                            "type": "select",
+                            "instructions": "Blue = navy programme blue. Accent blue = lighter sky blue.",
+                            "required": 0,
+                            "choices": {
+                                "blue": "Blue",
+                                "accent_blue": "Accent blue"
+                            },
+                            "default_value": "blue",
+                            "return_format": "value"
+                        },
+                        {
                             "key": "field_iom_as_quote",
                             "label": "Quote",
                             "name": "quote",
@@ -2295,5 +2309,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755469200
+    "modified": 1755469800
 }
