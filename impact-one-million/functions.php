@@ -27,6 +27,36 @@ function iom_theme_setup() {
 add_action( 'after_setup_theme', 'iom_theme_setup' );
 
 /**
+ * Country taxonomy for posts (news / case studies location tags).
+ */
+function iom_register_taxonomies() {
+	register_taxonomy(
+		'country',
+		array( 'post' ),
+		array(
+			'labels'            => array(
+				'name'          => __( 'Countries', 'impact-one-million' ),
+				'singular_name' => __( 'Country', 'impact-one-million' ),
+				'search_items'  => __( 'Search Countries', 'impact-one-million' ),
+				'all_items'     => __( 'All Countries', 'impact-one-million' ),
+				'edit_item'     => __( 'Edit Country', 'impact-one-million' ),
+				'update_item'   => __( 'Update Country', 'impact-one-million' ),
+				'add_new_item'  => __( 'Add New Country', 'impact-one-million' ),
+				'new_item_name' => __( 'New Country Name', 'impact-one-million' ),
+				'menu_name'     => __( 'Countries', 'impact-one-million' ),
+			),
+			'public'            => true,
+			'hierarchical'      => false,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'show_in_rest'      => true,
+			'rewrite'           => array( 'slug' => 'country' ),
+		)
+	);
+}
+add_action( 'init', 'iom_register_taxonomies' );
+
+/**
  * Enqueue Styles and Scripts
  */
 function iom_enqueue_assets() {

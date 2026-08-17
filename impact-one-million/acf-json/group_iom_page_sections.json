@@ -2105,6 +2105,72 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_latest_news": {
+                    "key": "layout_iom_latest_news",
+                    "name": "latest_news",
+                    "label": "Latest News",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_ln_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. Latest News",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_ln_see_all",
+                            "label": "See All CTA",
+                            "name": "see_all",
+                            "type": "link",
+                            "instructions": "Accent-blue button (e.g. link to the blog / news archive).",
+                            "required": 0,
+                            "return_format": "array"
+                        },
+                        {
+                            "key": "field_iom_ln_posts_count",
+                            "label": "Number of Posts",
+                            "name": "posts_count",
+                            "type": "number",
+                            "instructions": "How many latest posts to show when no manual selection is set. Default 3.",
+                            "required": 0,
+                            "default_value": 3,
+                            "min": 1,
+                            "max": 12,
+                            "step": 1
+                        },
+                        {
+                            "key": "field_iom_ln_posts",
+                            "label": "Manual Posts (optional)",
+                            "name": "posts",
+                            "type": "relationship",
+                            "instructions": "Leave empty to auto-pull the latest posts. If set, only these posts are shown (in this order).",
+                            "required": 0,
+                            "post_type": [
+                                "post"
+                            ],
+                            "filters": [
+                                "search",
+                                "taxonomy"
+                            ],
+                            "return_format": "id",
+                            "min": "",
+                            "max": ""
+                        },
+                        {
+                            "key": "field_iom_ln_link_label",
+                            "label": "Card Link Label",
+                            "name": "link_label",
+                            "type": "text",
+                            "instructions": "e.g. Read case study",
+                            "required": 0,
+                            "default_value": "Read case study"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -2130,5 +2196,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755436200
+    "modified": 1755437400
 }
