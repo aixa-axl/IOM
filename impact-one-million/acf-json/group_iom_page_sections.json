@@ -1866,6 +1866,44 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_join_reasons": {
+                    "key": "layout_iom_join_reasons",
+                    "name": "join_reasons",
+                    "label": "Join Reasons",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_jr_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. Why factories join",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_jr_items",
+                            "label": "Items",
+                            "name": "items",
+                            "type": "repeater",
+                            "instructions": "Checklist rows with accent check icons.",
+                            "required": 0,
+                            "layout": "table",
+                            "button_label": "Add Item",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_jr_item_label",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "type": "text",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_jr_items"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -1891,5 +1929,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755418800
+    "modified": 1755424800
 }

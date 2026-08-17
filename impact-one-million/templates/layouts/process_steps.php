@@ -16,34 +16,8 @@ if ( ! $heading ) {
 	$heading = __( 'How It Works', 'impact-one-million' );
 }
 
-if ( ! is_array( $steps ) || empty( $steps ) ) {
-	$steps = array(
-		array(
-			'step_label' => __( 'Step 1', 'impact-one-million' ),
-			'title'      => __( 'Nominate', 'impact-one-million' ),
-			'body'       => __( 'Identify supplier factories in your chain. IOM reviews against eligibility criteria. You receive confirmation the supplier is in scope.', 'impact-one-million' ),
-		),
-		array(
-			'step_label' => __( 'Step 2', 'impact-one-million' ),
-			'title'      => __( 'Fund', 'impact-one-million' ),
-			'body'       => __( 'Commit funding to the programme. IOM designs a tailored programme for that factory. You receive a programme plan.', 'impact-one-million' ),
-		),
-		array(
-			'step_label' => __( 'Step 3', 'impact-one-million' ),
-			'title'      => __( 'Report', 'impact-one-million' ),
-			'body'       => __( 'The programme runs on the ground. IOM tracks delivery throughout. You receive transparent, regular reporting.', 'impact-one-million' ),
-		),
-		array(
-			'step_label' => __( 'Step 4', 'impact-one-million' ),
-			'title'      => __( 'Measure', 'impact-one-million' ),
-			'body'       => __( 'Outcomes tracked against canonical impact metrics. You receive measurable results tied to your own ESG and impact commitments.', 'impact-one-million' ),
-		),
-		array(
-			'step_label' => __( 'Step 5', 'impact-one-million' ),
-			'title'      => __( 'Scale', 'impact-one-million' ),
-			'body'       => __( 'Review outcomes with IOM. Option to expand the programme to more suppliers or renew for another cycle.', 'impact-one-million' ),
-		),
-	);
+if ( ! is_array( $steps ) ) {
+	$steps = array();
 }
 
 if ( ! is_array( $cta ) || empty( $cta['url'] ) ) {
