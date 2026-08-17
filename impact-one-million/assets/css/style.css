@@ -1021,6 +1021,10 @@ video {
   max-width: 50rem;
 }
 
+.max-w-\[55\.375rem\] {
+  max-width: 55.375rem;
+}
+
 .max-w-\[56\.25rem\] {
   max-width: 56.25rem;
 }
@@ -1138,6 +1142,10 @@ video {
 
 .content-center {
   align-content: center;
+}
+
+.content-start {
+  align-content: flex-start;
 }
 
 .items-start {
@@ -2327,6 +2335,10 @@ body {
 }
 
 @media (min-width: 640px) {
+  .sm\:w-auto {
+    width: auto;
+  }
+
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

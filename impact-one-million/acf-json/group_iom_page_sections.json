@@ -2214,6 +2214,62 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_looking_ahead": {
+                    "key": "layout_iom_looking_ahead",
+                    "name": "looking_ahead",
+                    "label": "Looking Ahead",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_la_eyebrow",
+                            "label": "Eyebrow",
+                            "name": "eyebrow",
+                            "type": "text",
+                            "instructions": "e.g. Looking Ahead",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_la_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. Future impact goals",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_la_goals",
+                            "label": "Goals",
+                            "name": "goals",
+                            "type": "repeater",
+                            "instructions": "Navy pills. Wrap centered on desktop; stack full-width on mobile.",
+                            "required": 0,
+                            "layout": "table",
+                            "button_label": "Add Goal",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_la_goal_label",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "type": "text",
+                                    "instructions": "e.g. One million people",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_la_goals"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_iom_la_cta",
+                            "label": "CTA",
+                            "name": "cta",
+                            "type": "link",
+                            "instructions": "Outline button. Leave empty to hide.",
+                            "required": 0,
+                            "return_format": "array"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -2239,5 +2295,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755468000
+    "modified": 1755469200
 }
