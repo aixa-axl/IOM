@@ -999,6 +999,10 @@ video {
   max-width: 40rem;
 }
 
+.max-w-\[50rem\] {
+  max-width: 50rem;
+}
+
 .max-w-\[56\.25rem\] {
   max-width: 56.25rem;
 }
@@ -1674,6 +1678,10 @@ video {
 
 .text-\[14px\] {
   font-size: 14px;
+}
+
+.text-\[2\.75rem\] {
+  font-size: 2.75rem;
 }
 
 .text-\[2rem\] {
@@ -2794,6 +2802,12 @@ body {
     letter-spacing: 0.04em;
   }
 
+  .lg\:text-title {
+    font-size: 72px;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+
   .lg\:font-semibold {
     font-weight: 600;
   }
@@ -2830,4 +2844,12 @@ body {
 
 .\[\&\:\:-webkit-search-cancel-button\]\:hidden::-webkit-search-cancel-button {
   display: none;
+}
+
+.\[\&_p\+p\]\:mt-6 p+p {
+  margin-top: 1.5rem;
+}
+
+.\[\&_p\]\:m-0 p {
+  margin: 0px;
 }
