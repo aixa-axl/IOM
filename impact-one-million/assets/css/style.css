@@ -834,6 +834,10 @@ video {
   height: 12.625rem;
 }
 
+.h-\[15rem\] {
+  height: 15rem;
+}
+
 .h-\[18\.625rem\] {
   height: 18.625rem;
 }
@@ -1196,6 +1200,10 @@ video {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-5 {
+  gap: 1.25rem;
 }
 
 .gap-6 {
@@ -2278,6 +2286,10 @@ body {
 }
 
 @media (min-width: 640px) {
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .sm\:flex-row {
     flex-direction: row;
   }

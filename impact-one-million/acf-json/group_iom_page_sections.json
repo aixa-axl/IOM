@@ -1958,6 +1958,75 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_ambassadors": {
+                    "key": "layout_iom_ambassadors",
+                    "name": "ambassadors",
+                    "label": "Ambassadors",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_amb_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. Meet Our Ambassadors",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_amb_ambassadors",
+                            "label": "Ambassadors",
+                            "name": "ambassadors",
+                            "type": "repeater",
+                            "instructions": "Desktop: 3-column grid. Mobile: stacked.",
+                            "required": 0,
+                            "layout": "block",
+                            "button_label": "Add Ambassador",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_amb_person_image",
+                                    "label": "Image",
+                                    "name": "image",
+                                    "type": "image",
+                                    "instructions": "Portrait / photo. Off-white placeholder if empty.",
+                                    "required": 0,
+                                    "return_format": "id",
+                                    "preview_size": "medium",
+                                    "library": "all",
+                                    "parent_repeater": "field_iom_amb_ambassadors"
+                                },
+                                {
+                                    "key": "field_iom_amb_person_name",
+                                    "label": "Name",
+                                    "name": "name",
+                                    "type": "text",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_amb_ambassadors"
+                                },
+                                {
+                                    "key": "field_iom_amb_person_role",
+                                    "label": "Role",
+                                    "name": "role",
+                                    "type": "text",
+                                    "instructions": "e.g. Cultural Advocate",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_amb_ambassadors"
+                                },
+                                {
+                                    "key": "field_iom_amb_person_bio",
+                                    "label": "Bio",
+                                    "name": "bio",
+                                    "type": "textarea",
+                                    "required": 0,
+                                    "rows": 3,
+                                    "new_lines": "",
+                                    "parent_repeater": "field_iom_amb_ambassadors"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -1983,5 +2052,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755434400
+    "modified": 1755435000
 }
