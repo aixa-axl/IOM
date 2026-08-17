@@ -2684,6 +2684,11 @@ body {
     padding-right: 80px;
   }
 
+  .lg\:px-section {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+
   .lg\:py-0 {
     padding-top: 0px;
     padding-bottom: 0px;
