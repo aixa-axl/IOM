@@ -1566,8 +1566,18 @@
                             "label": "Heading",
                             "name": "heading",
                             "type": "text",
-                            "instructions": "e.g. Why Buyers Join",
+                            "instructions": "e.g. Why Buyers Join — or Why Ambassadors Matter",
                             "required": 0
+                        },
+                        {
+                            "key": "field_iom_wj_intro",
+                            "label": "Intro",
+                            "name": "intro",
+                            "type": "textarea",
+                            "instructions": "Optional. When set, heading + intro are left-aligned above the cards.",
+                            "required": 0,
+                            "rows": 3,
+                            "new_lines": ""
                         },
                         {
                             "key": "field_iom_wj_cards",
@@ -1615,7 +1625,7 @@
                             "label": "CTA",
                             "name": "cta",
                             "type": "link",
-                            "instructions": "Blue filled button (e.g. Nominate a Supplier).",
+                            "instructions": "Optional blue filled button. Leave empty to hide.",
                             "required": 0,
                             "return_format": "array"
                         }
@@ -1973,5 +1983,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755433800
+    "modified": 1755434400
 }

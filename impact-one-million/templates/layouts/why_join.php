@@ -2,18 +2,22 @@
 /**
  * Layout: why_join
  *
- * "Why [Audience] Join" — heading, icon cards, CTA.
+ * "Why [Audience] Join" — heading, optional intro, icon cards, optional CTA.
  * Desktop: 3-column grid. Mobile: snap carousel with dots.
  *
  * Figma desktop: 606:11808 — Figma mobile: 677:41984
+ * Figma with intro: 663:31781 (Why Ambassadors Matter)
  */
 
 $heading = get_sub_field( 'heading' );
+$intro   = get_sub_field( 'intro' );
 $cards   = get_sub_field( 'cards' );
 $cta     = get_sub_field( 'cta' );
 
 $theme_uri = get_stylesheet_directory_uri();
 $arrow_uri = $theme_uri . '/assets/images/icons/why-join-arrow.svg';
+
+$has_intro = (bool) $intro;
 
 if ( ! $heading ) {
 	$heading = __( 'Why Buyers Join', 'impact-one-million' );
@@ -39,24 +43,32 @@ if ( ! is_array( $cards ) || empty( $cards ) ) {
 	);
 }
 
-if ( ! is_array( $cta ) || empty( $cta['url'] ) ) {
-	$cta = array(
-		'url'    => '#',
-		'title'  => __( 'Nominate a Supplier', 'impact-one-million' ),
-		'target' => '',
-	);
+if ( ! is_array( $cta ) ) {
+	$cta = array();
 }
 
 $card_count = count( $cards );
 $btn_class  = 'inline-flex items-center justify-center rounded-btn bg-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+
+$outer_gap = $has_intro ? 'gap-12' : 'gap-20 lg:gap-10';
 ?>
 
-<section class="bg-white px-0 py-section lg:px-gutter lg:py-24">
-	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-20 lg:gap-10">
-		<?php if ( $heading ) : ?>
-			<h2 class="m-0 px-10 text-center font-display text-headline leading-[1.2] text-blue lg:px-0">
-				<?php echo esc_html( $heading ); ?>
-			</h2>
+<section class="bg-white px-0 py-section lg:px-gutter lg:py-[100px]">
+	<div class="mx-auto flex w-full max-w-site flex-col <?php echo $has_intro ? 'items-start' : 'items-center'; ?> <?php echo esc_attr( $outer_gap ); ?>">
+		<?php if ( $heading || $has_intro ) : ?>
+			<div class="flex w-full flex-col gap-6 px-10 <?php echo $has_intro ? 'items-start text-left' : 'items-center text-center'; ?> lg:px-0">
+				<?php if ( $heading ) : ?>
+					<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">
+						<?php echo esc_html( $heading ); ?>
+					</h2>
+				<?php endif; ?>
+
+				<?php if ( $has_intro ) : ?>
+					<p class="m-0 font-sans text-body leading-[1.2] text-ink">
+						<?php echo esc_html( $intro ); ?>
+					</p>
+				<?php endif; ?>
+			</div>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $cards ) ) : ?>
@@ -135,13 +147,15 @@ $btn_class  = 'inline-flex items-center justify-center rounded-btn bg-blue px-6 
 		<?php endif; ?>
 
 		<?php if ( ! empty( $cta['url'] ) ) : ?>
-			<?php
-			iom_render_link(
-				$cta,
-				$btn_class,
-				__( 'Nominate a Supplier', 'impact-one-million' )
-			);
-			?>
+			<div class="<?php echo $has_intro ? 'w-full' : ''; ?>">
+				<?php
+				iom_render_link(
+					$cta,
+					$btn_class,
+					__( 'Nominate a Supplier', 'impact-one-million' )
+				);
+				?>
+			</div>
 		<?php endif; ?>
 	</div>
 </section>
