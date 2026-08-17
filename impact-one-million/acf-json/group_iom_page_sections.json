@@ -2027,6 +2027,84 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_ambassador_stories": {
+                    "key": "layout_iom_ambassador_stories",
+                    "name": "ambassador_stories",
+                    "label": "Ambassador Stories",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_as_quote",
+                            "label": "Quote",
+                            "name": "quote",
+                            "type": "textarea",
+                            "instructions": "Featured ambassador quote.",
+                            "required": 0,
+                            "rows": 4,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_iom_as_featured",
+                            "label": "Featured Label",
+                            "name": "featured",
+                            "type": "text",
+                            "instructions": "e.g. Featured: Ambassador Three",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_as_campaign",
+                            "label": "Campaign",
+                            "name": "campaign",
+                            "type": "text",
+                            "instructions": "e.g. Campaign: Voices of Migration",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_as_image",
+                            "label": "Image",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "Desktop: right of quote. Mobile: below attribution.",
+                            "required": 0,
+                            "return_format": "id",
+                            "preview_size": "medium",
+                            "library": "all"
+                        },
+                        {
+                            "key": "field_iom_as_highlights",
+                            "label": "Highlights",
+                            "name": "highlights",
+                            "type": "repeater",
+                            "instructions": "Typically 3 columns. Leave empty to hide.",
+                            "required": 0,
+                            "layout": "block",
+                            "button_label": "Add Highlight",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_as_highlight_label",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "type": "text",
+                                    "instructions": "e.g. Highlight 1",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_as_highlights"
+                                },
+                                {
+                                    "key": "field_iom_as_highlight_body",
+                                    "label": "Body",
+                                    "name": "body",
+                                    "type": "textarea",
+                                    "required": 0,
+                                    "rows": 3,
+                                    "new_lines": "",
+                                    "parent_repeater": "field_iom_as_highlights"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -2052,5 +2130,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755435000
+    "modified": 1755436200
 }

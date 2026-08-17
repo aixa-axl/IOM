@@ -838,6 +838,10 @@ video {
   height: 15rem;
 }
 
+.h-\[16rem\] {
+  height: 16rem;
+}
+
 .h-\[18\.625rem\] {
   height: 18.625rem;
 }
@@ -1180,6 +1184,10 @@ video {
 
 .gap-14 {
   gap: 3.5rem;
+}
+
+.gap-16 {
+  gap: 4rem;
 }
 
 .gap-2 {
@@ -2380,6 +2388,10 @@ body {
     height: 26.25rem;
   }
 
+  .lg\:h-\[26rem\] {
+    height: 26rem;
+  }
+
   .lg\:h-\[31\.3125rem\] {
     height: 31.3125rem;
   }
@@ -2430,6 +2442,10 @@ body {
 
   .lg\:w-\[36\.5rem\] {
     width: 36.5rem;
+  }
+
+  .lg\:w-\[39\.0625rem\] {
+    width: 39.0625rem;
   }
 
   .lg\:w-\[549px\] {
