@@ -1757,6 +1757,87 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_stories_of_change": {
+                    "key": "layout_iom_stories_of_change",
+                    "name": "stories_of_change",
+                    "label": "Stories of Change",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_soc_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. Stories of change",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_soc_stories",
+                            "label": "Stories",
+                            "name": "stories",
+                            "type": "repeater",
+                            "instructions": "Typically 2 cards. Toggle Quote first to alternate image/quote order.",
+                            "required": 0,
+                            "layout": "block",
+                            "button_label": "Add Story",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_soc_story_image",
+                                    "label": "Image",
+                                    "name": "image",
+                                    "type": "image",
+                                    "instructions": "Landscape image (approx 5:3).",
+                                    "required": 0,
+                                    "return_format": "id",
+                                    "preview_size": "medium",
+                                    "library": "all",
+                                    "parent_repeater": "field_iom_soc_stories"
+                                },
+                                {
+                                    "key": "field_iom_soc_story_quote",
+                                    "label": "Quote",
+                                    "name": "quote",
+                                    "type": "textarea",
+                                    "required": 0,
+                                    "rows": 4,
+                                    "new_lines": "",
+                                    "parent_repeater": "field_iom_soc_stories"
+                                },
+                                {
+                                    "key": "field_iom_soc_story_quote_first",
+                                    "label": "Quote first",
+                                    "name": "quote_first",
+                                    "type": "true_false",
+                                    "instructions": "On: quote above image. Off: image above quote. Use for the alternating desktop pattern.",
+                                    "required": 0,
+                                    "default_value": 0,
+                                    "ui": 1,
+                                    "parent_repeater": "field_iom_soc_stories"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_iom_soc_primary_cta",
+                            "label": "Primary CTA",
+                            "name": "primary_cta",
+                            "type": "link",
+                            "instructions": "Navy filled button.",
+                            "required": 0,
+                            "return_format": "array"
+                        },
+                        {
+                            "key": "field_iom_soc_secondary_cta",
+                            "label": "Secondary CTA",
+                            "name": "secondary_cta",
+                            "type": "link",
+                            "instructions": "Ink outline button.",
+                            "required": 0,
+                            "return_format": "array"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -1782,5 +1863,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755376200
+    "modified": 1755418200
 }
