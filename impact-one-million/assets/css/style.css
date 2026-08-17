@@ -813,6 +813,11 @@ video {
   height: 18px;
 }
 
+.size-\[22px\] {
+  width: 22px;
+  height: 22px;
+}
+
 .size-\[4\.75rem\] {
   width: 4.75rem;
   height: 4.75rem;

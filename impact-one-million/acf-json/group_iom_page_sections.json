@@ -1970,8 +1970,42 @@
                             "label": "Heading",
                             "name": "heading",
                             "type": "text",
-                            "instructions": "e.g. Meet Our Ambassadors",
+                            "instructions": "Optional. e.g. Meet Our Ambassadors. Leave empty to hide.",
                             "required": 0
+                        },
+                        {
+                            "key": "field_iom_amb_background",
+                            "label": "Background",
+                            "name": "background",
+                            "type": "select",
+                            "instructions": "White or off-white section background.",
+                            "required": 0,
+                            "choices": {
+                                "white": "White",
+                                "off_white": "Off-white"
+                            },
+                            "default_value": "white",
+                            "return_format": "value"
+                        },
+                        {
+                            "key": "field_iom_amb_per_page",
+                            "label": "Per Page",
+                            "name": "per_page",
+                            "type": "number",
+                            "instructions": "Cards per page (e.g. 12). Leave 0 or empty to show all without pagination.",
+                            "required": 0,
+                            "default_value": 0,
+                            "min": 0,
+                            "step": 1
+                        },
+                        {
+                            "key": "field_iom_amb_linkedin_label",
+                            "label": "LinkedIn Label",
+                            "name": "linkedin_label",
+                            "type": "text",
+                            "instructions": "e.g. View LinkedIn",
+                            "required": 0,
+                            "default_value": "View LinkedIn"
                         },
                         {
                             "key": "field_iom_amb_ambassadors",
@@ -2008,7 +2042,7 @@
                                     "label": "Role",
                                     "name": "role",
                                     "type": "text",
-                                    "instructions": "e.g. Cultural Advocate",
+                                    "instructions": "e.g. Cultural Advocate / Position",
                                     "required": 0,
                                     "parent_repeater": "field_iom_amb_ambassadors"
                                 },
@@ -2020,6 +2054,15 @@
                                     "required": 0,
                                     "rows": 3,
                                     "new_lines": "",
+                                    "parent_repeater": "field_iom_amb_ambassadors"
+                                },
+                                {
+                                    "key": "field_iom_amb_person_linkedin",
+                                    "label": "LinkedIn URL",
+                                    "name": "linkedin_url",
+                                    "type": "url",
+                                    "instructions": "Optional. Shows View LinkedIn when set.",
+                                    "required": 0,
                                     "parent_repeater": "field_iom_amb_ambassadors"
                                 }
                             ]
@@ -2196,5 +2239,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755437400
+    "modified": 1755468000
 }

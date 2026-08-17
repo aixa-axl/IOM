@@ -700,3 +700,42 @@
 
 	update();
 })();
+
+/**
+ * Ambassadors grid pagination (client-side).
+ */
+(function () {
+	document.querySelectorAll('[data-ambassadors-grid]').forEach(function (section) {
+		const perPage = Number(section.getAttribute('data-per-page')) || 0;
+		const cards = Array.prototype.slice.call(section.querySelectorAll('[data-ambassadors-card]'));
+		const buttons = Array.prototype.slice.call(section.querySelectorAll('[data-ambassadors-page]'));
+
+		if (perPage < 1 || !cards.length || !buttons.length) {
+			return;
+		}
+
+		function setPage(page) {
+			const start = (page - 1) * perPage;
+			const end = start + perPage;
+
+			cards.forEach(function (card, index) {
+				card.classList.toggle('hidden', index < start || index >= end);
+			});
+
+			buttons.forEach(function (btn) {
+				const btnPage = Number(btn.getAttribute('data-ambassadors-page'));
+				const active = btnPage === page;
+				btn.setAttribute('aria-current', active ? 'page' : 'false');
+				btn.className = active
+					? 'inline-flex items-center justify-center rounded-btn px-3 py-2 font-display text-card-title uppercase tracking-[2px] transition-colors bg-blue text-white'
+					: 'inline-flex items-center justify-center rounded-btn px-3 py-2 font-display text-card-title uppercase tracking-[2px] transition-colors border border-solid border-[#dfe8ff] bg-white text-blue';
+			});
+		}
+
+		buttons.forEach(function (btn) {
+			btn.addEventListener('click', function () {
+				setPage(Number(btn.getAttribute('data-ambassadors-page')));
+			});
+		});
+	});
+})();
