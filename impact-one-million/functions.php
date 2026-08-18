@@ -384,13 +384,19 @@ function iom_ajax_case_studies() {
 	$link_label     = isset( $_POST['link_label'] ) ? sanitize_text_field( wp_unslash( $_POST['link_label'] ) ) : '';
 	$append         = ! empty( $_POST['append'] );
 
+	$allowed_types = iom_content_type_slugs();
+	$content_type  = isset( $_POST['content_type'] ) ? sanitize_title( wp_unslash( $_POST['content_type'] ) ) : '';
+	if ( ! in_array( $content_type, $allowed_types, true ) ) {
+		$content_type = 'case-study';
+	}
+
 	if ( ! $link_label ) {
 		$link_label = __( 'Read case study', 'impact-one-million' );
 	}
 
 	$query = iom_case_studies_query(
 		array(
-			'category'       => isset( $_POST['category'] ) ? sanitize_text_field( wp_unslash( $_POST['category'] ) ) : '',
+			'category'       => $content_type,
 			'year'           => isset( $_POST['year'] ) ? sanitize_text_field( wp_unslash( $_POST['year'] ) ) : '',
 			'region'         => isset( $_POST['region'] ) ? sanitize_text_field( wp_unslash( $_POST['region'] ) ) : '',
 			'topic'          => isset( $_POST['topic'] ) ? sanitize_text_field( wp_unslash( $_POST['topic'] ) ) : '',

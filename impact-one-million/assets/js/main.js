@@ -768,7 +768,6 @@
 
 		function filters() {
 			return {
-				category: (form.querySelector('[data-filter="category"]') || {}).value || '',
 				year: (form.querySelector('[data-filter="year"]') || {}).value || '',
 				region: (form.querySelector('[data-filter="region"]') || {}).value || '',
 				topic: (form.querySelector('[data-filter="topic"]') || {}).value || '',
@@ -812,6 +811,7 @@
 			body.append('paged', String(nextPage));
 			body.append('posts_per_page', section.getAttribute('data-per-page') || '6');
 			body.append('link_label', section.getAttribute('data-link-label') || '');
+			body.append('content_type', section.getAttribute('data-content-type') || 'case-study');
 			body.append('append', append ? '1' : '0');
 
 			const f = filters();

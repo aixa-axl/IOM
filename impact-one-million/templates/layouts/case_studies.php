@@ -2,10 +2,11 @@
 /**
  * Layout: case_studies
  *
- * Blue filter bar (type / year / region / topic + search) + off-white card grid
- * with load more. Type = content categories; Topic = post tags (Topics).
+ * Blue filter bar (year / region / topic + search) + off-white card grid
+ * with load more. Scoped to one content-type category (Case Study / News /
+ * Press Release). Topic = post tags (Topics).
  *
- * Fields: posts_per_page, link_label, load_more_label, search_placeholder
+ * Fields: content_type, posts_per_page, link_label, load_more_label, search_placeholder
  *
  * Figma filter: 634:20514 — Figma grid: 634:20536
  */
@@ -14,13 +15,39 @@ $posts_per_page     = (int) get_sub_field( 'posts_per_page' );
 $link_label         = get_sub_field( 'link_label' );
 $load_more_label    = get_sub_field( 'load_more_label' );
 $search_placeholder = get_sub_field( 'search_placeholder' );
+$content_type       = get_sub_field( 'content_type' );
+
+$allowed_types = function_exists( 'iom_content_type_slugs' ) ? iom_content_type_slugs() : array( 'case-study', 'news', 'press-release' );
+if ( ! in_array( $content_type, $allowed_types, true ) ) {
+	$content_type = 'case-study';
+}
+
+$type_defaults = array(
+	'case-study'    => array(
+		'link'   => __( 'Read case study', 'impact-one-million' ),
+		'search' => __( 'Search case studies...', 'impact-one-million' ),
+		'empty'  => __( 'No case studies match your filters.', 'impact-one-million' ),
+	),
+	'news'          => array(
+		'link'   => __( 'Read news', 'impact-one-million' ),
+		'search' => __( 'Search news...', 'impact-one-million' ),
+		'empty'  => __( 'No news matches your filters.', 'impact-one-million' ),
+	),
+	'press-release' => array(
+		'link'   => __( 'Read press release', 'impact-one-million' ),
+		'search' => __( 'Search press releases...', 'impact-one-million' ),
+		'empty'  => __( 'No press releases match your filters.', 'impact-one-million' ),
+	),
+);
+
+$defaults = isset( $type_defaults[ $content_type ] ) ? $type_defaults[ $content_type ] : $type_defaults['case-study'];
 
 if ( $posts_per_page < 1 ) {
 	$posts_per_page = 6;
 }
 
 if ( ! $link_label ) {
-	$link_label = __( 'Read case study', 'impact-one-million' );
+	$link_label = $defaults['link'];
 }
 
 if ( ! $load_more_label ) {
@@ -28,20 +55,12 @@ if ( ! $load_more_label ) {
 }
 
 if ( ! $search_placeholder ) {
-	$search_placeholder = __( 'Search case studies...', 'impact-one-million' );
+	$search_placeholder = $defaults['search'];
 }
 
 $theme_uri   = get_stylesheet_directory_uri();
 $chevron_uri = $theme_uri . '/assets/images/icons/chevron-down.svg';
 $search_uri  = $theme_uri . '/assets/images/icons/search-blue.svg';
-
-$categories = get_categories(
-	array(
-		'taxonomy'   => 'category',
-		'hide_empty' => false,
-		'slug'       => function_exists( 'iom_content_type_slugs' ) ? iom_content_type_slugs() : array( 'case-study', 'news', 'press-release' ),
-	)
-);
 
 $countries = get_terms(
 	array(
@@ -58,13 +77,21 @@ $topics = get_tags(
 
 global $wpdb;
 $years = $wpdb->get_col(
-	"SELECT DISTINCT YEAR(post_date) FROM {$wpdb->posts}
-	WHERE post_type = 'post' AND post_status = 'publish'
-	ORDER BY YEAR(post_date) DESC"
+	$wpdb->prepare(
+		"SELECT DISTINCT YEAR(p.post_date) FROM {$wpdb->posts} p
+		INNER JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
+		INNER JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+		INNER JOIN {$wpdb->terms} t ON tt.term_id = t.term_id
+		WHERE p.post_type = 'post' AND p.post_status = 'publish'
+		AND tt.taxonomy = 'category' AND t.slug = %s
+		ORDER BY YEAR(p.post_date) DESC",
+		$content_type
+	)
 );
 
 $query = iom_case_studies_query(
 	array(
+		'category'       => $content_type,
 		'paged'          => 1,
 		'posts_per_page' => $posts_per_page,
 	)
@@ -76,6 +103,7 @@ $select_class = 'appearance-none rounded-btn border border-solid border-[#e5e7eb
 <section
 	class="bg-blue"
 	data-case-studies
+	data-content-type="<?php echo esc_attr( $content_type ); ?>"
 	data-per-page="<?php echo esc_attr( (string) $posts_per_page ); ?>"
 	data-link-label="<?php echo esc_attr( $link_label ); ?>"
 	data-page="1"
@@ -84,17 +112,6 @@ $select_class = 'appearance-none rounded-btn border border-solid border-[#e5e7eb
 	<div class="mx-auto flex w-full max-w-site flex-col gap-4 px-10 py-6 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:px-10 lg:py-6">
 		<form class="flex w-full flex-col gap-4 lg:flex-row lg:flex-wrap lg:items-center lg:gap-4" data-case-studies-filters>
 			<div class="flex flex-wrap items-center gap-4">
-				<label class="relative inline-flex shrink-0">
-					<span class="sr-only"><?php echo esc_html__( 'Type', 'impact-one-million' ); ?></span>
-					<select name="category" class="<?php echo esc_attr( $select_class ); ?>" data-filter="category">
-						<option value=""><?php echo esc_html__( 'Type', 'impact-one-million' ); ?></option>
-						<?php foreach ( $categories as $term ) : ?>
-							<option value="<?php echo esc_attr( $term->slug ); ?>"><?php echo esc_html( $term->name ); ?></option>
-						<?php endforeach; ?>
-					</select>
-					<img src="<?php echo esc_url( $chevron_uri ); ?>" alt="" width="12" height="12" class="pointer-events-none absolute right-4 top-1/2 size-3 -translate-y-1/2" aria-hidden="true">
-				</label>
-
 				<label class="relative inline-flex shrink-0">
 					<span class="sr-only"><?php echo esc_html__( 'Year', 'impact-one-million' ); ?></span>
 					<select name="year" class="<?php echo esc_attr( $select_class ); ?>" data-filter="year">
@@ -165,7 +182,7 @@ $select_class = 'appearance-none rounded-btn border border-solid border-[#e5e7eb
 			</ul>
 
 			<p class="m-0 hidden text-center font-sans text-body text-muted" data-case-studies-empty>
-				<?php echo esc_html__( 'No case studies match your filters.', 'impact-one-million' ); ?>
+				<?php echo esc_html( $defaults['empty'] ); ?>
 			</p>
 
 			<button

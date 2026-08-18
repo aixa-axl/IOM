@@ -34,7 +34,7 @@ if ( $posts_count < 1 ) {
 }
 
 if ( ! $link_label ) {
-	$link_label = __( 'Read case study', 'impact-one-million' );
+	$link_label = __( 'Read more', 'impact-one-million' );
 }
 
 $query_args = array(

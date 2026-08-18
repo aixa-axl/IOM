@@ -2451,10 +2451,10 @@
                         },
                         {
                             "key": "field_iom_ln_posts_count",
-                            "label": "Number of Posts",
+                            "label": "Number of Posts (auto)",
                             "name": "posts_count",
                             "type": "number",
-                            "instructions": "How many latest posts to show when no manual selection is set. Default 3.",
+                            "instructions": "Used only when no posts are chosen below. Default 3.",
                             "required": 0,
                             "default_value": 3,
                             "min": 1,
@@ -2463,10 +2463,10 @@
                         },
                         {
                             "key": "field_iom_ln_posts",
-                            "label": "Manual Posts (optional)",
+                            "label": "Posts to display",
                             "name": "posts",
                             "type": "relationship",
-                            "instructions": "Leave empty to auto-pull the latest posts. If set, only these posts are shown (in this order).",
+                            "instructions": "Choose any posts (Case Study, News, or Press Release) for the cards — up to 3, in the order you pick. Leave empty to auto-pull the latest posts.",
                             "required": 0,
                             "post_type": [
                                 "post"
@@ -2475,18 +2475,21 @@
                                 "search",
                                 "taxonomy"
                             ],
+                            "elements": [
+                                "featured_image"
+                            ],
                             "return_format": "id",
-                            "min": "",
-                            "max": ""
+                            "min": 0,
+                            "max": 3
                         },
                         {
                             "key": "field_iom_ln_link_label",
                             "label": "Card Link Label",
                             "name": "link_label",
                             "type": "text",
-                            "instructions": "e.g. Read case study",
+                            "instructions": "e.g. Read case study / Read news / Read more",
                             "required": 0,
-                            "default_value": "Read case study"
+                            "default_value": "Read more"
                         }
                     ],
                     "min": "",
@@ -3170,9 +3173,25 @@
                 "layout_iom_case_studies": {
                     "key": "layout_iom_case_studies",
                     "name": "case_studies",
-                    "label": "Case Studies (Filter + Grid)",
+                    "label": "Content Grid (Filter + Grid)",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_iom_cs_content_type",
+                            "label": "Content Type",
+                            "name": "content_type",
+                            "type": "select",
+                            "instructions": "Only posts in this category are listed. Use Case Study on the Case Studies page, News on News, Press Release on Releases.",
+                            "required": 1,
+                            "choices": {
+                                "case-study": "Case Study",
+                                "news": "News",
+                                "press-release": "Press Release"
+                            },
+                            "default_value": "case-study",
+                            "return_format": "value",
+                            "ui": 1
+                        },
                         {
                             "key": "field_iom_cs_posts_per_page",
                             "label": "Posts Per Page",
@@ -3190,7 +3209,7 @@
                             "label": "Card Link Label",
                             "name": "link_label",
                             "type": "text",
-                            "instructions": "e.g. Read case study",
+                            "instructions": "e.g. Read case study / Read news / Read press release",
                             "required": 0,
                             "default_value": "Read case study"
                         },
@@ -3345,5 +3364,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1787057290
+    "modified": 1787059800
 }
