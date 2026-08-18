@@ -652,15 +652,39 @@
                 "layout_iom_trusted_by": {
                     "key": "layout_iom_trusted_by",
                     "name": "trusted_by",
-                    "label": "Trusted By (Logo Marquee)",
+                    "label": "Trusted By / Logo Network",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_iom_tb_section_heading",
+                            "label": "Section Heading",
+                            "name": "section_heading",
+                            "type": "text",
+                            "instructions": "Optional left-aligned page title (e.g. Our Wider Network). Leave empty for the classic Trusted By look.",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_tb_heading_align",
+                            "label": "Heading Alignment",
+                            "name": "heading_align",
+                            "type": "select",
+                            "instructions": "Alignment for the classic single-group headings + intro. Group rows have their own Title Align.",
+                            "required": 0,
+                            "choices": {
+                                "center": "Center",
+                                "left": "Left"
+                            },
+                            "default_value": "center",
+                            "allow_null": 0,
+                            "ui": 1,
+                            "return_format": "value"
+                        },
                         {
                             "key": "field_iom_tb_heading_primary",
                             "label": "Primary Heading",
                             "name": "heading_primary",
                             "type": "text",
-                            "instructions": "e.g. 20 years of delivery.",
+                            "instructions": "Classic Trusted By only (ignored when Groups are set). e.g. 20 years of delivery.",
                             "required": 0
                         },
                         {
@@ -668,15 +692,25 @@
                             "label": "Secondary Heading",
                             "name": "heading_secondary",
                             "type": "text",
-                            "instructions": "e.g. 150,000+ workers reached across 6 countries.",
+                            "instructions": "Classic Trusted By only (ignored when Groups are set). e.g. 150,000+ workers reached across 6 countries.",
                             "required": 0
+                        },
+                        {
+                            "key": "field_iom_tb_intro",
+                            "label": "Intro",
+                            "name": "intro",
+                            "type": "textarea",
+                            "instructions": "Classic Trusted By only — body under the headings. Leave empty to hide.",
+                            "required": 0,
+                            "rows": 3,
+                            "new_lines": ""
                         },
                         {
                             "key": "field_iom_tb_logos",
                             "label": "Logos",
                             "name": "logos",
                             "type": "repeater",
-                            "instructions": "Optional. Leave empty to use the default partner logo set. Upload an image or pick a preset.",
+                            "instructions": "Classic Trusted By only (ignored when Groups are set). Leave empty to use the default partner logo set.",
                             "required": 0,
                             "layout": "table",
                             "button_label": "Add Logo",
@@ -721,6 +755,109 @@
                                     "type": "text",
                                     "required": 0,
                                     "parent_repeater": "field_iom_tb_logos"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_iom_tb_groups",
+                            "label": "Groups (optional)",
+                            "name": "groups",
+                            "type": "repeater",
+                            "instructions": "For Our Wider Network: add Corporate / NGO / Delivery groups. When set, classic Primary/Secondary/Intro/Logos above are ignored.",
+                            "required": 0,
+                            "layout": "block",
+                            "button_label": "Add Group",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_tb_group_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "type": "text",
+                                    "instructions": "e.g. Corporate Partners",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_tb_groups"
+                                },
+                                {
+                                    "key": "field_iom_tb_group_title_align",
+                                    "label": "Title Align",
+                                    "name": "title_align",
+                                    "type": "select",
+                                    "instructions": "Center matches Figma; Left for a left-aligned group title + intro.",
+                                    "required": 0,
+                                    "choices": {
+                                        "center": "Center",
+                                        "left": "Left"
+                                    },
+                                    "default_value": "center",
+                                    "allow_null": 0,
+                                    "ui": 1,
+                                    "return_format": "value",
+                                    "parent_repeater": "field_iom_tb_groups"
+                                },
+                                {
+                                    "key": "field_iom_tb_group_intro",
+                                    "label": "Intro",
+                                    "name": "intro",
+                                    "type": "textarea",
+                                    "instructions": "Optional body under the group title.",
+                                    "required": 0,
+                                    "rows": 3,
+                                    "new_lines": "",
+                                    "parent_repeater": "field_iom_tb_groups"
+                                },
+                                {
+                                    "key": "field_iom_tb_group_logos",
+                                    "label": "Logos",
+                                    "name": "logos",
+                                    "type": "repeater",
+                                    "instructions": "Upload an image or pick a preset.",
+                                    "required": 0,
+                                    "layout": "table",
+                                    "button_label": "Add Logo",
+                                    "parent_repeater": "field_iom_tb_groups",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_iom_tb_group_logo_image",
+                                            "label": "Logo Image",
+                                            "name": "image",
+                                            "type": "image",
+                                            "required": 0,
+                                            "return_format": "id",
+                                            "preview_size": "thumbnail",
+                                            "library": "all",
+                                            "parent_repeater": "field_iom_tb_group_logos"
+                                        },
+                                        {
+                                            "key": "field_iom_tb_group_logo_preset",
+                                            "label": "Preset",
+                                            "name": "preset",
+                                            "type": "select",
+                                            "required": 0,
+                                            "choices": {
+                                                "": "—",
+                                                "mcdonalds": "McDonald's",
+                                                "fisher-price": "Fisher-Price",
+                                                "pokemon": "Pokémon",
+                                                "lego": "LEGO",
+                                                "scholastic": "Scholastic",
+                                                "target": "Target",
+                                                "walmart": "Walmart",
+                                                "argos": "Argos",
+                                                "disney": "Disney"
+                                            },
+                                            "default_value": "",
+                                            "allow_null": 1,
+                                            "parent_repeater": "field_iom_tb_group_logos"
+                                        },
+                                        {
+                                            "key": "field_iom_tb_group_logo_alt",
+                                            "label": "Alt Text",
+                                            "name": "alt",
+                                            "type": "text",
+                                            "required": 0,
+                                            "parent_repeater": "field_iom_tb_group_logos"
+                                        }
+                                    ]
                                 }
                             ]
                         }
@@ -2491,5 +2628,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755471600
+    "modified": 1755472200
 }
