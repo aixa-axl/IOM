@@ -140,13 +140,13 @@ $card_class = $is_dark
 					<li class="<?php echo esc_attr( $card_class ); ?>">
 						<div class="flex flex-col <?php echo $is_dark ? 'items-center gap-3' : 'gap-3'; ?>">
 							<?php if ( $title ) : ?>
-								<h3 class="m-0 font-display text-card-title text-blue">
+								<h3 class="m-0 font-display text-card-title <?php echo $is_dark ? 'text-blue' : 'text-navy'; ?>">
 									<?php echo esc_html( $title ); ?>
 								</h3>
 							<?php endif; ?>
 
 							<?php if ( $body ) : ?>
-								<p class="m-0 font-sans text-sm leading-normal <?php echo $is_dark ? 'text-ink' : 'text-body leading-[1.2] text-muted'; ?>">
+								<p class="m-0 font-sans <?php echo $is_dark ? 'text-sm leading-normal text-ink' : 'text-body leading-[1.2] text-muted'; ?>">
 									<?php echo esc_html( $body ); ?>
 								</p>
 							<?php endif; ?>
@@ -154,7 +154,7 @@ $card_class = $is_dark
 
 						<?php if ( $link_url ) : ?>
 							<a
-								class="<?php echo esc_attr( $btn_class ); ?> <?php echo $is_dark ? '' : 'self-start'; ?>"
+								class="<?php echo esc_attr( $btn_class ); ?><?php echo $is_dark ? '' : ' self-start'; ?>"
 								href="<?php echo esc_url( $link_url ); ?>"
 								<?php echo $link_target ? 'target="' . esc_attr( $link_target ) . '" rel="noopener noreferrer"' : ''; ?>
 							>

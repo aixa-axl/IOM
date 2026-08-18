@@ -868,15 +868,31 @@
                 "layout_iom_get_involved": {
                     "key": "layout_iom_get_involved",
                     "name": "get_involved",
-                    "label": "Get Involved",
+                    "label": "Get Involved / Become a Partner",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_iom_gi_variant",
+                            "label": "Variant",
+                            "name": "variant",
+                            "type": "select",
+                            "instructions": "Light = white band (Get involved). Dark = ink band with white cards (Become a Partner).",
+                            "required": 0,
+                            "choices": {
+                                "light": "Light",
+                                "dark": "Dark"
+                            },
+                            "default_value": "light",
+                            "allow_null": 0,
+                            "ui": 1,
+                            "return_format": "value"
+                        },
                         {
                             "key": "field_iom_gi_heading",
                             "label": "Heading",
                             "name": "heading",
                             "type": "text",
-                            "instructions": "e.g. Get involved",
+                            "instructions": "e.g. Get involved / Become a Partner",
                             "required": 0
                         },
                         {
@@ -923,8 +939,9 @@
                                     "required": 0,
                                     "choices": {
                                         "accent": "Red (accent)",
-                                        "blue": "Navy blue",
-                                        "accent_blue": "Light blue"
+                                        "blue": "Blue",
+                                        "accent_blue": "Light blue",
+                                        "navy": "Navy"
                                     },
                                     "default_value": "accent",
                                     "parent_repeater": "field_iom_gi_cards"
@@ -2668,5 +2685,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755472800
+    "modified": 1755473400
 }
