@@ -6,15 +6,19 @@
  * Map: geography PNG + highlight overlays + SVG hit targets. List stays in sync via JS.
  *
  * Figma desktop: 623:18893 — Figma mobile: 671:40634
+ * Figma off-white (no heading): 670:39157
  */
 
 $heading     = get_sub_field( 'heading' );
 $helper_text = get_sub_field( 'helper_text' );
+$background  = get_sub_field( 'background' );
 $countries   = get_sub_field( 'countries' );
 
-if ( ! $heading ) {
-	$heading = __( 'Where we work', 'impact-one-million' );
+if ( ! in_array( $background, array( 'white', 'off_white' ), true ) ) {
+	$background = 'white';
 }
+
+$section_bg = ( 'off_white' === $background ) ? 'bg-off-white' : 'bg-white';
 
 if ( ! $helper_text ) {
 	$helper_text = __( 'Select a country to explore our programmes there.', 'impact-one-million' );
@@ -149,7 +153,7 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 ?>
 
 <section
-	class="bg-white px-10 py-section lg:px-gutter lg:py-gutter"
+	class="<?php echo esc_attr( $section_bg ); ?> px-10 py-section lg:px-gutter lg:py-gutter"
 	data-where-we-work
 	data-active-country="<?php echo esc_attr( $default_slug ); ?>"
 >

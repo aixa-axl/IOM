@@ -502,11 +502,25 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_iom_www_background",
+                            "label": "Background",
+                            "name": "background",
+                            "type": "select",
+                            "instructions": "White (default) or off-white section background.",
+                            "required": 0,
+                            "choices": {
+                                "white": "White",
+                                "off_white": "Off-white"
+                            },
+                            "default_value": "white",
+                            "return_format": "value"
+                        },
+                        {
                             "key": "field_iom_www_heading",
                             "label": "Heading",
                             "name": "heading",
                             "type": "text",
-                            "instructions": "e.g. Where we work",
+                            "instructions": "e.g. Where we work. Leave empty to hide (Figma map-only).",
                             "required": 0
                         },
                         {
@@ -3079,5 +3093,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755514200
+    "modified": 1755514800
 }
