@@ -860,6 +860,10 @@ video {
   height: 185px;
 }
 
+.h-\[2\.8125rem\] {
+  height: 2.8125rem;
+}
+
 .h-\[2\.8rem\] {
   height: 2.8rem;
 }
@@ -2479,6 +2483,10 @@ body {
 
   .lg\:w-\[31\.25rem\] {
     width: 31.25rem;
+  }
+
+  .lg\:w-\[33rem\] {
+    width: 33rem;
   }
 
   .lg\:w-\[34\.3125rem\] {

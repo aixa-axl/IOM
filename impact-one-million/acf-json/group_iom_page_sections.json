@@ -2345,6 +2345,55 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_why_partnerships": {
+                    "key": "layout_iom_why_partnerships",
+                    "name": "why_partnerships",
+                    "label": "Why Partnerships",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_wp_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. Why Partnerships Matter",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_wp_body",
+                            "label": "Body",
+                            "name": "body",
+                            "type": "textarea",
+                            "instructions": "Intro paragraph under the heading.",
+                            "required": 0,
+                            "rows": 4,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_iom_wp_items",
+                            "label": "Items",
+                            "name": "items",
+                            "type": "repeater",
+                            "instructions": "Uppercase labels with red arrow. Leave empty to hide the list.",
+                            "required": 0,
+                            "layout": "table",
+                            "button_label": "Add Item",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_wp_item_label",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "type": "text",
+                                    "instructions": "e.g. Deliver greater impact",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_wp_items"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -2370,5 +2419,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755470400
+    "modified": 1755471000
 }
