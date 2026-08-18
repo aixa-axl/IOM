@@ -5,6 +5,8 @@
  * Expects optional vars in scope (with defaults):
  * $heading, $body, $placeholder, $button_label, $privacy_note, $form_action, $image, $email_id
  *
+ * Form posts to Mailchimp when Form Action URL is set (layout/post override, else Theme Settings).
+ *
  * Figma desktop: 634:21142
  *
  * @package Impact_One_Million
@@ -25,7 +27,10 @@ if ( ! isset( $button_label ) || ! $button_label ) {
 if ( ! isset( $privacy_note ) || ! $privacy_note ) {
 	$privacy_note = __( 'We respect your privacy. Unsubscribe at any time.', 'impact-one-million' );
 }
-if ( ! isset( $form_action ) ) {
+if ( empty( $form_action ) && function_exists( 'iom_get_newsletter_form_action' ) ) {
+	$form_action = iom_get_newsletter_form_action();
+}
+if ( empty( $form_action ) ) {
 	$form_action = '';
 }
 if ( ! isset( $image ) ) {
@@ -33,6 +38,21 @@ if ( ! isset( $image ) ) {
 }
 if ( empty( $email_id ) ) {
 	$email_id = 'iom-newsletter-email';
+}
+
+$is_mailchimp = (bool) $form_action && false !== strpos( $form_action, 'list-manage.com' );
+
+// Mailchimp honeypot: b_{u}_{id}
+$honeypot_name = '';
+if ( $is_mailchimp ) {
+	$query = wp_parse_url( $form_action, PHP_URL_QUERY );
+	$params = array();
+	if ( is_string( $query ) ) {
+		parse_str( $query, $params );
+	}
+	if ( ! empty( $params['u'] ) && ! empty( $params['id'] ) ) {
+		$honeypot_name = 'b_' . $params['u'] . '_' . $params['id'];
+	}
 }
 
 $btn_class = 'inline-flex shrink-0 items-center justify-center rounded-btn bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
@@ -59,23 +79,30 @@ $btn_class = 'inline-flex shrink-0 items-center justify-center rounded-btn bg-ac
 				class="flex w-full flex-col gap-4"
 				method="post"
 				action="<?php echo $form_action ? esc_url( $form_action ) : '#'; ?>"
-				<?php echo $form_action ? '' : 'onsubmit="return false;"'; ?>
+				<?php echo $form_action ? ( $is_mailchimp ? 'target="_blank" novalidate' : '' ) : 'onsubmit="return false;"'; ?>
 			>
 				<div class="flex w-full flex-col items-stretch gap-2.5 sm:flex-row sm:items-start">
 					<label class="sr-only" for="<?php echo esc_attr( $email_id ); ?>"><?php echo esc_html( $placeholder ); ?></label>
 					<input
 						id="<?php echo esc_attr( $email_id ); ?>"
 						type="email"
-						name="email"
+						name="EMAIL"
+						value=""
 						required
 						autocomplete="email"
 						placeholder="<?php echo esc_attr( $placeholder ); ?>"
 						class="w-full min-w-0 flex-1 border-0 bg-white px-3 py-3.5 font-sans text-body leading-[1.2] text-ink placeholder:text-muted focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue"
 					>
-					<button type="submit" class="<?php echo esc_attr( $btn_class ); ?>">
+					<button type="submit" name="subscribe" class="<?php echo esc_attr( $btn_class ); ?>">
 						<?php echo esc_html( $button_label ); ?>
 					</button>
 				</div>
+
+				<?php if ( $honeypot_name ) : ?>
+					<div class="absolute -left-[5000px]" aria-hidden="true">
+						<input type="text" name="<?php echo esc_attr( $honeypot_name ); ?>" tabindex="-1" value="" autocomplete="off">
+					</div>
+				<?php endif; ?>
 
 				<?php if ( $privacy_note ) : ?>
 					<p class="m-0 font-sans text-xs leading-normal text-ink">

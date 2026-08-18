@@ -1,0 +1,33 @@
+{
+    "key": "group_iom_theme_newsletter",
+    "title": "Theme Newsletter",
+    "fields": [
+        {
+            "key": "field_iom_newsletter_form_action",
+            "label": "Mailchimp Form Action URL",
+            "name": "newsletter_form_action",
+            "type": "url",
+            "instructions": "From Mailchimp: Audience → Signup forms → Embedded forms → copy the form action URL (ends with /subscribe/post?u=…&id=…). Used site-wide unless a layout/post overrides it.",
+            "required": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "iom-theme-settings"
+            }
+        ]
+    ],
+    "menu_order": 20,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Site-wide newsletter / Mailchimp settings.",
+    "show_in_rest": 0,
+    "modified": 1787058600
+}

@@ -3304,7 +3304,7 @@
                             "label": "Form Action URL",
                             "name": "form_action",
                             "type": "url",
-                            "instructions": "Optional newsletter provider endpoint. Leave empty until connected.",
+                            "instructions": "Optional override. Leave empty to use Theme Settings → Mailchimp Form Action URL.",
                             "required": 0
                         },
                         {

@@ -258,6 +258,20 @@ function iom_register_acf_options_page() {
 add_action( 'acf/init', 'iom_register_acf_options_page' );
 
 /**
+ * Mailchimp (or other) newsletter form action URL from Theme Settings.
+ *
+ * @return string
+ */
+function iom_get_newsletter_form_action() {
+	if ( ! function_exists( 'get_field' ) ) {
+		return '';
+	}
+
+	$url = get_field( 'newsletter_form_action', 'option' );
+	return is_string( $url ) ? trim( $url ) : '';
+}
+
+/**
  * Render an ACF link array as an <a>, or nothing if URL is empty.
  *
  * @param array|false $link    ACF link field value.
