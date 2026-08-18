@@ -2067,7 +2067,7 @@
                 "layout_iom_join_reasons": {
                     "key": "layout_iom_join_reasons",
                     "name": "join_reasons",
-                    "label": "Join Reasons",
+                    "label": "Join Reasons / Built on Experience",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -2075,8 +2075,18 @@
                             "label": "Heading",
                             "name": "heading",
                             "type": "text",
-                            "instructions": "e.g. Why factories join",
+                            "instructions": "e.g. Why factories join — or Built on decades of experience",
                             "required": 0
+                        },
+                        {
+                            "key": "field_iom_jr_intro",
+                            "label": "Intro",
+                            "name": "intro",
+                            "type": "textarea",
+                            "instructions": "Optional. When set, heading spans full width and intro sits left of the checklist (Built on Experience layout).",
+                            "required": 0,
+                            "rows": 4,
+                            "new_lines": ""
                         },
                         {
                             "key": "field_iom_jr_items",
@@ -2882,5 +2892,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755477000
+    "modified": 1755477600
 }
