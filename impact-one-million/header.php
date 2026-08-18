@@ -142,7 +142,7 @@ $btn_primary     = 'inline-flex items-center justify-center rounded-btn bg-accen
 												<?php echo esc_html( ! empty( $link['title'] ) ? $link['title'] : '' ); ?>
 											</a>
 											<ul
-												class="invisible absolute left-0 top-full z-[60] m-0 min-w-[16.5rem] list-none bg-blue p-0 opacity-0 shadow-lg transition-[opacity,visibility] duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+												class="invisible absolute left-0 top-full z-[60] m-0 mt-3 min-w-[16.5rem] list-none overflow-hidden rounded-btn bg-blue p-0 opacity-0 shadow-lg transition-[opacity,visibility] duration-150 before:absolute before:inset-x-0 before:-top-3 before:h-3 before:content-[''] group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
 												role="list"
 											>
 												<?php foreach ( $children as $child ) : ?>

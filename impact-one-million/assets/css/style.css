@@ -749,6 +749,10 @@ video {
   margin-top: 0.5rem;
 }
 
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
 .mt-3\.5 {
   margin-top: 0.875rem;
 }
@@ -2563,6 +2567,32 @@ body {
 
 .placeholder\:text-white\/60::placeholder {
   color: rgb(255 255 255 / 0.6);
+}
+
+.before\:absolute::before {
+  content: var(--tw-content);
+  position: absolute;
+}
+
+.before\:inset-x-0::before {
+  content: var(--tw-content);
+  left: 0px;
+  right: 0px;
+}
+
+.before\:-top-3::before {
+  content: var(--tw-content);
+  top: -0.75rem;
+}
+
+.before\:h-3::before {
+  content: var(--tw-content);
+  height: 0.75rem;
+}
+
+.before\:content-\[\'\'\]::before {
+  --tw-content: '';
+  content: var(--tw-content);
 }
 
 .first\:pt-0:first-child {
