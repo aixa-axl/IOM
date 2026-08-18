@@ -1790,15 +1790,31 @@
                 "layout_iom_process_steps": {
                     "key": "layout_iom_process_steps",
                     "name": "process_steps",
-                    "label": "How It Works Steps",
+                    "label": "How It Works / How We'll Get There",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_iom_ps_variant",
+                            "label": "Variant",
+                            "name": "variant",
+                            "type": "select",
+                            "instructions": "Grid = audience How It Works (off-white). Vertical = How We'll Get There (blue band + arrows).",
+                            "required": 0,
+                            "choices": {
+                                "grid": "Grid",
+                                "vertical": "Vertical"
+                            },
+                            "default_value": "grid",
+                            "allow_null": 0,
+                            "ui": 1,
+                            "return_format": "value"
+                        },
                         {
                             "key": "field_iom_ps_heading",
                             "label": "Heading",
                             "name": "heading",
                             "type": "text",
-                            "instructions": "e.g. How It Works",
+                            "instructions": "e.g. How It Works / How We'll Get There",
                             "required": 0
                         },
                         {
@@ -1806,7 +1822,7 @@
                             "label": "Steps",
                             "name": "steps",
                             "type": "repeater",
-                            "instructions": "Desktop shows 3 steps on the first row, then remaining steps on the next row.",
+                            "instructions": "Grid: 3 then remaining. Vertical: stacked with arrows between cards.",
                             "required": 0,
                             "layout": "block",
                             "button_label": "Add Step",
@@ -1825,7 +1841,7 @@
                                     "label": "Title",
                                     "name": "title",
                                     "type": "text",
-                                    "instructions": "e.g. Nominate",
+                                    "instructions": "e.g. Partnerships",
                                     "required": 0,
                                     "parent_repeater": "field_iom_ps_steps"
                                 },
@@ -1846,7 +1862,7 @@
                             "label": "CTA",
                             "name": "cta",
                             "type": "link",
-                            "instructions": "Blue filled button (e.g. Nominate a Supplier).",
+                            "instructions": "Optional. Leave empty to hide (typical for Vertical).",
                             "required": 0,
                             "return_format": "array"
                         }
@@ -2793,5 +2809,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755474600
+    "modified": 1755475200
 }
