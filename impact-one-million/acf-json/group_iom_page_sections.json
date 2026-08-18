@@ -2166,7 +2166,7 @@
                 "layout_iom_latest_news": {
                     "key": "layout_iom_latest_news",
                     "name": "latest_news",
-                    "label": "Latest News",
+                    "label": "Latest News / Case Studies",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -2185,6 +2185,18 @@
                             "instructions": "Accent-blue button (e.g. link to the blog / news archive).",
                             "required": 0,
                             "return_format": "array"
+                        },
+                        {
+                            "key": "field_iom_ln_show_images",
+                            "label": "Show Featured Images",
+                            "name": "show_images",
+                            "type": "true_false",
+                            "instructions": "On = news cards with image. Off = case-study cards (text only).",
+                            "required": 0,
+                            "default_value": 1,
+                            "ui": 1,
+                            "ui_on_text": "With image",
+                            "ui_off_text": "Case study"
                         },
                         {
                             "key": "field_iom_ln_posts_count",
@@ -2358,5 +2370,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755469900
+    "modified": 1755470400
 }

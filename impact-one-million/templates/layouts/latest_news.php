@@ -3,9 +3,12 @@
  * Layout: latest_news
  *
  * Off-white band — heading + “See all” CTA + post cards from WP Posts.
- * Cards pull featured image, category, date, title, excerpt, country, permalink.
+ * Cards pull category, date, title, excerpt, country, permalink.
+ * Optional featured images (news) or text-only (case studies).
  *
- * Figma desktop: 663:31960 (no mobile frame — stacked adaptation)
+ * Figma desktop (with image): 663:31960
+ * Figma desktop (no image):   669:37757
+ * No mobile frames — stacked adaptation
  */
 
 $heading      = get_sub_field( 'heading' );
@@ -13,6 +16,14 @@ $see_all      = get_sub_field( 'see_all' );
 $posts_count  = (int) get_sub_field( 'posts_count' );
 $manual_posts = get_sub_field( 'posts' );
 $link_label   = get_sub_field( 'link_label' );
+$show_images  = get_sub_field( 'show_images' );
+
+// Unset = on (legacy news sections). Explicit 0/false = case-study cards.
+if ( null === $show_images || '' === $show_images ) {
+	$show_images = true;
+} else {
+	$show_images = (bool) $show_images;
+}
 
 if ( ! $heading ) {
 	$heading = __( 'Latest News', 'impact-one-million' );
@@ -100,13 +111,15 @@ $link_class = 'inline-flex border-b-2 border-solid border-blue py-3.5 font-displ
 					);
 					?>
 					<li class="flex flex-col overflow-hidden rounded-card border border-solid border-[#dfe8ff] bg-white">
-						<a href="<?php echo esc_url( $permalink ); ?>" class="relative aspect-[5/3] w-full shrink-0 overflow-hidden border border-solid border-[#e5e7eb] no-underline">
-							<?php if ( has_post_thumbnail( $post_id ) ) : ?>
-								<?php echo get_the_post_thumbnail( $post_id, 'large', $img_attrs ); ?>
-							<?php else : ?>
-								<span class="absolute inset-0 bg-off-white" aria-hidden="true"></span>
-							<?php endif; ?>
-						</a>
+						<?php if ( $show_images ) : ?>
+							<a href="<?php echo esc_url( $permalink ); ?>" class="relative aspect-[5/3] w-full shrink-0 overflow-hidden border border-solid border-[#e5e7eb] no-underline">
+								<?php if ( has_post_thumbnail( $post_id ) ) : ?>
+									<?php echo get_the_post_thumbnail( $post_id, 'large', $img_attrs ); ?>
+								<?php else : ?>
+									<span class="absolute inset-0 bg-off-white" aria-hidden="true"></span>
+								<?php endif; ?>
+							</a>
+						<?php endif; ?>
 
 						<div class="flex flex-1 flex-col gap-8 px-3 pb-3 pt-6">
 							<div class="flex flex-col gap-4">
