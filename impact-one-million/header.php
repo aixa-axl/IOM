@@ -157,7 +157,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 													<li class="m-0">
 														<a
 															href="<?php echo esc_url( $child_link['url'] ); ?>"
-															class="block whitespace-nowrap px-6 py-3.5 font-display text-label uppercase tracking-[1px] text-white no-underline transition-colors hover:bg-white/20 focus:bg-white/20 focus:outline-none"
+															class="block whitespace-nowrap px-6 py-3.5 font-display text-label uppercase tracking-[1px] text-white no-underline transition-colors hover:bg-[#dfe8ff] hover:text-blue focus:bg-[#dfe8ff] focus:text-blue focus:outline-none"
 															<?php echo ! empty( $child_link['target'] ) ? 'target="' . esc_attr( $child_link['target'] ) . '" rel="noopener noreferrer"' : ''; ?>
 														>
 															<?php echo esc_html( ! empty( $child_link['title'] ) ? $child_link['title'] : '' ); ?>

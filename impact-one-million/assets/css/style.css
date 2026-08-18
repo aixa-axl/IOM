@@ -2656,10 +2656,6 @@ body {
   background-color: rgb(223 232 255 / var(--tw-bg-opacity, 1));
 }
 
-.hover\:bg-white\/20:hover {
-  background-color: rgb(255 255 255 / 0.2);
-}
-
 .hover\:text-blue:hover {
   --tw-text-opacity: 1;
   color: rgb(21 58 129 / var(--tw-text-opacity, 1));
@@ -2685,10 +2681,6 @@ body {
 .focus\:bg-\[\#dfe8ff\]:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(223 232 255 / var(--tw-bg-opacity, 1));
-}
-
-.focus\:bg-white\/20:focus {
-  background-color: rgb(255 255 255 / 0.2);
 }
 
 .focus\:text-blue:focus {
