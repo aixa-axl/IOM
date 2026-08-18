@@ -1,0 +1,403 @@
+{
+    "key": "group_iom_case_study",
+    "title": "Case Study Detail",
+    "fields": [
+        {
+            "key": "field_iom_csd_tab_hero",
+            "label": "Hero",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_csd_intro",
+            "label": "Intro",
+            "name": "cs_intro",
+            "type": "textarea",
+            "instructions": "Lead paragraph under the title in the navy hero.",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_iom_csd_pdf",
+            "label": "Download PDF",
+            "name": "cs_pdf",
+            "type": "file",
+            "instructions": "Optional PDF for the Download button.",
+            "required": 0,
+            "return_format": "array",
+            "library": "all",
+            "mime_types": "pdf"
+        },
+        {
+            "key": "field_iom_csd_show_share",
+            "label": "Show Share Button",
+            "name": "cs_show_share",
+            "type": "true_false",
+            "instructions": "Outline Share button copies the page URL.",
+            "required": 0,
+            "default_value": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_iom_csd_tab_overview",
+            "label": "Overview",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_csd_overview",
+            "label": "Project Overview",
+            "name": "cs_overview",
+            "type": "wysiwyg",
+            "instructions": "Left column body (Project Overview).",
+            "required": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0
+        },
+        {
+            "key": "field_iom_csd_meta_programme",
+            "label": "Programme Area",
+            "name": "cs_meta_programme",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_iom_csd_meta_country",
+            "label": "Country / Region",
+            "name": "cs_meta_country",
+            "type": "text",
+            "instructions": "Sidebar value. Falls back to the Country taxonomy if empty.",
+            "required": 0
+        },
+        {
+            "key": "field_iom_csd_meta_duration",
+            "label": "Duration",
+            "name": "cs_meta_duration",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_iom_csd_meta_partners",
+            "label": "Partner Organisations",
+            "name": "cs_meta_partners",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_iom_csd_meta_funding",
+            "label": "Funding Source",
+            "name": "cs_meta_funding",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_iom_csd_tab_challenge",
+            "label": "Challenge",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_csd_challenge_quote",
+            "label": "Challenge Quote",
+            "name": "cs_challenge_quote",
+            "type": "textarea",
+            "required": 0,
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_iom_csd_challenge_body",
+            "label": "Challenge Body",
+            "name": "cs_challenge_body",
+            "type": "textarea",
+            "required": 0,
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_iom_csd_tab_approach",
+            "label": "Approach & Results",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_csd_approach_heading",
+            "label": "Approach Heading",
+            "name": "cs_approach_heading",
+            "type": "text",
+            "default_value": "Our Approach",
+            "required": 0
+        },
+        {
+            "key": "field_iom_csd_approach_cards",
+            "label": "Approach Cards",
+            "name": "cs_approach_cards",
+            "type": "repeater",
+            "instructions": "Typically 3 cards. Optional custom icon; otherwise theme presets cycle.",
+            "required": 0,
+            "layout": "block",
+            "button_label": "Add Card",
+            "sub_fields": [
+                {
+                    "key": "field_iom_csd_approach_icon",
+                    "label": "Icon",
+                    "name": "icon",
+                    "type": "image",
+                    "required": 0,
+                    "return_format": "id",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "parent_repeater": "field_iom_csd_approach_cards"
+                },
+                {
+                    "key": "field_iom_csd_approach_title",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "required": 0,
+                    "parent_repeater": "field_iom_csd_approach_cards"
+                },
+                {
+                    "key": "field_iom_csd_approach_body",
+                    "label": "Body",
+                    "name": "body",
+                    "type": "textarea",
+                    "required": 0,
+                    "rows": 3,
+                    "new_lines": "",
+                    "parent_repeater": "field_iom_csd_approach_cards"
+                }
+            ]
+        },
+        {
+            "key": "field_iom_csd_results_heading",
+            "label": "Results Heading",
+            "name": "cs_results_heading",
+            "type": "text",
+            "default_value": "Results & Impact",
+            "required": 0
+        },
+        {
+            "key": "field_iom_csd_results_stats",
+            "label": "Results Stats",
+            "name": "cs_results_stats",
+            "type": "repeater",
+            "instructions": "Typically 4 stats.",
+            "required": 0,
+            "layout": "table",
+            "button_label": "Add Stat",
+            "sub_fields": [
+                {
+                    "key": "field_iom_csd_stat_value",
+                    "label": "Value",
+                    "name": "value",
+                    "type": "text",
+                    "required": 0,
+                    "parent_repeater": "field_iom_csd_results_stats"
+                },
+                {
+                    "key": "field_iom_csd_stat_label",
+                    "label": "Label",
+                    "name": "label",
+                    "type": "text",
+                    "required": 0,
+                    "parent_repeater": "field_iom_csd_results_stats"
+                }
+            ]
+        },
+        {
+            "key": "field_iom_csd_results_image",
+            "label": "Results Image",
+            "name": "cs_results_image",
+            "type": "image",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_iom_csd_results_points",
+            "label": "Results Points",
+            "name": "cs_results_points",
+            "type": "repeater",
+            "required": 0,
+            "layout": "table",
+            "button_label": "Add Point",
+            "sub_fields": [
+                {
+                    "key": "field_iom_csd_point_label",
+                    "label": "Label",
+                    "name": "label",
+                    "type": "text",
+                    "required": 0,
+                    "parent_repeater": "field_iom_csd_results_points"
+                }
+            ]
+        },
+        {
+            "key": "field_iom_csd_tab_testimonial",
+            "label": "Testimonial",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_csd_testimonial_quote",
+            "label": "Quote",
+            "name": "cs_testimonial_quote",
+            "type": "textarea",
+            "required": 0,
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_iom_csd_testimonial_name",
+            "label": "Name",
+            "name": "cs_testimonial_name",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_iom_csd_testimonial_role",
+            "label": "Role / Location",
+            "name": "cs_testimonial_role",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_iom_csd_tab_gallery",
+            "label": "Gallery",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_csd_gallery_heading",
+            "label": "Gallery Heading",
+            "name": "cs_gallery_heading",
+            "type": "text",
+            "default_value": "Gallery",
+            "required": 0
+        },
+        {
+            "key": "field_iom_csd_gallery",
+            "label": "Gallery Images",
+            "name": "cs_gallery",
+            "type": "gallery",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "insert": "append",
+            "library": "all"
+        },
+        {
+            "key": "field_iom_csd_tab_related",
+            "label": "Related & Join",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_csd_related_heading",
+            "label": "Related Heading",
+            "name": "cs_related_heading",
+            "type": "text",
+            "default_value": "Related Case Studies",
+            "required": 0
+        },
+        {
+            "key": "field_iom_csd_related_see_all",
+            "label": "See All CTA",
+            "name": "cs_related_see_all",
+            "type": "link",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_iom_csd_related",
+            "label": "Related Posts",
+            "name": "cs_related",
+            "type": "relationship",
+            "instructions": "Leave empty to auto-pull the latest 3 other posts.",
+            "required": 0,
+            "post_type": ["post"],
+            "filters": ["search"],
+            "return_format": "id",
+            "max": 3
+        },
+        {
+            "key": "field_iom_csd_join_eyebrow",
+            "label": "Join Eyebrow",
+            "name": "cs_join_eyebrow",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_iom_csd_join_heading",
+            "label": "Join Heading",
+            "name": "cs_join_heading",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_iom_csd_join_body",
+            "label": "Join Body",
+            "name": "cs_join_body",
+            "type": "textarea",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_iom_csd_join_image",
+            "label": "Join Background Image",
+            "name": "cs_join_image",
+            "type": "image",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_iom_csd_join_primary",
+            "label": "Join Primary CTA",
+            "name": "cs_join_primary",
+            "type": "link",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_iom_csd_join_secondary",
+            "label": "Join Secondary CTA",
+            "name": "cs_join_secondary",
+            "type": "link",
+            "required": 0,
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Fields for the case study single template.",
+    "show_in_rest": 0,
+    "modified": 1755518400
+}

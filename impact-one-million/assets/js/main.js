@@ -881,3 +881,45 @@
 		}
 	});
 })();
+
+/**
+ * Case study Share button — Web Share API or clipboard fallback.
+ */
+(function () {
+	document.querySelectorAll('[data-share-url]').forEach(function (btn) {
+		btn.addEventListener('click', function () {
+			const url = btn.getAttribute('data-share-url') || window.location.href;
+			const title = btn.getAttribute('data-share-title') || document.title;
+			const label = btn.textContent;
+
+			function done() {
+				btn.textContent = 'Copied';
+				window.setTimeout(function () {
+					btn.textContent = label;
+				}, 1600);
+			}
+
+			if (navigator.share) {
+				navigator.share({ title: title, url: url }).catch(function () {});
+				return;
+			}
+
+			if (navigator.clipboard && navigator.clipboard.writeText) {
+				navigator.clipboard.writeText(url).then(done).catch(function () {});
+				return;
+			}
+
+			const input = document.createElement('input');
+			input.value = url;
+			document.body.appendChild(input);
+			input.select();
+			try {
+				document.execCommand('copy');
+				done();
+			} catch (e) {
+				/* ignore */
+			}
+			document.body.removeChild(input);
+		});
+	});
+})();
