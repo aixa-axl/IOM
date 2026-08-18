@@ -2660,6 +2660,65 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_why_this_matters": {
+                    "key": "layout_iom_why_this_matters",
+                    "name": "why_this_matters",
+                    "label": "Why This Matters",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_wtm_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. Why This Matters",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_wtm_intro",
+                            "label": "Intro",
+                            "name": "intro",
+                            "type": "textarea",
+                            "instructions": "Supporting line under the heading.",
+                            "required": 0,
+                            "rows": 3,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_iom_wtm_cards",
+                            "label": "Stat Cards",
+                            "name": "cards",
+                            "type": "repeater",
+                            "instructions": "Desktop wraps into centered rows (e.g. 3 then 2). Mobile stacks. Leave empty to hide.",
+                            "required": 0,
+                            "layout": "table",
+                            "button_label": "Add Card",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_wtm_card_label",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "type": "text",
+                                    "instructions": "e.g. 123 years until global gender parity",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_wtm_cards"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_iom_wtm_footer",
+                            "label": "Footer",
+                            "name": "footer",
+                            "type": "textarea",
+                            "instructions": "Closing paragraph under the cards.",
+                            "required": 0,
+                            "rows": 4,
+                            "new_lines": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -2685,5 +2744,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755473400
+    "modified": 1755474000
 }

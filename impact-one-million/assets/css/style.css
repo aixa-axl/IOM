@@ -2364,6 +2364,10 @@ body {
 }
 
 @media (min-width: 640px) {
+  .sm\:w-\[min\(100\%\2c 25rem\)\] {
+    width: min(100%, 25rem);
+  }
+
   .sm\:w-auto {
     width: auto;
   }
