@@ -57,9 +57,9 @@
             "label": "Nav Links",
             "name": "header_nav_links",
             "type": "repeater",
-            "instructions": "Primary navigation (e.g. What We Do, About Us). If empty, the WordPress Primary Menu is used.",
+            "instructions": "Primary navigation (e.g. What We Do, About Us). Add Dropdown Items under a link for the desktop mega-style menu. If empty, the WordPress Primary Menu is used.",
             "required": 0,
-            "layout": "table",
+            "layout": "block",
             "button_label": "Add Link",
             "sub_fields": [
                 {
@@ -70,6 +70,28 @@
                     "required": 1,
                     "return_format": "array",
                     "parent_repeater": "field_iom_header_nav_links"
+                },
+                {
+                    "key": "field_iom_header_nav_children",
+                    "label": "Dropdown Items",
+                    "name": "children",
+                    "type": "repeater",
+                    "instructions": "Optional. Shown on desktop hover/focus under this link (e.g. Overview, Family & Early Childhood).",
+                    "required": 0,
+                    "layout": "table",
+                    "button_label": "Add Item",
+                    "parent_repeater": "field_iom_header_nav_links",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_header_nav_child_link",
+                            "label": "Link",
+                            "name": "link",
+                            "type": "link",
+                            "required": 1,
+                            "return_format": "array",
+                            "parent_repeater": "field_iom_header_nav_children"
+                        }
+                    ]
                 }
             ]
         },
@@ -110,5 +132,5 @@
     "active": true,
     "description": "Site-wide header — Figma two-tier navbar.",
     "show_in_rest": 0,
-    "modified": 1755353400
+    "modified": 1787062200
 }

@@ -116,13 +116,51 @@ $btn_primary     = 'inline-flex items-center justify-center rounded-btn bg-accen
 							<ul class="m-0 flex list-none flex-nowrap items-center gap-8 p-0">
 								<?php foreach ( $header_nav as $row ) : ?>
 									<?php
-									$link = isset( $row['link'] ) ? $row['link'] : null;
+									$link     = isset( $row['link'] ) ? $row['link'] : null;
+									$children = isset( $row['children'] ) && is_array( $row['children'] ) ? $row['children'] : array();
+									$children = array_values(
+										array_filter(
+											$children,
+											static function ( $child ) {
+												return ! empty( $child['link']['url'] );
+											}
+										)
+									);
 									if ( empty( $link['url'] ) ) {
 										continue;
 									}
+									$has_children = ! empty( $children );
 									?>
-									<li class="shrink-0">
-										<?php iom_render_link( $link, $nav_link_class . ' whitespace-nowrap' ); ?>
+									<li class="<?php echo $has_children ? 'group relative shrink-0' : 'shrink-0'; ?>">
+										<?php if ( $has_children ) : ?>
+											<a
+												href="<?php echo esc_url( $link['url'] ); ?>"
+												class="<?php echo esc_attr( $nav_link_class . ' whitespace-nowrap' ); ?>"
+												aria-haspopup="true"
+												<?php echo ! empty( $link['target'] ) ? 'target="' . esc_attr( $link['target'] ) . '" rel="noopener noreferrer"' : ''; ?>
+											>
+												<?php echo esc_html( ! empty( $link['title'] ) ? $link['title'] : '' ); ?>
+											</a>
+											<ul
+												class="invisible absolute left-0 top-full z-[60] m-0 min-w-[16.5rem] list-none bg-blue p-0 opacity-0 shadow-lg transition-[opacity,visibility] duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+												role="list"
+											>
+												<?php foreach ( $children as $child ) : ?>
+													<?php $child_link = $child['link']; ?>
+													<li class="m-0">
+														<a
+															href="<?php echo esc_url( $child_link['url'] ); ?>"
+															class="block whitespace-nowrap px-6 py-3.5 font-display text-label uppercase tracking-[1px] text-white no-underline transition-colors hover:bg-white/20 focus:bg-white/20 focus:outline-none"
+															<?php echo ! empty( $child_link['target'] ) ? 'target="' . esc_attr( $child_link['target'] ) . '" rel="noopener noreferrer"' : ''; ?>
+														>
+															<?php echo esc_html( ! empty( $child_link['title'] ) ? $child_link['title'] : '' ); ?>
+														</a>
+													</li>
+												<?php endforeach; ?>
+											</ul>
+										<?php else : ?>
+											<?php iom_render_link( $link, $nav_link_class . ' whitespace-nowrap' ); ?>
+										<?php endif; ?>
 									</li>
 								<?php endforeach; ?>
 							</ul>
