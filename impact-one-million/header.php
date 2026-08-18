@@ -229,8 +229,9 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 
 		<div
 			id="mobile-nav-panel"
-			class="absolute inset-x-0 top-full z-40 hidden h-[calc(100dvh-6rem)] max-h-[calc(100dvh-6rem)] flex-col overflow-y-auto bg-blue lg:!hidden"
+			class="absolute inset-x-0 top-full z-40 h-[calc(100dvh-6rem)] max-h-[calc(100dvh-6rem)] flex-col overflow-y-auto bg-blue lg:hidden"
 			data-mobile-nav-panel
+			data-open="false"
 			hidden
 		>
 			<div class="mx-auto flex w-full max-w-[22rem] flex-1 flex-col gap-8 px-[1.625rem] pb-8 pt-7">

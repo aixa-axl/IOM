@@ -42,8 +42,9 @@
 				: mobileToggle.getAttribute('data-label-open') || 'Open menu'
 		);
 
-		// Toggle classes — Tailwind `.flex` overrides the HTML [hidden] attribute.
 		mobilePanel.hidden = !open;
+		mobilePanel.setAttribute('data-open', open ? 'true' : 'false');
+		// Keep class toggles as a fallback; CSS [data-open] rules are the source of truth.
 		mobilePanel.classList.toggle('hidden', !open);
 		mobilePanel.classList.toggle('flex', open);
 

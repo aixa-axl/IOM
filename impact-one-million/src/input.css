@@ -229,3 +229,22 @@ body {
     height: 20px;
   }
 }
+
+/*
+ * Mobile nav panel — closed by default.
+ * Tailwind `.flex` beats the HTML [hidden] attribute (same specificity, later in CSS),
+ * which left the menu stuck open (especially on cached homepage HTML).
+ */
+[data-mobile-nav-panel] {
+  display: none !important;
+}
+
+[data-mobile-nav-panel][data-open='true'] {
+  display: flex !important;
+}
+
+@media (min-width: 1024px) {
+  [data-mobile-nav-panel] {
+    display: none !important;
+  }
+}
