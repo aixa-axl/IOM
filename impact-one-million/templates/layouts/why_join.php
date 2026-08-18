@@ -3,11 +3,12 @@
  * Layout: why_join
  *
  * Icon cards with heading — Why Join, Why Ambassadors Matter, Impact We Want to Create.
- * Desktop: grid (3–5 cols by card count). Mobile: snap carousel with dots.
+ * Desktop: 3-col grid (classic) or 3+2 rows when Heading Align = Left with 5+ cards.
+ * Mobile: snap carousel with dots.
  *
  * Figma desktop: 606:11808 — Figma mobile: 677:41984
  * Figma with intro: 663:31781
- * Figma left heading + 5 cards: 634:20435
+ * Figma left heading + 5 cards (3+2): 634:20435
  */
 
 $heading       = get_sub_field( 'heading' );
@@ -61,15 +62,66 @@ $btn_class  = 'inline-flex items-center justify-center rounded-btn bg-blue px-6 
 
 $outer_gap = ( $has_intro || $is_left ) ? 'gap-12 lg:gap-16' : 'gap-20 lg:gap-10';
 
-if ( $card_count >= 5 ) {
-	$grid_cols = 'lg:grid-cols-5';
-} elseif ( 4 === $card_count ) {
-	$grid_cols = 'lg:grid-cols-4';
-} else {
-	$grid_cols = 'lg:grid-cols-3';
-}
+// Impact layout: left heading + 5 cards → 3 on top, 2 below (desktop only).
+$use_impact_rows = ( $is_left && $card_count >= 5 );
 
-$grid_gap = ( $card_count >= 4 ) ? 'lg:gap-6' : 'lg:gap-8';
+/**
+ * Render one impact / why-join card.
+ *
+ * @param array  $card      Card row.
+ * @param string $arrow_uri Fallback arrow URL.
+ * @param bool   $carousel  Whether this is a mobile carousel slide.
+ */
+$iom_render_why_join_card = function ( $card, $arrow_uri, $carousel = false ) {
+	$icon_id = isset( $card['icon'] ) ? $card['icon'] : null;
+	$title   = isset( $card['title'] ) ? $card['title'] : '';
+	$body    = isset( $card['body'] ) ? $card['body'] : '';
+
+	$li_class = $carousel
+		? 'flex w-[min(100%,25rem)] shrink-0 snap-center flex-col gap-4 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-6'
+		: 'flex flex-col gap-4 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-6';
+	?>
+	<li class="<?php echo esc_attr( $li_class ); ?>" <?php echo $carousel ? 'data-why-join-slide' : ''; ?>>
+		<div class="flex h-[2.8125rem] w-11 items-center justify-start" aria-hidden="true">
+			<?php if ( $icon_id ) : ?>
+				<?php
+				echo wp_get_attachment_image(
+					$icon_id,
+					'thumbnail',
+					false,
+					array(
+						'class'   => 'h-[2.8125rem] w-11 object-contain',
+						'alt'     => '',
+						'loading' => 'lazy',
+					)
+				);
+				?>
+			<?php else : ?>
+				<img
+					src="<?php echo esc_url( $arrow_uri ); ?>"
+					alt=""
+					width="44"
+					height="45"
+					class="h-[2.8125rem] w-11 object-contain"
+					loading="lazy"
+				/>
+			<?php endif; ?>
+		</div>
+
+		<?php if ( $title ) : ?>
+			<h3 class="m-0 font-display text-card-title leading-none text-blue">
+				<?php echo esc_html( $title ); ?>
+			</h3>
+		<?php endif; ?>
+
+		<?php if ( $body ) : ?>
+			<p class="m-0 line-clamp-2 font-sans text-body leading-[1.2] text-muted">
+				<?php echo esc_html( $body ); ?>
+			</p>
+		<?php endif; ?>
+	</li>
+	<?php
+};
 ?>
 
 <section class="bg-white px-0 py-section lg:px-gutter lg:py-gutter">
@@ -91,78 +143,79 @@ $grid_gap = ( $card_count >= 4 ) ? 'lg:gap-6' : 'lg:gap-8';
 		<?php endif; ?>
 
 		<?php if ( ! empty( $cards ) ) : ?>
-			<div class="w-full" data-why-join-carousel>
-				<ul
-					class="m-0 flex list-none gap-6 overflow-x-auto scroll-smooth px-10 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid <?php echo esc_attr( $grid_cols . ' ' . $grid_gap ); ?> lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
-					data-why-join-track
-				>
-					<?php foreach ( $cards as $card ) : ?>
-						<?php
-						$icon_id = isset( $card['icon'] ) ? $card['icon'] : null;
-						$title   = isset( $card['title'] ) ? $card['title'] : '';
-						$body    = isset( $card['body'] ) ? $card['body'] : '';
-						?>
-						<li
-							class="flex w-[min(100%,25rem)] shrink-0 snap-center flex-col gap-4 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-6 lg:h-auto lg:min-h-0 lg:w-auto lg:min-w-0 lg:snap-align-none"
-							data-why-join-slide
-						>
-							<div class="flex h-[2.8125rem] w-11 items-center justify-start" aria-hidden="true">
-								<?php if ( $icon_id ) : ?>
-									<?php
-									echo wp_get_attachment_image(
-										$icon_id,
-										'thumbnail',
-										false,
-										array(
-											'class'   => 'h-[2.8125rem] w-11 object-contain',
-											'alt'     => '',
-											'loading' => 'lazy',
-										)
-									);
-									?>
-								<?php else : ?>
-									<img
-										src="<?php echo esc_url( $arrow_uri ); ?>"
-										alt=""
-										width="44"
-										height="45"
-										class="h-[2.8125rem] w-11 object-contain"
-										loading="lazy"
-									/>
-								<?php endif; ?>
-							</div>
-
-							<?php if ( $title ) : ?>
-								<h3 class="m-0 font-display text-card-title leading-none text-blue">
-									<?php echo esc_html( $title ); ?>
-								</h3>
-							<?php endif; ?>
-
-							<?php if ( $body ) : ?>
-								<p class="m-0 line-clamp-2 font-sans text-body leading-[1.2] text-muted">
-									<?php echo esc_html( $body ); ?>
-								</p>
-							<?php endif; ?>
-						</li>
-					<?php endforeach; ?>
-				</ul>
-
-				<?php if ( $card_count > 1 ) : ?>
-					<div
-						class="mt-6 flex items-center justify-center gap-2 lg:hidden"
-						data-why-join-dots
-						aria-hidden="true"
+			<?php if ( $use_impact_rows ) : ?>
+				<?php
+				$row_one = array_slice( $cards, 0, 3 );
+				$row_two = array_slice( $cards, 3 );
+				?>
+				<!-- Mobile carousel -->
+				<div class="w-full lg:hidden" data-why-join-carousel>
+					<ul
+						class="m-0 flex list-none gap-6 overflow-x-auto scroll-smooth px-10 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory [&::-webkit-scrollbar]:hidden"
+						data-why-join-track
 					>
-						<?php for ( $i = 0; $i < $card_count; $i++ ) : ?>
-							<span
-								class="size-1.5 rounded-full bg-accent-blue/25 transition-colors data-[active=true]:bg-accent-blue"
-								data-why-join-dot
-								<?php echo 0 === $i ? 'data-active="true"' : ''; ?>
-							></span>
-						<?php endfor; ?>
-					</div>
-				<?php endif; ?>
-			</div>
+						<?php foreach ( $cards as $card ) : ?>
+							<?php $iom_render_why_join_card( $card, $arrow_uri, true ); ?>
+						<?php endforeach; ?>
+					</ul>
+
+					<?php if ( $card_count > 1 ) : ?>
+						<div class="mt-6 flex items-center justify-center gap-2" data-why-join-dots aria-hidden="true">
+							<?php for ( $i = 0; $i < $card_count; $i++ ) : ?>
+								<span
+									class="size-1.5 rounded-full bg-accent-blue/25 transition-colors data-[active=true]:bg-accent-blue"
+									data-why-join-dot
+									<?php echo 0 === $i ? 'data-active="true"' : ''; ?>
+								></span>
+							<?php endfor; ?>
+						</div>
+					<?php endif; ?>
+				</div>
+
+				<!-- Desktop: 3 + 2 -->
+				<div class="hidden w-full flex-col gap-6 lg:flex">
+					<ul class="m-0 grid w-full list-none grid-cols-3 gap-6 p-0">
+						<?php foreach ( $row_one as $card ) : ?>
+							<?php $iom_render_why_join_card( $card, $arrow_uri, false ); ?>
+						<?php endforeach; ?>
+					</ul>
+
+					<?php if ( ! empty( $row_two ) ) : ?>
+						<ul class="m-0 grid w-[calc((200%-1.5rem)/3)] list-none grid-cols-2 gap-6 self-start p-0">
+							<?php foreach ( $row_two as $card ) : ?>
+								<?php $iom_render_why_join_card( $card, $arrow_uri, false ); ?>
+							<?php endforeach; ?>
+						</ul>
+					<?php endif; ?>
+				</div>
+			<?php else : ?>
+				<div class="w-full" data-why-join-carousel>
+					<ul
+						class="m-0 flex list-none gap-6 overflow-x-auto scroll-smooth px-10 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
+						data-why-join-track
+					>
+						<?php foreach ( $cards as $card ) : ?>
+							<?php $iom_render_why_join_card( $card, $arrow_uri, true ); ?>
+						<?php endforeach; ?>
+					</ul>
+
+					<?php if ( $card_count > 1 ) : ?>
+						<div
+							class="mt-6 flex items-center justify-center gap-2 lg:hidden"
+							data-why-join-dots
+							aria-hidden="true"
+						>
+							<?php for ( $i = 0; $i < $card_count; $i++ ) : ?>
+								<span
+									class="size-1.5 rounded-full bg-accent-blue/25 transition-colors data-[active=true]:bg-accent-blue"
+									data-why-join-dot
+									<?php echo 0 === $i ? 'data-active="true"' : ''; ?>
+								></span>
+							<?php endfor; ?>
+						</div>
+					<?php endif; ?>
+				</div>
+			<?php endif; ?>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $cta['url'] ) ) : ?>

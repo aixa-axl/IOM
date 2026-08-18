@@ -1754,7 +1754,7 @@
                             "label": "Cards",
                             "name": "cards",
                             "type": "repeater",
-                            "instructions": "Desktop: 3 / 4 / 5 columns by card count. Mobile: snap carousel.",
+                            "instructions": "Desktop: 3 columns (classic), or 3+2 rows when Heading Align is Left with 5+ cards. Mobile: snap carousel.",
                             "required": 0,
                             "layout": "block",
                             "button_label": "Add Card",
@@ -2826,5 +2826,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755475800
+    "modified": 1755476400
 }
