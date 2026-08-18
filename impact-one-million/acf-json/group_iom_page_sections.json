@@ -3108,6 +3108,50 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_featured_case_study": {
+                    "key": "layout_iom_featured_case_study",
+                    "name": "featured_case_study",
+                    "label": "Featured Case Study",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_fcs_case_study",
+                            "label": "Case Study / Post",
+                            "name": "case_study",
+                            "type": "post_object",
+                            "instructions": "Choose which published post to feature. Pulls image, category, date, title, excerpt, and link.",
+                            "required": 1,
+                            "post_type": [
+                                "post"
+                            ],
+                            "taxonomy": "",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "return_format": "object",
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_iom_fcs_featured_label",
+                            "label": "Featured Label",
+                            "name": "featured_label",
+                            "type": "text",
+                            "instructions": "Accent label (e.g. Featured). Leave empty to hide.",
+                            "required": 0,
+                            "default_value": "Featured"
+                        },
+                        {
+                            "key": "field_iom_fcs_cta_label",
+                            "label": "CTA Label",
+                            "name": "cta_label",
+                            "type": "text",
+                            "instructions": "Button text linking to the post.",
+                            "required": 0,
+                            "default_value": "Read case study"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -3133,5 +3177,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755515400
+    "modified": 1755516000
 }
