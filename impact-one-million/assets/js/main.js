@@ -41,7 +41,12 @@
 				? mobileToggle.getAttribute('data-label-close') || 'Close menu'
 				: mobileToggle.getAttribute('data-label-open') || 'Open menu'
 		);
+
+		// Toggle classes — Tailwind `.flex` overrides the HTML [hidden] attribute.
 		mobilePanel.hidden = !open;
+		mobilePanel.classList.toggle('hidden', !open);
+		mobilePanel.classList.toggle('flex', open);
+
 		document.body.classList.toggle('overflow-hidden', open);
 
 		if (iconOpen) {
@@ -107,6 +112,9 @@
 	}
 
 	if (mobileToggle && mobilePanel) {
+		// Force closed on load (panel must not use a permanent `flex` class — it overrides [hidden]).
+		setMobileOpen(false);
+
 		mobileToggle.addEventListener('click', function (event) {
 			event.preventDefault();
 			event.stopPropagation();

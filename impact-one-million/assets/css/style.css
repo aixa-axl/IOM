@@ -2862,6 +2862,10 @@ body {
     display: grid;
   }
 
+  .lg\:\!hidden {
+    display: none !important;
+  }
+
   .lg\:hidden {
     display: none;
   }
