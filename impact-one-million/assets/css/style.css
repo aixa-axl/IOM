@@ -1108,6 +1108,10 @@ video {
   max-width: 56.25rem;
 }
 
+.max-w-\[62\.5rem\] {
+  max-width: 62.5rem;
+}
+
 .max-w-\[67\.5rem\] {
   max-width: 67.5rem;
 }
@@ -1940,6 +1944,10 @@ video {
   font-weight: 700;
 }
 
+.font-extrabold {
+  font-weight: 800;
+}
+
 .font-normal {
   font-weight: 400;
 }
@@ -1950,6 +1958,14 @@ video {
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.not-italic {
+  font-style: normal;
+}
+
+.leading-10 {
+  line-height: 2.5rem;
 }
 
 .leading-6 {
@@ -3136,6 +3152,11 @@ body {
     line-height: 1;
   }
 
+  .lg\:text-quote {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
   .lg\:text-stat-label {
     font-size: 32px;
     line-height: 1.2;
@@ -3162,6 +3183,10 @@ body {
 
   .lg\:leading-\[39px\] {
     line-height: 39px;
+  }
+
+  .lg\:leading-\[48px\] {
+    line-height: 48px;
   }
 
   .lg\:leading-none {

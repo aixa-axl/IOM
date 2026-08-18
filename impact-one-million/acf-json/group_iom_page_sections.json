@@ -3213,6 +3213,42 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_quote_section": {
+                    "key": "layout_iom_quote_section",
+                    "name": "quote_section",
+                    "label": "Quote Section",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_qs_quote",
+                            "label": "Quote",
+                            "name": "quote",
+                            "type": "textarea",
+                            "instructions": "Large centered quote on navy.",
+                            "required": 0,
+                            "rows": 4,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_iom_qs_name",
+                            "label": "Name",
+                            "name": "name",
+                            "type": "text",
+                            "instructions": "e.g. Elena Vance",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_qs_role",
+                            "label": "Role",
+                            "name": "role",
+                            "type": "text",
+                            "instructions": "e.g. Chief of Programmes",
+                            "required": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -3238,5 +3274,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755517200
+    "modified": 1755517800
 }
