@@ -44,8 +44,8 @@ if ( ! is_array( $cards ) ) {
 		<?php endif; ?>
 
 		<?php if ( ! empty( $cards ) ) : ?>
-			<ul class="m-0 grid w-full list-none grid-cols-1 gap-8 p-0 lg:grid-cols-3">
-				<?php foreach ( $cards as $card ) : ?>
+			<ul class="m-0 flex w-full list-none flex-col items-stretch gap-8 p-0 lg:flex-row lg:items-center lg:gap-8">
+				<?php foreach ( $cards as $index => $card ) : ?>
 					<?php
 					$title  = isset( $card['title'] ) ? $card['title'] : '';
 					$points = isset( $card['points'] ) && is_array( $card['points'] ) ? $card['points'] : array();
@@ -53,8 +53,14 @@ if ( ! is_array( $cards ) ) {
 					if ( ! $title && empty( $points ) ) {
 						continue;
 					}
+
+					// Middle card (2nd) is slightly larger on desktop, matching Figma hierarchy.
+					$is_middle  = ( 1 === (int) $index );
+					$card_class = $is_middle
+						? 'flex min-w-0 flex-1 flex-col items-start gap-8 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-10 lg:flex-[1.15] lg:gap-8 lg:p-12 lg:shadow-sm'
+						: 'flex min-w-0 flex-1 flex-col items-start gap-6 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-8 lg:gap-8 lg:p-8';
 					?>
-					<li class="flex flex-col items-start gap-6 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-8 lg:gap-8 lg:p-10">
+					<li class="<?php echo esc_attr( $card_class ); ?>">
 						<?php if ( $title ) : ?>
 							<h3 class="m-0 font-display text-card-title leading-none text-blue">
 								<?php echo esc_html( $title ); ?>
