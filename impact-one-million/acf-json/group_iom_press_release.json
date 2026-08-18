@@ -265,6 +265,82 @@
                     "parent_repeater": "field_iom_prd_partner_cards"
                 }
             ]
+        },
+        {
+            "key": "field_iom_prd_tab_newsletter",
+            "label": "Newsletter",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_prd_show_newsletter",
+            "label": "Show Newsletter",
+            "name": "pr_show_newsletter",
+            "type": "true_false",
+            "instructions": "Stay Informed band at the bottom of the press release (Figma 634:21142).",
+            "required": 0,
+            "default_value": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_iom_prd_newsletter_heading",
+            "label": "Heading",
+            "name": "pr_newsletter_heading",
+            "type": "text",
+            "default_value": "Stay Informed",
+            "required": 0
+        },
+        {
+            "key": "field_iom_prd_newsletter_body",
+            "label": "Body",
+            "name": "pr_newsletter_body",
+            "type": "textarea",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_iom_prd_newsletter_placeholder",
+            "label": "Email Placeholder",
+            "name": "pr_newsletter_placeholder",
+            "type": "text",
+            "default_value": "Your email address",
+            "required": 0
+        },
+        {
+            "key": "field_iom_prd_newsletter_button",
+            "label": "Button Label",
+            "name": "pr_newsletter_button",
+            "type": "text",
+            "default_value": "Subscribe",
+            "required": 0
+        },
+        {
+            "key": "field_iom_prd_newsletter_privacy",
+            "label": "Privacy Note",
+            "name": "pr_newsletter_privacy",
+            "type": "text",
+            "default_value": "We respect your privacy. Unsubscribe at any time.",
+            "required": 0
+        },
+        {
+            "key": "field_iom_prd_newsletter_action",
+            "label": "Form Action URL",
+            "name": "pr_newsletter_action",
+            "type": "url",
+            "instructions": "Optional newsletter provider endpoint. Leave empty until connected.",
+            "required": 0
+        },
+        {
+            "key": "field_iom_prd_newsletter_image",
+            "label": "Image",
+            "name": "pr_newsletter_image",
+            "type": "image",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all"
         }
     ],
     "location": [
@@ -285,5 +361,5 @@
     "active": true,
     "description": "Fields for the press release single template. Shows when the post is in the Press Release category.",
     "show_in_rest": 0,
-    "modified": 1787057290
+    "modified": 1787058000
 }

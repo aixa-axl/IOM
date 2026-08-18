@@ -38,6 +38,14 @@ $related          = function_exists( 'get_field' ) ? get_field( 'pr_related', $p
 $partner_head     = function_exists( 'get_field' ) ? get_field( 'pr_partner_heading', $post_id ) : '';
 $partner_intro    = function_exists( 'get_field' ) ? get_field( 'pr_partner_intro', $post_id ) : '';
 $partner_cards    = function_exists( 'get_field' ) ? get_field( 'pr_partner_cards', $post_id ) : array();
+$show_newsletter  = function_exists( 'get_field' ) ? get_field( 'pr_show_newsletter', $post_id ) : true;
+$nl_heading       = function_exists( 'get_field' ) ? get_field( 'pr_newsletter_heading', $post_id ) : '';
+$nl_body          = function_exists( 'get_field' ) ? get_field( 'pr_newsletter_body', $post_id ) : '';
+$nl_placeholder   = function_exists( 'get_field' ) ? get_field( 'pr_newsletter_placeholder', $post_id ) : '';
+$nl_button        = function_exists( 'get_field' ) ? get_field( 'pr_newsletter_button', $post_id ) : '';
+$nl_privacy       = function_exists( 'get_field' ) ? get_field( 'pr_newsletter_privacy', $post_id ) : '';
+$nl_action        = function_exists( 'get_field' ) ? get_field( 'pr_newsletter_action', $post_id ) : '';
+$nl_image         = function_exists( 'get_field' ) ? get_field( 'pr_newsletter_image', $post_id ) : null;
 
 if ( ! $gal_head ) {
 	$gal_head = __( 'Gallery', 'impact-one-million' );
@@ -123,6 +131,11 @@ $btn_navy = 'inline-flex items-center justify-center rounded-btn bg-navy px-6 py
 $link_label = $rel_link_label;
 
 $has_partner = ! empty( $partner_cards );
+
+if ( null === $show_newsletter || '' === $show_newsletter ) {
+	$show_newsletter = true;
+}
+$show_newsletter = (bool) $show_newsletter;
 ?>
 
 <article id="post-<?php echo esc_attr( (string) $post_id ); ?>" <?php post_class(); ?>>
@@ -336,6 +349,21 @@ $has_partner = ! empty( $partner_cards );
 				</ul>
 			</div>
 		</section>
+	<?php endif; ?>
+
+	<!-- Newsletter -->
+	<?php if ( $show_newsletter ) : ?>
+		<?php
+		$heading      = $nl_heading;
+		$body         = $nl_body;
+		$placeholder  = $nl_placeholder;
+		$button_label = $nl_button;
+		$privacy_note = $nl_privacy;
+		$form_action  = $nl_action;
+		$image        = $nl_image;
+		$email_id     = 'iom-pr-newsletter-email';
+		require locate_template( 'templates/parts/newsletter-signup.php' );
+		?>
 	<?php endif; ?>
 
 </article>
