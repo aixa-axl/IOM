@@ -2,22 +2,31 @@
 /**
  * Layout: why_join
  *
- * "Why [Audience] Join" — heading, optional intro, icon cards, optional CTA.
- * Desktop: 3-column grid. Mobile: snap carousel with dots.
+ * Icon cards with heading — Why Join, Why Ambassadors Matter, Impact We Want to Create.
+ * Desktop: grid (3–5 cols by card count). Mobile: snap carousel with dots.
  *
  * Figma desktop: 606:11808 — Figma mobile: 677:41984
- * Figma with intro: 663:31781 (Why Ambassadors Matter)
+ * Figma with intro: 663:31781
+ * Figma left heading + 5 cards: 634:20435
  */
 
-$heading = get_sub_field( 'heading' );
-$intro   = get_sub_field( 'intro' );
-$cards   = get_sub_field( 'cards' );
-$cta     = get_sub_field( 'cta' );
+$heading       = get_sub_field( 'heading' );
+$intro         = get_sub_field( 'intro' );
+$heading_align = get_sub_field( 'heading_align' );
+$cards         = get_sub_field( 'cards' );
+$cta           = get_sub_field( 'cta' );
 
 $theme_uri = get_stylesheet_directory_uri();
 $arrow_uri = $theme_uri . '/assets/images/icons/why-join-arrow.svg';
 
 $has_intro = (bool) $intro;
+
+if ( ! in_array( $heading_align, array( 'center', 'left' ), true ) ) {
+	// Legacy: intro forces left; otherwise centre.
+	$heading_align = $has_intro ? 'left' : 'center';
+}
+
+$is_left = ( 'left' === $heading_align );
 
 if ( ! $heading ) {
 	$heading = __( 'Why Buyers Join', 'impact-one-million' );
@@ -50,13 +59,23 @@ if ( ! is_array( $cta ) ) {
 $card_count = count( $cards );
 $btn_class  = 'inline-flex items-center justify-center rounded-btn bg-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 
-$outer_gap = $has_intro ? 'gap-12' : 'gap-20 lg:gap-10';
+$outer_gap = ( $has_intro || $is_left ) ? 'gap-12 lg:gap-16' : 'gap-20 lg:gap-10';
+
+if ( $card_count >= 5 ) {
+	$grid_cols = 'lg:grid-cols-5';
+} elseif ( 4 === $card_count ) {
+	$grid_cols = 'lg:grid-cols-4';
+} else {
+	$grid_cols = 'lg:grid-cols-3';
+}
+
+$grid_gap = ( $card_count >= 4 ) ? 'lg:gap-6' : 'lg:gap-8';
 ?>
 
-<section class="bg-white px-0 py-section lg:px-gutter lg:py-[100px]">
-	<div class="mx-auto flex w-full max-w-site flex-col <?php echo $has_intro ? 'items-start' : 'items-center'; ?> <?php echo esc_attr( $outer_gap ); ?>">
+<section class="bg-white px-0 py-section lg:px-gutter lg:py-gutter">
+	<div class="mx-auto flex w-full max-w-site flex-col <?php echo $is_left ? 'items-start' : 'items-center'; ?> <?php echo esc_attr( $outer_gap ); ?>">
 		<?php if ( $heading || $has_intro ) : ?>
-			<div class="flex w-full flex-col gap-6 px-10 <?php echo $has_intro ? 'items-start text-left' : 'items-center text-center'; ?> lg:px-0">
+			<div class="flex w-full flex-col gap-6 px-10 <?php echo $is_left ? 'items-start text-left' : 'items-center text-center'; ?> lg:px-0">
 				<?php if ( $heading ) : ?>
 					<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">
 						<?php echo esc_html( $heading ); ?>
@@ -74,7 +93,7 @@ $outer_gap = $has_intro ? 'gap-12' : 'gap-20 lg:gap-10';
 		<?php if ( ! empty( $cards ) ) : ?>
 			<div class="w-full" data-why-join-carousel>
 				<ul
-					class="m-0 flex list-none gap-[3.75rem] overflow-x-auto scroll-smooth px-10 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
+					class="m-0 flex list-none gap-6 overflow-x-auto scroll-smooth px-10 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid <?php echo esc_attr( $grid_cols . ' ' . $grid_gap ); ?> lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
 					data-why-join-track
 				>
 					<?php foreach ( $cards as $card ) : ?>
@@ -84,10 +103,10 @@ $outer_gap = $has_intro ? 'gap-12' : 'gap-20 lg:gap-10';
 						$body    = isset( $card['body'] ) ? $card['body'] : '';
 						?>
 						<li
-							class="flex w-[min(100%,25rem)] shrink-0 snap-center flex-col gap-4 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-6 lg:h-auto lg:min-h-[17rem] lg:w-auto lg:min-w-0 lg:snap-align-none"
+							class="flex w-[min(100%,25rem)] shrink-0 snap-center flex-col gap-4 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-6 lg:h-auto lg:min-h-0 lg:w-auto lg:min-w-0 lg:snap-align-none"
 							data-why-join-slide
 						>
-							<div class="flex h-[2.8rem] w-11 items-center justify-start" aria-hidden="true">
+							<div class="flex h-[2.8125rem] w-11 items-center justify-start" aria-hidden="true">
 								<?php if ( $icon_id ) : ?>
 									<?php
 									echo wp_get_attachment_image(
@@ -95,7 +114,7 @@ $outer_gap = $has_intro ? 'gap-12' : 'gap-20 lg:gap-10';
 										'thumbnail',
 										false,
 										array(
-											'class'   => 'h-11 w-11 object-contain',
+											'class'   => 'h-[2.8125rem] w-11 object-contain',
 											'alt'     => '',
 											'loading' => 'lazy',
 										)
@@ -107,7 +126,7 @@ $outer_gap = $has_intro ? 'gap-12' : 'gap-20 lg:gap-10';
 										alt=""
 										width="44"
 										height="45"
-										class="h-11 w-11 object-contain"
+										class="h-[2.8125rem] w-11 object-contain"
 										loading="lazy"
 									/>
 								<?php endif; ?>
@@ -147,7 +166,7 @@ $outer_gap = $has_intro ? 'gap-12' : 'gap-20 lg:gap-10';
 		<?php endif; ?>
 
 		<?php if ( ! empty( $cta['url'] ) ) : ?>
-			<div class="<?php echo $has_intro ? 'w-full' : ''; ?>">
+			<div class="<?php echo $is_left ? 'w-full' : ''; ?>">
 				<?php
 				iom_render_link(
 					$cta,

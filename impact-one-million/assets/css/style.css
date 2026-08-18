@@ -2512,12 +2512,12 @@ body {
     height: auto;
   }
 
-  .lg\:min-h-\[11\.3rem\] {
-    min-height: 11.3rem;
+  .lg\:min-h-0 {
+    min-height: 0px;
   }
 
-  .lg\:min-h-\[17rem\] {
-    min-height: 17rem;
+  .lg\:min-h-\[11\.3rem\] {
+    min-height: 11.3rem;
   }
 
   .lg\:min-h-\[41\.75rem\] {
@@ -2642,6 +2642,10 @@ body {
 
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .lg\:grid-cols-5 {

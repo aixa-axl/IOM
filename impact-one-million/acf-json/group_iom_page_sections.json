@@ -1712,7 +1712,7 @@
                 "layout_iom_why_join": {
                     "key": "layout_iom_why_join",
                     "name": "why_join",
-                    "label": "Why Join",
+                    "label": "Why Join / Impact Cards",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -1720,15 +1720,31 @@
                             "label": "Heading",
                             "name": "heading",
                             "type": "text",
-                            "instructions": "e.g. Why Buyers Join — or Why Ambassadors Matter",
+                            "instructions": "e.g. Why Buyers Join — or The Impact We Want to Create",
                             "required": 0
+                        },
+                        {
+                            "key": "field_iom_wj_heading_align",
+                            "label": "Heading Align",
+                            "name": "heading_align",
+                            "type": "select",
+                            "instructions": "Left = title flush left (e.g. Impact We Want to Create). Center = classic Why Join. Intro still shows under the heading.",
+                            "required": 0,
+                            "choices": {
+                                "center": "Center",
+                                "left": "Left"
+                            },
+                            "default_value": "center",
+                            "allow_null": 0,
+                            "ui": 1,
+                            "return_format": "value"
                         },
                         {
                             "key": "field_iom_wj_intro",
                             "label": "Intro",
                             "name": "intro",
                             "type": "textarea",
-                            "instructions": "Optional. When set, heading + intro are left-aligned above the cards.",
+                            "instructions": "Optional body under the heading.",
                             "required": 0,
                             "rows": 3,
                             "new_lines": ""
@@ -1738,6 +1754,7 @@
                             "label": "Cards",
                             "name": "cards",
                             "type": "repeater",
+                            "instructions": "Desktop: 3 / 4 / 5 columns by card count. Mobile: snap carousel.",
                             "required": 0,
                             "layout": "block",
                             "button_label": "Add Card",
@@ -2809,5 +2826,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755475200
+    "modified": 1755475800
 }
