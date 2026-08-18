@@ -9,7 +9,20 @@
 
 	const mobileToggle = header.querySelector('[data-mobile-nav-toggle]');
 	const mobilePanel = header.querySelector('[data-mobile-nav-panel]');
+	const iconOpen = header.querySelector('[data-mobile-nav-icon-open]');
+	const iconClose = header.querySelector('[data-mobile-nav-icon-close]');
 	const searchWidgets = header.querySelectorAll('[data-inline-search]');
+	const accordions = header.querySelectorAll('[data-mobile-nav-accordion]');
+	const headerBar = header.firstElementChild;
+
+	function syncMobilePanelHeight() {
+		if (!mobilePanel || !headerBar) {
+			return;
+		}
+		const barHeight = headerBar.getBoundingClientRect().height;
+		mobilePanel.style.height = 'calc(100dvh - ' + barHeight + 'px)';
+		mobilePanel.style.maxHeight = mobilePanel.style.height;
+	}
 
 	function setMobileOpen(open) {
 		if (!mobileToggle || !mobilePanel) {
@@ -17,6 +30,31 @@
 		}
 		mobileToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
 		mobilePanel.hidden = !open;
+		document.body.classList.toggle('overflow-hidden', open);
+		if (open) {
+			syncMobilePanelHeight();
+		}
+		if (iconOpen) {
+			iconOpen.classList.toggle('hidden', open);
+		}
+		if (iconClose) {
+			iconClose.classList.toggle('hidden', !open);
+		}
+		if (!open) {
+			accordions.forEach(function (btn) {
+				setAccordionOpen(btn, false);
+			});
+		}
+	}
+
+	function setAccordionOpen(btn, open) {
+		const panelId = btn.getAttribute('aria-controls');
+		const panel = panelId ? document.getElementById(panelId) : null;
+		btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+		if (panel) {
+			panel.hidden = !open;
+			panel.classList.toggle('hidden', !open);
+		}
 	}
 
 	function isSearchOpen(widget) {
@@ -65,6 +103,18 @@
 		});
 	}
 
+	accordions.forEach(function (btn) {
+		btn.addEventListener('click', function () {
+			const open = btn.getAttribute('aria-expanded') === 'true';
+			accordions.forEach(function (other) {
+				if (other !== btn) {
+					setAccordionOpen(other, false);
+				}
+			});
+			setAccordionOpen(btn, !open);
+		});
+	});
+
 	searchWidgets.forEach(function (widget) {
 		const toggle = widget.querySelector('[data-search-toggle]');
 		const close = widget.querySelector('[data-search-close]');
@@ -93,6 +143,16 @@
 			return;
 		}
 		closeAllSearch();
+		if (mobileToggle && mobileToggle.getAttribute('aria-expanded') === 'true') {
+			setMobileOpen(false);
+			mobileToggle.focus();
+		}
+	});
+
+	window.addEventListener('resize', function () {
+		if (mobileToggle && mobileToggle.getAttribute('aria-expanded') === 'true') {
+			syncMobilePanelHeight();
+		}
 	});
 
 	document.addEventListener('click', function (event) {

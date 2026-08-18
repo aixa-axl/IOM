@@ -3,7 +3,8 @@
  * Header Template
  *
  * Two-tier navbar from ACF Options (Theme Settings → Theme Header).
- * Figma: Impact One Million — node 606:11424
+ * Figma desktop: 606:11424 / dropdown 739:5184
+ * Figma mobile: 739:5231 (default) / 739:5375 (expanded)
  */
 
 $header_logo     = function_exists( 'get_field' ) ? get_field( 'header_logo', 'option' ) : null;
@@ -30,6 +31,12 @@ $util_link_class = 'font-display text-label uppercase tracking-[1px] text-white 
 $nav_link_class  = 'font-display text-label uppercase tracking-[1px] text-navy no-underline transition-opacity hover:opacity-70';
 $btn_outline     = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-80';
 $btn_primary     = 'inline-flex items-center justify-center rounded-btn bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+
+$mobile_nav_class     = 'font-display text-label uppercase tracking-[1px] text-white no-underline';
+$mobile_child_class   = 'block px-[26px] py-3 font-sans text-body leading-[1.2] text-white no-underline transition-colors hover:bg-[#dfe8ff] hover:text-blue focus:bg-[#dfe8ff] focus:text-blue focus:outline-none';
+$mobile_btn_primary   = 'inline-flex w-full items-center justify-center rounded-btn bg-accent px-2 py-3.5 font-display text-label uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+$mobile_btn_outline   = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-white px-2 py-3.5 font-display text-label uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-80';
+$mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-white no-underline transition-opacity hover:opacity-80';
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -41,7 +48,7 @@ $btn_primary     = 'inline-flex items-center justify-center rounded-btn bg-accen
 <body <?php body_class( 'bg-site-bg text-ink antialiased' ); ?>>
 	<?php wp_body_open(); ?>
 
-	<header id="masthead" class="site-header sticky top-0 z-50 bg-white" data-mobile-nav>
+	<header id="masthead" class="site-header relative sticky top-0 z-50 bg-white" data-mobile-nav>
 		<div class="mx-auto flex w-full max-w-site items-center justify-between gap-6 px-5 py-3 lg:items-end lg:gap-20 lg:px-gutter lg:py-3">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="shrink-0 no-underline">
 				<?php if ( $header_logo ) : ?>
@@ -203,26 +210,134 @@ $btn_primary     = 'inline-flex items-center justify-center rounded-btn bg-accen
 
 			<button
 				type="button"
-				class="inline-flex size-10 items-center justify-center text-navy lg:hidden"
+				class="inline-flex size-8 items-center justify-center text-blue lg:hidden"
 				data-mobile-nav-toggle
 				aria-expanded="false"
 				aria-controls="mobile-nav-panel"
 			>
 				<span class="sr-only"><?php esc_html_e( 'Open menu', 'impact-one-million' ); ?></span>
-				<svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-					<path stroke-linecap="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16" />
+				<svg class="size-8" viewBox="0 0 32 32" fill="none" aria-hidden="true" data-mobile-nav-icon-open>
+					<path d="M4.8 9.6h22.4M4.8 16h17.6M4.8 22.4h22.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+				</svg>
+				<svg class="hidden size-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" data-mobile-nav-icon-close>
+					<path stroke-linecap="round" stroke-width="2" d="M6 6l12 12M18 6L6 18" />
 				</svg>
 			</button>
 		</div>
 
 		<div
 			id="mobile-nav-panel"
-			class="border-t border-black/10 px-5 py-6 lg:hidden"
+			class="absolute inset-x-0 top-full z-40 flex h-[calc(100dvh-6rem)] max-h-[calc(100dvh-6rem)] flex-col overflow-y-auto bg-blue lg:hidden"
 			data-mobile-nav-panel
 			hidden
 		>
+			<div class="mx-auto flex w-full max-w-[22rem] flex-1 flex-col gap-8 px-[1.625rem] pb-8 pt-7">
+				<?php if ( $has_acf_nav ) : ?>
+					<nav aria-label="<?php echo esc_attr__( 'Primary', 'impact-one-million' ); ?>">
+						<ul class="m-0 flex list-none flex-col gap-8 p-0">
+							<?php foreach ( $header_nav as $index => $row ) : ?>
+								<?php
+								$link     = isset( $row['link'] ) ? $row['link'] : null;
+								$children = isset( $row['children'] ) && is_array( $row['children'] ) ? $row['children'] : array();
+								$children = array_values(
+									array_filter(
+										$children,
+										static function ( $child ) {
+											return ! empty( $child['link']['url'] );
+										}
+									)
+								);
+								if ( empty( $link['url'] ) && empty( $children ) ) {
+									continue;
+								}
+								$has_children = ! empty( $children );
+								$panel_id     = 'mobile-nav-sub-' . (int) $index;
+								$title        = ! empty( $link['title'] ) ? $link['title'] : '';
+								?>
+								<li class="m-0">
+									<?php if ( $has_children ) : ?>
+										<div class="flex flex-col gap-3">
+											<button
+												type="button"
+												class="flex w-full items-center justify-between border-0 bg-transparent p-0 text-left <?php echo esc_attr( $mobile_nav_class ); ?>"
+												data-mobile-nav-accordion
+												aria-expanded="false"
+												aria-controls="<?php echo esc_attr( $panel_id ); ?>"
+											>
+												<span><?php echo esc_html( $title ); ?></span>
+												<span class="sr-only"><?php esc_html_e( 'Toggle submenu', 'impact-one-million' ); ?></span>
+											</button>
+											<ul
+												id="<?php echo esc_attr( $panel_id ); ?>"
+												class="m-0 hidden list-none overflow-hidden rounded-btn p-0"
+												data-mobile-nav-submenu
+												hidden
+											>
+												<?php foreach ( $children as $child ) : ?>
+													<?php
+													$child_link  = $child['link'];
+													$child_url   = ! empty( $child_link['url'] ) ? $child_link['url'] : '';
+													$current_url = home_url( isset( $GLOBALS['wp']->request ) ? $GLOBALS['wp']->request : '' );
+													$is_current  = $child_url && untrailingslashit( $child_url ) === untrailingslashit( $current_url );
+													$child_cls   = $mobile_child_class . ( $is_current ? ' bg-[#dfe8ff] text-blue' : '' );
+													?>
+													<li class="m-0">
+														<a
+															href="<?php echo esc_url( $child_url ); ?>"
+															class="<?php echo esc_attr( $child_cls ); ?>"
+															<?php echo $is_current ? 'aria-current="page"' : ''; ?>
+															<?php echo ! empty( $child_link['target'] ) ? 'target="' . esc_attr( $child_link['target'] ) . '" rel="noopener noreferrer"' : ''; ?>
+														>
+															<?php echo esc_html( ! empty( $child_link['title'] ) ? $child_link['title'] : '' ); ?>
+														</a>
+													</li>
+												<?php endforeach; ?>
+											</ul>
+										</div>
+									<?php elseif ( ! empty( $link['url'] ) ) : ?>
+										<?php iom_render_link( $link, $mobile_nav_class ); ?>
+									<?php endif; ?>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+					</nav>
+				<?php else : ?>
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location' => 'primary',
+							'container'      => 'nav',
+							'menu_class'     => 'm-0 flex list-none flex-col gap-8 p-0',
+							'fallback_cb'    => false,
+						)
+					);
+					?>
+				<?php endif; ?>
+
+				<?php if ( ! empty( $primary_cta['url'] ) || ! empty( $secondary_cta['url'] ) ) : ?>
+					<div class="mt-auto flex flex-col gap-5">
+						<?php
+						if ( ! empty( $primary_cta['url'] ) ) {
+							iom_render_link(
+								$primary_cta,
+								$mobile_btn_primary,
+								__( 'Join Now', 'impact-one-million' )
+							);
+						}
+						if ( ! empty( $secondary_cta['url'] ) ) {
+							iom_render_link(
+								$secondary_cta,
+								$mobile_btn_outline,
+								__( 'Members Login', 'impact-one-million' )
+							);
+						}
+						?>
+					</div>
+				<?php endif; ?>
+			</div>
+
 			<?php if ( $has_util_bar ) : ?>
-				<div class="mb-6 flex flex-col gap-3 rounded-card bg-blue px-5 py-4">
+				<div class="mt-auto flex w-full flex-col gap-5 bg-ink px-[1.625rem] py-5">
 					<?php if ( $has_utility ) : ?>
 						<?php foreach ( $utility_links as $row ) : ?>
 							<?php
@@ -230,17 +345,22 @@ $btn_primary     = 'inline-flex items-center justify-center rounded-btn bg-accen
 							if ( empty( $link['url'] ) ) {
 								continue;
 							}
-							iom_render_link( $link, $util_link_class );
+							iom_render_link( $link, $mobile_util_class );
 							?>
 						<?php endforeach; ?>
 					<?php endif; ?>
 
-					<?php require locate_template( 'templates/parts/inline-search.php' ); ?>
+					<?php
+					$util_link_class   = $mobile_util_class;
+					$search_icon_class = 'size-[18px]';
+					require locate_template( 'templates/parts/inline-search.php' );
+					unset( $search_icon_class );
+					?>
 
 					<?php if ( ! empty( $language_link['url'] ) ) : ?>
 						<a
 							href="<?php echo esc_url( $language_link['url'] ); ?>"
-							class="inline-flex items-center gap-2 <?php echo esc_attr( $util_link_class ); ?>"
+							class="inline-flex items-center gap-2 <?php echo esc_attr( $mobile_util_class ); ?>"
 							<?php echo ! empty( $language_link['target'] ) ? 'target="' . esc_attr( $language_link['target'] ) . '" rel="noopener noreferrer"' : ''; ?>
 						>
 							<img
@@ -254,56 +374,6 @@ $btn_primary     = 'inline-flex items-center justify-center rounded-btn bg-accen
 							<span><?php echo esc_html( ! empty( $language_link['title'] ) ? $language_link['title'] : __( 'Language', 'impact-one-million' ) ); ?></span>
 						</a>
 					<?php endif; ?>
-				</div>
-			<?php endif; ?>
-
-			<?php if ( $has_acf_nav ) : ?>
-				<nav aria-label="<?php echo esc_attr__( 'Primary', 'impact-one-million' ); ?>">
-					<ul class="m-0 flex list-none flex-col gap-4 p-0">
-						<?php foreach ( $header_nav as $row ) : ?>
-							<?php
-							$link = isset( $row['link'] ) ? $row['link'] : null;
-							if ( empty( $link['url'] ) ) {
-								continue;
-							}
-							?>
-							<li>
-								<?php iom_render_link( $link, $nav_link_class ); ?>
-							</li>
-						<?php endforeach; ?>
-					</ul>
-				</nav>
-			<?php else : ?>
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'primary',
-						'container'      => 'nav',
-						'menu_class'     => 'm-0 flex list-none flex-col gap-4 p-0',
-						'fallback_cb'    => false,
-					)
-				);
-				?>
-			<?php endif; ?>
-
-			<?php if ( ! empty( $secondary_cta['url'] ) || ! empty( $primary_cta['url'] ) ) : ?>
-				<div class="mt-6 flex flex-col gap-3">
-					<?php
-					if ( ! empty( $secondary_cta['url'] ) ) {
-						iom_render_link(
-							$secondary_cta,
-							$btn_outline,
-							__( 'Members Login', 'impact-one-million' )
-						);
-					}
-					if ( ! empty( $primary_cta['url'] ) ) {
-						iom_render_link(
-							$primary_cta,
-							$btn_primary,
-							__( 'Join Now', 'impact-one-million' )
-						);
-					}
-					?>
 				</div>
 			<?php endif; ?>
 		</div>

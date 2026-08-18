@@ -5,7 +5,8 @@
  * Expects in scope: $search_label, $icon_search_uri, $util_link_class
  */
 
-$iom_inline_id = wp_unique_id( 'iom-inline-search-' );
+$iom_inline_id     = wp_unique_id( 'iom-inline-search-' );
+$search_icon_class = isset( $search_icon_class ) ? $search_icon_class : 'size-[13.5px]';
 ?>
 <div class="inline-flex min-w-0 max-w-full items-center" data-inline-search>
 	<button
@@ -18,9 +19,9 @@ $iom_inline_id = wp_unique_id( 'iom-inline-search-' );
 		<img
 			src="<?php echo esc_url( $icon_search_uri ); ?>"
 			alt=""
-			width="14"
-			height="14"
-			class="size-[13.5px] shrink-0"
+			width="18"
+			height="18"
+			class="<?php echo esc_attr( $search_icon_class ); ?> shrink-0"
 			aria-hidden="true"
 		/>
 		<span><?php echo esc_html( $search_label ); ?></span>
@@ -37,9 +38,9 @@ $iom_inline_id = wp_unique_id( 'iom-inline-search-' );
 		<img
 			src="<?php echo esc_url( $icon_search_uri ); ?>"
 			alt=""
-			width="14"
-			height="14"
-			class="size-[13.5px] shrink-0"
+			width="18"
+			height="18"
+			class="<?php echo esc_attr( $search_icon_class ); ?> shrink-0"
 			aria-hidden="true"
 		/>
 		<label class="sr-only" for="<?php echo esc_attr( $iom_inline_id ); ?>-input">
