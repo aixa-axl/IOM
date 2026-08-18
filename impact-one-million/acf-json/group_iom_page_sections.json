@@ -3331,6 +3331,7 @@
                             "label": "Image",
                             "name": "image",
                             "type": "image",
+                            "instructions": "Right-column photo. Falls back to the theme Stay Informed image if empty.",
                             "required": 0,
                             "return_format": "id",
                             "preview_size": "medium",
@@ -3364,5 +3365,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1787059800
+    "modified": 1787060400
 }

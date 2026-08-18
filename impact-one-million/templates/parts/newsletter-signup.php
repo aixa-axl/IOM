@@ -7,7 +7,7 @@
  *
  * Form posts to Mailchimp when Form Action URL is set (layout/post override, else Theme Settings).
  *
- * Figma desktop: 634:21142
+ * Figma desktop: 667:34753 / 634:21142
  *
  * @package Impact_One_Million
  */
@@ -40,12 +40,17 @@ if ( empty( $email_id ) ) {
 	$email_id = 'iom-newsletter-email';
 }
 
+$theme_uri    = get_stylesheet_directory_uri();
+$fallback_uri = $theme_uri . '/assets/images/newsletter/stay-informed.jpg';
+$fallback_abs = get_stylesheet_directory() . '/assets/images/newsletter/stay-informed.jpg';
+$has_fallback = file_exists( $fallback_abs );
+
 $is_mailchimp = (bool) $form_action && false !== strpos( $form_action, 'list-manage.com' );
 
 // Mailchimp honeypot: b_{u}_{id}
 $honeypot_name = '';
 if ( $is_mailchimp ) {
-	$query = wp_parse_url( $form_action, PHP_URL_QUERY );
+	$query  = wp_parse_url( $form_action, PHP_URL_QUERY );
 	$params = array();
 	if ( is_string( $query ) ) {
 		parse_str( $query, $params );
@@ -76,7 +81,7 @@ $btn_class = 'inline-flex shrink-0 items-center justify-center rounded-btn bg-ac
 			</div>
 
 			<form
-				class="flex w-full flex-col gap-4"
+				class="relative flex w-full flex-col gap-4"
 				method="post"
 				action="<?php echo $form_action ? esc_url( $form_action ) : '#'; ?>"
 				<?php echo $form_action ? ( $is_mailchimp ? 'target="_blank" novalidate' : '' ) : 'onsubmit="return false;"'; ?>
@@ -112,20 +117,32 @@ $btn_class = 'inline-flex shrink-0 items-center justify-center rounded-btn bg-ac
 			</form>
 		</div>
 
-		<?php if ( $image ) : ?>
+		<?php if ( $image || $has_fallback ) : ?>
 			<div class="relative h-[16rem] w-full shrink-0 overflow-hidden lg:h-[25rem] lg:w-[36.25rem]">
-				<?php
-				echo wp_get_attachment_image(
-					(int) $image,
-					'large',
-					false,
-					array(
-						'class'   => 'absolute inset-0 size-full object-cover',
-						'loading' => 'lazy',
-						'alt'     => '',
-					)
-				);
-				?>
+				<?php if ( $image ) : ?>
+					<?php
+					echo wp_get_attachment_image(
+						(int) $image,
+						'large',
+						false,
+						array(
+							'class'   => 'absolute inset-0 size-full object-cover',
+							'loading' => 'lazy',
+							'alt'     => '',
+						)
+					);
+					?>
+				<?php else : ?>
+					<img
+						src="<?php echo esc_url( $fallback_uri ); ?>"
+						alt=""
+						width="580"
+						height="400"
+						class="absolute inset-0 size-full object-cover"
+						loading="lazy"
+						decoding="async"
+					>
+				<?php endif; ?>
 			</div>
 		<?php endif; ?>
 	</div>
