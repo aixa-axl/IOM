@@ -49,7 +49,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 	<?php wp_body_open(); ?>
 
 	<header id="masthead" class="site-header relative sticky top-0 z-50 bg-white" data-mobile-nav>
-		<div class="mx-auto flex w-full max-w-site items-center justify-between gap-6 px-5 py-3 lg:items-end lg:gap-20 lg:px-gutter lg:py-3">
+		<div class="relative z-50 mx-auto flex w-full max-w-site items-center justify-between gap-6 px-5 py-3 lg:items-end lg:gap-20 lg:px-gutter lg:py-3">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="shrink-0 no-underline">
 				<?php if ( $header_logo ) : ?>
 					<?php
@@ -210,17 +210,19 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 
 			<button
 				type="button"
-				class="inline-flex size-8 items-center justify-center text-blue lg:hidden"
+				class="relative z-50 inline-flex size-8 items-center justify-center text-blue lg:hidden"
 				data-mobile-nav-toggle
 				aria-expanded="false"
 				aria-controls="mobile-nav-panel"
+				aria-label="<?php echo esc_attr__( 'Open menu', 'impact-one-million' ); ?>"
+				data-label-open="<?php echo esc_attr__( 'Open menu', 'impact-one-million' ); ?>"
+				data-label-close="<?php echo esc_attr__( 'Close menu', 'impact-one-million' ); ?>"
 			>
-				<span class="sr-only"><?php esc_html_e( 'Open menu', 'impact-one-million' ); ?></span>
-				<svg class="size-8" viewBox="0 0 32 32" fill="none" aria-hidden="true" data-mobile-nav-icon-open>
+				<svg class="pointer-events-none size-8" viewBox="0 0 32 32" fill="none" aria-hidden="true" data-mobile-nav-icon-open>
 					<path d="M4.8 9.6h22.4M4.8 16h17.6M4.8 22.4h22.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
 				</svg>
-				<svg class="hidden size-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" data-mobile-nav-icon-close>
-					<path stroke-linecap="round" stroke-width="2" d="M6 6l12 12M18 6L6 18" />
+				<svg class="pointer-events-none hidden size-8" viewBox="0 0 24 24" fill="none" aria-hidden="true" data-mobile-nav-icon-close>
+					<path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
 				</svg>
 			</button>
 		</div>

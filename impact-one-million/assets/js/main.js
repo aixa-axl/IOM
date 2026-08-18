@@ -1,5 +1,5 @@
 /**
- * Impact One Million — main theme script
+ * Impact One Million — mobile nav + inline search
  */
 (function () {
 	const header = document.querySelector('[data-mobile-nav]');
@@ -14,6 +14,7 @@
 	const searchWidgets = header.querySelectorAll('[data-inline-search]');
 	const accordions = header.querySelectorAll('[data-mobile-nav-accordion]');
 	const headerBar = header.firstElementChild;
+	const mqDesktop = window.matchMedia('(min-width: 1024px)');
 
 	function syncMobilePanelHeight() {
 		if (!mobilePanel || !headerBar) {
@@ -24,23 +25,35 @@
 		mobilePanel.style.maxHeight = mobilePanel.style.height;
 	}
 
+	function isMobileOpen() {
+		return Boolean(mobileToggle && mobileToggle.getAttribute('aria-expanded') === 'true');
+	}
+
 	function setMobileOpen(open) {
 		if (!mobileToggle || !mobilePanel) {
 			return;
 		}
+
 		mobileToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+		mobileToggle.setAttribute(
+			'aria-label',
+			open
+				? mobileToggle.getAttribute('data-label-close') || 'Close menu'
+				: mobileToggle.getAttribute('data-label-open') || 'Open menu'
+		);
 		mobilePanel.hidden = !open;
 		document.body.classList.toggle('overflow-hidden', open);
-		if (open) {
-			syncMobilePanelHeight();
-		}
+
 		if (iconOpen) {
 			iconOpen.classList.toggle('hidden', open);
 		}
 		if (iconClose) {
 			iconClose.classList.toggle('hidden', !open);
 		}
-		if (!open) {
+
+		if (open) {
+			syncMobilePanelHeight();
+		} else {
 			accordions.forEach(function (btn) {
 				setAccordionOpen(btn, false);
 			});
@@ -94,10 +107,12 @@
 	}
 
 	if (mobileToggle && mobilePanel) {
-		mobileToggle.addEventListener('click', function () {
-			const open = mobileToggle.getAttribute('aria-expanded') === 'true';
-			setMobileOpen(!open);
-			if (!open) {
+		mobileToggle.addEventListener('click', function (event) {
+			event.preventDefault();
+			event.stopPropagation();
+			const nextOpen = !isMobileOpen();
+			setMobileOpen(nextOpen);
+			if (nextOpen) {
 				closeAllSearch();
 			}
 		});
@@ -143,14 +158,30 @@
 			return;
 		}
 		closeAllSearch();
-		if (mobileToggle && mobileToggle.getAttribute('aria-expanded') === 'true') {
+		if (isMobileOpen()) {
 			setMobileOpen(false);
 			mobileToggle.focus();
 		}
 	});
 
+	function onViewportChange() {
+		if (mqDesktop.matches) {
+			setMobileOpen(false);
+			return;
+		}
+		if (isMobileOpen()) {
+			syncMobilePanelHeight();
+		}
+	}
+
+	if (typeof mqDesktop.addEventListener === 'function') {
+		mqDesktop.addEventListener('change', onViewportChange);
+	} else if (typeof mqDesktop.addListener === 'function') {
+		mqDesktop.addListener(onViewportChange);
+	}
+
 	window.addEventListener('resize', function () {
-		if (mobileToggle && mobileToggle.getAttribute('aria-expanded') === 'true') {
+		if (isMobileOpen()) {
 			syncMobilePanelHeight();
 		}
 	});
