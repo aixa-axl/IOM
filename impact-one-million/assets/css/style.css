@@ -876,6 +876,10 @@ video {
   height: 260px;
 }
 
+.h-\[4\.116rem\] {
+  height: 4.116rem;
+}
+
 .h-\[4\.5rem\] {
   height: 4.5rem;
 }
@@ -934,6 +938,10 @@ video {
 
 .w-\[1\.375rem\] {
   width: 1.375rem;
+}
+
+.w-\[10\.1875rem\] {
+  width: 10.1875rem;
 }
 
 .w-\[12\.5rem\] {
@@ -1830,6 +1838,10 @@ video {
 
 .leading-none {
   line-height: 1;
+}
+
+.leading-normal {
+  line-height: 1.5;
 }
 
 .tracking-\[0\.02em\] {

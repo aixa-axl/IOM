@@ -2394,6 +2394,78 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_founding_partners": {
+                    "key": "layout_iom_founding_partners",
+                    "name": "founding_partners",
+                    "label": "Founding Partners",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_fp_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. Founding Partners",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_fp_partners",
+                            "label": "Partners",
+                            "name": "partners",
+                            "type": "repeater",
+                            "instructions": "Partner cards. Desktop: 2 columns. Mobile: stacked.",
+                            "required": 0,
+                            "layout": "block",
+                            "button_label": "Add Partner",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_fp_logo",
+                                    "label": "Logo",
+                                    "name": "logo",
+                                    "type": "image",
+                                    "instructions": "Partner logo. Returns attachment ID.",
+                                    "required": 0,
+                                    "return_format": "id",
+                                    "preview_size": "medium",
+                                    "library": "all",
+                                    "parent_repeater": "field_iom_fp_partners"
+                                },
+                                {
+                                    "key": "field_iom_fp_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "type": "text",
+                                    "instructions": "e.g. Ethical Supply Chain",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_fp_partners"
+                                },
+                                {
+                                    "key": "field_iom_fp_body",
+                                    "label": "Body",
+                                    "name": "body",
+                                    "type": "textarea",
+                                    "instructions": "Short description of the partner.",
+                                    "required": 0,
+                                    "rows": 3,
+                                    "new_lines": "",
+                                    "parent_repeater": "field_iom_fp_partners"
+                                },
+                                {
+                                    "key": "field_iom_fp_link",
+                                    "label": "Website Link",
+                                    "name": "link",
+                                    "type": "link",
+                                    "instructions": "Underline CTA. Leave empty to hide.",
+                                    "required": 0,
+                                    "return_format": "array",
+                                    "parent_repeater": "field_iom_fp_partners"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -2419,5 +2491,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755471000
+    "modified": 1755471600
 }
