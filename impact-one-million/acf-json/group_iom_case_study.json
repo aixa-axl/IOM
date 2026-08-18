@@ -10,6 +10,31 @@
             "placement": "top"
         },
         {
+            "key": "field_iom_csd_breadcrumb_label",
+            "label": "Breadcrumb Label",
+            "name": "cs_breadcrumb_label",
+            "type": "text",
+            "instructions": "First part of the trail (e.g. Case Study). Defaults to Case Study.",
+            "required": 0,
+            "default_value": "Case Study"
+        },
+        {
+            "key": "field_iom_csd_breadcrumb_title",
+            "label": "Breadcrumb Title",
+            "name": "cs_breadcrumb_title",
+            "type": "text",
+            "instructions": "Second part of the trail — can differ from the main heading (e.g. shorter uppercase title).",
+            "required": 0
+        },
+        {
+            "key": "field_iom_csd_display_title",
+            "label": "Display Title",
+            "name": "cs_display_title",
+            "type": "text",
+            "instructions": "Large H1 in the hero. Leave empty to use the post title.",
+            "required": 0
+        },
+        {
             "key": "field_iom_csd_intro",
             "label": "Intro",
             "name": "cs_intro",
@@ -399,5 +424,5 @@
     "active": true,
     "description": "Fields for the case study single template.",
     "show_in_rest": 0,
-    "modified": 1755518400
+    "modified": 1755519000
 }

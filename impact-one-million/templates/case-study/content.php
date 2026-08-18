@@ -15,9 +15,12 @@ $title     = get_the_title( $post_id );
 $permalink = get_permalink( $post_id );
 $date      = get_the_date( '', $post_id );
 
-$intro       = function_exists( 'get_field' ) ? get_field( 'cs_intro', $post_id ) : '';
-$pdf         = function_exists( 'get_field' ) ? get_field( 'cs_pdf', $post_id ) : null;
-$show_share  = function_exists( 'get_field' ) ? get_field( 'cs_show_share', $post_id ) : true;
+$breadcrumb_label = function_exists( 'get_field' ) ? get_field( 'cs_breadcrumb_label', $post_id ) : '';
+$breadcrumb_title = function_exists( 'get_field' ) ? get_field( 'cs_breadcrumb_title', $post_id ) : '';
+$display_title    = function_exists( 'get_field' ) ? get_field( 'cs_display_title', $post_id ) : '';
+$intro            = function_exists( 'get_field' ) ? get_field( 'cs_intro', $post_id ) : '';
+$pdf              = function_exists( 'get_field' ) ? get_field( 'cs_pdf', $post_id ) : null;
+$show_share       = function_exists( 'get_field' ) ? get_field( 'cs_show_share', $post_id ) : true;
 $overview    = function_exists( 'get_field' ) ? get_field( 'cs_overview', $post_id ) : '';
 $meta_prog   = function_exists( 'get_field' ) ? get_field( 'cs_meta_programme', $post_id ) : '';
 $meta_country = function_exists( 'get_field' ) ? get_field( 'cs_meta_country', $post_id ) : '';
@@ -119,8 +122,17 @@ if ( ! empty( $countries ) && ! is_wp_error( $countries ) ) {
 }
 $tags = array_values( array_unique( array_filter( $tags ) ) );
 
-$breadcrumb_parent = __( 'Case Study', 'impact-one-million' );
-$pdf_url           = ! empty( $pdf['url'] ) ? $pdf['url'] : '';
+if ( ! $breadcrumb_label ) {
+	$breadcrumb_label = __( 'Case Study', 'impact-one-million' );
+}
+if ( ! $breadcrumb_title ) {
+	$breadcrumb_title = $title;
+}
+if ( ! $display_title ) {
+	$display_title = $title;
+}
+
+$pdf_url = ! empty( $pdf['url'] ) ? $pdf['url'] : '';
 
 $meta_rows = array(
 	array( 'label' => __( 'Programme Area', 'impact-one-million' ), 'value' => $meta_prog ),
@@ -167,10 +179,14 @@ $has_join = $join_eye || $join_head || $join_body || $join_image || ! empty( $jo
 		<div class="mx-auto flex w-full max-w-site flex-col gap-10">
 			<div class="flex w-full max-w-[50rem] flex-col gap-4">
 				<nav class="font-display text-body uppercase tracking-[1px] text-white/80" aria-label="<?php echo esc_attr__( 'Breadcrumb', 'impact-one-million' ); ?>">
-					<span><?php echo esc_html( $breadcrumb_parent ); ?></span>
-					<?php if ( $title ) : ?>
-						<span aria-hidden="true"> / </span>
-						<span class="text-white"><?php echo esc_html( $title ); ?></span>
+					<?php if ( $breadcrumb_label ) : ?>
+						<span><?php echo esc_html( $breadcrumb_label ); ?></span>
+					<?php endif; ?>
+					<?php if ( $breadcrumb_title ) : ?>
+						<?php if ( $breadcrumb_label ) : ?>
+							<span aria-hidden="true"> / </span>
+						<?php endif; ?>
+						<span class="text-white"><?php echo esc_html( $breadcrumb_title ); ?></span>
 					<?php endif; ?>
 				</nav>
 
@@ -180,9 +196,9 @@ $has_join = $join_eye || $join_head || $join_body || $join_image || ! empty( $jo
 					</p>
 				<?php endif; ?>
 
-				<?php if ( $title ) : ?>
+				<?php if ( $display_title ) : ?>
 					<h1 class="m-0 font-display text-headline leading-[1.1] text-white lg:text-title lg:leading-[1.1]">
-						<?php echo esc_html( $title ); ?>
+						<?php echo esc_html( $display_title ); ?>
 					</h1>
 				<?php endif; ?>
 
@@ -218,7 +234,7 @@ $has_join = $join_eye || $join_head || $join_body || $join_image || ! empty( $jo
 									type="button"
 									class="<?php echo esc_attr( $btn_outline_w ); ?>"
 									data-share-url="<?php echo esc_url( $permalink ); ?>"
-									data-share-title="<?php echo esc_attr( $title ); ?>"
+									data-share-title="<?php echo esc_attr( $display_title ); ?>"
 								>
 									<?php echo esc_html__( 'Share', 'impact-one-million' ); ?>
 								</button>
