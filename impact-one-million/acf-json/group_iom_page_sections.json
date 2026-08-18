@@ -2284,6 +2284,55 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_governance_structure": {
+                    "key": "layout_iom_governance_structure",
+                    "name": "governance_structure",
+                    "label": "Governance Structure",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_gs_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. Governance Structure",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_gs_body",
+                            "label": "Body",
+                            "name": "body",
+                            "type": "textarea",
+                            "instructions": "Intro paragraph beside / below the heading.",
+                            "required": 0,
+                            "rows": 4,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_iom_gs_items",
+                            "label": "Items",
+                            "name": "items",
+                            "type": "repeater",
+                            "instructions": "Card-title list under the body. Leave empty to hide.",
+                            "required": 0,
+                            "layout": "table",
+                            "button_label": "Add Item",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_gs_item_label",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "type": "text",
+                                    "instructions": "e.g. Independent Board of Trustees",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_gs_items"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -2309,5 +2358,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755469800
+    "modified": 1755469900
 }

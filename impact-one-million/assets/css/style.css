@@ -2477,6 +2477,10 @@ body {
     width: 11.1875rem;
   }
 
+  .lg\:w-\[31\.25rem\] {
+    width: 31.25rem;
+  }
+
   .lg\:w-\[34\.3125rem\] {
     width: 34.3125rem;
   }
