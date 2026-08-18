@@ -3076,11 +3076,25 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_iom_sb_variant",
+                            "label": "Variant",
+                            "name": "variant",
+                            "type": "select",
+                            "instructions": "Navy = dark bar (3 metrics). Light = off-white stats row (often 4 metrics).",
+                            "required": 0,
+                            "choices": {
+                                "navy": "Navy",
+                                "light": "Light (off-white)"
+                            },
+                            "default_value": "navy",
+                            "return_format": "value"
+                        },
+                        {
                             "key": "field_iom_sb_stats",
                             "label": "Stats",
                             "name": "stats",
                             "type": "repeater",
-                            "instructions": "Typically 3 metrics. Desktop: equal columns. Mobile: stacked.",
+                            "instructions": "Desktop: equal columns. Mobile: stacked.",
                             "required": 0,
                             "layout": "table",
                             "button_label": "Add Stat",
@@ -3090,7 +3104,7 @@
                                     "label": "Value",
                                     "name": "value",
                                     "type": "text",
-                                    "instructions": "e.g. [X] or 12,450",
+                                    "instructions": "e.g. 200+ or 45",
                                     "required": 0,
                                     "parent_repeater": "field_iom_sb_stats"
                                 },
@@ -3099,7 +3113,7 @@
                                     "label": "Label",
                                     "name": "label",
                                     "type": "text",
-                                    "instructions": "e.g. Countries",
+                                    "instructions": "e.g. Press Releases",
                                     "required": 0,
                                     "parent_repeater": "field_iom_sb_stats"
                                 }
@@ -3177,5 +3191,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755516000
+    "modified": 1755516600
 }
