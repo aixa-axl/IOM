@@ -1,0 +1,289 @@
+{
+    "key": "group_iom_press_release",
+    "title": "Press Release Detail",
+    "fields": [
+        {
+            "key": "field_iom_prd_tab_hero",
+            "label": "Hero",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_prd_breadcrumb_label",
+            "label": "Breadcrumb Label",
+            "name": "pr_breadcrumb_label",
+            "type": "text",
+            "instructions": "First part of the trail (e.g. About Us). Defaults to About Us.",
+            "required": 0,
+            "default_value": "About Us"
+        },
+        {
+            "key": "field_iom_prd_breadcrumb_title",
+            "label": "Breadcrumb Title",
+            "name": "pr_breadcrumb_title",
+            "type": "text",
+            "instructions": "Second part of the trail — can differ from the main heading.",
+            "required": 0
+        },
+        {
+            "key": "field_iom_prd_display_title",
+            "label": "Display Title",
+            "name": "pr_display_title",
+            "type": "text",
+            "instructions": "Large H1 in the hero. Leave empty to use the post title.",
+            "required": 0
+        },
+        {
+            "key": "field_iom_prd_intro",
+            "label": "Intro",
+            "name": "pr_intro",
+            "type": "textarea",
+            "instructions": "Lead paragraph under the title in the navy hero.",
+            "required": 0,
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_iom_prd_tab_overview",
+            "label": "Overview",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_prd_overview",
+            "label": "Project Overview",
+            "name": "pr_overview",
+            "type": "wysiwyg",
+            "instructions": "Left column body (Project Overview).",
+            "required": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0
+        },
+        {
+            "key": "field_iom_prd_meta_release_date",
+            "label": "Release Date",
+            "name": "pr_meta_release_date",
+            "type": "text",
+            "instructions": "Sidebar value. Falls back to the post publish date if empty.",
+            "required": 0
+        },
+        {
+            "key": "field_iom_prd_meta_region",
+            "label": "Region",
+            "name": "pr_meta_region",
+            "type": "text",
+            "instructions": "Sidebar value. Falls back to the Country taxonomy if empty.",
+            "required": 0
+        },
+        {
+            "key": "field_iom_prd_meta_topic",
+            "label": "Topic",
+            "name": "pr_meta_topic",
+            "type": "text",
+            "instructions": "Sidebar value. Falls back to the first Topic (tag) if empty.",
+            "required": 0
+        },
+        {
+            "key": "field_iom_prd_meta_partner",
+            "label": "Partner",
+            "name": "pr_meta_partner",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_iom_prd_body",
+            "label": "Body",
+            "name": "pr_body",
+            "type": "wysiwyg",
+            "instructions": "Long-form content below the overview columns.",
+            "required": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0
+        },
+        {
+            "key": "field_iom_prd_tab_gallery",
+            "label": "Gallery",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_prd_gallery_heading",
+            "label": "Gallery Heading",
+            "name": "pr_gallery_heading",
+            "type": "text",
+            "default_value": "Gallery",
+            "required": 0
+        },
+        {
+            "key": "field_iom_prd_gallery",
+            "label": "Gallery Images",
+            "name": "pr_gallery",
+            "type": "gallery",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "insert": "append",
+            "library": "all"
+        },
+        {
+            "key": "field_iom_prd_tab_quote",
+            "label": "Quote",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_prd_quote",
+            "label": "Quote",
+            "name": "pr_quote",
+            "type": "textarea",
+            "required": 0,
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_iom_prd_quote_name",
+            "label": "Name",
+            "name": "pr_quote_name",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_iom_prd_quote_role",
+            "label": "Role / Location",
+            "name": "pr_quote_role",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_iom_prd_tab_related",
+            "label": "Related",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_prd_related_heading",
+            "label": "Related Heading",
+            "name": "pr_related_heading",
+            "type": "text",
+            "default_value": "Related Releases",
+            "required": 0
+        },
+        {
+            "key": "field_iom_prd_related_see_all",
+            "label": "See All CTA",
+            "name": "pr_related_see_all",
+            "type": "link",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_iom_prd_related_link_label",
+            "label": "Card Link Label",
+            "name": "pr_related_link_label",
+            "type": "text",
+            "default_value": "Read press release",
+            "required": 0
+        },
+        {
+            "key": "field_iom_prd_related",
+            "label": "Related Posts",
+            "name": "pr_related",
+            "type": "relationship",
+            "instructions": "Leave empty to auto-pull the latest 3 other press releases.",
+            "required": 0,
+            "post_type": ["post"],
+            "filters": ["search"],
+            "return_format": "id",
+            "max": 3
+        },
+        {
+            "key": "field_iom_prd_tab_partner",
+            "label": "Become a Partner",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_prd_partner_heading",
+            "label": "Heading",
+            "name": "pr_partner_heading",
+            "type": "text",
+            "default_value": "Help us reach further",
+            "required": 0
+        },
+        {
+            "key": "field_iom_prd_partner_intro",
+            "label": "Intro",
+            "name": "pr_partner_intro",
+            "type": "textarea",
+            "required": 0,
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_iom_prd_partner_cards",
+            "label": "Partner Cards",
+            "name": "pr_partner_cards",
+            "type": "repeater",
+            "instructions": "Leave empty to hide this section. Typically 3 cards (Buyers / Foundations / Factories).",
+            "required": 0,
+            "layout": "block",
+            "button_label": "Add Card",
+            "sub_fields": [
+                {
+                    "key": "field_iom_prd_partner_card_title",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "required": 0,
+                    "parent_repeater": "field_iom_prd_partner_cards"
+                },
+                {
+                    "key": "field_iom_prd_partner_card_body",
+                    "label": "Body",
+                    "name": "body",
+                    "type": "textarea",
+                    "required": 0,
+                    "rows": 3,
+                    "new_lines": "",
+                    "parent_repeater": "field_iom_prd_partner_cards"
+                },
+                {
+                    "key": "field_iom_prd_partner_card_link",
+                    "label": "Link",
+                    "name": "link",
+                    "type": "link",
+                    "required": 0,
+                    "return_format": "array",
+                    "parent_repeater": "field_iom_prd_partner_cards"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "category:press-release"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Fields for the press release single template. Shows when the post is in the Press Release category.",
+    "show_in_rest": 0,
+    "modified": 1787057290
+}

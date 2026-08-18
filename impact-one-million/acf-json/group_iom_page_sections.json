@@ -3249,6 +3249,77 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_newsletter_signup": {
+                    "key": "layout_iom_newsletter_signup",
+                    "name": "newsletter_signup",
+                    "label": "Newsletter Signup",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_ns_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. Stay Informed",
+                            "required": 0,
+                            "default_value": "Stay Informed"
+                        },
+                        {
+                            "key": "field_iom_ns_body",
+                            "label": "Body",
+                            "name": "body",
+                            "type": "textarea",
+                            "required": 0,
+                            "rows": 3,
+                            "new_lines": "",
+                            "default_value": "Get the latest news, campaign updates, and press releases delivered directly to your inbox. No spam — just the stories that matter."
+                        },
+                        {
+                            "key": "field_iom_ns_placeholder",
+                            "label": "Email Placeholder",
+                            "name": "placeholder",
+                            "type": "text",
+                            "required": 0,
+                            "default_value": "Your email address"
+                        },
+                        {
+                            "key": "field_iom_ns_button_label",
+                            "label": "Button Label",
+                            "name": "button_label",
+                            "type": "text",
+                            "required": 0,
+                            "default_value": "Subscribe"
+                        },
+                        {
+                            "key": "field_iom_ns_privacy_note",
+                            "label": "Privacy Note",
+                            "name": "privacy_note",
+                            "type": "text",
+                            "required": 0,
+                            "default_value": "We respect your privacy. Unsubscribe at any time."
+                        },
+                        {
+                            "key": "field_iom_ns_form_action",
+                            "label": "Form Action URL",
+                            "name": "form_action",
+                            "type": "url",
+                            "instructions": "Optional newsletter provider endpoint. Leave empty until connected.",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_ns_image",
+                            "label": "Image",
+                            "name": "image",
+                            "type": "image",
+                            "required": 0,
+                            "return_format": "id",
+                            "preview_size": "medium",
+                            "library": "all"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -3274,5 +3345,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755517800
+    "modified": 1787057290
 }
