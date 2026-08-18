@@ -2211,7 +2211,7 @@
                 "layout_iom_ambassador_stories": {
                     "key": "layout_iom_ambassador_stories",
                     "name": "ambassador_stories",
-                    "label": "Ambassador Stories",
+                    "label": "Ambassador Stories / Quote Feature",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -2233,9 +2233,49 @@
                             "label": "Quote",
                             "name": "quote",
                             "type": "textarea",
-                            "instructions": "Featured ambassador quote.",
+                            "instructions": "Featured quote.",
                             "required": 0,
                             "rows": 4,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_iom_as_stats",
+                            "label": "Stats",
+                            "name": "stats",
+                            "type": "repeater",
+                            "instructions": "Optional 3-column stats under the quote (left column). Leave empty to hide.",
+                            "required": 0,
+                            "layout": "table",
+                            "button_label": "Add Stat",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_as_stat_value",
+                                    "label": "Value",
+                                    "name": "value",
+                                    "type": "text",
+                                    "instructions": "e.g. 10,000+",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_as_stats"
+                                },
+                                {
+                                    "key": "field_iom_as_stat_label",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "type": "text",
+                                    "instructions": "e.g. Workers reached",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_as_stats"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_iom_as_body",
+                            "label": "Body",
+                            "name": "body",
+                            "type": "textarea",
+                            "instructions": "Optional supporting text under the stats (or under the quote). Leave empty to hide.",
+                            "required": 0,
+                            "rows": 3,
                             "new_lines": ""
                         },
                         {
@@ -2243,7 +2283,7 @@
                             "label": "Featured Label",
                             "name": "featured",
                             "type": "text",
-                            "instructions": "e.g. Featured: Ambassador Three",
+                            "instructions": "e.g. Featured: Ambassador Three. Leave empty when using Stats/Body only.",
                             "required": 0
                         },
                         {
@@ -2251,7 +2291,7 @@
                             "label": "Campaign",
                             "name": "campaign",
                             "type": "text",
-                            "instructions": "e.g. Campaign: Voices of Migration",
+                            "instructions": "e.g. Campaign: Voices of Migration. Leave empty when using Stats/Body only.",
                             "required": 0
                         },
                         {
@@ -2259,7 +2299,7 @@
                             "label": "Image",
                             "name": "image",
                             "type": "image",
-                            "instructions": "Desktop: right of quote. Mobile: below attribution.",
+                            "instructions": "Desktop: right of quote. Mobile: below content.",
                             "required": 0,
                             "return_format": "id",
                             "preview_size": "medium",
@@ -2270,7 +2310,7 @@
                             "label": "Highlights",
                             "name": "highlights",
                             "type": "repeater",
-                            "instructions": "Typically 3 columns. Leave empty to hide.",
+                            "instructions": "Full-width columns below the quote/image row. Leave empty to hide.",
                             "required": 0,
                             "layout": "block",
                             "button_label": "Add Highlight",
@@ -2628,5 +2668,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755472200
+    "modified": 1755472800
 }

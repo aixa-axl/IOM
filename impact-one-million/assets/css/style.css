@@ -740,6 +740,10 @@ video {
   display: inline-block;
 }
 
+.inline {
+  display: inline;
+}
+
 .flex {
   display: flex;
 }
@@ -1027,6 +1031,10 @@ video {
 
 .max-w-\[40rem\] {
   max-width: 40rem;
+}
+
+.max-w-\[41\.5625rem\] {
+  max-width: 41.5625rem;
 }
 
 .max-w-\[50rem\] {
@@ -2363,8 +2371,16 @@ body {
     flex-direction: row;
   }
 
+  .sm\:flex-wrap {
+    flex-wrap: wrap;
+  }
+
   .sm\:items-center {
     align-items: center;
+  }
+
+  .sm\:gap-12 {
+    gap: 3rem;
   }
 }
 
