@@ -861,6 +861,10 @@ video {
   height: 1.75rem;
 }
 
+.h-9 {
+  height: 2.25rem;
+}
+
 .h-\[12\.625rem\] {
   height: 12.625rem;
 }
@@ -963,6 +967,10 @@ video {
 
 .w-\[1\.375rem\] {
   width: 1.375rem;
+}
+
+.w-\[1\.925rem\] {
+  width: 1.925rem;
 }
 
 .w-\[10\.1875rem\] {
@@ -2708,6 +2716,10 @@ body {
 
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .lg\:grid-cols-5 {
