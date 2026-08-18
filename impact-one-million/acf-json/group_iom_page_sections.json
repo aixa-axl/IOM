@@ -3068,6 +3068,46 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_stat_bar": {
+                    "key": "layout_iom_stat_bar",
+                    "name": "stat_bar",
+                    "label": "Stat Bar",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_sb_stats",
+                            "label": "Stats",
+                            "name": "stats",
+                            "type": "repeater",
+                            "instructions": "Typically 3 metrics. Desktop: equal columns. Mobile: stacked.",
+                            "required": 0,
+                            "layout": "table",
+                            "button_label": "Add Stat",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_sb_stat_value",
+                                    "label": "Value",
+                                    "name": "value",
+                                    "type": "text",
+                                    "instructions": "e.g. [X] or 12,450",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_sb_stats"
+                                },
+                                {
+                                    "key": "field_iom_sb_stat_label",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "type": "text",
+                                    "instructions": "e.g. Countries",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_sb_stats"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -3093,5 +3133,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755514800
+    "modified": 1755515400
 }
