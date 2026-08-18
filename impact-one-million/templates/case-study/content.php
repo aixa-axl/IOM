@@ -112,6 +112,9 @@ $icon_presets = array(
 $tags = array();
 if ( ! empty( $categories ) && ! is_wp_error( $categories ) ) {
 	foreach ( $categories as $cat ) {
+		if ( 'uncategorized' === $cat->slug ) {
+			continue;
+		}
 		$tags[] = $cat->name;
 	}
 }
@@ -203,9 +206,9 @@ $has_join = $join_eye || $join_head || $join_body || $join_image || ! empty( $jo
 				<?php endif; ?>
 
 				<?php if ( ! empty( $tags ) ) : ?>
-					<ul class="m-0 flex list-none flex-wrap items-center gap-3 p-0">
+					<ul class="m-0 flex list-none flex-wrap items-center gap-4 p-0">
 						<?php foreach ( $tags as $tag ) : ?>
-							<li class="rounded-btn bg-accent-blue px-2 py-1 font-display text-body uppercase tracking-[1px] text-white">
+							<li class="rounded-card border border-solid border-white px-3 py-2 font-display text-label uppercase tracking-[1px] text-white">
 								<?php echo esc_html( $tag ); ?>
 							</li>
 						<?php endforeach; ?>
