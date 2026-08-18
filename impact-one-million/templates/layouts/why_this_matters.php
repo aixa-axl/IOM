@@ -52,31 +52,65 @@ if ( ! is_array( $cards ) ) {
 		<?php endif; ?>
 
 		<?php if ( ! empty( $cards ) ) : ?>
-			<ul class="m-0 flex w-full list-none flex-col flex-wrap items-stretch justify-center gap-8 p-0 sm:flex-row">
-				<?php foreach ( $cards as $card ) : ?>
-					<?php
-					$label = isset( $card['label'] ) ? $card['label'] : '';
-					if ( ! $label ) {
-						continue;
-					}
-					?>
-					<li class="flex w-full flex-col items-start gap-4 rounded-card bg-off-white p-6 sm:w-[min(100%,25rem)]">
-						<img
-							src="<?php echo esc_url( $arrow_uri ); ?>"
-							alt=""
-							width="44"
-							height="45"
-							class="h-[2.8125rem] w-11 shrink-0"
-							loading="lazy"
-							decoding="async"
-							aria-hidden="true"
-						>
-						<p class="m-0 font-display text-[2rem] uppercase leading-none tracking-[2px] text-blue">
-							<?php echo esc_html( $label ); ?>
-						</p>
-					</li>
-				<?php endforeach; ?>
-			</ul>
+			<?php
+			$valid_cards = array();
+			foreach ( $cards as $card ) {
+				$label = isset( $card['label'] ) ? $card['label'] : '';
+				if ( $label ) {
+					$valid_cards[] = $label;
+				}
+			}
+
+			$row_one = array_slice( $valid_cards, 0, 3 );
+			$row_two = array_slice( $valid_cards, 3 );
+			?>
+			<?php if ( ! empty( $valid_cards ) ) : ?>
+				<div class="flex w-full flex-col gap-8">
+					<?php if ( ! empty( $row_one ) ) : ?>
+						<ul class="m-0 grid w-full list-none grid-cols-1 gap-8 p-0 lg:grid-cols-3">
+							<?php foreach ( $row_one as $label ) : ?>
+								<li class="flex flex-col items-start gap-4 rounded-card bg-off-white p-6">
+									<img
+										src="<?php echo esc_url( $arrow_uri ); ?>"
+										alt=""
+										width="44"
+										height="45"
+										class="h-[2.8125rem] w-11 shrink-0"
+										loading="lazy"
+										decoding="async"
+										aria-hidden="true"
+									>
+									<p class="m-0 font-display text-[2rem] uppercase leading-none tracking-[2px] text-blue">
+										<?php echo esc_html( $label ); ?>
+									</p>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+					<?php endif; ?>
+
+					<?php if ( ! empty( $row_two ) ) : ?>
+						<ul class="m-0 mx-auto grid w-full list-none grid-cols-1 gap-8 p-0 lg:w-[calc((200%-2rem)/3)] lg:grid-cols-2">
+							<?php foreach ( $row_two as $label ) : ?>
+								<li class="flex flex-col items-start gap-4 rounded-card bg-off-white p-6">
+									<img
+										src="<?php echo esc_url( $arrow_uri ); ?>"
+										alt=""
+										width="44"
+										height="45"
+										class="h-[2.8125rem] w-11 shrink-0"
+										loading="lazy"
+										decoding="async"
+										aria-hidden="true"
+									>
+									<p class="m-0 font-display text-[2rem] uppercase leading-none tracking-[2px] text-blue">
+										<?php echo esc_html( $label ); ?>
+									</p>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+					<?php endif; ?>
+				</div>
+			<?php endif; ?>
 		<?php endif; ?>
 
 		<?php if ( $footer ) : ?>

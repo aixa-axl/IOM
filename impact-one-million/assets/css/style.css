@@ -2364,10 +2364,6 @@ body {
 }
 
 @media (min-width: 640px) {
-  .sm\:w-\[min\(100\%\2c 25rem\)\] {
-    width: min(100%, 25rem);
-  }
-
   .sm\:w-auto {
     width: auto;
   }
@@ -2544,6 +2540,10 @@ body {
 
   .lg\:w-\[549px\] {
     width: 549px;
+  }
+
+  .lg\:w-\[calc\(\(200\%-2rem\)\/3\)\] {
+    width: calc((200% - 2rem) / 3);
   }
 
   .lg\:w-\[min\(100\%\2c 67\.5rem\)\] {
