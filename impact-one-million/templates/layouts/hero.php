@@ -201,7 +201,7 @@ $eyebrow_is_simple = $subtitle && ! $subtitle_parent;
 			<?php endif; ?>
 
 			<?php if ( $has_ctas ) : ?>
-				<div class="flex w-full flex-col items-stretch gap-3 lg:flex-row lg:flex-wrap lg:items-start lg:gap-4 lg:whitespace-nowrap">
+				<div class="flex w-full flex-col items-stretch gap-3 lg:flex-row lg:flex-nowrap lg:items-start lg:gap-4 lg:whitespace-nowrap">
 					<?php
 					if ( ! empty( $primary_cta['url'] ) ) {
 						iom_render_link(

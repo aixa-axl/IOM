@@ -2722,8 +2722,8 @@ body {
     flex-direction: column;
   }
 
-  .lg\:flex-wrap {
-    flex-wrap: wrap;
+  .lg\:flex-nowrap {
+    flex-wrap: nowrap;
   }
 
   .lg\:items-start {
