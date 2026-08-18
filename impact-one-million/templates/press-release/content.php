@@ -129,30 +129,32 @@ $has_partner = ! empty( $partner_cards );
 
 	<!-- Hero -->
 	<header class="bg-blue px-10 py-16 lg:px-section lg:py-gutter">
-		<div class="mx-auto flex w-full max-w-site flex-col gap-8 lg:max-w-[50rem]">
-			<nav class="font-display text-body uppercase tracking-[1px] text-white/80" aria-label="<?php echo esc_attr__( 'Breadcrumb', 'impact-one-million' ); ?>">
-				<?php if ( $breadcrumb_label ) : ?>
-					<span><?php echo esc_html( $breadcrumb_label ); ?></span>
-				<?php endif; ?>
-				<?php if ( $breadcrumb_title ) : ?>
+		<div class="mx-auto flex w-full max-w-site flex-col gap-8">
+			<div class="flex w-full max-w-[50rem] flex-col gap-8">
+				<nav class="font-display text-body uppercase tracking-[1px] text-white/80" aria-label="<?php echo esc_attr__( 'Breadcrumb', 'impact-one-million' ); ?>">
 					<?php if ( $breadcrumb_label ) : ?>
-						<span aria-hidden="true"> / </span>
+						<span><?php echo esc_html( $breadcrumb_label ); ?></span>
 					<?php endif; ?>
-					<span class="text-white"><?php echo esc_html( $breadcrumb_title ); ?></span>
+					<?php if ( $breadcrumb_title ) : ?>
+						<?php if ( $breadcrumb_label ) : ?>
+							<span aria-hidden="true"> / </span>
+						<?php endif; ?>
+						<span class="text-white"><?php echo esc_html( $breadcrumb_title ); ?></span>
+					<?php endif; ?>
+				</nav>
+
+				<?php if ( $display_title ) : ?>
+					<h1 class="m-0 font-display text-headline leading-[1.1] text-white lg:text-title lg:leading-[1.1]">
+						<?php echo esc_html( $display_title ); ?>
+					</h1>
 				<?php endif; ?>
-			</nav>
 
-			<?php if ( $display_title ) : ?>
-				<h1 class="m-0 font-display text-headline leading-[1.1] text-white lg:text-title lg:leading-[1.1]">
-					<?php echo esc_html( $display_title ); ?>
-				</h1>
-			<?php endif; ?>
-
-			<?php if ( $intro ) : ?>
-				<p class="m-0 font-sans text-label leading-[1.5] text-white">
-					<?php echo esc_html( $intro ); ?>
-				</p>
-			<?php endif; ?>
+				<?php if ( $intro ) : ?>
+					<p class="m-0 font-sans text-label leading-[1.5] text-white">
+						<?php echo esc_html( $intro ); ?>
+					</p>
+				<?php endif; ?>
+			</div>
 		</div>
 	</header>
 
