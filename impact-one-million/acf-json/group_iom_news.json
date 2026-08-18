@@ -1,0 +1,369 @@
+{
+    "key": "group_iom_news",
+    "title": "News Detail",
+    "fields": [
+        {
+            "key": "field_iom_nd_tab_hero",
+            "label": "Hero",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_nd_breadcrumb_label",
+            "label": "Breadcrumb Label",
+            "name": "news_breadcrumb_label",
+            "type": "text",
+            "instructions": "First part of the trail (e.g. News). Defaults to News.",
+            "required": 0,
+            "default_value": "News"
+        },
+        {
+            "key": "field_iom_nd_breadcrumb_title",
+            "label": "Breadcrumb Title",
+            "name": "news_breadcrumb_title",
+            "type": "text",
+            "instructions": "Second part of the trail \u2014 can differ from the main heading.",
+            "required": 0
+        },
+        {
+            "key": "field_iom_nd_display_title",
+            "label": "Display Title",
+            "name": "news_display_title",
+            "type": "text",
+            "instructions": "Large H1 in the hero. Leave empty to use the post title.",
+            "required": 0
+        },
+        {
+            "key": "field_iom_nd_intro",
+            "label": "Intro",
+            "name": "news_intro",
+            "type": "textarea",
+            "instructions": "Lead paragraph under the title in the navy hero.",
+            "required": 0,
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_iom_nd_tab_overview",
+            "label": "Overview",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_nd_overview",
+            "label": "Project Overview",
+            "name": "news_overview",
+            "type": "wysiwyg",
+            "instructions": "Left column body (Project Overview).",
+            "required": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0
+        },
+        {
+            "key": "field_iom_nd_meta_release_date",
+            "label": "Publish Date",
+            "name": "news_meta_release_date",
+            "type": "text",
+            "instructions": "Sidebar value. Falls back to the post publish date if empty.",
+            "required": 0
+        },
+        {
+            "key": "field_iom_nd_meta_region",
+            "label": "Region",
+            "name": "news_meta_region",
+            "type": "text",
+            "instructions": "Sidebar value. Falls back to the Country taxonomy if empty.",
+            "required": 0
+        },
+        {
+            "key": "field_iom_nd_meta_topic",
+            "label": "Topic",
+            "name": "news_meta_topic",
+            "type": "text",
+            "instructions": "Sidebar value. Falls back to the first Topic (tag) if empty.",
+            "required": 0
+        },
+        {
+            "key": "field_iom_nd_meta_partner",
+            "label": "Partner",
+            "name": "news_meta_partner",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_iom_nd_body",
+            "label": "Body",
+            "name": "news_body",
+            "type": "wysiwyg",
+            "instructions": "Long-form content below the overview columns.",
+            "required": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0
+        },
+        {
+            "key": "field_iom_nd_tab_gallery",
+            "label": "Gallery",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_nd_gallery_heading",
+            "label": "Gallery Heading",
+            "name": "news_gallery_heading",
+            "type": "text",
+            "default_value": "Gallery",
+            "required": 0
+        },
+        {
+            "key": "field_iom_nd_gallery",
+            "label": "Gallery Images",
+            "name": "news_gallery",
+            "type": "gallery",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "insert": "append",
+            "library": "all"
+        },
+        {
+            "key": "field_iom_nd_tab_quote",
+            "label": "Quote",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_nd_quote",
+            "label": "Quote",
+            "name": "news_quote",
+            "type": "textarea",
+            "required": 0,
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_iom_nd_quote_name",
+            "label": "Name",
+            "name": "news_quote_name",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_iom_nd_quote_role",
+            "label": "Role / Location",
+            "name": "news_quote_role",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_iom_nd_tab_related",
+            "label": "Related",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_nd_related_heading",
+            "label": "Related Heading",
+            "name": "news_related_heading",
+            "type": "text",
+            "default_value": "Related News",
+            "required": 0
+        },
+        {
+            "key": "field_iom_nd_related_see_all",
+            "label": "See All CTA",
+            "name": "news_related_see_all",
+            "type": "link",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_iom_nd_related_link_label",
+            "label": "Card Link Label",
+            "name": "news_related_link_label",
+            "type": "text",
+            "default_value": "Read news",
+            "required": 0
+        },
+        {
+            "key": "field_iom_nd_related",
+            "label": "Related Posts",
+            "name": "news_related",
+            "type": "relationship",
+            "instructions": "Leave empty to auto-pull the latest 3 other news posts.",
+            "required": 0,
+            "post_type": [
+                "post"
+            ],
+            "filters": [
+                "search"
+            ],
+            "return_format": "id",
+            "max": 3
+        },
+        {
+            "key": "field_iom_nd_tab_partner",
+            "label": "Become a Partner",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_nd_partner_heading",
+            "label": "Heading",
+            "name": "news_partner_heading",
+            "type": "text",
+            "default_value": "Help us reach further",
+            "required": 0
+        },
+        {
+            "key": "field_iom_nd_partner_intro",
+            "label": "Intro",
+            "name": "news_partner_intro",
+            "type": "textarea",
+            "required": 0,
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_iom_nd_partner_cards",
+            "label": "Partner Cards",
+            "name": "news_partner_cards",
+            "type": "repeater",
+            "instructions": "Leave empty to hide this section. Typically 3 cards (Buyers / Foundations / Factories).",
+            "required": 0,
+            "layout": "block",
+            "button_label": "Add Card",
+            "sub_fields": [
+                {
+                    "key": "field_iom_nd_partner_card_title",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "required": 0,
+                    "parent_repeater": "field_iom_nd_partner_cards"
+                },
+                {
+                    "key": "field_iom_nd_partner_card_body",
+                    "label": "Body",
+                    "name": "body",
+                    "type": "textarea",
+                    "required": 0,
+                    "rows": 3,
+                    "new_lines": "",
+                    "parent_repeater": "field_iom_nd_partner_cards"
+                },
+                {
+                    "key": "field_iom_nd_partner_card_link",
+                    "label": "Link",
+                    "name": "link",
+                    "type": "link",
+                    "required": 0,
+                    "return_format": "array",
+                    "parent_repeater": "field_iom_nd_partner_cards"
+                }
+            ]
+        },
+        {
+            "key": "field_iom_nd_tab_newsletter",
+            "label": "Newsletter",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_nd_show_newsletter",
+            "label": "Show Newsletter",
+            "name": "news_show_newsletter",
+            "type": "true_false",
+            "instructions": "Stay Informed band at the bottom of the news item (Figma 667:34753).",
+            "required": 0,
+            "default_value": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_iom_nd_newsletter_heading",
+            "label": "Heading",
+            "name": "news_newsletter_heading",
+            "type": "text",
+            "default_value": "Stay Informed",
+            "required": 0
+        },
+        {
+            "key": "field_iom_nd_newsletter_body",
+            "label": "Body",
+            "name": "news_newsletter_body",
+            "type": "textarea",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_iom_nd_newsletter_placeholder",
+            "label": "Email Placeholder",
+            "name": "news_newsletter_placeholder",
+            "type": "text",
+            "default_value": "Your email address",
+            "required": 0
+        },
+        {
+            "key": "field_iom_nd_newsletter_button",
+            "label": "Button Label",
+            "name": "news_newsletter_button",
+            "type": "text",
+            "default_value": "Subscribe",
+            "required": 0
+        },
+        {
+            "key": "field_iom_nd_newsletter_privacy",
+            "label": "Privacy Note",
+            "name": "news_newsletter_privacy",
+            "type": "text",
+            "default_value": "We respect your privacy. Unsubscribe at any time.",
+            "required": 0
+        },
+        {
+            "key": "field_iom_nd_newsletter_action",
+            "label": "Form Action URL",
+            "name": "news_newsletter_action",
+            "type": "url",
+            "instructions": "Optional override. Leave empty to use Theme Settings \u2192 Mailchimp Form Action URL.",
+            "required": 0
+        },
+        {
+            "key": "field_iom_nd_newsletter_image",
+            "label": "Image",
+            "name": "news_newsletter_image",
+            "type": "image",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "category:news"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Fields for the news single template. Shows when the post is in the News category.",
+    "show_in_rest": 0,
+    "modified": 1787061000
+}

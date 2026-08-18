@@ -1,9 +1,9 @@
 <?php
 /**
- * Single Post — Case Study or Press Release detail.
+ * Single Post — Case Study, Press Release, or News detail.
  *
  * Figma case study: 634:20702
- * Figma press release: 634:21026
+ * Figma press / news: 634:21026
  */
 
 get_header();
@@ -17,6 +17,8 @@ get_header();
 
 		if ( has_category( 'press-release', $post_id ) ) {
 			require locate_template( 'templates/press-release/content.php' );
+		} elseif ( has_category( 'news', $post_id ) ) {
+			require locate_template( 'templates/news/content.php' );
 		} else {
 			require locate_template( 'templates/case-study/content.php' );
 		}
