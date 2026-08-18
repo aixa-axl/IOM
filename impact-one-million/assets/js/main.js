@@ -739,3 +739,145 @@
 		});
 	});
 })();
+
+/**
+ * Case studies — filter bar + grid + load more (AJAX).
+ */
+(function () {
+	const config = typeof iomData !== 'undefined' ? iomData : null;
+	if (!config || !config.ajaxUrl) {
+		return;
+	}
+
+	document.querySelectorAll('[data-case-studies]').forEach(function (section) {
+		const form = section.querySelector('[data-case-studies-filters]');
+		const grid = section.querySelector('[data-case-studies-grid]');
+		const empty = section.querySelector('[data-case-studies-empty]');
+		const moreBtn = section.querySelector('[data-case-studies-more]');
+		const searchInput = section.querySelector('[data-filter="search"]');
+
+		if (!form || !grid) {
+			return;
+		}
+
+		let page = Number(section.getAttribute('data-page')) || 1;
+		let maxPages = Number(section.getAttribute('data-max-pages')) || 1;
+		let requestId = 0;
+		let searchTimer = null;
+		let loading = false;
+
+		function filters() {
+			return {
+				category: (form.querySelector('[data-filter="category"]') || {}).value || '',
+				year: (form.querySelector('[data-filter="year"]') || {}).value || '',
+				region: (form.querySelector('[data-filter="region"]') || {}).value || '',
+				topic: (form.querySelector('[data-filter="topic"]') || {}).value || '',
+				search: (searchInput && searchInput.value) || '',
+			};
+		}
+
+		function setLoading(state) {
+			loading = state;
+			section.setAttribute('aria-busy', state ? 'true' : 'false');
+			if (moreBtn) {
+				moreBtn.disabled = state;
+			}
+		}
+
+		function updateUi(data) {
+			page = data.page || 1;
+			maxPages = data.maxPages || 1;
+			section.setAttribute('data-page', String(page));
+			section.setAttribute('data-max-pages', String(maxPages));
+
+			const hasCards = !!(data.html && data.html.trim());
+			if (empty) {
+				empty.classList.toggle('hidden', hasCards || data.append);
+			}
+			if (moreBtn) {
+				moreBtn.classList.toggle('hidden', !data.hasMore);
+			}
+		}
+
+		function fetchPosts(opts) {
+			const append = !!opts.append;
+			const nextPage = append ? page + 1 : 1;
+			const id = ++requestId;
+
+			setLoading(true);
+
+			const body = new FormData();
+			body.append('action', 'iom_case_studies');
+			body.append('nonce', config.nonce);
+			body.append('paged', String(nextPage));
+			body.append('posts_per_page', section.getAttribute('data-per-page') || '6');
+			body.append('link_label', section.getAttribute('data-link-label') || '');
+			body.append('append', append ? '1' : '0');
+
+			const f = filters();
+			Object.keys(f).forEach(function (key) {
+				body.append(key, f[key]);
+			});
+
+			fetch(config.ajaxUrl, {
+				method: 'POST',
+				credentials: 'same-origin',
+				body: body,
+			})
+				.then(function (res) {
+					return res.json();
+				})
+				.then(function (json) {
+					if (id !== requestId || !json || !json.success) {
+						return;
+					}
+					const data = json.data || {};
+					if (data.append) {
+						grid.insertAdjacentHTML('beforeend', data.html || '');
+					} else {
+						grid.innerHTML = data.html || '';
+					}
+					updateUi(data);
+				})
+				.catch(function () {
+					/* ignore network errors — leave current results */
+				})
+				.finally(function () {
+					if (id === requestId) {
+						setLoading(false);
+					}
+				});
+		}
+
+		form.addEventListener('change', function () {
+			fetchPosts({ append: false });
+		});
+
+		form.addEventListener('submit', function (event) {
+			event.preventDefault();
+			fetchPosts({ append: false });
+		});
+
+		if (searchInput) {
+			searchInput.addEventListener('input', function () {
+				window.clearTimeout(searchTimer);
+				searchTimer = window.setTimeout(function () {
+					fetchPosts({ append: false });
+				}, 300);
+			});
+		}
+
+		if (moreBtn) {
+			moreBtn.addEventListener('click', function () {
+				if (loading || page >= maxPages) {
+					return;
+				}
+				fetchPosts({ append: true });
+			});
+		}
+
+		if (empty) {
+			empty.classList.toggle('hidden', grid.children.length > 0);
+		}
+	});
+})();

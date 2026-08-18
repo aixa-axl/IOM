@@ -3166,6 +3166,53 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_case_studies": {
+                    "key": "layout_iom_case_studies",
+                    "name": "case_studies",
+                    "label": "Case Studies (Filter + Grid)",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_cs_posts_per_page",
+                            "label": "Posts Per Page",
+                            "name": "posts_per_page",
+                            "type": "number",
+                            "instructions": "Initial count and load-more page size. Default 6.",
+                            "required": 0,
+                            "default_value": 6,
+                            "min": 1,
+                            "max": 24,
+                            "step": 1
+                        },
+                        {
+                            "key": "field_iom_cs_link_label",
+                            "label": "Card Link Label",
+                            "name": "link_label",
+                            "type": "text",
+                            "instructions": "e.g. Read case study",
+                            "required": 0,
+                            "default_value": "Read case study"
+                        },
+                        {
+                            "key": "field_iom_cs_load_more_label",
+                            "label": "Load More Label",
+                            "name": "load_more_label",
+                            "type": "text",
+                            "required": 0,
+                            "default_value": "Load more"
+                        },
+                        {
+                            "key": "field_iom_cs_search_placeholder",
+                            "label": "Search Placeholder",
+                            "name": "search_placeholder",
+                            "type": "text",
+                            "required": 0,
+                            "default_value": "Search case studies..."
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -3191,5 +3238,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755516600
+    "modified": 1755517200
 }
