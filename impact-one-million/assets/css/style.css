@@ -1927,6 +1927,10 @@ video {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.accent-blue {
+  accent-color: #153A81;
+}
+
 .opacity-0 {
   opacity: 0;
 }

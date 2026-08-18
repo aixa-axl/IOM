@@ -2719,6 +2719,55 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_our_ambition": {
+                    "key": "layout_iom_our_ambition",
+                    "name": "our_ambition",
+                    "label": "Our Ambition",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_oa_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. Our Ambition",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_oa_body",
+                            "label": "Body",
+                            "name": "body",
+                            "type": "textarea",
+                            "instructions": "Intro paragraph under the heading.",
+                            "required": 0,
+                            "rows": 4,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_iom_oa_items",
+                            "label": "Items",
+                            "name": "items",
+                            "type": "repeater",
+                            "instructions": "Bullet list with accent-blue dots. Leave empty to hide.",
+                            "required": 0,
+                            "layout": "table",
+                            "button_label": "Add Item",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_oa_item_label",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "type": "text",
+                                    "instructions": "e.g. Positively impact one million people across global supply chains",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_oa_items"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -2744,5 +2793,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755474000
+    "modified": 1755474600
 }
