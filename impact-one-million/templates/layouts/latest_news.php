@@ -3,7 +3,7 @@
  * Layout: latest_news
  *
  * Off-white band — heading + “See all” CTA + post cards from WP Posts.
- * Cards pull category, date, title, excerpt, country, permalink.
+ * Cards pull topic, date, title, excerpt, country, permalink.
  * Optional featured images (news) or text-only (case studies).
  *
  * Figma desktop (with image): 663:31960
@@ -98,8 +98,7 @@ $link_class = 'inline-flex border-b-2 border-solid border-blue py-3.5 font-displ
 					$date      = get_the_date();
 					$excerpt   = get_the_excerpt();
 
-					$categories = get_the_category( $post_id );
-					$category   = ( ! empty( $categories ) && ! is_wp_error( $categories ) ) ? $categories[0]->name : '';
+					$topic = function_exists( 'iom_get_post_topic_label' ) ? iom_get_post_topic_label( $post_id ) : '';
 
 					$countries = get_the_terms( $post_id, 'country' );
 					$country   = ( ! empty( $countries ) && ! is_wp_error( $countries ) ) ? $countries[0]->name : '';
@@ -124,9 +123,9 @@ $link_class = 'inline-flex border-b-2 border-solid border-blue py-3.5 font-displ
 						<div class="flex flex-1 flex-col gap-8 px-3 pb-3 pt-6">
 							<div class="flex flex-col gap-4">
 								<div class="flex flex-wrap items-center gap-3">
-									<?php if ( $category ) : ?>
+									<?php if ( $topic ) : ?>
 										<span class="rounded-btn border-[1.5px] border-solid border-accent-blue px-2 py-1 font-display text-body uppercase tracking-[1px] text-accent-blue">
-											<?php echo esc_html( $category ); ?>
+											<?php echo esc_html( $topic ); ?>
 										</span>
 									<?php endif; ?>
 

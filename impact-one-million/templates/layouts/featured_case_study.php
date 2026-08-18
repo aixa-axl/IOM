@@ -38,8 +38,7 @@ $permalink = get_permalink( $post_id );
 $date      = get_the_date( '', $post_id );
 $excerpt   = get_the_excerpt( $post_id );
 
-$categories = get_the_category( $post_id );
-$category   = ( ! empty( $categories ) && ! is_wp_error( $categories ) ) ? $categories[0]->name : '';
+$topic = function_exists( 'iom_get_post_topic_label' ) ? iom_get_post_topic_label( $post_id ) : '';
 
 $btn_class = 'inline-flex items-center justify-center rounded-btn bg-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 
@@ -67,9 +66,9 @@ $img_attrs = array(
 			<div class="flex w-full flex-col items-start gap-4">
 				<div class="flex w-full flex-wrap items-center justify-between gap-3">
 					<div class="flex flex-wrap items-center gap-3">
-						<?php if ( $category ) : ?>
+						<?php if ( $topic ) : ?>
 							<span class="rounded-btn bg-accent-blue px-2 py-1 font-display text-body uppercase tracking-[1px] text-white">
-								<?php echo esc_html( $category ); ?>
+								<?php echo esc_html( $topic ); ?>
 							</span>
 						<?php endif; ?>
 

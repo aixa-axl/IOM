@@ -57,6 +57,127 @@ function iom_register_taxonomies() {
 add_action( 'init', 'iom_register_taxonomies' );
 
 /**
+ * Content-type category slugs (Case Study / News / Press Release).
+ *
+ * @return string[]
+ */
+function iom_content_type_slugs() {
+	return array( 'case-study', 'news', 'press-release' );
+}
+
+/**
+ * Ensure the three content-type categories exist.
+ */
+function iom_seed_content_type_categories() {
+	$types = array(
+		'case-study'    => __( 'Case Study', 'impact-one-million' ),
+		'news'          => __( 'News', 'impact-one-million' ),
+		'press-release' => __( 'Press Release', 'impact-one-million' ),
+	);
+
+	foreach ( $types as $slug => $name ) {
+		if ( ! term_exists( $slug, 'category' ) ) {
+			wp_insert_term(
+				$name,
+				'category',
+				array(
+					'slug' => $slug,
+				)
+			);
+		}
+	}
+}
+add_action( 'init', 'iom_seed_content_type_categories', 20 );
+
+/**
+ * Relabel post tags as Topics in wp-admin.
+ *
+ * @param object $labels Taxonomy labels.
+ * @return object
+ */
+function iom_relabel_tags_as_topics( $labels ) {
+	$labels->name                       = __( 'Topics', 'impact-one-million' );
+	$labels->singular_name              = __( 'Topic', 'impact-one-million' );
+	$labels->search_items               = __( 'Search Topics', 'impact-one-million' );
+	$labels->popular_items              = __( 'Popular Topics', 'impact-one-million' );
+	$labels->all_items                  = __( 'All Topics', 'impact-one-million' );
+	$labels->edit_item                  = __( 'Edit Topic', 'impact-one-million' );
+	$labels->view_item                  = __( 'View Topic', 'impact-one-million' );
+	$labels->update_item                = __( 'Update Topic', 'impact-one-million' );
+	$labels->add_new_item               = __( 'Add New Topic', 'impact-one-million' );
+	$labels->new_item_name              = __( 'New Topic Name', 'impact-one-million' );
+	$labels->separate_items_with_commas = __( 'Separate topics with commas', 'impact-one-million' );
+	$labels->add_or_remove_items        = __( 'Add or remove topics', 'impact-one-million' );
+	$labels->choose_from_most_used      = __( 'Choose from the most used topics', 'impact-one-million' );
+	$labels->not_found                  = __( 'No topics found.', 'impact-one-million' );
+	$labels->menu_name                  = __( 'Topics', 'impact-one-million' );
+	$labels->back_to_items              = __( '← Go to Topics', 'impact-one-million' );
+	$labels->name_admin_bar             = __( 'Topic', 'impact-one-million' );
+	$labels->archives                   = __( 'Topics', 'impact-one-million' );
+
+	return $labels;
+}
+add_filter( 'taxonomy_labels_post_tag', 'iom_relabel_tags_as_topics' );
+
+/**
+ * Primary topic label for a post (first post_tag).
+ * Falls back to first non-type category during migration.
+ *
+ * @param int $post_id Post ID.
+ * @return string
+ */
+function iom_get_post_topic_label( $post_id ) {
+	$topics = get_the_terms( $post_id, 'post_tag' );
+	if ( ! empty( $topics ) && ! is_wp_error( $topics ) ) {
+		return $topics[0]->name;
+	}
+
+	$categories = get_the_category( $post_id );
+	$type_slugs = iom_content_type_slugs();
+	if ( ! empty( $categories ) && ! is_wp_error( $categories ) ) {
+		foreach ( $categories as $cat ) {
+			if ( in_array( $cat->slug, $type_slugs, true ) || 'uncategorized' === $cat->slug ) {
+				continue;
+			}
+			return $cat->name;
+		}
+	}
+
+	return '';
+}
+
+/**
+ * Topic terms for hero pills (excludes content-type categories).
+ *
+ * @param int $post_id Post ID.
+ * @return string[]
+ */
+function iom_get_post_topic_labels( $post_id ) {
+	$labels     = array();
+	$type_slugs = iom_content_type_slugs();
+
+	$topics = get_the_terms( $post_id, 'post_tag' );
+	if ( ! empty( $topics ) && ! is_wp_error( $topics ) ) {
+		foreach ( $topics as $term ) {
+			$labels[] = $term->name;
+		}
+	}
+
+	// Migration fallback: old topic-like categories.
+	$categories = get_the_category( $post_id );
+	if ( ! empty( $categories ) && ! is_wp_error( $categories ) ) {
+		foreach ( $categories as $cat ) {
+			if ( in_array( $cat->slug, $type_slugs, true ) || 'uncategorized' === $cat->slug ) {
+				continue;
+			}
+			$labels[] = $cat->name;
+		}
+	}
+
+	return array_values( array_unique( array_filter( $labels ) ) );
+}
+
+/**
  * Enqueue Styles and Scripts
  */
 function iom_enqueue_assets() {

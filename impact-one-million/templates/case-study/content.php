@@ -96,8 +96,7 @@ if ( ! is_array( $join_sec ) ) {
 	$join_sec = array();
 }
 
-$categories = get_the_category( $post_id );
-$countries  = get_the_terms( $post_id, 'country' );
+$countries = get_the_terms( $post_id, 'country' );
 if ( ! $meta_country && ! empty( $countries ) && ! is_wp_error( $countries ) ) {
 	$meta_country = $countries[0]->name;
 }
@@ -109,15 +108,7 @@ $icon_presets = array(
 	$theme_uri . '/assets/images/icons/approach-credit.svg',
 );
 
-$tags = array();
-if ( ! empty( $categories ) && ! is_wp_error( $categories ) ) {
-	foreach ( $categories as $cat ) {
-		if ( 'uncategorized' === $cat->slug ) {
-			continue;
-		}
-		$tags[] = $cat->name;
-	}
-}
+$tags = function_exists( 'iom_get_post_topic_labels' ) ? iom_get_post_topic_labels( $post_id ) : array();
 if ( ! empty( $countries ) && ! is_wp_error( $countries ) ) {
 	foreach ( $countries as $c ) {
 		$tags[] = $c->name;

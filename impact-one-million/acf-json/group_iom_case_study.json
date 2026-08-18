@@ -409,9 +409,9 @@
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "post_taxonomy",
                 "operator": "==",
-                "value": "post"
+                "value": "category:case-study"
             }
         ]
     ],
@@ -422,7 +422,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Fields for the case study single template.",
+    "description": "Fields for the case study single template. Shows when the post is in the Case Study category.",
     "show_in_rest": 0,
-    "modified": 1755519000
+    "modified": 1755519600
 }

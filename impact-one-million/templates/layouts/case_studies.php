@@ -2,8 +2,8 @@
 /**
  * Layout: case_studies
  *
- * Blue filter bar (category / year / region / topic + search) + off-white card grid
- * with load more. Filters and grid are one section — AJAX updates the grid.
+ * Blue filter bar (type / year / region / topic + search) + off-white card grid
+ * with load more. Type = content categories; Topic = post tags (Topics).
  *
  * Fields: posts_per_page, link_label, load_more_label, search_placeholder
  *
@@ -38,7 +38,8 @@ $search_uri  = $theme_uri . '/assets/images/icons/search-blue.svg';
 $categories = get_categories(
 	array(
 		'taxonomy'   => 'category',
-		'hide_empty' => true,
+		'hide_empty' => false,
+		'slug'       => function_exists( 'iom_content_type_slugs' ) ? iom_content_type_slugs() : array( 'case-study', 'news', 'press-release' ),
 	)
 );
 
@@ -84,9 +85,9 @@ $select_class = 'appearance-none rounded-btn border border-solid border-[#e5e7eb
 		<form class="flex w-full flex-col gap-4 lg:flex-row lg:flex-wrap lg:items-center lg:gap-4" data-case-studies-filters>
 			<div class="flex flex-wrap items-center gap-4">
 				<label class="relative inline-flex shrink-0">
-					<span class="sr-only"><?php echo esc_html__( 'Category', 'impact-one-million' ); ?></span>
+					<span class="sr-only"><?php echo esc_html__( 'Type', 'impact-one-million' ); ?></span>
 					<select name="category" class="<?php echo esc_attr( $select_class ); ?>" data-filter="category">
-						<option value=""><?php echo esc_html__( 'Category', 'impact-one-million' ); ?></option>
+						<option value=""><?php echo esc_html__( 'Type', 'impact-one-million' ); ?></option>
 						<?php foreach ( $categories as $term ) : ?>
 							<option value="<?php echo esc_attr( $term->slug ); ?>"><?php echo esc_html( $term->name ); ?></option>
 						<?php endforeach; ?>
