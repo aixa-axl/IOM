@@ -3,7 +3,8 @@
  * Single Post — Case Study, Press Release, or News detail.
  *
  * Figma case study: 634:20702
- * Figma press / news: 634:21026
+ * Figma press release: 634:21026
+ * Figma news article: 634:21152
  */
 
 get_header();
