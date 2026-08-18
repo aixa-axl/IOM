@@ -2801,6 +2801,62 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_progress_towards": {
+                    "key": "layout_iom_progress_towards",
+                    "name": "progress_towards",
+                    "label": "Progress Towards One Million",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_pt_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "e.g. Progress Towards One Million",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_pt_subtitle",
+                            "label": "Subtitle",
+                            "name": "subtitle",
+                            "type": "text",
+                            "instructions": "e.g. Real-time data from our partner network.",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_pt_stats",
+                            "label": "Stats",
+                            "name": "stats",
+                            "type": "repeater",
+                            "instructions": "Desktop: evenly spaced row. Mobile: stacked. Leave empty to hide.",
+                            "required": 0,
+                            "layout": "table",
+                            "button_label": "Add Stat",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_pt_stat_value",
+                                    "label": "Value",
+                                    "name": "value",
+                                    "type": "text",
+                                    "instructions": "e.g. 245k+",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_pt_stats"
+                                },
+                                {
+                                    "key": "field_iom_pt_stat_label",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "type": "text",
+                                    "instructions": "e.g. People Reached",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_pt_stats"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -2826,5 +2882,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1755476400
+    "modified": 1755477000
 }
