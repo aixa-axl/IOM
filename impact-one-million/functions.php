@@ -222,55 +222,165 @@ function iom_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'iom_enqueue_assets' );
 
 /**
- * Preload above-the-fold hero background (LCP) when it is the first page section.
+ * Prefer compressed JPEGs for derivatives (hero uploads stay lighter).
+ *
+ * @param int $quality Default quality.
+ * @return int
  */
-function iom_preload_hero_lcp() {
-	if ( is_admin() || ! function_exists( 'get_field' ) ) {
-		return;
-	}
+function iom_jpeg_quality( $quality ) {
+	return 80;
+}
+add_filter( 'jpeg_quality', 'iom_jpeg_quality' );
+add_filter( 'wp_editor_set_quality', 'iom_jpeg_quality' );
 
-	if ( ! is_page() ) {
-		return;
+/**
+ * Whether the current page’s first section is an above-the-fold hero with a photo.
+ *
+ * @return bool
+ */
+function iom_page_has_lcp_hero() {
+	if ( is_admin() || ! function_exists( 'get_field' ) || ! is_page() ) {
+		return false;
 	}
 
 	$sections = get_field( 'page_sections' );
 	if ( empty( $sections[0] ) || ! is_array( $sections[0] ) ) {
-		return;
+		return false;
 	}
 
 	$row = $sections[0];
 	if ( empty( $row['acf_fc_layout'] ) || 'hero' !== $row['acf_fc_layout'] ) {
-		return;
+		return false;
 	}
 
-	// Mid-page accent heroes stay lazy — do not preload.
 	if ( ! empty( $row['background_color'] ) && 'accent_blue' === $row['background_color'] ) {
+		return false;
+	}
+
+	return ! empty( $row['background_image'] );
+}
+
+/**
+ * Build hero background <img> HTML using only intermediate sizes (never the full original).
+ * Caps candidates at 1920w so phones/desktops do not download 4–6MB uploads.
+ *
+ * @param int   $attachment_id Attachment ID.
+ * @param array $attrs         Img attributes.
+ * @return string
+ */
+function iom_get_hero_background_image( $attachment_id, $attrs = array() ) {
+	$attachment_id = (int) $attachment_id;
+	if ( ! $attachment_id ) {
+		return '';
+	}
+
+	$size_keys = array( 'iom-hero-sm', 'medium_large', 'large', 'iom-hero' );
+	$by_width  = array();
+
+	foreach ( $size_keys as $size ) {
+		$img = wp_get_attachment_image_src( $attachment_id, $size );
+		if ( empty( $img[0] ) || empty( $img[1] ) ) {
+			continue;
+		}
+		$width = (int) $img[1];
+		// Skip accidental full-size fallbacks over the hero cap.
+		if ( $width > 1920 ) {
+			continue;
+		}
+		$by_width[ $width ] = $img;
+	}
+
+	// Last resort: large/full but still refuse absurd originals when a smaller exists.
+	if ( empty( $by_width ) ) {
+		foreach ( array( 'large', 'medium_large', 'medium' ) as $size ) {
+			$img = wp_get_attachment_image_src( $attachment_id, $size );
+			if ( ! empty( $img[0] ) ) {
+				$by_width[ (int) $img[1] ] = $img;
+				break;
+			}
+		}
+	}
+
+	if ( empty( $by_width ) ) {
+		return '';
+	}
+
+	ksort( $by_width, SORT_NUMERIC );
+	$default = end( $by_width );
+
+	$srcset_parts = array();
+	foreach ( $by_width as $width => $img ) {
+		$srcset_parts[] = esc_url( $img[0] ) . ' ' . $width . 'w';
+	}
+
+	$sizes = isset( $attrs['sizes'] ) ? $attrs['sizes'] : '(max-width: 1023px) 100vw, min(1080px, 75vw)';
+	unset( $attrs['sizes'] );
+
+	$attrs = wp_parse_args(
+		$attrs,
+		array(
+			'src'     => $default[0],
+			'width'   => (int) $default[1],
+			'height'  => (int) $default[2],
+			'alt'     => '',
+			'class'   => '',
+			'srcset'  => implode( ', ', $srcset_parts ),
+			'sizes'   => $sizes,
+			'decoding'=> 'async',
+		)
+	);
+
+	$html = '<img';
+	foreach ( $attrs as $name => $value ) {
+		if ( '' === $value && 'alt' !== $name ) {
+			continue;
+		}
+		$html .= ' ' . esc_attr( $name ) . '="' . esc_attr( $value ) . '"';
+	}
+	$html .= ' />';
+
+	return $html;
+}
+
+/**
+ * Preload above-the-fold hero background (LCP) when it is the first page section.
+ */
+function iom_preload_hero_lcp() {
+	if ( ! iom_page_has_lcp_hero() ) {
 		return;
 	}
 
-	$image_id = ! empty( $row['background_image'] ) ? (int) $row['background_image'] : 0;
+	$sections = get_field( 'page_sections' );
+	$image_id = ! empty( $sections[0]['background_image'] ) ? (int) $sections[0]['background_image'] : 0;
 	if ( ! $image_id ) {
 		return;
 	}
 
-	$src = wp_get_attachment_image_src( $image_id, 'iom-hero' );
-	if ( ! $src ) {
-		$src = wp_get_attachment_image_src( $image_id, 'large' );
+	// Mirror the same capped candidates as the visible <img>.
+	$size_keys = array( 'iom-hero-sm', 'medium_large', 'large', 'iom-hero' );
+	$by_width  = array();
+	foreach ( $size_keys as $size ) {
+		$img = wp_get_attachment_image_src( $image_id, $size );
+		if ( empty( $img[0] ) || empty( $img[1] ) || (int) $img[1] > 1920 ) {
+			continue;
+		}
+		$by_width[ (int) $img[1] ] = $img;
 	}
-	if ( empty( $src[0] ) ) {
+	if ( empty( $by_width ) ) {
 		return;
 	}
 
-	$sizes  = '(max-width: 1023px) 100vw, min(1080px, 75vw)';
-	$srcset = wp_get_attachment_image_srcset( $image_id, 'iom-hero' );
-	if ( ! $srcset ) {
-		$srcset = wp_get_attachment_image_srcset( $image_id, 'large' );
+	ksort( $by_width, SORT_NUMERIC );
+	$default = end( $by_width );
+	$sizes   = '(max-width: 1023px) 100vw, min(1080px, 75vw)';
+	$srcset  = array();
+	foreach ( $by_width as $width => $img ) {
+		$srcset[] = $img[0] . ' ' . $width . 'w';
 	}
 
-	echo '<link rel="preload" as="image" href="' . esc_url( $src[0] ) . '" fetchpriority="high"';
-	if ( $srcset ) {
-		echo ' imagesrcset="' . esc_attr( $srcset ) . '" imagesizes="' . esc_attr( $sizes ) . '"';
-	}
+	echo '<link rel="preload" as="image" href="' . esc_url( $default[0] ) . '" fetchpriority="high"';
+	echo ' imagesrcset="' . esc_attr( implode( ', ', $srcset ) ) . '"';
+	echo ' imagesizes="' . esc_attr( $sizes ) . '"';
 	echo ">\n";
 }
 add_action( 'wp_head', 'iom_preload_hero_lcp', 2 );

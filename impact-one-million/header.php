@@ -53,16 +53,17 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="shrink-0 no-underline">
 				<?php if ( $header_logo ) : ?>
 					<?php
-					echo wp_get_attachment_image(
-						$header_logo,
-						'medium',
-						false,
-						array(
-							'class'         => 'h-[4.5rem] w-auto max-w-[7.5rem] object-contain object-left lg:h-[7rem] lg:max-w-[9.25rem]',
-							'alt'           => get_bloginfo( 'name' ),
-							'fetchpriority' => 'high',
-						)
+					$header_logo_attrs = array(
+						'class'    => 'h-[4.5rem] w-auto max-w-[7.5rem] object-contain object-left lg:h-[7rem] lg:max-w-[9.25rem]',
+						'alt'      => get_bloginfo( 'name' ),
+						'decoding' => 'async',
+						'loading'  => 'eager',
 					);
+					// Do not compete with the hero LCP image for bandwidth.
+					if ( ! function_exists( 'iom_page_has_lcp_hero' ) || ! iom_page_has_lcp_hero() ) {
+						$header_logo_attrs['fetchpriority'] = 'high';
+					}
+					echo wp_get_attachment_image( $header_logo, 'medium', false, $header_logo_attrs );
 					?>
 				<?php elseif ( $has_default_logo ) : ?>
 					<img
@@ -71,7 +72,9 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 						class="h-[4.5rem] w-auto max-w-[7.5rem] object-contain object-left lg:h-[7rem] lg:max-w-[9.25rem]"
 						width="148"
 						height="112"
-						fetchpriority="high"
+						loading="eager"
+						decoding="async"
+						<?php echo ( ! function_exists( 'iom_page_has_lcp_hero' ) || ! iom_page_has_lcp_hero() ) ? 'fetchpriority="high"' : ''; ?>
 					/>
 				<?php else : ?>
 					<span class="font-display text-label uppercase tracking-wide text-navy">

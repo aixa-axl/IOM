@@ -118,23 +118,22 @@ $eyebrow_is_simple = $subtitle && ! $subtitle_parent;
 	<?php if ( $background_image ) : ?>
 		<div class="<?php echo esc_attr( $img_wrap_class ); ?>">
 			<?php
-			// Sized derivatives + srcset beat `full` originals for LCP.
-			$hero_size  = $is_accent ? 'large' : 'iom-hero';
 			$hero_sizes = '(max-width: 1023px) 100vw, min(1080px, 75vw)';
 			$img_attrs  = array(
-				'class'    => 'absolute inset-0 h-full w-full object-cover object-[center_30%] lg:object-cover',
-				'alt'      => '',
-				'sizes'    => $hero_sizes,
-				'decoding' => 'async',
+				'class' => 'absolute inset-0 h-full w-full object-cover object-[center_30%] lg:object-cover',
+				'alt'   => '',
+				'sizes' => $hero_sizes,
 			);
 			if ( $is_accent ) {
-				$img_attrs['loading'] = 'lazy';
+				$img_attrs['loading']  = 'lazy';
+				$img_attrs['decoding'] = 'async';
 			} else {
-				// Single high-priority image (LCP) — do not also priority-load the logo.
+				// LCP: eager + high priority; sync decode paints as soon as bytes arrive.
 				$img_attrs['loading']       = 'eager';
 				$img_attrs['fetchpriority'] = 'high';
+				$img_attrs['decoding']      = 'sync';
 			}
-			echo wp_get_attachment_image( (int) $background_image, $hero_size, false, $img_attrs );
+			echo iom_get_hero_background_image( (int) $background_image, $img_attrs );
 			?>
 		</div>
 	<?php else : ?>
