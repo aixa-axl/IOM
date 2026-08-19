@@ -53,13 +53,29 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 		<div class="relative z-50 mx-auto flex w-full max-w-site items-center justify-between gap-6 px-page py-3 lg:gap-20 lg:px-gutter lg:py-3">
 			<a
 				href="<?php echo esc_url( home_url( '/' ) ); ?>"
-				class="relative block h-[58px] w-[77px] shrink-0 overflow-hidden no-underline lg:h-28 lg:w-[148px]"
+				class="site-header__logo flex h-[58px] w-[77px] shrink-0 items-center justify-center no-underline lg:h-auto lg:w-[152px] lg:self-stretch"
 			>
 				<?php
-				if ( $header_logo ) :
-					// Uploaded logos are often square with extra top pad — cover + slight up-nudge balances them.
+				/*
+				 * Prefer the theme’s tightly cropped header mark. ACF uploads are usually the
+				 * square master (extra top pad) which makes the logo look sunk in the bar.
+				 * Desktop: self-stretch + 92% height centers the mark in the full header column.
+				 */
+				if ( $has_default_logo ) :
+					?>
+					<img
+						src="<?php echo esc_url( $default_logo_uri ); ?>"
+						alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
+						class="pointer-events-none h-full w-auto max-w-full object-contain object-center lg:h-[92%]"
+						width="152"
+						height="115"
+						loading="eager"
+						decoding="async"
+						<?php echo ( ! function_exists( 'iom_page_has_lcp_hero' ) || ! iom_page_has_lcp_hero() ) ? 'fetchpriority="high"' : ''; ?>
+					/>
+				<?php elseif ( $header_logo ) :
 					$header_logo_attrs = array(
-						'class'    => 'pointer-events-none h-full w-full object-cover object-[center_42%]',
+						'class'    => 'pointer-events-none h-full w-auto max-w-full object-contain object-center lg:h-[92%]',
 						'alt'      => get_bloginfo( 'name' ),
 						'decoding' => 'async',
 						'loading'  => 'eager',
@@ -68,19 +84,8 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 						$header_logo_attrs['fetchpriority'] = 'high';
 					}
 					echo wp_get_attachment_image( $header_logo, 'medium', false, $header_logo_attrs );
-				elseif ( $has_default_logo ) :
+				else :
 					?>
-					<img
-						src="<?php echo esc_url( $default_logo_uri ); ?>"
-						alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
-						class="pointer-events-none h-full w-full object-contain object-center"
-						width="148"
-						height="112"
-						loading="eager"
-						decoding="async"
-						<?php echo ( ! function_exists( 'iom_page_has_lcp_hero' ) || ! iom_page_has_lcp_hero() ) ? 'fetchpriority="high"' : ''; ?>
-					/>
-				<?php else : ?>
 					<span class="font-display text-label uppercase tracking-wide text-navy">
 						<?php bloginfo( 'name' ); ?>
 					</span>

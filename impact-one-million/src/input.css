@@ -321,4 +321,18 @@ body {
   [data-mobile-nav-panel] {
     display: none !important;
   }
+
+  /* Keep header mark centered in the full header column (utility + nav). */
+  .site-header__logo {
+    align-self: stretch;
+    height: auto;
+  }
+
+  .site-header__logo img {
+    height: 92%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
 }

@@ -661,10 +661,6 @@ video {
   left: 2rem;
 }
 
-.left-\[-8\.42\%\] {
-  left: -8.42%;
-}
-
 .right-4 {
   right: 1rem;
 }
@@ -675,10 +671,6 @@ video {
 
 .top-1\/2 {
   top: 50%;
-}
-
-.top-\[-27\.78\%\] {
-  top: -27.78%;
 }
 
 .top-full {
@@ -941,10 +933,6 @@ video {
   height: 12.625rem;
 }
 
-.h-\[150\%\] {
-  height: 150%;
-}
-
 .h-\[15rem\] {
   height: 15rem;
 }
@@ -1059,10 +1047,6 @@ video {
 
 .w-\[10\.1875rem\] {
   width: 10.1875rem;
-}
-
-.w-\[113\.68\%\] {
-  width: 113.68%;
 }
 
 .w-\[12\.5rem\] {
@@ -1497,6 +1481,10 @@ video {
   align-self: center;
 }
 
+.self-stretch {
+  align-self: stretch;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1738,6 +1726,11 @@ video {
 .object-\[center_30\%\] {
   -o-object-position: center 30%;
      object-position: center 30%;
+}
+
+.object-center {
+  -o-object-position: center;
+     object-position: center;
 }
 
 .object-left {
@@ -2673,6 +2666,23 @@ body {
   [data-mobile-nav-panel] {
     display: none !important;
   }
+
+  /* Keep header mark centered in the full header column (utility + nav). */
+
+  .site-header__logo {
+    align-self: stretch;
+    height: auto;
+  }
+
+  .site-header__logo img {
+    height: 92%;
+    width: auto;
+    max-width: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
+    -o-object-position: center;
+       object-position: center;
+  }
 }
 
 .placeholder\:text-blue::-moz-placeholder {
@@ -2984,10 +2994,6 @@ body {
     height: 6.25rem;
   }
 
-  .lg\:h-28 {
-    height: 7rem;
-  }
-
   .lg\:h-\[22\.2rem\] {
     height: 22.2rem;
   }
@@ -3024,6 +3030,10 @@ body {
     height: 37.5rem;
   }
 
+  .lg\:h-\[92\%\] {
+    height: 92%;
+  }
+
   .lg\:h-auto {
     height: auto;
   }
@@ -3044,8 +3054,8 @@ body {
     width: 11.1875rem;
   }
 
-  .lg\:w-\[148px\] {
-    width: 148px;
+  .lg\:w-\[152px\] {
+    width: 152px;
   }
 
   .lg\:w-\[31\.25rem\] {
@@ -3211,10 +3221,6 @@ body {
 
   .lg\:items-start {
     align-items: flex-start;
-  }
-
-  .lg\:items-end {
-    align-items: flex-end;
   }
 
   .lg\:items-center {
