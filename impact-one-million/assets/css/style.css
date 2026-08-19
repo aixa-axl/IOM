@@ -2002,14 +2002,6 @@ video {
   font-size: 17px;
 }
 
-.text-\[2\.5rem\] {
-  font-size: 2.5rem;
-}
-
-.text-\[2\.75rem\] {
-  font-size: 2.75rem;
-}
-
 .text-\[20px\] {
   font-size: 20px;
 }
@@ -2050,6 +2042,11 @@ video {
 .text-number {
   font-size: 60px;
   line-height: 1;
+}
+
+.text-quote {
+  font-size: 48px;
+  line-height: 48px;
 }
 
 .text-sm {
@@ -2096,10 +2093,6 @@ video {
 
 .not-italic {
   font-style: normal;
-}
-
-.leading-10 {
-  line-height: 2.5rem;
 }
 
 .leading-6 {
@@ -2430,6 +2423,64 @@ video {
   font-style: normal;
 
   font-display: swap;
+}
+
+/*
+ * Responsive type scale (Figma AXL modes).
+ * Desktop values live in tailwind.config.js; mobile overrides below.
+ * Mobile ← desktop:
+ *   title 40←72 | headline 32←56 | header 24←36 | number 36←60
+ *   feature-title 32←48 | quote 32←48 | stat-label 20←32
+ *   card-title 20←24 | body 16←18 | label stays 20 (nav)
+ */
+
+@media (max-width: 1023px) {
+  .text-title {
+    font-size: 40px;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+
+  .text-headline {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .text-header {
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .text-number {
+    font-size: 36px;
+    line-height: 1;
+  }
+
+  .text-feature-title {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .text-quote {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .text-stat-label {
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+  }
+
+  .text-card-title {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .text-body {
+    font-size: 16px;
+    line-height: 1.2;
+  }
 }
 
 html {
@@ -3434,36 +3485,15 @@ body {
     line-height: 39px;
   }
 
-  .lg\:text-headline {
-    font-size: 56px;
-    line-height: 1.2;
-  }
-
   .lg\:text-label {
     font-size: 20px;
     line-height: 1.2;
-  }
-
-  .lg\:text-number {
-    font-size: 60px;
-    line-height: 1;
-  }
-
-  .lg\:text-quote {
-    font-size: 48px;
-    line-height: 48px;
   }
 
   .lg\:text-stat-label {
     font-size: 32px;
     line-height: 1.2;
     letter-spacing: 0.04em;
-  }
-
-  .lg\:text-title {
-    font-size: 72px;
-    line-height: 1.1;
-    letter-spacing: 0.02em;
   }
 
   .lg\:font-semibold {
@@ -3474,20 +3504,12 @@ body {
     line-height: 1.5rem;
   }
 
-  .lg\:leading-\[1\.1\] {
-    line-height: 1.1;
-  }
-
   .lg\:leading-\[1\.2\] {
     line-height: 1.2;
   }
 
   .lg\:leading-\[39px\] {
     line-height: 39px;
-  }
-
-  .lg\:leading-\[48px\] {
-    line-height: 48px;
   }
 
   .lg\:leading-none {

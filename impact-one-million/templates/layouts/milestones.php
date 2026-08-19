@@ -35,7 +35,7 @@ $iom_render_milestone_copy = function ( $title, $body, $right = false ) {
 	?>
 	<div class="flex flex-col gap-2 <?php echo esc_attr( $align ); ?>">
 		<?php if ( $title ) : ?>
-			<p class="m-0 font-display text-[2rem] leading-none lg:text-number">
+			<p class="m-0 font-display text-number leading-none">
 				<?php echo esc_html( $title ); ?>
 			</p>
 		<?php endif; ?>
@@ -60,7 +60,7 @@ $iom_render_milestone_copy = function ( $title, $body, $right = false ) {
 				<?php endif; ?>
 
 				<?php if ( $heading ) : ?>
-					<h2 class="m-0 font-display text-[2.5rem] leading-[1.1] tracking-[0.02em] lg:text-title">
+					<h2 class="m-0 font-display text-title leading-[1.1] tracking-[0.02em]">
 						<?php echo esc_html( $heading ); ?>
 					</h2>
 				<?php endif; ?>

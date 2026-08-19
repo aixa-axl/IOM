@@ -21,7 +21,7 @@ if ( ! $quote && ! $name && ! $role ) {
 <section class="bg-navy px-10 py-20 lg:p-section">
 	<div class="mx-auto flex w-full max-w-[62.5rem] flex-col items-center gap-8 text-center">
 		<?php if ( $quote ) : ?>
-			<blockquote class="m-0 font-sans text-[2rem] font-extrabold leading-10 text-white lg:text-quote lg:leading-[48px]">
+			<blockquote class="m-0 font-sans text-quote font-extrabold text-white">
 				<?php echo esc_html( $quote ); ?>
 			</blockquote>
 		<?php endif; ?>

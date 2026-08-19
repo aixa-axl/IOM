@@ -135,7 +135,7 @@ $pct = ( ( $default_amount - $min_amount ) / max( 1, ( $max_amount - $min_amount
 
 	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-6 rounded-card border border-solid border-[#dfe8ff] bg-white p-4 lg:gap-6 lg:p-10">
 		<?php if ( $heading ) : ?>
-			<h2 class="m-0 text-center font-display text-[2rem] leading-[1.2] text-blue lg:text-headline">
+			<h2 class="m-0 text-center font-display text-headline leading-[1.2] text-blue">
 				<?php echo esc_html( $heading ); ?>
 			</h2>
 		<?php endif; ?>
@@ -209,26 +209,26 @@ $pct = ( ( $default_amount - $min_amount ) / max( 1, ( $max_amount - $min_amount
 
 		<div class="flex w-full flex-col gap-3 lg:flex-row lg:gap-8">
 			<div class="flex flex-1 flex-col items-center gap-2 rounded-card bg-white px-3 py-2 lg:px-8 lg:py-6">
-				<p class="m-0 text-center font-display text-label leading-[1.2] text-accent-blue lg:text-stat-label">
+				<p class="m-0 text-center font-display text-stat-label leading-[1.2] text-accent-blue">
 					<?php echo esc_html( $metric_workers ); ?>
 				</p>
-				<p class="m-0 font-display text-header leading-none text-blue lg:text-number" data-roi-workers>
+				<p class="m-0 font-display text-number leading-none text-blue" data-roi-workers>
 					<?php echo esc_html( number_format_i18n( $init_workers ) ); ?>
 				</p>
 			</div>
 			<div class="flex flex-1 flex-col items-center gap-2 rounded-card bg-white px-3 py-2 lg:px-8 lg:py-6">
-				<p class="m-0 text-center font-display text-label leading-[1.2] text-accent-blue lg:text-stat-label">
+				<p class="m-0 text-center font-display text-stat-label leading-[1.2] text-accent-blue">
 					<?php echo esc_html( $metric_families ); ?>
 				</p>
-				<p class="m-0 font-display text-header leading-none text-blue lg:text-number" data-roi-families>
+				<p class="m-0 font-display text-number leading-none text-blue" data-roi-families>
 					<?php echo esc_html( number_format_i18n( $init_families ) ); ?>
 				</p>
 			</div>
 			<div class="flex flex-1 flex-col items-center gap-2 rounded-card bg-white px-3 py-2 lg:px-8 lg:py-6">
-				<p class="m-0 text-center font-display text-label leading-[1.2] text-accent-blue lg:text-stat-label">
+				<p class="m-0 text-center font-display text-stat-label leading-[1.2] text-accent-blue">
 					<?php echo esc_html( $metric_factories ); ?>
 				</p>
-				<p class="m-0 font-display text-header leading-none text-blue lg:text-number" data-roi-factories>
+				<p class="m-0 font-display text-number leading-none text-blue" data-roi-factories>
 					<?php echo esc_html( number_format_i18n( $init_factories ) ); ?>
 				</p>
 			</div>

@@ -42,7 +42,7 @@ if ( empty( $email_id ) ) {
 				</nav>
 
 				<?php if ( $display_title ) : ?>
-					<h1 class="m-0 font-display text-headline leading-[1.1] text-white lg:text-title lg:leading-[1.1]">
+					<h1 class="m-0 font-display text-title leading-[1.1] text-white">
 						<?php echo esc_html( $display_title ); ?>
 					</h1>
 				<?php endif; ?>
@@ -136,7 +136,7 @@ if ( empty( $email_id ) ) {
 		<section class="bg-navy px-10 py-20 lg:px-section lg:py-[7.5rem]">
 			<div class="mx-auto flex w-full max-w-[62.5rem] flex-col items-center gap-8 text-center">
 				<?php if ( $quote ) : ?>
-					<blockquote class="m-0 font-sans text-[2rem] font-extrabold leading-10 text-white lg:text-quote lg:leading-[48px]">
+					<blockquote class="m-0 font-sans text-quote font-extrabold text-white">
 						<?php echo esc_html( $quote ); ?>
 					</blockquote>
 				<?php endif; ?>

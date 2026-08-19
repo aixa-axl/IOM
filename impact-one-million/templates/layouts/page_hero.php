@@ -48,7 +48,7 @@ if ( ! $body ) {
 			<?php endif; ?>
 
 			<?php if ( $heading ) : ?>
-				<h1 class="m-0 font-display text-[2.75rem] leading-[1.1] tracking-[0.02em] text-white lg:text-title">
+				<h1 class="m-0 font-display text-title leading-[1.1] tracking-[0.02em] text-white">
 					<?php echo esc_html( $heading ); ?>
 				</h1>
 			<?php endif; ?>

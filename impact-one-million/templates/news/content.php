@@ -128,7 +128,7 @@ $share_copy = 'inline-flex items-center justify-center rounded-btn border border
 				</nav>
 
 				<?php if ( $display_title ) : ?>
-					<h1 class="m-0 font-display text-headline leading-[1.1] tracking-[0.02em] text-white lg:text-title lg:leading-[1.1]">
+					<h1 class="m-0 font-display text-title leading-[1.1] tracking-[0.02em] text-white">
 						<?php echo esc_html( $display_title ); ?>
 					</h1>
 				<?php endif; ?>
