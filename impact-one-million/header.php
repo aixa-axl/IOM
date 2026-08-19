@@ -50,26 +50,30 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 
 	<header id="masthead" class="site-header relative sticky top-0 z-50 bg-white" data-mobile-nav>
 		<div class="relative z-50 mx-auto flex w-full max-w-site items-center justify-between gap-6 px-page py-3 lg:items-end lg:gap-20 lg:px-gutter lg:py-3">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="shrink-0 no-underline">
-				<?php if ( $header_logo ) : ?>
-					<?php
+			<a
+				href="<?php echo esc_url( home_url( '/' ) ); ?>"
+				class="relative block h-[58px] w-[77px] shrink-0 overflow-hidden no-underline lg:h-28 lg:w-[148px]"
+			>
+				<?php
+				// Square logo asset has large transparent padding — crop like Figma (77×58 / scaled).
+				$logo_img_class = 'pointer-events-none absolute left-[-8.42%] top-[-27.78%] h-[150%] w-[113.68%] max-w-none';
+				if ( $header_logo ) :
 					$header_logo_attrs = array(
-						'class'    => 'h-[4.5rem] w-auto max-w-[7.5rem] object-contain object-left lg:h-[7rem] lg:max-w-[9.25rem]',
+						'class'    => $logo_img_class,
 						'alt'      => get_bloginfo( 'name' ),
 						'decoding' => 'async',
 						'loading'  => 'eager',
 					);
-					// Do not compete with the hero LCP image for bandwidth.
 					if ( ! function_exists( 'iom_page_has_lcp_hero' ) || ! iom_page_has_lcp_hero() ) {
 						$header_logo_attrs['fetchpriority'] = 'high';
 					}
 					echo wp_get_attachment_image( $header_logo, 'medium', false, $header_logo_attrs );
+				elseif ( $has_default_logo ) :
 					?>
-				<?php elseif ( $has_default_logo ) : ?>
 					<img
 						src="<?php echo esc_url( $default_logo_uri ); ?>"
 						alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
-						class="h-[4.5rem] w-auto max-w-[7.5rem] object-contain object-left lg:h-[7rem] lg:max-w-[9.25rem]"
+						class="<?php echo esc_attr( $logo_img_class ); ?>"
 						width="148"
 						height="112"
 						loading="eager"
