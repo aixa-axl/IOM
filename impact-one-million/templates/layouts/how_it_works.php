@@ -84,7 +84,7 @@ $pillar_count = count( $pillars );
 $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-70';
 ?>
 
-<section class="bg-blue px-page py-section text-white lg:px-gutter">
+<section class="overflow-x-hidden bg-blue px-page py-section text-white lg:px-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col gap-20">
 		<div class="flex flex-col gap-20 lg:flex-row lg:items-start lg:gap-gutter">
 			<?php if ( $heading ) : ?>

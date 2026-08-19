@@ -98,8 +98,8 @@ $link_class = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-displ
 $btn_class  = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 
 $section_pad = $has_intro
-	? 'bg-white px-0 py-section lg:px-gutter lg:py-24'
-	: 'bg-white px-0 py-[100px] lg:px-10 lg:py-[100px]';
+	? 'overflow-x-hidden bg-white px-0 py-section lg:px-gutter lg:py-24'
+	: 'overflow-x-hidden bg-white px-0 py-[100px] lg:px-10 lg:py-[100px]';
 
 $outer_gap = $has_intro
 	? 'gap-section lg:gap-20'

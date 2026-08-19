@@ -129,7 +129,7 @@ $iom_render_marquee = function ( $resolved ) {
 	$marquee_logos = array_merge( $resolved, $resolved );
 	$count         = count( $resolved );
 	?>
-	<div class="relative w-full py-3" data-logo-marquee>
+	<div class="relative w-full overflow-x-hidden py-3" data-logo-marquee>
 		<div class="iom-marquee-track flex w-max items-center gap-8 lg:gap-[5.75rem]" data-logo-marquee-track>
 			<?php foreach ( $marquee_logos as $i => $logo ) : ?>
 				<div class="flex h-[4.6875rem] shrink-0 items-center justify-center" <?php echo $i >= $count ? 'aria-hidden="true"' : ''; ?>>
@@ -207,7 +207,7 @@ $aria = $section_heading
 	: __( 'Trusted by', 'impact-one-million' );
 ?>
 
-<section class="border-b border-solid border-[#e5e7eb] bg-white py-20 lg:py-24" aria-label="<?php echo esc_attr( $aria ); ?>">
+<section class="overflow-x-hidden border-b border-solid border-[#e5e7eb] bg-white py-20 lg:py-24" aria-label="<?php echo esc_attr( $aria ); ?>">
 	<div class="mx-auto flex w-full max-w-site flex-col items-stretch gap-16 px-0 lg:gap-16">
 		<?php if ( $section_heading ) : ?>
 			<div class="px-page lg:px-section">

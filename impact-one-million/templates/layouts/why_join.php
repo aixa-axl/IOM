@@ -124,7 +124,7 @@ $iom_render_why_join_card = function ( $card, $arrow_uri, $carousel = false ) {
 };
 ?>
 
-<section class="bg-white px-0 py-section lg:px-gutter lg:py-gutter">
+<section class="overflow-x-hidden bg-white px-0 py-section lg:px-gutter lg:py-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col <?php echo $is_left ? 'items-start' : 'items-center'; ?> <?php echo esc_attr( $outer_gap ); ?>">
 		<?php if ( $heading || $has_intro ) : ?>
 			<div class="flex w-full flex-col gap-6 px-page <?php echo $is_left ? 'items-start text-left' : 'items-center text-center'; ?> lg:px-0">

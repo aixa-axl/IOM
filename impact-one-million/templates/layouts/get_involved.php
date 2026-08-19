@@ -81,8 +81,8 @@ $btn_styles = array(
 );
 
 $section_class = $is_dark
-	? 'bg-ink px-page py-section lg:px-section'
-	: 'bg-white px-0 py-section lg:px-gutter';
+	? 'overflow-x-hidden bg-ink px-page py-section lg:px-section'
+	: 'overflow-x-hidden bg-white px-0 py-section lg:px-gutter';
 
 $heading_class = $is_dark
 	? 'm-0 font-display text-headline leading-[1.2] text-white'

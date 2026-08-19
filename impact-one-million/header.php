@@ -46,7 +46,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class( 'bg-site-bg text-ink antialiased' ); ?>>
+<body <?php body_class( 'overflow-x-hidden bg-site-bg text-ink antialiased' ); ?>>
 	<?php wp_body_open(); ?>
 
 	<header id="masthead" class="site-header relative sticky top-0 z-50 bg-white" data-mobile-nav>
