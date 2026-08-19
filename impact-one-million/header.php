@@ -50,16 +50,16 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 	<?php wp_body_open(); ?>
 
 	<header id="masthead" class="site-header relative sticky top-0 z-50 bg-white" data-mobile-nav>
-		<div class="relative z-50 mx-auto flex w-full max-w-site items-center justify-between gap-6 px-page py-3 lg:items-end lg:gap-20 lg:px-gutter lg:py-3">
+		<div class="relative z-50 mx-auto flex w-full max-w-site items-center justify-between gap-6 px-page py-3 lg:gap-20 lg:px-gutter lg:py-3">
 			<a
 				href="<?php echo esc_url( home_url( '/' ) ); ?>"
-				class="relative block h-[58px] w-[77px] shrink-0 no-underline lg:h-28 lg:w-[148px]"
+				class="relative block h-[58px] w-[77px] shrink-0 overflow-hidden no-underline lg:h-28 lg:w-[148px]"
 			>
 				<?php
-				$logo_img_class = 'pointer-events-none h-full w-full object-contain object-center';
 				if ( $header_logo ) :
+					// Uploaded logos are often square with extra top pad — cover + slight up-nudge balances them.
 					$header_logo_attrs = array(
-						'class'    => $logo_img_class,
+						'class'    => 'pointer-events-none h-full w-full object-cover object-[center_42%]',
 						'alt'      => get_bloginfo( 'name' ),
 						'decoding' => 'async',
 						'loading'  => 'eager',
@@ -73,7 +73,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 					<img
 						src="<?php echo esc_url( $default_logo_uri ); ?>"
 						alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
-						class="<?php echo esc_attr( $logo_img_class ); ?>"
+						class="pointer-events-none h-full w-full object-contain object-center"
 						width="148"
 						height="112"
 						loading="eager"
