@@ -118,16 +118,23 @@ $eyebrow_is_simple = $subtitle && ! $subtitle_parent;
 	<?php if ( $background_image ) : ?>
 		<div class="<?php echo esc_attr( $img_wrap_class ); ?>">
 			<?php
-			$img_attrs = array(
-				'class' => 'absolute inset-0 h-full w-full object-cover object-[center_30%] lg:object-cover',
-				'alt'   => '',
+			// Sized derivatives + srcset beat `full` originals for LCP.
+			$hero_size  = $is_accent ? 'large' : 'iom-hero';
+			$hero_sizes = '(max-width: 1023px) 100vw, min(1080px, 75vw)';
+			$img_attrs  = array(
+				'class'    => 'absolute inset-0 h-full w-full object-cover object-[center_30%] lg:object-cover',
+				'alt'      => '',
+				'sizes'    => $hero_sizes,
+				'decoding' => 'async',
 			);
 			if ( $is_accent ) {
 				$img_attrs['loading'] = 'lazy';
 			} else {
+				// Single high-priority image (LCP) — do not also priority-load the logo.
+				$img_attrs['loading']       = 'eager';
 				$img_attrs['fetchpriority'] = 'high';
 			}
-			echo wp_get_attachment_image( $background_image, 'full', false, $img_attrs );
+			echo wp_get_attachment_image( (int) $background_image, $hero_size, false, $img_attrs );
 			?>
 		</div>
 	<?php else : ?>
@@ -140,13 +147,15 @@ $eyebrow_is_simple = $subtitle && ! $subtitle_parent;
 				<div class="lg:pl-5 lg:pt-5">
 					<?php
 					echo wp_get_attachment_image(
-						$logo_id,
+						(int) $logo_id,
 						'medium',
 						false,
 						array(
-							'class'         => 'h-auto w-[4.875rem] max-w-full object-contain object-left lg:w-[11.1875rem]',
-							'alt'           => __( 'Impact One Million', 'impact-one-million' ),
-							'fetchpriority' => 'high',
+							'class'    => 'h-auto w-[4.875rem] max-w-full object-contain object-left lg:w-[11.1875rem]',
+							'alt'      => __( 'Impact One Million', 'impact-one-million' ),
+							'loading'  => 'eager',
+							'decoding' => 'async',
+							'sizes'    => '(max-width: 1023px) 78px, 179px',
 						)
 					);
 					?>
@@ -159,7 +168,8 @@ $eyebrow_is_simple = $subtitle && ! $subtitle_parent;
 						class="h-auto w-[4.875rem] max-w-full object-contain object-left lg:w-[11.1875rem]"
 						width="179"
 						height="136"
-						fetchpriority="high"
+						loading="eager"
+						decoding="async"
 					/>
 				</div>
 			<?php endif; ?>

@@ -15,6 +15,10 @@ function iom_theme_setup() {
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'html5', array( 'search-form', 'gallery', 'caption', 'style', 'script' ) );
 
+	// Hero background — avoid serving original uploads (often 3000–5000px).
+	add_image_size( 'iom-hero', 1920, 1440, false );
+	add_image_size( 'iom-hero-sm', 800, 600, false );
+
 	register_nav_menus(
 		array(
 			'primary' => __( 'Primary Menu', 'impact-one-million' ),
@@ -216,6 +220,60 @@ function iom_enqueue_assets() {
 	);
 }
 add_action( 'wp_enqueue_scripts', 'iom_enqueue_assets' );
+
+/**
+ * Preload above-the-fold hero background (LCP) when it is the first page section.
+ */
+function iom_preload_hero_lcp() {
+	if ( is_admin() || ! function_exists( 'get_field' ) ) {
+		return;
+	}
+
+	if ( ! is_page() ) {
+		return;
+	}
+
+	$sections = get_field( 'page_sections' );
+	if ( empty( $sections[0] ) || ! is_array( $sections[0] ) ) {
+		return;
+	}
+
+	$row = $sections[0];
+	if ( empty( $row['acf_fc_layout'] ) || 'hero' !== $row['acf_fc_layout'] ) {
+		return;
+	}
+
+	// Mid-page accent heroes stay lazy — do not preload.
+	if ( ! empty( $row['background_color'] ) && 'accent_blue' === $row['background_color'] ) {
+		return;
+	}
+
+	$image_id = ! empty( $row['background_image'] ) ? (int) $row['background_image'] : 0;
+	if ( ! $image_id ) {
+		return;
+	}
+
+	$src = wp_get_attachment_image_src( $image_id, 'iom-hero' );
+	if ( ! $src ) {
+		$src = wp_get_attachment_image_src( $image_id, 'large' );
+	}
+	if ( empty( $src[0] ) ) {
+		return;
+	}
+
+	$sizes  = '(max-width: 1023px) 100vw, min(1080px, 75vw)';
+	$srcset = wp_get_attachment_image_srcset( $image_id, 'iom-hero' );
+	if ( ! $srcset ) {
+		$srcset = wp_get_attachment_image_srcset( $image_id, 'large' );
+	}
+
+	echo '<link rel="preload" as="image" href="' . esc_url( $src[0] ) . '" fetchpriority="high"';
+	if ( $srcset ) {
+		echo ' imagesrcset="' . esc_attr( $srcset ) . '" imagesizes="' . esc_attr( $sizes ) . '"';
+	}
+	echo ">\n";
+}
+add_action( 'wp_head', 'iom_preload_hero_lcp', 2 );
 
 /**
  * ACF JSON save/load paths — field groups live in the repo.
