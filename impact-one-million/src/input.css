@@ -148,6 +148,23 @@
   }
 }
 
+/*
+ * CTA button heights — filled and outline share the same size.
+ * Uses .py-3.5 as the standard CTA padding marker (not small chips/tags).
+ */
+.rounded-btn.py-3\.5 {
+  box-sizing: border-box;
+  height: 48px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@media (min-width: 1024px) {
+  .rounded-btn.py-3\.5 {
+    height: 52px;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
