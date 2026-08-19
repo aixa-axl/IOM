@@ -47,7 +47,7 @@ if ( ! is_array( $secondary_cta ) || empty( $secondary_cta['url'] ) ) {
 	);
 }
 
-$btn_primary = 'inline-flex items-center justify-center rounded-btn bg-accent-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+$btn_primary = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 $btn_outline = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-navy px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-80';
 
 $img_attrs = array(

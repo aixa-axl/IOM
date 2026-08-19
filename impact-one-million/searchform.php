@@ -28,7 +28,7 @@ $iom_search_id = wp_unique_id( 'iom-search-' );
 	/>
 	<button
 		type="submit"
-		class="inline-flex shrink-0 items-center justify-center rounded-btn bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white transition-opacity hover:opacity-90"
+		class="inline-flex shrink-0 items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white transition-opacity hover:opacity-90"
 	>
 		<?php echo esc_html_x( 'Search', 'submit button', 'impact-one-million' ); ?>
 	</button>

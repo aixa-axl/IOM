@@ -60,7 +60,7 @@ if ( $is_mailchimp ) {
 	}
 }
 
-$btn_class = 'inline-flex shrink-0 items-center justify-center rounded-btn bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+$btn_class = 'inline-flex shrink-0 items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 ?>
 
 <section class="bg-[#dfe8ff] px-10 py-gutter lg:px-gutter">

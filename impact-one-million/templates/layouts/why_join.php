@@ -58,7 +58,7 @@ if ( ! is_array( $cta ) ) {
 }
 
 $card_count = count( $cards );
-$btn_class  = 'inline-flex items-center justify-center rounded-btn bg-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+$btn_class  = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 
 $outer_gap = ( $has_intro || $is_left ) ? 'gap-12 lg:gap-16' : 'gap-20 lg:gap-10';
 

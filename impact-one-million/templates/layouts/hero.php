@@ -68,7 +68,7 @@ $fill_bg = array(
 	'navy'        => 'bg-navy',
 );
 
-$btn_filled_base = 'inline-flex w-full items-center justify-center rounded-btn px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 lg:w-auto';
+$btn_filled_base = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 lg:w-auto';
 $btn_outline     = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-80 lg:w-auto';
 
 $btn_primary = $btn_filled_base . ' ' . $fill_bg[ $primary_cta_style ];

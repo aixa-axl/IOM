@@ -104,7 +104,7 @@ $link_label = $rel_link_label;
 $share_url  = rawurlencode( $permalink );
 $share_text = rawurlencode( $display_title );
 
-$btn_blue   = 'inline-flex items-center justify-center rounded-btn bg-accent-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+$btn_blue   = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 $share_btn  = 'inline-flex items-center justify-center rounded-btn border border-solid border-accent-blue px-6 py-2 font-display text-body uppercase tracking-[1px] text-blue no-underline transition-opacity hover:opacity-80';
 $share_copy = 'inline-flex items-center justify-center rounded-btn border border-solid border-accent-blue px-6 py-2 font-display text-body uppercase tracking-[1px] text-blue transition-opacity hover:opacity-80';
 ?>

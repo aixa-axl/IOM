@@ -62,7 +62,7 @@ if ( is_array( $manual_posts ) && ! empty( $manual_posts ) ) {
 
 $news_query = new WP_Query( $query_args );
 
-$btn_class  = 'inline-flex w-full items-center justify-center rounded-btn bg-accent-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 lg:w-auto';
+$btn_class  = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 lg:w-auto';
 $link_class = 'inline-flex border-b-2 border-solid border-blue py-3.5 font-display text-[20px] uppercase tracking-[1px] text-blue no-underline transition-opacity hover:opacity-70';
 ?>
 

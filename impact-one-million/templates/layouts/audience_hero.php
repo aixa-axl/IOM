@@ -43,7 +43,7 @@ if ( ! is_array( $cta ) || empty( $cta['url'] ) ) {
 	);
 }
 
-$btn_class = 'inline-flex items-center justify-center rounded-btn bg-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+$btn_class = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 
 $img_attrs = array(
 	'class'         => 'absolute inset-0 size-full rounded-card object-cover',

@@ -102,7 +102,7 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 							continue;
 						}
 						?>
-						<li class="rounded-btn bg-white px-6 py-4">
+						<li class="rounded-btn border-[1.5px] border-solid border-transparent bg-white px-6 py-4">
 							<p class="m-0 font-display text-header text-blue">
 								<?php echo esc_html( $text ); ?>
 							</p>

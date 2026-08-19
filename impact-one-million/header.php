@@ -30,11 +30,11 @@ $icon_globe_uri    = $theme_uri . '/assets/images/icons/globe.svg';
 $util_link_class = 'font-display text-label uppercase tracking-[1px] text-white no-underline transition-opacity hover:opacity-80';
 $nav_link_class  = 'font-display text-label uppercase tracking-[1px] text-navy no-underline transition-opacity hover:opacity-70';
 $btn_outline     = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-80';
-$btn_primary     = 'inline-flex items-center justify-center rounded-btn bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+$btn_primary     = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 
 $mobile_nav_class     = 'font-display text-label uppercase tracking-[1px] text-white no-underline';
 $mobile_child_class   = 'block px-[26px] py-3 font-sans text-body leading-[1.2] text-white no-underline transition-colors hover:bg-[#dfe8ff] hover:text-blue focus:bg-[#dfe8ff] focus:text-blue focus:outline-none';
-$mobile_btn_primary   = 'inline-flex w-full items-center justify-center rounded-btn bg-accent px-2 py-3.5 font-display text-label uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+$mobile_btn_primary   = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-2 py-3.5 font-display text-label uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 $mobile_btn_outline   = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-white px-2 py-3.5 font-display text-label uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-80';
 $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-white no-underline transition-opacity hover:opacity-80';
 ?>
@@ -149,7 +149,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 												<?php echo esc_html( ! empty( $link['title'] ) ? $link['title'] : '' ); ?>
 											</a>
 											<ul
-												class="invisible absolute left-0 top-full z-[60] m-0 mt-3 min-w-[16.5rem] list-none overflow-hidden rounded-btn bg-blue p-0 opacity-0 shadow-lg transition-[opacity,visibility] duration-150 before:absolute before:inset-x-0 before:-top-3 before:h-3 before:content-[''] group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+												class="invisible absolute left-0 top-full z-[60] m-0 mt-3 min-w-[16.5rem] list-none overflow-hidden rounded-btn border-[1.5px] border-solid border-transparent bg-blue p-0 opacity-0 shadow-lg transition-[opacity,visibility] duration-150 before:absolute before:inset-x-0 before:-top-3 before:h-3 before:content-[''] group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
 												role="list"
 											>
 												<?php foreach ( $children as $child ) : ?>

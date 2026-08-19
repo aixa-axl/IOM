@@ -43,7 +43,7 @@ $cta_label  = ! empty( $cta['title'] ) ? $cta['title'] : __( 'Learn more', 'impa
 $cta_url    = ! empty( $cta['url'] ) ? $cta['url'] : '#';
 $cta_target = ! empty( $cta['target'] ) ? $cta['target'] : '';
 
-$btn_class = 'inline-flex items-center justify-center rounded-btn bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+$btn_class = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 
 $play_label = __( 'Play video', 'impact-one-million' );
 

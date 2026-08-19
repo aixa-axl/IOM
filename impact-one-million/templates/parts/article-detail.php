@@ -15,8 +15,8 @@
  * @package Impact_One_Million
  */
 
-$btn_blue = 'inline-flex items-center justify-center rounded-btn bg-accent-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
-$btn_navy = 'inline-flex items-center justify-center rounded-btn bg-navy px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+$btn_blue = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+$btn_navy = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-navy px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 
 if ( empty( $email_id ) ) {
 	$email_id = 'iom-article-newsletter-email';

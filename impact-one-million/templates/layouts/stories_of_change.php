@@ -54,7 +54,7 @@ if ( ! is_array( $secondary_cta ) || empty( $secondary_cta['url'] ) ) {
 	);
 }
 
-$btn_primary   = 'inline-flex w-full items-center justify-center rounded-btn bg-navy px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 lg:w-auto';
+$btn_primary   = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-navy px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 lg:w-auto';
 $btn_secondary = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-ink bg-transparent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-ink no-underline transition-opacity hover:opacity-80 lg:w-auto';
 
 $img_attrs = array(
