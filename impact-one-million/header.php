@@ -21,8 +21,9 @@ $search_label  = ! empty( $search_link['title'] ) ? $search_link['title'] : __( 
 $has_util_bar  = true;
 
 $theme_uri         = get_stylesheet_directory_uri();
-$default_logo_uri  = $theme_uri . '/assets/images/impact-one-million-logo.png';
-$default_logo_abs  = get_stylesheet_directory() . '/assets/images/impact-one-million-logo.png';
+// Header-cropped mark (transparent padding removed) so object-contain isn't clipped.
+$default_logo_uri  = $theme_uri . '/assets/images/impact-one-million-logo-header.png';
+$default_logo_abs  = get_stylesheet_directory() . '/assets/images/impact-one-million-logo-header.png';
 $has_default_logo  = file_exists( $default_logo_abs );
 $icon_search_uri   = $theme_uri . '/assets/images/icons/search.svg';
 $icon_globe_uri    = $theme_uri . '/assets/images/icons/globe.svg';
@@ -52,11 +53,10 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 		<div class="relative z-50 mx-auto flex w-full max-w-site items-center justify-between gap-6 px-page py-3 lg:items-end lg:gap-20 lg:px-gutter lg:py-3">
 			<a
 				href="<?php echo esc_url( home_url( '/' ) ); ?>"
-				class="relative block h-[58px] w-[77px] shrink-0 overflow-hidden no-underline lg:h-28 lg:w-[148px]"
+				class="relative block h-[58px] w-[77px] shrink-0 no-underline lg:h-28 lg:w-[148px]"
 			>
 				<?php
-				// Square logo asset has large transparent padding — crop like Figma (77×58 / scaled).
-				$logo_img_class = 'pointer-events-none absolute left-[-8.42%] top-[-27.78%] h-[150%] w-[113.68%] max-w-none';
+				$logo_img_class = 'pointer-events-none h-full w-full object-contain object-center';
 				if ( $header_logo ) :
 					$header_logo_attrs = array(
 						'class'    => $logo_img_class,
