@@ -33,7 +33,7 @@ $btn_outline     = 'inline-flex items-center justify-center rounded-btn border-[
 $btn_primary     = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 
 $mobile_nav_class     = 'font-display text-label uppercase tracking-[1px] text-white no-underline';
-$mobile_child_class   = 'block px-[26px] py-3 font-sans text-body leading-[1.2] text-white no-underline transition-colors hover:bg-[#dfe8ff] hover:text-blue focus:bg-[#dfe8ff] focus:text-blue focus:outline-none';
+$mobile_child_class   = 'block px-page py-3 font-sans text-body leading-[1.2] text-white no-underline transition-colors hover:bg-[#dfe8ff] hover:text-blue focus:bg-[#dfe8ff] focus:text-blue focus:outline-none';
 $mobile_btn_primary   = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-2 py-3.5 font-display text-label uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 $mobile_btn_outline   = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-white px-2 py-3.5 font-display text-label uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-80';
 $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-white no-underline transition-opacity hover:opacity-80';
@@ -49,7 +49,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 	<?php wp_body_open(); ?>
 
 	<header id="masthead" class="site-header relative sticky top-0 z-50 bg-white" data-mobile-nav>
-		<div class="relative z-50 mx-auto flex w-full max-w-site items-center justify-between gap-6 px-5 py-3 lg:items-end lg:gap-20 lg:px-gutter lg:py-3">
+		<div class="relative z-50 mx-auto flex w-full max-w-site items-center justify-between gap-6 px-page py-3 lg:items-end lg:gap-20 lg:px-gutter lg:py-3">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="shrink-0 no-underline">
 				<?php if ( $header_logo ) : ?>
 					<?php
@@ -234,7 +234,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 			data-open="false"
 			hidden
 		>
-			<div class="mx-auto flex w-full max-w-[22rem] flex-1 flex-col gap-8 px-[1.625rem] pb-8 pt-7">
+			<div class="mx-auto flex w-full max-w-[22rem] flex-1 flex-col gap-8 px-page pb-8 pt-7">
 				<?php if ( $has_acf_nav ) : ?>
 					<nav aria-label="<?php echo esc_attr__( 'Primary', 'impact-one-million' ); ?>">
 						<ul class="m-0 flex list-none flex-col gap-8 p-0">
@@ -340,7 +340,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 			</div>
 
 			<?php if ( $has_util_bar ) : ?>
-				<div class="mt-auto flex w-full flex-col gap-5 bg-ink px-[1.625rem] py-5">
+				<div class="mt-auto flex w-full flex-col gap-5 bg-ink px-page py-5">
 					<?php if ( $has_utility ) : ?>
 						<?php foreach ( $utility_links as $row ) : ?>
 							<?php

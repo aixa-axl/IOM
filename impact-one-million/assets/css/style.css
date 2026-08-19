@@ -1782,19 +1782,9 @@ video {
   padding-right: 1rem;
 }
 
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-}
-
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-}
-
-.px-\[1\.625rem\] {
-  padding-left: 1.625rem;
-  padding-right: 1.625rem;
 }
 
 .px-\[10\%\] {
@@ -1802,14 +1792,14 @@ video {
   padding-right: 10%;
 }
 
-.px-\[26px\] {
-  padding-left: 26px;
-  padding-right: 26px;
-}
-
 .px-\[7px\] {
   padding-left: 7px;
   padding-right: 7px;
+}
+
+.px-page {
+  padding-left: 26px;
+  padding-right: 26px;
 }
 
 .py-1 {

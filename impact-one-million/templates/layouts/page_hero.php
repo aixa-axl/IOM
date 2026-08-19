@@ -30,7 +30,7 @@ if ( ! $body ) {
 }
 ?>
 
-<section class="bg-navy px-10 py-20 lg:px-section lg:py-gutter">
+<section class="bg-navy px-page py-20 lg:px-section lg:py-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col items-start">
 		<div class="flex w-full max-w-[50rem] flex-col items-start gap-6">
 			<?php if ( $subtitle_parent || $subtitle ) : ?>

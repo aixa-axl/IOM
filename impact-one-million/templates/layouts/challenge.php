@@ -67,7 +67,7 @@ if ( ! is_array( $cards ) || empty( $cards ) ) {
 $btn_cta = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-white px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-90';
 ?>
 
-<section class="bg-white px-10 py-section lg:px-gutter lg:py-gutter">
+<section class="bg-white px-page py-section lg:px-gutter lg:py-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-10">
 		<?php if ( $heading ) : ?>
 			<h2 class="m-0 max-w-full text-center font-display text-headline text-navy">

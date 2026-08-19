@@ -83,7 +83,7 @@ $iom_render_join_items = function ( $items, $icon_uri ) {
 };
 ?>
 
-<section class="bg-white px-10 py-20 lg:p-gutter">
+<section class="bg-white px-page py-20 lg:p-gutter">
 	<?php if ( $has_intro ) : ?>
 		<div class="mx-auto flex w-full max-w-site flex-col items-start gap-10">
 			<?php if ( $heading ) : ?>

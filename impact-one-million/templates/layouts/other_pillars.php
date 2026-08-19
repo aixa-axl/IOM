@@ -106,14 +106,14 @@ $outer_gap = $has_intro
 	: 'gap-10 lg:gap-6';
 
 $heading_class = $has_intro
-	? 'm-0 px-10 text-center font-display text-header leading-none text-navy lg:px-0'
-	: 'm-0 px-10 text-center font-display text-headline leading-[1.2] text-blue lg:px-0';
+	? 'm-0 px-page text-center font-display text-header leading-none text-navy lg:px-0'
+	: 'm-0 px-page text-center font-display text-headline leading-[1.2] text-blue lg:px-0';
 ?>
 
 <section class="<?php echo esc_attr( $section_pad ); ?>">
 	<div class="mx-auto flex w-full max-w-site flex-col items-center <?php echo esc_attr( $outer_gap ); ?>">
 		<?php if ( $has_intro ) : ?>
-			<div class="flex w-full flex-col items-center gap-8 px-10 lg:px-0">
+			<div class="flex w-full flex-col items-center gap-8 px-page lg:px-0">
 				<?php if ( $intro_heading ) : ?>
 					<h2 class="m-0 text-center font-display text-headline leading-[1.2] text-blue">
 						<?php echo esc_html( $intro_heading ); ?>
@@ -161,7 +161,7 @@ $heading_class = $has_intro
 
 			<?php if ( ! empty( $cards ) ) : ?>
 				<ul
-					class="m-0 flex w-full list-none gap-4 overflow-x-auto scroll-smooth px-10 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-5 lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
+					class="m-0 flex w-full list-none gap-4 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-5 lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
 				>
 					<?php foreach ( $cards as $card ) : ?>
 						<?php

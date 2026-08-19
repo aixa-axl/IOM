@@ -57,7 +57,7 @@ $img_attrs = array(
 );
 ?>
 
-<section class="bg-white px-10 py-section lg:px-gutter">
+<section class="bg-white px-page py-section lg:px-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-20 lg:flex-row lg:items-center lg:gap-[6.25rem]">
 		<div class="relative aspect-[549/379] w-full shrink-0 overflow-hidden rounded-card lg:order-2 lg:h-[23.6875rem] lg:w-[34.3125rem] lg:aspect-auto">
 			<?php if ( $image_id ) : ?>

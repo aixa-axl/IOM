@@ -33,7 +33,7 @@ if ( ! is_array( $cards ) ) {
 }
 ?>
 
-<section class="bg-white px-10 py-20 lg:px-section lg:py-gutter">
+<section class="bg-white px-page py-20 lg:px-section lg:py-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-10">
 		<?php if ( $heading || $intro ) : ?>
 			<div class="flex w-full flex-col items-start gap-4">

@@ -63,7 +63,7 @@ if ( $is_mailchimp ) {
 $btn_class = 'inline-flex shrink-0 items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 ?>
 
-<section class="bg-[#dfe8ff] px-10 py-gutter lg:px-gutter">
+<section class="bg-[#dfe8ff] px-page py-gutter lg:px-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-10 lg:flex-row lg:gap-20">
 		<div class="flex w-full max-w-[37.5rem] flex-col items-start gap-10">
 			<div class="flex w-full flex-col gap-4">

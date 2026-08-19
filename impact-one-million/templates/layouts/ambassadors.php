@@ -47,7 +47,7 @@ $img_attrs = array(
 ?>
 
 <section
-	class="<?php echo esc_attr( $section_bg ); ?> px-10 py-20 lg:p-gutter"
+	class="<?php echo esc_attr( $section_bg ); ?> px-page py-20 lg:p-gutter"
 	<?php echo $use_paging ? 'data-ambassadors-grid data-per-page="' . esc_attr( (string) $per_page ) . '"' : ''; ?>
 >
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-12">

@@ -46,6 +46,7 @@ module.exports = {
       spacing: {
         gutter: '80px',
         section: '120px',
+        page: '26px', // mobile L/R inset (Figma spacing/80)
       },
     },
   },

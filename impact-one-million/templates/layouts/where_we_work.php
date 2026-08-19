@@ -153,7 +153,7 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 ?>
 
 <section
-	class="<?php echo esc_attr( $section_bg ); ?> px-10 py-section lg:px-gutter lg:py-gutter"
+	class="<?php echo esc_attr( $section_bg ); ?> px-page py-section lg:px-gutter lg:py-gutter"
 	data-where-we-work
 	data-active-country="<?php echo esc_attr( $default_slug ); ?>"
 >

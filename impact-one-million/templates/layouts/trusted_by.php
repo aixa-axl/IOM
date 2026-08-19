@@ -210,7 +210,7 @@ $aria = $section_heading
 <section class="overflow-hidden border-b border-solid border-[#e5e7eb] bg-white py-20 lg:py-24" aria-label="<?php echo esc_attr( $aria ); ?>">
 	<div class="mx-auto flex w-full max-w-site flex-col items-stretch gap-16 px-0 lg:gap-16">
 		<?php if ( $section_heading ) : ?>
-			<div class="px-10 lg:px-section">
+			<div class="px-page lg:px-section">
 				<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">
 					<?php echo esc_html( $section_heading ); ?>
 				</h2>
@@ -230,7 +230,7 @@ $aria = $section_heading
 				<div class="flex w-full flex-col items-stretch gap-6">
 					<?php if ( $is_legacy ) : ?>
 						<?php if ( ! empty( $group['primary'] ) || ! empty( $group['secondary'] ) || ! empty( $group['intro'] ) ) : ?>
-							<div class="mx-auto flex w-full max-w-site flex-col px-10 lg:px-gutter <?php echo $is_left ? 'items-start' : 'items-center'; ?>">
+							<div class="mx-auto flex w-full max-w-site flex-col px-page lg:px-gutter <?php echo $is_left ? 'items-start' : 'items-center'; ?>">
 								<div class="flex w-full max-w-[67.5rem] flex-col gap-3 <?php echo esc_attr( $text_box ); ?>">
 									<?php if ( ! empty( $group['primary'] ) ) : ?>
 										<p class="m-0 font-display text-number text-navy">
@@ -252,7 +252,7 @@ $aria = $section_heading
 						<?php endif; ?>
 					<?php else : ?>
 						<?php if ( ! empty( $group['title'] ) || ! empty( $group['intro'] ) ) : ?>
-							<div class="mx-auto flex w-full max-w-site flex-col px-10 lg:px-section <?php echo $is_left ? 'items-start' : 'items-center'; ?>">
+							<div class="mx-auto flex w-full max-w-site flex-col px-page lg:px-section <?php echo $is_left ? 'items-start' : 'items-center'; ?>">
 								<div class="flex w-full max-w-[37.5rem] flex-col gap-6 <?php echo esc_attr( $text_box ); ?>">
 									<?php if ( ! empty( $group['title'] ) ) : ?>
 										<h3 class="m-0 font-display text-header leading-none text-blue">

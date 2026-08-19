@@ -49,7 +49,7 @@ $img_attrs = array(
 );
 ?>
 
-<section class="bg-white px-10 py-20 lg:px-section lg:py-gutter">
+<section class="bg-white px-page py-20 lg:px-section lg:py-gutter">
 	<article class="mx-auto flex w-full max-w-site flex-col items-stretch gap-8 lg:flex-row lg:items-center lg:gap-8">
 		<a
 			href="<?php echo esc_url( $permalink ); ?>"

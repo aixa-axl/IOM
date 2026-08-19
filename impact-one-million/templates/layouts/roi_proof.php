@@ -44,7 +44,7 @@ if ( ! is_array( $cta ) || empty( $cta['url'] ) ) {
 $btn_class = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 ?>
 
-<section class="bg-off-white px-10 py-section lg:px-gutter">
+<section class="bg-off-white px-page py-section lg:px-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-20 lg:gap-8">
 		<div class="flex flex-col gap-10 lg:gap-8">
 			<?php if ( $eyebrow ) : ?>

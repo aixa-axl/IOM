@@ -84,7 +84,7 @@ $iom_timeline_arrow = static function ( $extra_class = '' ) {
 ?>
 
 <section
-	class="bg-[#f9fcff] px-10 py-section lg:px-20 lg:py-24"
+	class="bg-[#f9fcff] px-page py-section lg:px-20 lg:py-24"
 	data-impact-timeline
 >
 	<div class="mx-auto flex w-full max-w-site flex-col gap-10 lg:gap-20">

@@ -49,7 +49,7 @@ $iom_render_milestone_copy = function ( $title, $body, $right = false ) {
 };
 ?>
 
-<section class="bg-blue px-10 py-[100px] text-white lg:px-[6.25rem]">
+<section class="bg-blue px-page py-[100px] text-white lg:px-[6.25rem]">
 	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-20">
 		<?php if ( $eyebrow || $heading ) : ?>
 			<div class="flex w-full flex-col items-center gap-4 text-center">

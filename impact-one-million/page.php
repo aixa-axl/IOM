@@ -33,7 +33,7 @@ get_header();
 						}
 					} else {
 						?>
-						<div class="mx-auto max-w-[1440px] px-5 py-12 lg:px-[60px]">
+						<div class="mx-auto max-w-[1440px] px-page py-12 lg:px-[60px]">
 							<?php the_content(); ?>
 						</div>
 						<?php

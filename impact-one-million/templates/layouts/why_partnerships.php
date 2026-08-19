@@ -28,7 +28,7 @@ if ( ! is_array( $items ) ) {
 }
 ?>
 
-<section class="border-b border-solid border-[#e5e7eb] bg-white px-10 py-20 lg:px-section lg:py-gutter">
+<section class="border-b border-solid border-[#e5e7eb] bg-white px-page py-20 lg:px-section lg:py-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-10 lg:flex-row lg:gap-20">
 		<div class="flex w-full shrink-0 flex-col gap-6 text-blue lg:w-[33rem]">
 			<?php if ( $heading ) : ?>

@@ -63,7 +63,7 @@ $has_image = $image_id || file_exists( $fallback_abs );
 $bg_class  = ( 'accent_blue' === $background_color ) ? 'bg-accent-blue' : 'bg-blue';
 ?>
 
-<section class="<?php echo esc_attr( $bg_class ); ?> px-10 py-section text-white lg:px-16">
+<section class="<?php echo esc_attr( $bg_class ); ?> px-page py-section text-white lg:px-16">
 	<div class="mx-auto flex w-full max-w-site flex-col gap-16">
 		<div class="flex w-full flex-col items-stretch gap-8 lg:flex-row lg:items-center lg:gap-8">
 			<div class="flex min-w-0 flex-1 flex-col items-start gap-10">

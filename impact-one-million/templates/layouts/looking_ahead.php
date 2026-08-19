@@ -31,7 +31,7 @@ if ( ! is_array( $cta ) ) {
 $btn_class = 'inline-flex w-full max-w-[21.75rem] items-center justify-center rounded-btn border-[1.5px] border-solid border-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-80 lg:w-auto lg:max-w-none';
 ?>
 
-<section class="bg-white px-10 py-20 lg:p-gutter">
+<section class="bg-white px-page py-20 lg:p-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-10">
 		<?php if ( $eyebrow || $heading ) : ?>
 			<div class="flex w-full flex-col items-center gap-4 text-center">
