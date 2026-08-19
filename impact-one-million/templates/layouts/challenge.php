@@ -76,7 +76,7 @@ $btn_cta = 'inline-flex items-center justify-center rounded-btn border-[1.5px] b
 		<?php endif; ?>
 
 		<?php if ( ! empty( $cards ) ) : ?>
-			<ul class="m-0 grid w-full list-none grid-cols-1 gap-4 p-0 lg:grid-cols-2 lg:gap-4">
+			<ul class="m-0 grid w-full list-none grid-cols-1 gap-4 p-0 lg:grid-cols-2 lg:gap-10">
 				<?php foreach ( $cards as $card ) : ?>
 					<?php
 					$style  = isset( $card['style'] ) ? $card['style'] : 'fact';
@@ -89,8 +89,8 @@ $btn_cta = 'inline-flex items-center justify-center rounded-btn border-[1.5px] b
 					$icon_uri = ( $preset && isset( $icon_map[ $preset ] ) ) ? $icon_map[ $preset ] : '';
 
 					$card_class = $is_cta
-						? 'flex flex-col items-center gap-6 rounded-card bg-accent p-10 text-center lg:flex-row lg:items-center lg:gap-10 lg:px-10 lg:py-5 lg:text-left'
-						: 'flex flex-col items-center gap-6 rounded-card bg-white p-10 text-center lg:flex-row lg:items-center lg:gap-10 lg:px-10 lg:py-5 lg:text-left';
+						? 'flex flex-col items-center gap-6 rounded-card bg-accent p-10 text-center lg:flex-row lg:items-center lg:gap-10 lg:px-10 lg:py-10 lg:text-left'
+						: 'flex flex-col items-center gap-6 rounded-card bg-white p-10 text-center lg:flex-row lg:items-center lg:gap-10 lg:px-10 lg:py-10 lg:text-left';
 
 					$title_class = $is_cta
 						? 'm-0 font-display text-stat-label text-white lg:text-feature-title lg:leading-[39px]'
