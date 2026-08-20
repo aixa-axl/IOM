@@ -120,9 +120,13 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 			<?php endif; ?>
 
 			<?php if ( ! empty( $pillars ) ) : ?>
-				<div class="w-[calc(100%+1.625rem)] min-w-0 -mr-page lg:mr-0 lg:w-full" data-pillars-carousel>
+				<?php /* Full-bleed track + scroll-padding keeps snapped cards inset (no left-edge clip). */ ?>
+				<div
+					class="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 lg:static lg:left-auto lg:w-full lg:max-w-none lg:translate-x-0"
+					data-pillars-carousel
+				>
 					<ul
-						class="m-0 flex list-none gap-4 overflow-x-auto scroll-smooth pr-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-10 lg:overflow-visible lg:px-0 lg:pb-0 lg:pr-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
+						class="m-0 flex list-none gap-4 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory [scroll-padding-inline:26px] lg:grid lg:grid-cols-3 lg:gap-10 lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none lg:[scroll-padding-inline:0] [&::-webkit-scrollbar]:hidden"
 						data-pillars-track
 					>
 						<?php foreach ( $pillars as $index => $pillar ) : ?>
@@ -135,7 +139,7 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 							$icon_uri = ( $preset && isset( $icon_map[ $preset ] ) ) ? $icon_map[ $preset ] : '';
 							?>
 							<li
-								class="flex w-[min(17.5rem,calc(100vw-5.5rem))] shrink-0 snap-start flex-col justify-between rounded-card bg-off-white p-6 text-blue lg:h-[22.2rem] lg:w-auto lg:min-w-0 lg:snap-align-none"
+								class="flex w-[calc(100vw-5.75rem)] max-w-[17.5rem] shrink-0 snap-start flex-col justify-between rounded-card bg-off-white p-6 text-blue lg:h-[22.2rem] lg:w-auto lg:max-w-none lg:min-w-0 lg:snap-align-none"
 								data-pillars-slide
 							>
 								<div class="flex flex-col gap-4">
