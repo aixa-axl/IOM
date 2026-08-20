@@ -59,6 +59,11 @@ if ( ! $center_content && ! $is_accent && ! $show_logo && ! $is_content ) {
 	$center_content = true;
 }
 
+// Last flexible-content row on this page (bottom-of-page mid CTA treatment).
+$page_sections   = function_exists( 'get_field' ) ? get_field( 'page_sections' ) : null;
+$is_last_layout  = is_array( $page_sections ) && (int) get_row_index() === count( $page_sections );
+$is_last_mid_cta = $center_content && $is_last_layout && ! $is_accent;
+
 $bg_class = $is_accent ? 'bg-accent-blue' : 'bg-navy';
 
 $default_logo_uri = get_stylesheet_directory_uri() . '/assets/images/impact-one-million-logo.png';
@@ -97,16 +102,26 @@ if ( $center_content || $is_accent ) {
 	$text_align = 'text-center lg:text-left';
 }
 
-$img_wrap_class = $is_accent
-	? 'relative h-[251px] w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-auto lg:w-[min(100%,67.5rem)] lg:max-w-[75%]'
-	: 'relative h-[260px] w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-auto lg:w-[min(100%,67.5rem)] lg:max-w-[75%]';
+// Bottom-of-page navy mid CTA (mobile): boxed card like accent mid-page — no overlap, 11px inset.
+if ( $is_accent || $is_last_mid_cta ) {
+	$img_wrap_class = 'relative h-[251px] w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-auto lg:w-[min(100%,67.5rem)] lg:max-w-[75%]';
+} else {
+	$img_wrap_class = 'relative h-[260px] w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-auto lg:w-[min(100%,67.5rem)] lg:max-w-[75%]';
+}
 
-$outer_class = $is_accent
-	? 'relative z-10 mx-auto flex w-full max-w-site flex-col px-[11px] pb-[11px] pt-[11px] lg:min-h-[41.75rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20'
-	: 'relative z-10 mx-auto flex w-full max-w-site flex-col px-page pb-10 pt-0 lg:min-h-[52.5rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20';
+if ( $is_accent ) {
+	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-[11px] pb-[11px] pt-[11px] lg:min-h-[41.75rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20';
+} elseif ( $is_last_mid_cta ) {
+	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-[11px] pb-[11px] pt-[11px] lg:min-h-[52.5rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20';
+} else {
+	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-page pb-10 pt-0 lg:min-h-[52.5rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20';
+}
 
 if ( $is_accent ) {
 	$card_class = 'mt-0 flex w-full flex-col items-center gap-8 self-center rounded-card bg-white p-[11px] lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:self-auto lg:p-5';
+} elseif ( $is_last_mid_cta ) {
+	// Same boxed mobile shell as accent mid-page CTA (11px inset, no image overlap).
+	$card_class = 'mt-0 flex w-full flex-col items-center gap-8 self-center rounded-card bg-white p-[11px] lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:gap-8 lg:self-auto lg:p-5';
 } elseif ( $center_content ) {
 	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-center gap-5 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:gap-8 lg:self-auto lg:p-5';
 } elseif ( $is_content ) {
@@ -116,7 +131,7 @@ if ( $is_accent ) {
 	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-center gap-5 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:gap-8 lg:self-auto lg:p-5';
 }
 
-$cta_row_class = $center_content
+$cta_row_class = ( $center_content || $is_last_mid_cta )
 	? 'flex w-full flex-col items-center gap-4 lg:flex-row lg:flex-nowrap lg:items-start lg:justify-start lg:gap-4 lg:whitespace-nowrap'
 	: 'flex w-full flex-col items-stretch gap-4 lg:flex-row lg:flex-nowrap lg:items-start lg:gap-4 lg:whitespace-nowrap';
 
