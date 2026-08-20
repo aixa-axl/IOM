@@ -1805,6 +1805,11 @@ video {
   padding-right: 1.5rem;
 }
 
+.px-\[14px\] {
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
 .px-\[7px\] {
   padding-left: 7px;
   padding-right: 7px;
@@ -1878,6 +1883,11 @@ video {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.py-\[26px\] {
+  padding-top: 26px;
+  padding-bottom: 26px;
 }
 
 .py-\[3px\] {
