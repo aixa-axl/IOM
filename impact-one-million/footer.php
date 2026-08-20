@@ -95,7 +95,7 @@ $legal_class = 'font-sans text-[10px] font-semibold uppercase leading-none track
 	<footer id="site-footer" class="site-footer mt-auto bg-blue px-page py-20 text-white lg:px-gutter lg:py-[3.75rem]">
 		<div class="mx-auto flex w-full max-w-site flex-col gap-[3.75rem] lg:gap-12">
 			<div class="order-1 flex flex-col gap-20 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
-				<div class="flex w-full items-start gap-6 border-b border-solid border-white pb-4 lg:max-w-[18.75rem] lg:flex-col lg:border-b-0 lg:pb-0">
+				<div class="flex w-full flex-col items-start gap-6 border-b border-solid border-white pb-4 lg:max-w-[18.75rem] lg:border-b-0 lg:pb-0">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="inline-block shrink-0 no-underline">
 						<?php if ( $footer_logo ) : ?>
 							<?php
@@ -127,7 +127,7 @@ $legal_class = 'font-sans text-[10px] font-semibold uppercase leading-none track
 					</a>
 
 					<?php if ( $footer_tagline ) : ?>
-						<p class="m-0 min-w-0 flex-1 font-sans text-label leading-[1.5] text-white lg:flex-none lg:text-body lg:leading-[1.2]">
+						<p class="m-0 w-full font-sans text-label leading-[1.5] text-white lg:text-body lg:leading-[1.2]">
 							<?php echo esc_html( $footer_tagline ); ?>
 						</p>
 					<?php endif; ?>
