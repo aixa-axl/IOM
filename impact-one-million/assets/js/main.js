@@ -468,8 +468,9 @@
 		tabs.forEach(function (tab) {
 			const active = tab.getAttribute('data-country') === slug;
 			tab.setAttribute('aria-pressed', active ? 'true' : 'false');
-			tab.classList.toggle('border-navy', active);
-			tab.classList.toggle('border-transparent', !active);
+			// Underline is desktop-only (lg:border-*); keep mobile tabs underline-free.
+			tab.classList.toggle('lg:border-navy', active);
+			tab.classList.toggle('lg:border-transparent', !active);
 		});
 
 		panels.forEach(function (panel) {
