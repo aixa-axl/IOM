@@ -126,12 +126,6 @@ $fallback_orders = array(
 			<?php endforeach; ?>
 		</ul>
 
-		<div class="flex items-center gap-2 lg:hidden" aria-hidden="true">
-			<span class="size-1.5 rounded-full bg-accent-blue/20"></span>
-			<span class="size-1.5 rounded-full bg-accent-blue"></span>
-			<span class="size-1.5 rounded-full bg-accent-blue/20"></span>
-		</div>
-
 		<?php if ( $description ) : ?>
 			<p class="m-0 max-w-[56.25rem] text-center font-sans text-[20px] font-semibold leading-[1.2] text-blue lg:text-stat-label">
 				<?php echo esc_html( $description ); ?>
