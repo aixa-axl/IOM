@@ -246,7 +246,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 			data-open="false"
 			hidden
 		>
-			<div class="mx-auto flex w-full max-w-[22rem] flex-1 flex-col gap-8 px-page pb-8 pt-7 md:mx-0 md:max-w-none md:flex-none md:gap-4 md:px-[30px] md:pb-4">
+			<div class="mx-auto flex w-full max-w-[22rem] flex-none flex-col gap-6 px-page pb-4 pt-7 md:mx-0 md:max-w-none md:px-[30px]">
 				<?php if ( $has_acf_nav ) : ?>
 					<nav aria-label="<?php echo esc_attr__( 'Primary', 'impact-one-million' ); ?>">
 						<ul class="m-0 flex list-none flex-col items-start gap-8 p-0">
@@ -330,7 +330,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 				<?php endif; ?>
 
 				<?php if ( ! empty( $primary_cta['url'] ) || ! empty( $secondary_cta['url'] ) ) : ?>
-					<div class="mt-auto flex w-full flex-col gap-5 md:mt-0 md:max-w-[22rem]">
+					<div class="flex w-full flex-col gap-5 md:max-w-[22rem]">
 						<?php
 						if ( ! empty( $primary_cta['url'] ) ) {
 							iom_render_link(
@@ -352,7 +352,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 			</div>
 
 			<?php if ( $has_util_bar ) : ?>
-				<div class="mt-auto flex w-full flex-col gap-5 bg-ink px-page py-5 md:mt-0 md:min-h-0 md:flex-1 md:px-[30px]">
+				<div class="flex min-h-0 w-full flex-1 flex-col gap-5 bg-ink px-page py-5 md:px-[30px]">
 					<?php if ( $has_utility ) : ?>
 						<?php foreach ( $utility_links as $row ) : ?>
 							<?php
