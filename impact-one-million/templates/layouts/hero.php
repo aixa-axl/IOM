@@ -93,13 +93,13 @@ $fill_bg = array(
 	'navy'        => 'bg-navy',
 );
 
-$btn_filled_base = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 lg:w-auto';
-$btn_outline     = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-80 lg:w-auto';
+$btn_filled_base = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 md:w-auto';
+$btn_outline     = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-80 md:w-auto';
 
 // History page bottom navy CTA only: mild desktop type tweak so dual buttons fit the card.
 if ( $is_last_mid_cta && function_exists( 'is_page' ) && is_page( 'history' ) ) {
-	$btn_filled_base .= ' lg:px-5 lg:text-[22px] lg:tracking-[1.5px]';
-	$btn_outline     .= ' lg:px-5 lg:text-[22px] lg:tracking-[1.5px]';
+	$btn_filled_base .= ' md:px-5 md:text-[22px] md:tracking-[1.5px]';
+	$btn_outline     .= ' md:px-5 md:text-[22px] md:tracking-[1.5px]';
 }
 
 $btn_primary = $btn_filled_base . ' ' . $fill_bg[ $primary_cta_style ];
@@ -112,56 +112,56 @@ if ( 'outline' === $secondary_cta_style ) {
 
 $btn_tertiary = $btn_filled_base . ' ' . $fill_bg[ $primary_cta_style ];
 
-// Accent mid-page: centre mobile / left desktop. Navy mid-page CTA: centre mobile only.
+// Accent mid-page: centre mobile / left from tablet (md+). Navy mid-page CTA: centre mobile only.
 // Last navy hero (bottom of page): always centre on mobile. Pillar navy content: left.
-// Homepage navy: centre mobile / left desktop.
+// Homepage navy: centre mobile / left from tablet (md+).
 if ( $is_last_mid_cta || $center_content || $is_accent ) {
-	$text_align = 'text-center lg:text-left';
+	$text_align = 'text-center md:text-left';
 } elseif ( $is_content ) {
 	$text_align = 'text-left';
 } else {
-	$text_align = 'text-center lg:text-left';
+	$text_align = 'text-center md:text-left';
 }
 
 // Bottom-of-page navy mid CTA (mobile): boxed card like accent mid-page — no overlap, 11px inset.
 if ( $is_accent || $is_last_mid_cta ) {
-	$img_wrap_class = 'relative h-[251px] w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-auto lg:w-[min(100%,67.5rem)] lg:max-w-[75%]';
+	$img_wrap_class = 'relative h-[251px] w-full md:absolute md:inset-y-0 md:left-0 md:h-auto md:w-[min(100%,67.5rem)] md:max-w-[75%]';
 } else {
-	$img_wrap_class = 'relative h-[260px] w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-auto lg:w-[min(100%,67.5rem)] lg:max-w-[75%]';
+	$img_wrap_class = 'relative h-[260px] w-full md:absolute md:inset-y-0 md:left-0 md:h-auto md:w-[min(100%,67.5rem)] md:max-w-[75%]';
 }
 
 if ( $is_accent ) {
-	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-[11px] pb-[11px] pt-[11px] md:px-[30px] lg:min-h-[41.75rem] lg:flex-row lg:items-center lg:justify-end xl:px-gutter lg:py-20';
+	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-[11px] pb-[11px] pt-[11px] md:min-h-[41.75rem] md:flex-row md:items-center md:justify-end md:px-[30px] md:py-20 xl:px-gutter';
 } elseif ( $is_last_mid_cta ) {
-	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-[11px] pb-[11px] pt-[11px] md:px-[30px] lg:min-h-[52.5rem] lg:flex-row lg:items-center lg:justify-end xl:px-gutter lg:py-20';
+	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-[11px] pb-[11px] pt-[11px] md:min-h-[52.5rem] md:flex-row md:items-center md:justify-end md:px-[30px] md:py-20 xl:px-gutter';
 } elseif ( $is_home_hero ) {
 	// Fill the 100svh section; floor height handled on the section itself.
-	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-1 flex-col px-page pb-10 pt-0 lg:flex-row lg:items-center lg:justify-end xl:px-gutter lg:py-20';
+	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-1 flex-col px-page pb-10 pt-0 md:flex-row md:items-center md:justify-end md:py-20 xl:px-gutter';
 } else {
-	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-page pb-10 pt-0 lg:min-h-[52.5rem] lg:flex-row lg:items-center lg:justify-end xl:px-gutter lg:py-20';
+	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-page pb-10 pt-0 md:min-h-[52.5rem] md:flex-row md:items-center md:justify-end md:py-20 xl:px-gutter';
 }
 
 if ( $is_accent ) {
-	$card_class = 'mt-0 flex w-full flex-col items-center gap-8 self-center rounded-card bg-white p-[11px] lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:self-auto lg:p-5';
+	$card_class = 'mt-0 flex w-full flex-col items-center gap-8 self-center rounded-card bg-white p-[11px] md:mt-0 md:max-w-[36.625rem] md:items-start md:self-auto md:p-5';
 } elseif ( $is_last_mid_cta ) {
 	// Boxed + centered on mobile (Ambassadors-style bottom CTA).
-	$card_class = 'mt-0 flex w-full flex-col items-center gap-8 self-center rounded-card bg-white p-[11px] lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:gap-8 lg:self-auto lg:p-5';
+	$card_class = 'mt-0 flex w-full flex-col items-center gap-8 self-center rounded-card bg-white p-[11px] md:mt-0 md:max-w-[36.625rem] md:items-start md:gap-8 md:self-auto md:p-5';
 } elseif ( $center_content ) {
-	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-center gap-5 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:gap-8 lg:self-auto lg:p-5';
+	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-center gap-5 self-center rounded-card bg-white p-5 md:mt-0 md:max-w-[36.625rem] md:items-start md:gap-8 md:self-auto md:p-5';
 } elseif ( $is_content ) {
-	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-start gap-5 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:gap-8 lg:self-auto lg:p-5';
+	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-start gap-5 self-center rounded-card bg-white p-5 md:mt-0 md:max-w-[36.625rem] md:gap-8 md:self-auto md:p-5';
 } else {
 	// Mobile Figma 671:40555 — 20px padding, 20px stack gap (was 60px).
-	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-center gap-5 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:gap-8 lg:self-auto lg:p-5';
+	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-center gap-5 self-center rounded-card bg-white p-5 md:mt-0 md:max-w-[36.625rem] md:items-start md:gap-8 md:self-auto md:p-5';
 }
 
 $cta_row_class = ( $center_content || $is_last_mid_cta || $is_accent )
-	? 'flex w-full flex-col items-center gap-4 lg:flex-row lg:flex-nowrap lg:items-start lg:justify-start lg:gap-4 lg:whitespace-nowrap'
-	: 'flex w-full flex-col items-stretch gap-4 lg:flex-row lg:flex-nowrap lg:items-start lg:gap-4 lg:whitespace-nowrap';
+	? 'flex w-full flex-col items-center gap-4 md:flex-row md:flex-nowrap md:items-start md:justify-start md:gap-4 md:whitespace-nowrap'
+	: 'flex w-full flex-col items-stretch gap-4 md:flex-row md:flex-nowrap md:items-start md:gap-4 md:whitespace-nowrap';
 
 $body_class = $is_accent
 	? 'm-0 w-full font-sans text-label leading-[1.5] text-muted ' . $text_align
-	: 'm-0 w-full font-sans text-body leading-[1.2] text-ink ' . ( ( $center_content || $is_last_mid_cta ) ? 'text-center lg:text-left' : 'text-left' );
+	: 'm-0 w-full font-sans text-body leading-[1.2] text-ink ' . ( ( $center_content || $is_last_mid_cta ) ? 'text-center md:text-left' : 'text-left' );
 
 $has_ctas = ( ! empty( $primary_cta['url'] ) || ! empty( $secondary_cta['url'] ) || ! empty( $tertiary_cta['url'] ) );
 
@@ -181,9 +181,9 @@ if ( $is_home_hero ) {
 	<?php if ( $background_image ) : ?>
 		<div class="iom-hero__media <?php echo esc_attr( $img_wrap_class ); ?>">
 			<?php
-			$hero_sizes = '(max-width: 1023px) 100vw, min(1080px, 75vw)';
+			$hero_sizes = '(max-width: 767px) 100vw, min(1080px, 75vw)';
 			$img_attrs  = array(
-				'class' => 'absolute inset-0 h-full w-full object-cover object-[center_30%] lg:object-cover',
+				'class' => 'absolute inset-0 h-full w-full object-cover object-[center_30%] md:object-cover',
 				'alt'   => '',
 				'sizes' => $hero_sizes,
 			);
@@ -206,28 +206,28 @@ if ( $is_home_hero ) {
 	<div class="iom-hero__outer <?php echo esc_attr( $outer_class ); ?>">
 		<div class="iom-hero__card <?php echo esc_attr( $card_class ); ?>">
 			<?php if ( $logo_id && $show_logo ) : ?>
-				<div class="lg:pl-5 lg:pt-5">
+				<div class="md:pl-5 md:pt-5">
 					<?php
 					echo wp_get_attachment_image(
 						(int) $logo_id,
 						'medium',
 						false,
 						array(
-							'class'    => 'h-auto w-[8.75rem] max-w-full object-contain object-left lg:w-[11.1875rem]',
+							'class'    => 'h-auto w-[8.75rem] max-w-full object-contain object-left md:w-[11.1875rem]',
 							'alt'      => __( 'Impact One Million', 'impact-one-million' ),
 							'loading'  => 'eager',
 							'decoding' => 'async',
-							'sizes'    => '(max-width: 1023px) 140px, 179px',
+							'sizes'    => '(max-width: 767px) 140px, 179px',
 						)
 					);
 					?>
 				</div>
 			<?php elseif ( $has_default_logo ) : ?>
-				<div class="lg:pl-5 lg:pt-5">
+				<div class="md:pl-5 md:pt-5">
 					<img
 						src="<?php echo esc_url( $default_logo_uri ); ?>"
 						alt="<?php echo esc_attr__( 'Impact One Million', 'impact-one-million' ); ?>"
-						class="h-auto w-[8.75rem] max-w-full object-contain object-left lg:w-[11.1875rem]"
+						class="h-auto w-[8.75rem] max-w-full object-contain object-left md:w-[11.1875rem]"
 						width="179"
 						height="136"
 						loading="eager"

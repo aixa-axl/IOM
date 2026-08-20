@@ -2508,6 +2508,51 @@ video {
   }
 }
 
+/* Hero title: tablet scale between mobile 40 and desktop 72. */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .iom-hero .text-title {
+    font-size: 56px;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+}
+
+/*
+ * Navy hero as the last page section (e.g. Ambassadors CTA):
+ * boxed mobile shell — equal 11px inset, no overlapping card.
+ * Phones only — tablet+ uses the side-by-side hero composition.
+ */
+
+@media (max-width: 767px) {
+  .entry-content > section.iom-hero.bg-navy:last-of-type > .iom-hero__media {
+    height: 251px;
+  }
+
+  .entry-content > section.iom-hero.bg-navy:last-of-type > .iom-hero__outer {
+    padding: 11px !important;
+  }
+
+  .entry-content > section.iom-hero.bg-navy:last-of-type > .iom-hero__outer > .iom-hero__card {
+    margin-top: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+    padding: 11px !important;
+    gap: 32px !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .entry-content > section.iom-hero.bg-navy:last-of-type > .iom-hero__outer > .iom-hero__card .text-left,
+  .entry-content > section.iom-hero.bg-navy:last-of-type > .iom-hero__outer > .iom-hero__card [class*='text-left'] {
+    text-align: center !important;
+  }
+
+  .entry-content > section.iom-hero.bg-navy:last-of-type > .iom-hero__outer > .iom-hero__card > div {
+    align-items: center !important;
+  }
+}
+
 @media (max-width: 1023px) {
   .py-section,
   .py-gutter {
@@ -2560,39 +2605,6 @@ video {
   .iom-stats-list > li,
   [data-impact-stats-list] > li {
     margin-bottom: 24px !important;
-  }
-
-  /*
-   * Navy hero as the last page section (e.g. Ambassadors CTA):
-   * boxed mobile shell — equal 11px inset, no overlapping card.
-   * :last-of-type ignores trailing whitespace text nodes.
-   */
-
-  .entry-content > section.iom-hero.bg-navy:last-of-type > .iom-hero__media {
-    height: 251px;
-  }
-
-  .entry-content > section.iom-hero.bg-navy:last-of-type > .iom-hero__outer {
-    padding: 11px !important;
-  }
-
-  .entry-content > section.iom-hero.bg-navy:last-of-type > .iom-hero__outer > .iom-hero__card {
-    margin-top: 0 !important;
-    max-width: none !important;
-    width: 100% !important;
-    padding: 11px !important;
-    gap: 32px !important;
-    align-items: center !important;
-    text-align: center !important;
-  }
-
-  .entry-content > section.iom-hero.bg-navy:last-of-type > .iom-hero__outer > .iom-hero__card .text-left,
-  .entry-content > section.iom-hero.bg-navy:last-of-type > .iom-hero__outer > .iom-hero__card [class*='text-left'] {
-    text-align: center !important;
-  }
-
-  .entry-content > section.iom-hero.bg-navy:last-of-type > .iom-hero__outer > .iom-hero__card > div {
-    align-items: center !important;
   }
 
   .text-title {
@@ -3335,9 +3347,137 @@ body {
 }
 
 @media (min-width: 768px) {
+  .md\:absolute {
+    position: absolute;
+  }
+
+  .md\:inset-y-0 {
+    top: 0px;
+    bottom: 0px;
+  }
+
+  .md\:left-0 {
+    left: 0px;
+  }
+
+  .md\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .md\:h-auto {
+    height: auto;
+  }
+
+  .md\:min-h-\[41\.75rem\] {
+    min-height: 41.75rem;
+  }
+
+  .md\:min-h-\[52\.5rem\] {
+    min-height: 52.5rem;
+  }
+
+  .md\:w-\[11\.1875rem\] {
+    width: 11.1875rem;
+  }
+
+  .md\:w-\[min\(100\%\2c 67\.5rem\)\] {
+    width: min(100%, 67.5rem);
+  }
+
+  .md\:w-auto {
+    width: auto;
+  }
+
+  .md\:max-w-\[36\.625rem\] {
+    max-width: 36.625rem;
+  }
+
+  .md\:max-w-\[75\%\] {
+    max-width: 75%;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
+  .md\:flex-nowrap {
+    flex-wrap: nowrap;
+  }
+
+  .md\:items-start {
+    align-items: flex-start;
+  }
+
+  .md\:items-center {
+    align-items: center;
+  }
+
+  .md\:justify-start {
+    justify-content: flex-start;
+  }
+
+  .md\:justify-end {
+    justify-content: flex-end;
+  }
+
+  .md\:gap-4 {
+    gap: 1rem;
+  }
+
+  .md\:gap-8 {
+    gap: 2rem;
+  }
+
+  .md\:self-auto {
+    align-self: auto;
+  }
+
+  .md\:whitespace-nowrap {
+    white-space: nowrap;
+  }
+
+  .md\:object-cover {
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+
+  .md\:p-5 {
+    padding: 1.25rem;
+  }
+
+  .md\:px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
   .md\:px-\[30px\] {
     padding-left: 30px;
     padding-right: 30px;
+  }
+
+  .md\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .md\:pl-5 {
+    padding-left: 1.25rem;
+  }
+
+  .md\:pt-5 {
+    padding-top: 1.25rem;
+  }
+
+  .md\:text-left {
+    text-align: left;
+  }
+
+  .md\:text-\[22px\] {
+    font-size: 22px;
+  }
+
+  .md\:tracking-\[1\.5px\] {
+    letter-spacing: 1.5px;
   }
 }
 
@@ -3477,14 +3617,6 @@ body {
 
   .lg\:min-h-\[41\.75rem\] {
     min-height: 41.75rem;
-  }
-
-  .lg\:min-h-\[52\.5rem\] {
-    min-height: 52.5rem;
-  }
-
-  .lg\:w-\[11\.1875rem\] {
-    width: 11.1875rem;
   }
 
   .lg\:w-\[31\.25rem\] {
@@ -3782,11 +3914,6 @@ body {
     background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
   }
 
-  .lg\:object-cover {
-    -o-object-fit: cover;
-       object-fit: cover;
-  }
-
   .lg\:p-10 {
     padding: 2.5rem;
   }
@@ -3815,11 +3942,6 @@ body {
   .lg\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
-  }
-
-  .lg\:px-5 {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
   }
 
   .lg\:px-6 {
@@ -3891,10 +4013,6 @@ body {
     padding-bottom: 0px;
   }
 
-  .lg\:pl-5 {
-    padding-left: 1.25rem;
-  }
-
   .lg\:pl-\[3\.75rem\] {
     padding-left: 3.75rem;
   }
@@ -3907,16 +4025,8 @@ body {
     padding-top: 2.5rem;
   }
 
-  .lg\:pt-5 {
-    padding-top: 1.25rem;
-  }
-
   .lg\:text-left {
     text-align: left;
-  }
-
-  .lg\:text-\[22px\] {
-    font-size: 22px;
   }
 
   .lg\:text-\[7\.5rem\] {
@@ -3991,10 +4101,6 @@ body {
 
   .lg\:tracking-\[0\.02em\] {
     letter-spacing: 0.02em;
-  }
-
-  .lg\:tracking-\[1\.5px\] {
-    letter-spacing: 1.5px;
   }
 
   .lg\:tracking-normal {
