@@ -70,7 +70,7 @@ $img_attrs = array(
 				<?php endif; ?>
 			</div>
 
-			<div class="flex flex-1 flex-col items-start justify-center gap-8 p-[60px] lg:p-16">
+			<div class="flex flex-1 flex-col items-start justify-center gap-8 p-5 lg:p-16">
 				<?php if ( $quote ) : ?>
 					<blockquote class="m-0 font-display text-stat-label leading-[1.2] text-blue">
 						<?php echo esc_html( $quote ); ?>
