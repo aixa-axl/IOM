@@ -365,3 +365,20 @@ body {
     object-position: center;
   }
 }
+
+/*
+ * How it works — mobile pillars carousel.
+ * Center the active card; peek neighbors on both sides; never clip the focused card.
+ */
+@media (max-width: 1023px) {
+  .iom-pillars-track {
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: calc(50vw - min(8.75rem, 39vw));
+    padding-inline: calc(50vw - min(8.75rem, 39vw));
+  }
+
+  .iom-pillars-slide {
+    width: min(17.5rem, 78vw);
+    scroll-snap-align: center;
+  }
+}

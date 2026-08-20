@@ -1073,10 +1073,6 @@ video {
   width: calc((200% - 1.5rem) / 3);
 }
 
-.w-\[calc\(100vw-5\.75rem\)\] {
-  width: calc(100vw - 5.75rem);
-}
-
 .w-\[min\(100\%\2c 16rem\)\] {
   width: min(100%, 16rem);
 }
@@ -1140,10 +1136,6 @@ video {
 
 .max-w-\[1440px\] {
   max-width: 1440px;
-}
-
-.max-w-\[17\.5rem\] {
-  max-width: 17.5rem;
 }
 
 .max-w-\[18\.075rem\] {
@@ -2318,10 +2310,6 @@ video {
   -ms-overflow-style: none;
 }
 
-.\[scroll-padding-inline\:26px\] {
-  scroll-padding-inline: 26px;
-}
-
 .\[scrollbar-width\:none\] {
   scrollbar-width: none;
 }
@@ -2734,6 +2722,24 @@ body {
        object-fit: contain;
     -o-object-position: center;
        object-position: center;
+  }
+}
+
+/*
+ * How it works — mobile pillars carousel.
+ * Center the active card; peek neighbors on both sides; never clip the focused card.
+ */
+
+@media (max-width: 1023px) {
+  .iom-pillars-track {
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: calc(50vw - min(8.75rem, 39vw));
+    padding-inline: calc(50vw - min(8.75rem, 39vw));
+  }
+
+  .iom-pillars-slide {
+    width: min(17.5rem, 78vw);
+    scroll-snap-align: center;
   }
 }
 
@@ -3673,10 +3679,6 @@ body {
     --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  }
-
-  .lg\:\[scroll-padding-inline\:0\] {
-    scroll-padding-inline: 0;
   }
 }
 
