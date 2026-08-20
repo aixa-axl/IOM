@@ -80,7 +80,7 @@ $fallback_orders = array(
 					: ( isset( $fallback_orders[ $index ] ) ? $fallback_orders[ $index ] : 'order-1 lg:order-1' );
 				$icon_uri    = ( $preset && isset( $icon_map[ $preset ] ) ) ? $icon_map[ $preset ] : '';
 				?>
-				<li class="flex w-full max-w-sm flex-col items-center text-center <?php echo esc_attr( $order_class ); ?> lg:max-w-none lg:flex-1">
+				<li class="flex w-full max-w-sm flex-col items-center text-center max-lg:mb-[24px] lg:mb-0 <?php echo esc_attr( $order_class ); ?> lg:max-w-none lg:flex-1">
 					<div class="flex size-20 shrink-0 items-center justify-center lg:size-20" aria-hidden="true">
 						<?php if ( $icon_id ) : ?>
 							<?php

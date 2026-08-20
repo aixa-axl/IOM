@@ -2476,16 +2476,31 @@ video {
     row-gap: 26px;
   }
 
-  /* Section-specific mobile spacing — !important beats utility gap-0 / gap overrides */
+  /* Section-specific mobile spacing.
+   * Use margins on items (not only parent gap) — more reliable on mobile WebKit.
+   * Also keep gap as a fallback. */
 
   .iom-challenge-cards,
   [data-challenge-cards] {
-    gap: 28px !important;
+    display: grid !important;
+    gap: 0 !important;
+  }
+
+  .iom-challenge-cards > li:not(:last-child),
+  [data-challenge-cards] > li:not(:last-child) {
+    margin-bottom: 28px !important;
   }
 
   .iom-stats-list,
   [data-impact-stats-list] {
-    gap: 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
+  .iom-stats-list > li,
+  [data-impact-stats-list] > li {
+    margin-bottom: 24px !important;
   }
 
   .text-title {
@@ -2636,9 +2651,20 @@ body {
     /* gap-10 */
   }
 
+  .iom-challenge-cards > li,
+  [data-challenge-cards] > li {
+    margin-bottom: 0 !important;
+  }
+
   .iom-stats-list,
   [data-impact-stats-list] {
+    flex-direction: row !important;
     gap: 0 !important;
+  }
+
+  .iom-stats-list > li,
+  [data-impact-stats-list] > li {
+    margin-bottom: 0 !important;
   }
 }
 
@@ -2980,6 +3006,20 @@ body {
   opacity: 0.6;
 }
 
+@media not all and (min-width: 1024px) {
+  .max-lg\:mb-\[24px\] {
+    margin-bottom: 24px;
+  }
+
+  .max-lg\:mb-\[28px\] {
+    margin-bottom: 28px;
+  }
+
+  .max-lg\:last\:mb-0:last-child {
+    margin-bottom: 0px;
+  }
+}
+
 @media (min-width: 640px) {
   .sm\:w-auto {
     width: auto;
@@ -3052,6 +3092,10 @@ body {
   .lg\:mx-0 {
     margin-left: 0px;
     margin-right: 0px;
+  }
+
+  .lg\:mb-0 {
+    margin-bottom: 0px;
   }
 
   .lg\:ml-auto {

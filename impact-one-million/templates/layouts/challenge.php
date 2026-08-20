@@ -92,8 +92,8 @@ $btn_cta = 'inline-flex items-center justify-center rounded-btn border-[1.5px] b
 					$icon_uri = ( $preset && isset( $icon_map[ $preset ] ) ) ? $icon_map[ $preset ] : '';
 
 					$card_class = $is_cta
-						? 'flex flex-col items-center gap-3 rounded-card bg-accent p-[14px] text-center lg:flex-row lg:items-center lg:gap-10 lg:px-10 lg:py-10 lg:text-left'
-						: 'flex flex-col items-center gap-3 rounded-card bg-white p-0 text-center lg:flex-row lg:items-center lg:gap-10 lg:p-10 lg:text-left';
+						? 'flex flex-col items-center gap-3 rounded-card bg-accent p-[14px] text-center max-lg:mb-[28px] max-lg:last:mb-0 lg:mb-0 lg:flex-row lg:items-center lg:gap-10 lg:px-10 lg:py-10 lg:text-left'
+						: 'flex flex-col items-center gap-3 rounded-card bg-white p-0 text-center max-lg:mb-[28px] max-lg:last:mb-0 lg:mb-0 lg:flex-row lg:items-center lg:gap-10 lg:p-10 lg:text-left';
 
 					$title_class = $is_cta
 						? 'm-0 font-display text-[32px] leading-[1.2] text-white lg:text-feature-title lg:leading-[39px]'
