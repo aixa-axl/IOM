@@ -103,9 +103,13 @@ $btn_cta = 'inline-flex items-center justify-center rounded-btn border-[1.5px] b
 					$text_wrap_class = $is_cta
 						? 'flex w-full flex-col items-center gap-4 lg:items-start'
 						: 'flex w-full flex-col items-center gap-4 lg:min-w-0 lg:flex-1 lg:items-start';
+
+					$icon_wrap_class = $is_cta
+						? 'flex h-auto w-20 shrink-0 items-center justify-center lg:size-[6.25rem]'
+						: 'flex h-[7.5rem] w-20 shrink-0 items-center justify-center lg:size-[6.25rem]';
 					?>
 					<li class="<?php echo esc_attr( $card_class ); ?>">
-						<div class="flex h-[7.5rem] w-20 shrink-0 items-center justify-center lg:size-[6.25rem]" aria-hidden="true">
+						<div class="<?php echo esc_attr( $icon_wrap_class ); ?>" aria-hidden="true">
 							<?php if ( $icon_id ) : ?>
 								<?php
 								echo wp_get_attachment_image(
