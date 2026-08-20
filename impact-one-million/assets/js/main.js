@@ -892,6 +892,17 @@
 		let searchTimer = null;
 		let loading = false;
 
+		function isMobile() {
+			return window.matchMedia('(max-width: 1023px)').matches;
+		}
+
+		function perPage() {
+			if (isMobile()) {
+				return Number(section.getAttribute('data-per-page-mobile')) || 4;
+			}
+			return Number(section.getAttribute('data-per-page')) || 6;
+		}
+
 		function filters() {
 			return {
 				year: (form.querySelector('[data-filter="year"]') || {}).value || '',
@@ -935,7 +946,7 @@
 			body.append('action', 'iom_case_studies');
 			body.append('nonce', config.nonce);
 			body.append('paged', String(nextPage));
-			body.append('posts_per_page', section.getAttribute('data-per-page') || '6');
+			body.append('posts_per_page', String(perPage()));
 			body.append('link_label', section.getAttribute('data-link-label') || '');
 			body.append('content_type', section.getAttribute('data-content-type') || 'case-study');
 			body.append('append', append ? '1' : '0');
@@ -1004,6 +1015,14 @@
 
 		if (empty) {
 			empty.classList.toggle('hidden', grid.children.length > 0);
+		}
+
+		/*
+		 * Desktop SSR may render 6 cards; narrow viewports should start at 4.
+		 * Refetch once on mobile so paging stays correct for Load more.
+		 */
+		if (isMobile() && grid.children.length > perPage()) {
+			fetchPosts({ append: false });
 		}
 	});
 })();

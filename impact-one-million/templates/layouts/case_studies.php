@@ -46,6 +46,11 @@ if ( $posts_per_page < 1 ) {
 	$posts_per_page = 6;
 }
 
+$posts_per_page_mobile = 4;
+$initial_per_page      = function_exists( 'wp_is_mobile' ) && wp_is_mobile()
+	? $posts_per_page_mobile
+	: $posts_per_page;
+
 if ( ! $link_label ) {
 	$link_label = $defaults['link'];
 }
@@ -93,7 +98,7 @@ $query = iom_case_studies_query(
 	array(
 		'category'       => $content_type,
 		'paged'          => 1,
-		'posts_per_page' => $posts_per_page,
+		'posts_per_page' => $initial_per_page,
 	)
 );
 
@@ -105,6 +110,7 @@ $select_class = 'appearance-none rounded-btn border border-solid border-[#e5e7eb
 	data-case-studies
 	data-content-type="<?php echo esc_attr( $content_type ); ?>"
 	data-per-page="<?php echo esc_attr( (string) $posts_per_page ); ?>"
+	data-per-page-mobile="<?php echo esc_attr( (string) $posts_per_page_mobile ); ?>"
 	data-link-label="<?php echo esc_attr( $link_label ); ?>"
 	data-page="1"
 	data-max-pages="<?php echo esc_attr( (string) max( 1, (int) $query->max_num_pages ) ); ?>"
@@ -166,7 +172,7 @@ $select_class = 'appearance-none rounded-btn border border-solid border-[#e5e7eb
 		</form>
 	</div>
 
-	<div class="bg-off-white px-page py-10 lg:py-[100px] lg:px-10">
+	<div class="bg-off-white px-page py-10 lg:px-10 lg:py-[100px]">
 		<div class="mx-auto flex w-full max-w-site flex-col items-center gap-16">
 			<ul class="m-0 grid w-full list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3" data-case-studies-grid>
 				<?php
