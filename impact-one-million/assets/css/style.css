@@ -2701,16 +2701,15 @@ body {
 
 @media (min-width: 1024px) {
   /*
-   * Last navy mid-page CTA: keep dual buttons on one row without hugging the card edge.
+   * History page — last navy mid-CTA: mild desktop button size so dual CTAs
+   * stay on one row without hugging the card edge (24px → 20px).
    */
 
-  .entry-content > section.iom-hero.bg-navy:last-of-type .iom-hero__ctas > a {
-    font-size: 18px;
-    letter-spacing: 1px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+  body.page-history .entry-content > section.iom-hero.bg-navy:last-of-type .iom-hero__ctas > a {
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
   .iom-challenge-cards,
@@ -3634,9 +3633,9 @@ body {
     padding-right: 5rem;
   }
 
-  .lg\:px-4 {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  .lg\:px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
   .lg\:px-6 {
@@ -3762,8 +3761,8 @@ body {
     text-align: left;
   }
 
-  .lg\:text-\[18px\] {
-    font-size: 18px;
+  .lg\:text-\[20px\] {
+    font-size: 20px;
   }
 
   .lg\:text-\[7\.5rem\] {
@@ -3826,8 +3825,8 @@ body {
     line-height: 1;
   }
 
-  .lg\:tracking-\[1px\] {
-    letter-spacing: 1px;
+  .lg\:tracking-\[1\.5px\] {
+    letter-spacing: 1.5px;
   }
 
   .lg\:tracking-normal {
