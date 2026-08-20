@@ -16,10 +16,14 @@ get_header();
 				<div class="entry-content">
 					<?php
 					if ( function_exists( 'have_rows' ) && have_rows( 'page_sections' ) ) {
+						$page_sections_rows  = get_field( 'page_sections' );
+						$iom_sections_total  = is_array( $page_sections_rows ) ? count( $page_sections_rows ) : 0;
+
 						while ( have_rows( 'page_sections' ) ) {
 							the_row();
 
 							$layout = get_row_layout();
+							$iom_is_last_section = ( (int) get_row_index() === $iom_sections_total );
 
 							$layout_path = locate_template(
 								array(

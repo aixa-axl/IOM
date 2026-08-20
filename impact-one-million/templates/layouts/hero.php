@@ -59,10 +59,16 @@ if ( ! $center_content && ! $is_accent && ! $show_logo && ! $is_content ) {
 	$center_content = true;
 }
 
-// Last flexible-content row on this page (bottom-of-page mid CTA treatment).
-$page_sections   = function_exists( 'get_field' ) ? get_field( 'page_sections' ) : null;
-$is_last_layout  = is_array( $page_sections ) && (int) get_row_index() === count( $page_sections );
-$is_last_mid_cta = $center_content && $is_last_layout && ! $is_accent;
+// Last flexible-content row on this page (bottom-of-page boxed mobile shell).
+// $iom_is_last_section is set in page.php; fall back to counting rows if missing.
+if ( isset( $iom_is_last_section ) ) {
+	$is_last_layout = (bool) $iom_is_last_section;
+} else {
+	$page_sections  = function_exists( 'get_field' ) ? get_field( 'page_sections' ) : null;
+	$is_last_layout = is_array( $page_sections ) && (int) get_row_index() === count( $page_sections );
+}
+// Any navy hero as the final layout — not only center_content mid-CTAs (e.g. Ambassadors).
+$is_last_mid_cta = $is_last_layout && ! $is_accent;
 
 $bg_class = $is_accent ? 'bg-accent-blue' : 'bg-navy';
 
@@ -121,7 +127,8 @@ if ( $is_accent ) {
 	$card_class = 'mt-0 flex w-full flex-col items-center gap-8 self-center rounded-card bg-white p-[11px] lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:self-auto lg:p-5';
 } elseif ( $is_last_mid_cta ) {
 	// Same boxed mobile shell as accent mid-page CTA (11px inset, no image overlap).
-	$card_class = 'mt-0 flex w-full flex-col items-center gap-8 self-center rounded-card bg-white p-[11px] lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:gap-8 lg:self-auto lg:p-5';
+	$card_items  = ( $center_content || ! $is_content ) ? 'items-center' : 'items-start';
+	$card_class  = 'mt-0 flex w-full flex-col ' . $card_items . ' gap-8 self-center rounded-card bg-white p-[11px] lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:gap-8 lg:self-auto lg:p-5';
 } elseif ( $center_content ) {
 	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-center gap-5 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:gap-8 lg:self-auto lg:p-5';
 } elseif ( $is_content ) {
@@ -131,9 +138,11 @@ if ( $is_accent ) {
 	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-center gap-5 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:gap-8 lg:self-auto lg:p-5';
 }
 
-$cta_row_class = ( $center_content || $is_last_mid_cta )
-	? 'flex w-full flex-col items-center gap-4 lg:flex-row lg:flex-nowrap lg:items-start lg:justify-start lg:gap-4 lg:whitespace-nowrap'
-	: 'flex w-full flex-col items-stretch gap-4 lg:flex-row lg:flex-nowrap lg:items-start lg:gap-4 lg:whitespace-nowrap';
+if ( $center_content || ( $is_last_mid_cta && ! $is_content ) ) {
+	$cta_row_class = 'flex w-full flex-col items-center gap-4 lg:flex-row lg:flex-nowrap lg:items-start lg:justify-start lg:gap-4 lg:whitespace-nowrap';
+} else {
+	$cta_row_class = 'flex w-full flex-col items-stretch gap-4 lg:flex-row lg:flex-nowrap lg:items-start lg:gap-4 lg:whitespace-nowrap';
+}
 
 $body_class = $is_accent
 	? 'm-0 w-full font-sans text-label leading-[1.5] text-muted ' . $text_align
