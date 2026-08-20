@@ -156,9 +156,9 @@ $has_ctas = ( ! empty( $primary_cta['url'] ) || ! empty( $secondary_cta['url'] )
 $eyebrow_is_simple = $subtitle && ! $subtitle_parent;
 ?>
 
-<section class="relative overflow-hidden <?php echo esc_attr( $bg_class ); ?>">
+<section class="iom-hero relative overflow-hidden <?php echo esc_attr( $bg_class ); ?>">
 	<?php if ( $background_image ) : ?>
-		<div class="<?php echo esc_attr( $img_wrap_class ); ?>">
+		<div class="iom-hero__media <?php echo esc_attr( $img_wrap_class ); ?>">
 			<?php
 			$hero_sizes = '(max-width: 1023px) 100vw, min(1080px, 75vw)';
 			$img_attrs  = array(
@@ -179,11 +179,11 @@ $eyebrow_is_simple = $subtitle && ! $subtitle_parent;
 			?>
 		</div>
 	<?php else : ?>
-		<div class="<?php echo esc_attr( $img_wrap_class . ' ' . $bg_class ); ?>" aria-hidden="true"></div>
+		<div class="iom-hero__media <?php echo esc_attr( $img_wrap_class . ' ' . $bg_class ); ?>" aria-hidden="true"></div>
 	<?php endif; ?>
 
-	<div class="<?php echo esc_attr( $outer_class ); ?>">
-		<div class="<?php echo esc_attr( $card_class ); ?>">
+	<div class="iom-hero__outer <?php echo esc_attr( $outer_class ); ?>">
+		<div class="iom-hero__card <?php echo esc_attr( $card_class ); ?>">
 			<?php if ( $logo_id && $show_logo ) : ?>
 				<div class="lg:pl-5 lg:pt-5">
 					<?php

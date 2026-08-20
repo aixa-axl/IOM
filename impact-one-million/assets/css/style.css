@@ -1320,6 +1320,10 @@ video {
   flex-wrap: nowrap;
 }
 
+.content-center {
+  align-content: center;
+}
+
 .content-start {
   align-content: flex-start;
 }
@@ -2512,6 +2516,28 @@ video {
     margin-bottom: 24px !important;
   }
 
+  /*
+   * Navy hero as the last page section (e.g. Ambassadors CTA):
+   * boxed mobile shell — equal 11px inset, no overlapping card.
+   * :last-of-type ignores trailing whitespace text nodes.
+   */
+
+  .entry-content > section.iom-hero.bg-navy:last-of-type > .iom-hero__media {
+    height: 251px;
+  }
+
+  .entry-content > section.iom-hero.bg-navy:last-of-type > .iom-hero__outer {
+    padding: 11px !important;
+  }
+
+  .entry-content > section.iom-hero.bg-navy:last-of-type > .iom-hero__outer > .iom-hero__card {
+    margin-top: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+    padding: 11px !important;
+    gap: 32px !important;
+  }
+
   .text-title {
     font-size: 40px;
     line-height: 1.1;
@@ -3290,6 +3316,10 @@ body {
     min-width: 25rem;
   }
 
+  .lg\:min-w-\[7\.5rem\] {
+    min-width: 7.5rem;
+  }
+
   .lg\:max-w-\[18\.75rem\] {
     max-width: 18.75rem;
   }
@@ -3369,6 +3399,10 @@ body {
 
   .lg\:grid-cols-5 {
     grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-none {
+    grid-template-columns: none;
   }
 
   .lg\:flex-row {
