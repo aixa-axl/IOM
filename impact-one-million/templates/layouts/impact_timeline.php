@@ -57,7 +57,7 @@ $cta_url    = ! empty( $cta['url'] ) ? $cta['url'] : '#';
 $cta_title  = ! empty( $cta['title'] ) ? $cta['title'] : __( 'Good for business', 'impact-one-million' );
 $cta_target = ! empty( $cta['target'] ) ? $cta['target'] : '';
 
-$btn_class = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+$btn_class = 'inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-btn border-[1.5px] border-solid border-transparent bg-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 
 $nav_btn = 'inline-flex shrink-0 items-center justify-center border-0 bg-transparent p-0 text-accent-blue transition-colors hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-40';
 
@@ -89,7 +89,7 @@ $iom_timeline_arrow = static function ( $extra_class = '' ) {
 >
 	<div class="mx-auto flex w-full max-w-site flex-col gap-10 lg:gap-20">
 		<div class="flex items-start justify-between gap-6 lg:items-center">
-			<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">
+			<h2 class="m-0 font-display text-[32px] leading-[1.2] text-blue lg:text-headline">
 				<span class="lg:hidden"><?php echo esc_html( $heading_mobile ); ?></span>
 				<span class="hidden lg:inline"><?php echo esc_html( $heading ); ?></span>
 			</h2>
