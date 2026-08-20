@@ -70,7 +70,7 @@ $iom_render_milestone_copy = function ( $title, $body, $right = false ) {
 		<?php if ( ! empty( $milestones ) ) : ?>
 			<ol class="relative m-0 flex w-full list-none flex-col p-0">
 				<span
-					class="absolute bottom-0 left-2 top-0 w-0.5 bg-[#dfe8ff] lg:left-1/2 lg:-translate-x-1/2"
+					class="absolute bottom-0 left-2 top-0 w-0.5 -translate-x-1/2 bg-[#dfe8ff] lg:left-1/2"
 					aria-hidden="true"
 				></span>
 
