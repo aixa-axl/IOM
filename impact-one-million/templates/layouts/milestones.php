@@ -94,7 +94,7 @@ $iom_render_milestone_copy = function ( $title, $body, $right = false ) {
 
 						<!-- Node -->
 						<span
-							class="relative z-10 mt-1 size-4 shrink-0 rounded-full border border-solid border-accent-blue bg-[#dfe8ff] lg:mt-0"
+							class="relative z-10 mt-1 size-4 shrink-0 rounded-full border-[3px] border-solid border-accent-blue bg-[#dfe8ff] lg:mt-0"
 							aria-hidden="true"
 						></span>
 
