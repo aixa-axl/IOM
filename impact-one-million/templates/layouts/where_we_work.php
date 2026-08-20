@@ -170,7 +170,11 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 
 		<div class="relative w-full max-w-[75rem]">
 			<div class="relative bg-white">
-				<?php require locate_template( 'templates/parts/where-we-work-map.php' ); ?>
+				<?php
+				$iom_map_active_slug = $default_slug;
+				require locate_template( 'templates/parts/where-we-work-map.php' );
+				unset( $iom_map_active_slug );
+				?>
 
 				<!-- Desktop overlay panel — lower-left over the map -->
 				<aside
@@ -272,7 +276,7 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 					?>
 					<button
 						type="button"
-						class="shrink-0 border-0 border-b-2 border-solid border-transparent bg-transparent p-0 font-display text-label uppercase leading-[1.2] tracking-[1px] text-navy transition-opacity hover:opacity-70 <?php echo $is_active ? 'lg:border-navy' : 'lg:border-transparent'; ?>"
+						class="shrink-0 border-0 border-b-2 border-solid bg-transparent p-0 font-display text-label uppercase leading-[1.2] tracking-[1px] text-navy transition-opacity hover:opacity-70 <?php echo $is_active ? 'border-navy' : 'border-transparent'; ?>"
 						data-country-tab
 						data-country="<?php echo esc_attr( $tab['slug'] ); ?>"
 						aria-pressed="<?php echo $is_active ? 'true' : 'false'; ?>"

@@ -12,6 +12,7 @@ $map_base  = $map_dir . '/where-we-work-map-base.png';
 $map_2x    = $map_dir . '/where-we-work-map-base@2x.png';
 $map_3x    = $map_dir . '/where-we-work-map-base@3x.png';
 $map_slugs = array( 'china', 'vietnam', 'indonesia', 'india', 'bangladesh', 'sri-lanka' );
+$map_active = isset( $iom_map_active_slug ) ? (string) $iom_map_active_slug : 'china';
 ?>
 <div class="relative w-full cursor-pointer" data-work-map>
 	<img
@@ -29,12 +30,14 @@ $map_slugs = array( 'china', 'vietnam', 'indonesia', 'india', 'bangladesh', 'sri
 
 	<?php foreach ( $map_slugs as $slug ) : ?>
 		<?php
-		$hl    = $map_dir . '/highlight-' . $slug . '.png';
-		$hl_2x = $map_dir . '/highlight-' . $slug . '@2x.png';
-		$hl_3x = $map_dir . '/highlight-' . $slug . '@3x.png';
+		$hl         = $map_dir . '/highlight-' . $slug . '.png';
+		$hl_2x      = $map_dir . '/highlight-' . $slug . '@2x.png';
+		$hl_3x      = $map_dir . '/highlight-' . $slug . '@3x.png';
+		$is_active  = ( $slug === $map_active );
+		$hl_opacity = $is_active ? 'opacity-100 is-active' : 'opacity-0';
 		?>
 		<img
-			class="iom-map-highlight pointer-events-none absolute inset-0 h-full w-full object-fill opacity-0 transition-opacity duration-200"
+			class="iom-map-highlight pointer-events-none absolute inset-0 h-full w-full object-fill transition-opacity duration-200 <?php echo esc_attr( $hl_opacity ); ?>"
 			src="<?php echo esc_url( $hl ); ?>"
 			srcset="<?php echo esc_attr( $hl . ' 1024w, ' . $hl_2x . ' 2048w, ' . $hl_3x . ' 3072w' ); ?>"
 			sizes="(min-width: 1280px) 1200px, 100vw"
