@@ -3611,6 +3611,10 @@ body {
     height: auto;
   }
 
+  .lg\:h-full {
+    height: 100%;
+  }
+
   .lg\:min-h-\[11\.3rem\] {
     min-height: 11.3rem;
   }

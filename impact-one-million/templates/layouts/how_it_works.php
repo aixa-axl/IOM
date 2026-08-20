@@ -138,7 +138,7 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 							$icon_uri = ( $preset && isset( $icon_map[ $preset ] ) ) ? $icon_map[ $preset ] : '';
 							?>
 							<li
-								class="iom-pillars-slide flex shrink-0 flex-col justify-between rounded-card bg-off-white p-6 text-blue lg:h-[22.2rem] lg:w-auto lg:min-w-0"
+								class="iom-pillars-slide flex shrink-0 flex-col justify-between rounded-card bg-off-white p-6 text-blue lg:h-full lg:w-auto lg:min-w-0"
 								data-pillars-slide
 							>
 								<div class="flex flex-col gap-4">
