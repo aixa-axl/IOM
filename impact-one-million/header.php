@@ -241,12 +241,12 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 
 		<div
 			id="mobile-nav-panel"
-			class="absolute inset-x-0 top-full z-40 h-[calc(100dvh-6rem)] max-h-[calc(100dvh-6rem)] flex-col overflow-y-auto bg-blue xl:hidden"
+			class="absolute inset-x-0 top-full z-40 h-[calc(100dvh-6rem)] max-h-[calc(100dvh-6rem)] flex-col overflow-y-auto bg-blue md:h-auto xl:hidden"
 			data-mobile-nav-panel
 			data-open="false"
 			hidden
 		>
-			<div class="mx-auto flex w-full max-w-[22rem] flex-1 flex-col gap-8 px-page pb-8 pt-7 md:mx-0 md:max-w-none md:gap-4 md:px-[30px]">
+			<div class="mx-auto flex w-full max-w-[22rem] flex-1 flex-col gap-8 px-page pb-8 pt-7 md:mx-0 md:max-w-none md:flex-none md:gap-4 md:px-[30px] md:pb-4">
 				<?php if ( $has_acf_nav ) : ?>
 					<nav aria-label="<?php echo esc_attr__( 'Primary', 'impact-one-million' ); ?>">
 						<ul class="m-0 flex list-none flex-col items-start gap-8 p-0">
@@ -352,7 +352,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 			</div>
 
 			<?php if ( $has_util_bar ) : ?>
-				<div class="mt-auto flex w-full flex-col gap-5 bg-ink px-page py-5">
+				<div class="mt-auto flex w-full flex-col gap-5 bg-ink px-page py-5 md:mt-0 md:px-[30px]">
 					<?php if ( $has_utility ) : ?>
 						<?php foreach ( $utility_links as $row ) : ?>
 							<?php
