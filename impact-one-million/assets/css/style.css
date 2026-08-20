@@ -1057,12 +1057,12 @@ video {
   width: 21.25rem;
 }
 
-.w-\[4\.875rem\] {
-  width: 4.875rem;
-}
-
 .w-\[77px\] {
   width: 77px;
+}
+
+.w-\[8\.75rem\] {
+  width: 8.75rem;
 }
 
 .w-\[calc\(\(200\%-1\.5rem\)\/3\)\] {

@@ -151,11 +151,11 @@ $eyebrow_is_simple = $subtitle && ! $subtitle_parent;
 						'medium',
 						false,
 						array(
-							'class'    => 'h-auto w-[4.875rem] max-w-full object-contain object-left lg:w-[11.1875rem]',
+							'class'    => 'h-auto w-[8.75rem] max-w-full object-contain object-left lg:w-[11.1875rem]',
 							'alt'      => __( 'Impact One Million', 'impact-one-million' ),
 							'loading'  => 'eager',
 							'decoding' => 'async',
-							'sizes'    => '(max-width: 1023px) 78px, 179px',
+							'sizes'    => '(max-width: 1023px) 140px, 179px',
 						)
 					);
 					?>
@@ -165,7 +165,7 @@ $eyebrow_is_simple = $subtitle && ! $subtitle_parent;
 					<img
 						src="<?php echo esc_url( $default_logo_uri ); ?>"
 						alt="<?php echo esc_attr__( 'Impact One Million', 'impact-one-million' ); ?>"
-						class="h-auto w-[4.875rem] max-w-full object-contain object-left lg:w-[11.1875rem]"
+						class="h-auto w-[8.75rem] max-w-full object-contain object-left lg:w-[11.1875rem]"
 						width="179"
 						height="136"
 						loading="eager"
