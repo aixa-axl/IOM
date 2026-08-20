@@ -26,7 +26,7 @@ if ( empty( $email_id ) ) {
 <article id="post-<?php echo esc_attr( (string) $post_id ); ?>" <?php post_class(); ?>>
 
 	<!-- Hero -->
-	<header class="bg-blue px-page py-16 lg:px-section lg:py-gutter">
+	<header class="bg-blue px-page py-16 xl:px-section lg:py-gutter">
 		<div class="mx-auto flex w-full max-w-site flex-col gap-8">
 			<div class="flex w-full max-w-[50rem] flex-col gap-8">
 				<nav class="font-display text-body uppercase tracking-[1px] text-white/80" aria-label="<?php echo esc_attr__( 'Breadcrumb', 'impact-one-million' ); ?>">
@@ -58,7 +58,7 @@ if ( empty( $email_id ) ) {
 
 	<!-- Overview + body -->
 	<?php if ( $overview || $has_meta || $body ) : ?>
-		<section class="border-t border-solid border-[#dfe8ff] bg-white px-page py-20 lg:px-section lg:py-gutter">
+		<section class="border-t border-solid border-[#dfe8ff] bg-white px-page py-20 xl:px-section lg:py-gutter">
 			<div class="mx-auto flex w-full max-w-site flex-col items-start gap-20 lg:gap-[6.25rem]">
 				<?php if ( $overview || $has_meta ) : ?>
 					<div class="flex w-full flex-col items-start gap-12 lg:flex-row lg:gap-[6.25rem]">
@@ -102,7 +102,7 @@ if ( empty( $email_id ) ) {
 
 	<!-- Gallery -->
 	<?php if ( ! empty( $gallery ) ) : ?>
-		<section class="bg-white px-page py-20 lg:px-section lg:py-gutter">
+		<section class="bg-white px-page py-20 xl:px-section lg:py-gutter">
 			<div class="mx-auto flex w-full max-w-site flex-col items-start gap-10">
 				<?php if ( $gal_head ) : ?>
 					<h2 class="m-0 font-display text-headline leading-[1.2] text-navy">
@@ -133,7 +133,7 @@ if ( empty( $email_id ) ) {
 
 	<!-- Quote -->
 	<?php if ( $quote || $quote_name || $quote_role ) : ?>
-		<section class="bg-navy px-page py-20 lg:px-section lg:py-[7.5rem]">
+		<section class="bg-navy px-page py-20 xl:px-section lg:py-[7.5rem]">
 			<div class="mx-auto flex w-full max-w-[62.5rem] flex-col items-center gap-8 text-center">
 				<?php if ( $quote ) : ?>
 					<blockquote class="m-0 font-sans text-quote font-extrabold text-white">
@@ -156,7 +156,7 @@ if ( empty( $email_id ) ) {
 
 	<!-- Related -->
 	<?php if ( ! empty( $related ) ) : ?>
-		<section class="bg-white px-page py-20 lg:px-gutter lg:py-gutter">
+		<section class="bg-white px-page py-20 xl:px-gutter lg:py-gutter">
 			<div class="mx-auto flex w-full max-w-site flex-col items-stretch gap-11">
 				<div class="flex w-full flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
 					<?php if ( $rel_head ) : ?>
@@ -186,7 +186,7 @@ if ( empty( $email_id ) ) {
 
 	<!-- Become a Partner -->
 	<?php if ( $has_partner ) : ?>
-		<section class="bg-ink px-page py-section lg:px-section">
+		<section class="bg-ink px-page py-section xl:px-section">
 			<div class="mx-auto flex w-full max-w-site flex-col items-center gap-10">
 				<div class="flex w-full max-w-[40rem] flex-col items-center gap-4 text-center">
 					<?php if ( $partner_head ) : ?>

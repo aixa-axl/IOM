@@ -82,9 +82,9 @@ $btn_primary = 'inline-flex w-full items-center justify-center rounded-btn borde
 $btn_outline = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-navy px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-80 lg:w-auto';
 ?>
 
-<section class="overflow-x-hidden bg-white px-0 py-section lg:px-gutter" data-benefits>
+<section class="overflow-x-hidden bg-white px-0 py-section xl:px-gutter" data-benefits>
 	<div class="mx-auto flex w-full max-w-site flex-col gap-20 lg:gap-10">
-		<div class="flex flex-col gap-6 px-page lg:px-0">
+		<div class="flex flex-col gap-6 px-page xl:px-0">
 			<?php if ( $eyebrow ) : ?>
 				<p class="m-0 font-display text-label uppercase tracking-[1px] text-accent">
 					<?php echo esc_html( $eyebrow ); ?>
@@ -101,7 +101,7 @@ $btn_outline = 'inline-flex w-full items-center justify-center rounded-btn borde
 		<?php if ( ! empty( $cards ) ) : ?>
 			<div class="w-full min-w-0" data-benefits-carousel>
 				<ul
-					class="m-0 flex list-none gap-6 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
+					class="m-0 flex list-none gap-6 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible xl:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
 					data-benefits-track
 				>
 					<?php foreach ( $cards as $card ) : ?>
@@ -169,7 +169,7 @@ $btn_outline = 'inline-flex w-full items-center justify-center rounded-btn borde
 		<?php endif; ?>
 
 		<?php if ( ! empty( $primary_cta['url'] ) || ! empty( $secondary_cta['url'] ) ) : ?>
-			<div class="flex w-full flex-col items-stretch gap-4 px-page lg:flex-row lg:items-start lg:px-0 lg:whitespace-nowrap">
+			<div class="flex w-full flex-col items-stretch gap-4 px-page lg:flex-row lg:items-start xl:px-0 lg:whitespace-nowrap">
 				<?php
 				if ( ! empty( $primary_cta['url'] ) ) {
 					iom_render_link(

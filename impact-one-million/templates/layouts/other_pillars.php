@@ -98,16 +98,16 @@ $link_class = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-displ
 $btn_class  = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 
 $section_pad = $has_intro
-	? 'overflow-x-hidden bg-white px-0 py-section lg:px-gutter lg:py-24'
-	: 'overflow-x-hidden bg-white px-0 py-10 lg:px-10 lg:py-[100px]';
+	? 'overflow-x-hidden bg-white px-0 py-section xl:px-gutter lg:py-24'
+	: 'overflow-x-hidden bg-white px-0 py-10 xl:px-10 lg:py-[100px]';
 
 $outer_gap = $has_intro
 	? 'gap-section lg:gap-20'
 	: 'gap-10 lg:gap-6';
 
 $heading_class = $has_intro
-	? 'm-0 px-page text-center font-display text-header leading-none text-navy lg:px-0'
-	: 'm-0 px-page text-center font-display text-headline leading-[1.2] text-blue lg:px-0';
+	? 'm-0 px-page text-center font-display text-header leading-none text-navy xl:px-0'
+	: 'm-0 px-page text-center font-display text-headline leading-[1.2] text-blue xl:px-0';
 
 $card_count = is_array( $cards ) ? count( $cards ) : 0;
 ?>
@@ -115,7 +115,7 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 <section class="<?php echo esc_attr( $section_pad ); ?>">
 	<div class="mx-auto flex w-full max-w-site flex-col items-center <?php echo esc_attr( $outer_gap ); ?>">
 		<?php if ( $has_intro ) : ?>
-			<div class="flex w-full flex-col items-center gap-8 px-page lg:px-0">
+			<div class="flex w-full flex-col items-center gap-8 px-page xl:px-0">
 				<?php if ( $intro_heading ) : ?>
 					<h2 class="m-0 text-center font-display text-headline leading-[1.2] text-blue">
 						<?php echo esc_html( $intro_heading ); ?>
@@ -164,7 +164,7 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 			<?php if ( ! empty( $cards ) ) : ?>
 				<div class="w-full min-w-0" data-other-pillars-carousel>
 					<ul
-						class="m-0 flex w-full list-none gap-4 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-5 lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
+						class="m-0 flex w-full list-none gap-4 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-5 lg:overflow-visible xl:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
 						data-other-pillars-track
 					>
 					<?php foreach ( $cards as $card ) : ?>

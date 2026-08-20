@@ -115,7 +115,7 @@ $select_class = 'appearance-none rounded-btn border border-solid border-[#e5e7eb
 	data-page="1"
 	data-max-pages="<?php echo esc_attr( (string) max( 1, (int) $query->max_num_pages ) ); ?>"
 >
-	<div class="mx-auto flex w-full max-w-site flex-col gap-4 px-page py-6 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:px-10 lg:py-6">
+	<div class="mx-auto flex w-full max-w-site flex-col gap-4 px-page py-6 lg:flex-row lg:items-center lg:justify-between lg:gap-8 xl:px-10 lg:py-6">
 		<form class="flex w-full flex-col gap-4 lg:flex-row lg:flex-wrap lg:items-center lg:gap-4" data-case-studies-filters>
 			<div class="flex flex-wrap items-center gap-4">
 				<label class="relative inline-flex shrink-0">
@@ -172,7 +172,7 @@ $select_class = 'appearance-none rounded-btn border border-solid border-[#e5e7eb
 		</form>
 	</div>
 
-	<div class="bg-off-white px-page py-10 lg:px-10 lg:py-[100px]">
+	<div class="bg-off-white px-page py-10 xl:px-10 lg:py-[100px]">
 		<div class="mx-auto flex w-full max-w-site flex-col items-center gap-16">
 			<ul class="m-0 grid w-full list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3" data-case-studies-grid>
 				<?php

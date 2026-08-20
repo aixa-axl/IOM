@@ -24,8 +24,8 @@ if ( ! is_array( $stats ) ) {
 }
 
 $section_class = $is_light
-	? 'bg-off-white px-page py-10 lg:px-section lg:py-gutter'
-	: 'bg-navy px-page py-10 lg:px-section lg:py-16';
+	? 'bg-off-white px-page py-10 xl:px-section lg:py-gutter'
+	: 'bg-navy px-page py-10 xl:px-section lg:py-16';
 
 $list_gap = $is_light
 	? 'gap-10 lg:gap-8'

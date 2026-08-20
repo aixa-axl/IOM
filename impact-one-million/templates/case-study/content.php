@@ -169,7 +169,7 @@ $has_join = $join_eye || $join_head || $join_body || $join_image || ! empty( $jo
 <article id="post-<?php echo esc_attr( (string) $post_id ); ?>" <?php post_class(); ?>>
 
 	<!-- Hero -->
-	<header class="bg-blue px-page py-16 lg:px-section lg:py-[7.5rem]">
+	<header class="bg-blue px-page py-16 xl:px-section lg:py-[7.5rem]">
 		<div class="mx-auto flex w-full max-w-site flex-col gap-10">
 			<div class="flex w-full max-w-[50rem] flex-col gap-4">
 				<nav class="font-display text-body uppercase tracking-[1px] text-white/80" aria-label="<?php echo esc_attr__( 'Breadcrumb', 'impact-one-million' ); ?>">
@@ -242,7 +242,7 @@ $has_join = $join_eye || $join_head || $join_body || $join_image || ! empty( $jo
 
 	<!-- Overview -->
 	<?php if ( $overview || $has_meta ) : ?>
-		<section class="bg-white px-page py-20 lg:px-section lg:py-gutter">
+		<section class="bg-white px-page py-20 xl:px-section lg:py-gutter">
 			<div class="mx-auto flex w-full max-w-site flex-col items-start gap-12 lg:flex-row lg:justify-between lg:gap-20">
 				<?php if ( $overview ) : ?>
 					<div class="flex w-full max-w-[43.75rem] flex-col gap-4">
@@ -276,7 +276,7 @@ $has_join = $join_eye || $join_head || $join_body || $join_image || ! empty( $jo
 
 	<!-- Challenge -->
 	<?php if ( $chal_quote || $chal_body ) : ?>
-		<section class="bg-navy px-page py-20 lg:px-section lg:py-[7.5rem]">
+		<section class="bg-navy px-page py-20 xl:px-section lg:py-[7.5rem]">
 			<div class="mx-auto flex w-full max-w-site flex-col items-start gap-10 lg:flex-row lg:justify-between lg:gap-20">
 				<?php if ( $chal_quote ) : ?>
 					<div class="flex w-full max-w-[43.75rem] flex-col gap-4">
@@ -300,7 +300,7 @@ $has_join = $join_eye || $join_head || $join_body || $join_image || ! empty( $jo
 
 	<!-- Approach + Results -->
 	<?php if ( ! empty( $appr_cards ) || ! empty( $res_stats ) || $res_image || ! empty( $res_points ) ) : ?>
-		<section class="bg-white px-page py-20 lg:px-section lg:py-[7.5rem]">
+		<section class="bg-white px-page py-20 xl:px-section lg:py-[7.5rem]">
 			<div class="mx-auto flex w-full max-w-site flex-col items-start gap-20">
 				<?php if ( ! empty( $appr_cards ) ) : ?>
 					<div class="flex w-full flex-col items-start gap-10">
@@ -427,7 +427,7 @@ $has_join = $join_eye || $join_head || $join_body || $join_image || ! empty( $jo
 
 	<!-- Testimonial -->
 	<?php if ( $t_quote || $t_name || $t_role ) : ?>
-		<section class="bg-navy px-page py-20 lg:px-section lg:py-[7.5rem]">
+		<section class="bg-navy px-page py-20 xl:px-section lg:py-[7.5rem]">
 			<div class="mx-auto flex w-full max-w-[62.5rem] flex-col items-center gap-8 text-center">
 				<?php if ( $t_quote ) : ?>
 					<blockquote class="m-0 font-sans text-quote font-extrabold text-white">
@@ -450,7 +450,7 @@ $has_join = $join_eye || $join_head || $join_body || $join_image || ! empty( $jo
 
 	<!-- Gallery -->
 	<?php if ( ! empty( $gallery ) ) : ?>
-		<section class="bg-white px-page py-20 lg:px-section lg:py-[7.5rem]">
+		<section class="bg-white px-page py-20 xl:px-section lg:py-[7.5rem]">
 			<div class="mx-auto flex w-full max-w-site flex-col items-start gap-10">
 				<?php if ( $gal_head ) : ?>
 					<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">
@@ -481,7 +481,7 @@ $has_join = $join_eye || $join_head || $join_body || $join_image || ! empty( $jo
 
 	<!-- Related -->
 	<?php if ( ! empty( $related ) ) : ?>
-		<section class="bg-off-white px-page py-20 lg:px-section lg:py-gutter">
+		<section class="bg-off-white px-page py-20 xl:px-section lg:py-gutter">
 			<div class="mx-auto flex w-full max-w-site flex-col items-stretch gap-11">
 				<div class="flex w-full flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
 					<?php if ( $rel_head ) : ?>
@@ -530,7 +530,7 @@ $has_join = $join_eye || $join_head || $join_body || $join_image || ! empty( $jo
 				</div>
 			<?php endif; ?>
 
-			<div class="relative z-10 mx-auto flex w-full max-w-site flex-col px-page pb-10 pt-0 lg:min-h-[41.75rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20">
+			<div class="relative z-10 mx-auto flex w-full max-w-site flex-col px-page pb-10 pt-0 lg:min-h-[41.75rem] lg:flex-row lg:items-center lg:justify-end xl:px-gutter lg:py-20">
 				<div class="mt-0 flex w-full flex-col items-start gap-8 self-center rounded-card bg-white p-10 lg:max-w-[36.625rem] lg:self-auto lg:p-5">
 					<div class="flex w-full flex-col gap-4">
 						<?php if ( $join_eye ) : ?>

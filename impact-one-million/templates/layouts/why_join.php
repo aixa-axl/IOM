@@ -124,10 +124,10 @@ $iom_render_why_join_card = function ( $card, $arrow_uri, $carousel = false ) {
 };
 ?>
 
-<section class="overflow-x-hidden bg-white px-0 py-section lg:px-gutter lg:py-gutter">
+<section class="overflow-x-hidden bg-white px-0 py-section xl:px-gutter lg:py-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col <?php echo $is_left ? 'items-start' : 'items-center'; ?> <?php echo esc_attr( $outer_gap ); ?>">
 		<?php if ( $heading || $has_intro ) : ?>
-			<div class="flex w-full flex-col gap-6 px-page <?php echo $is_left ? 'items-start text-left' : 'items-center text-center'; ?> lg:px-0">
+			<div class="flex w-full flex-col gap-6 px-page <?php echo $is_left ? 'items-start text-left' : 'items-center text-center'; ?> xl:px-0">
 				<?php if ( $heading ) : ?>
 					<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">
 						<?php echo esc_html( $heading ); ?>
@@ -191,7 +191,7 @@ $iom_render_why_join_card = function ( $card, $arrow_uri, $carousel = false ) {
 			<?php else : ?>
 				<div class="w-full" data-why-join-carousel>
 					<ul
-						class="m-0 flex list-none gap-6 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
+						class="m-0 flex list-none gap-6 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible xl:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
 						data-why-join-track
 					>
 						<?php foreach ( $cards as $card ) : ?>

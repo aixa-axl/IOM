@@ -12,7 +12,7 @@ $heading = get_sub_field( 'heading' );
 $body    = get_sub_field( 'body' );
 ?>
 
-<section class="bg-white px-page py-10 lg:px-gutter lg:py-gutter">
+<section class="bg-white px-page py-10 xl:px-gutter lg:py-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col items-start">
 		<div class="flex w-full max-w-[50rem] flex-col items-start gap-8">
 			<?php if ( $heading ) : ?>

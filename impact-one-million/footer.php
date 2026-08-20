@@ -107,7 +107,7 @@ $iom_is_footer_search_link = static function ( $link ) {
 };
 ?>
 
-	<footer id="site-footer" class="site-footer mt-auto bg-blue px-page py-20 text-white lg:px-gutter lg:py-[3.75rem]">
+	<footer id="site-footer" class="site-footer mt-auto bg-blue px-page py-20 text-white xl:px-gutter lg:py-[3.75rem]">
 		<div class="mx-auto flex w-full max-w-site flex-col gap-[3.75rem] lg:gap-12">
 			<div class="order-1 flex flex-col gap-20 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
 				<div class="flex w-full flex-col items-start gap-6 border-b border-solid border-white pb-4 lg:max-w-[18.75rem] lg:border-b-0 lg:pb-0">

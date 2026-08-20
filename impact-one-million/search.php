@@ -9,7 +9,7 @@ $iom_query = get_search_query();
 ?>
 
 <main id="primary" class="site-main">
-	<div class="mx-auto max-w-site px-page py-12 lg:px-gutter lg:py-16">
+	<div class="mx-auto max-w-site px-page py-12 xl:px-gutter lg:py-16">
 		<header class="mb-10">
 			<h1 class="font-display text-headline uppercase tracking-wide text-navy">
 				<?php

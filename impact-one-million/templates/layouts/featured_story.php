@@ -81,7 +81,7 @@ if ( $video_url ) {
 }
 ?>
 
-<section class="bg-blue px-[14px] py-[26px] lg:px-gutter lg:py-gutter">
+<section class="bg-blue px-page py-[26px] xl:px-gutter lg:py-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col overflow-hidden rounded-card border-2 border-solid border-[#dfe8ff] lg:flex-row lg:items-center lg:gap-20 lg:overflow-visible lg:border-0">
 		<!-- Copy card -->
 		<div class="flex w-full flex-col items-start gap-8 rounded-t-card bg-white px-6 py-4 lg:flex-1 lg:gap-8 lg:rounded-card lg:px-6 lg:py-5">

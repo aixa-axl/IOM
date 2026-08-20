@@ -123,7 +123,7 @@ $pct = ( ( $default_amount - $min_amount ) / max( 1, ( $max_amount - $min_amount
 ?>
 
 <section
-	class="bg-blue px-page py-10 lg:px-20 lg:py-20"
+	class="bg-blue px-page py-10 xl:px-20 lg:py-20"
 	data-roi-calculator
 	data-min="<?php echo esc_attr( (string) $min_amount ); ?>"
 	data-max="<?php echo esc_attr( (string) $max_amount ); ?>"

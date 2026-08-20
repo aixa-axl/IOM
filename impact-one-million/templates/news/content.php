@@ -112,7 +112,7 @@ $share_copy = 'inline-flex items-center justify-center rounded-btn border border
 <article id="post-<?php echo esc_attr( (string) $post_id ); ?>" <?php post_class(); ?>>
 
 	<!-- Hero -->
-	<header class="bg-blue px-page py-16 lg:px-section lg:py-gutter">
+	<header class="bg-blue px-page py-16 xl:px-section lg:py-gutter">
 		<div class="mx-auto flex w-full max-w-site flex-col">
 			<div class="flex w-full max-w-[50rem] flex-col gap-6">
 				<nav class="flex flex-wrap items-start gap-2 font-display text-body uppercase tracking-[1px]" aria-label="<?php echo esc_attr__( 'Breadcrumb', 'impact-one-million' ); ?>">
@@ -158,7 +158,7 @@ $share_copy = 'inline-flex items-center justify-center rounded-btn border border
 
 	<!-- Body + image + share -->
 	<?php if ( $body || $image || $show_share ) : ?>
-		<section class="bg-white px-page py-20 lg:px-section lg:py-gutter">
+		<section class="bg-white px-page py-20 xl:px-section lg:py-gutter">
 			<div class="mx-auto flex w-full max-w-site flex-col items-center gap-10 lg:gap-12">
 				<?php if ( $body ) : ?>
 					<div class="w-full max-w-[75rem] font-sans text-[17px] leading-normal text-ink [&_p]:m-0 [&_p+p]:mt-6">
@@ -248,7 +248,7 @@ $share_copy = 'inline-flex items-center justify-center rounded-btn border border
 
 	<!-- Related -->
 	<?php if ( ! empty( $related ) ) : ?>
-		<section class="bg-off-white px-page py-20 lg:px-gutter lg:py-gutter">
+		<section class="bg-off-white px-page py-20 xl:px-gutter lg:py-gutter">
 			<div class="mx-auto flex w-full max-w-site flex-col items-stretch gap-11">
 				<div class="flex w-full flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
 					<?php if ( $rel_head ) : ?>

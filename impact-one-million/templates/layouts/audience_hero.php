@@ -52,7 +52,7 @@ $img_attrs = array(
 );
 ?>
 
-<section class="bg-accent-blue px-page py-section lg:px-gutter">
+<section class="bg-accent-blue px-page py-section xl:px-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-8 lg:flex-row lg:items-center lg:gap-8">
 		<div class="flex w-full flex-col items-start gap-8 lg:w-[36.5rem] lg:shrink-0">
 			<div class="flex w-full flex-col gap-4">

@@ -101,7 +101,15 @@
  *
  * Section vertical padding: mobile 40px for py-section / py-gutter tokens.
  * Layout internal stack gaps: mobile 26px (Figma spacing/80 / page token).
+ * Horizontal inset: mobile 26px (px-page); tablet 30px from md until xl gutters.
  */
+@media (min-width: 768px) {
+  .px-page {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
 @media (max-width: 1023px) {
   .py-section,
   .py-gutter {

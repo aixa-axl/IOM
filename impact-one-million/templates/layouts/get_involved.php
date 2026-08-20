@@ -81,8 +81,8 @@ $btn_styles = array(
 );
 
 $section_class = $is_dark
-	? 'overflow-x-hidden bg-ink px-page py-section lg:px-section'
-	: 'overflow-x-hidden bg-white px-0 py-section lg:px-gutter';
+	? 'overflow-x-hidden bg-ink px-page py-section xl:px-section'
+	: 'overflow-x-hidden bg-white px-0 py-section xl:px-gutter';
 
 $heading_class = $is_dark
 	? 'm-0 font-display text-headline leading-[1.2] text-white'
@@ -94,7 +94,7 @@ $intro_class = $is_dark
 
 $list_class = $is_dark
 	? 'm-0 grid w-full list-none grid-cols-1 gap-8 p-0 lg:grid-cols-3'
-	: 'm-0 flex w-full list-none gap-8 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden';
+	: 'm-0 flex w-full list-none gap-8 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible xl:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden';
 
 $card_class = $is_dark
 	? 'flex w-full flex-col items-center gap-6 rounded-card bg-white p-[14px] text-center lg:p-10'

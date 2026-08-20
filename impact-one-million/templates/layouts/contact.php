@@ -49,7 +49,7 @@ if ( $form_shortcode ) {
 }
 ?>
 
-<section class="bg-white px-page py-10 lg:px-gutter lg:py-gutter">
+<section class="bg-white px-page py-10 xl:px-gutter lg:py-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-10">
 		<?php if ( $heading ) : ?>
 			<h1 class="m-0 w-full font-display text-headline leading-[1.2] text-blue lg:text-title lg:leading-[1.1] lg:tracking-[0.02em]">

@@ -25,7 +25,7 @@ if ( ! is_array( $stats ) ) {
 }
 ?>
 
-<section class="border-y border-solid border-[#e5e7eb] bg-white px-page py-10 lg:px-section lg:py-gutter">
+<section class="border-y border-solid border-[#e5e7eb] bg-white px-page py-10 xl:px-section lg:py-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-16">
 		<?php if ( $heading || $subtitle ) : ?>
 			<div class="flex w-full flex-col items-center gap-4 text-center">

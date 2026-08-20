@@ -7,7 +7,7 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
-	<div class="mx-auto max-w-[1440px] px-page py-12 lg:px-[60px]">
+	<div class="mx-auto max-w-[1440px] px-page py-12 xl:px-[60px]">
 		<?php
 		if ( have_posts() ) {
 			while ( have_posts() ) {

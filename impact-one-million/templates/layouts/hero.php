@@ -131,14 +131,14 @@ if ( $is_accent || $is_last_mid_cta ) {
 }
 
 if ( $is_accent ) {
-	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-[11px] pb-[11px] pt-[11px] lg:min-h-[41.75rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20';
+	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-[11px] pb-[11px] pt-[11px] md:px-[30px] lg:min-h-[41.75rem] lg:flex-row lg:items-center lg:justify-end xl:px-gutter lg:py-20';
 } elseif ( $is_last_mid_cta ) {
-	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-[11px] pb-[11px] pt-[11px] lg:min-h-[52.5rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20';
+	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-[11px] pb-[11px] pt-[11px] md:px-[30px] lg:min-h-[52.5rem] lg:flex-row lg:items-center lg:justify-end xl:px-gutter lg:py-20';
 } elseif ( $is_home_hero ) {
 	// Fill the 100svh section; floor height handled on the section itself.
-	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-1 flex-col px-page pb-10 pt-0 lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20';
+	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-1 flex-col px-page pb-10 pt-0 lg:flex-row lg:items-center lg:justify-end xl:px-gutter lg:py-20';
 } else {
-	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-page pb-10 pt-0 lg:min-h-[52.5rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20';
+	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-page pb-10 pt-0 lg:min-h-[52.5rem] lg:flex-row lg:items-center lg:justify-end xl:px-gutter lg:py-20';
 }
 
 if ( $is_accent ) {

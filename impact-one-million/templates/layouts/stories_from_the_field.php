@@ -40,7 +40,7 @@ $img_attrs = array(
 );
 ?>
 
-<section class="bg-[#f9fcff] px-page py-section lg:px-gutter lg:py-[100px]">
+<section class="bg-[#f9fcff] px-page py-section xl:px-gutter lg:py-[100px]">
 	<div class="mx-auto flex w-full max-w-site flex-col gap-12">
 		<?php if ( $heading ) : ?>
 			<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">

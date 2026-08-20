@@ -1831,11 +1831,6 @@ video {
   padding-right: 11px;
 }
 
-.px-\[14px\] {
-  padding-left: 14px;
-  padding-right: 14px;
-}
-
 .px-\[7px\] {
   padding-left: 7px;
   padding-right: 7px;
@@ -2503,7 +2498,15 @@ video {
  *
  * Section vertical padding: mobile 40px for py-section / py-gutter tokens.
  * Layout internal stack gaps: mobile 26px (Figma spacing/80 / page token).
+ * Horizontal inset: mobile 26px (px-page); tablet 30px from md until xl gutters.
  */
+
+@media (min-width: 768px) {
+  .px-page {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
 
 @media (max-width: 1023px) {
   .py-section,
@@ -3331,6 +3334,13 @@ body {
   }
 }
 
+@media (min-width: 768px) {
+  .md\:px-\[30px\] {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
 @media (min-width: 1024px) {
   .lg\:absolute {
     position: absolute;
@@ -3797,14 +3807,6 @@ body {
     padding: 2rem;
   }
 
-  .lg\:p-gutter {
-    padding: 80px;
-  }
-
-  .lg\:p-section {
-    padding: 120px;
-  }
-
   .lg\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
@@ -3813,16 +3815,6 @@ body {
   .lg\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
-  }
-
-  .lg\:px-16 {
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
-
-  .lg\:px-20 {
-    padding-left: 5rem;
-    padding-right: 5rem;
   }
 
   .lg\:px-5 {
@@ -3838,31 +3830,6 @@ body {
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
-  }
-
-  .lg\:px-\[6\.25rem\] {
-    padding-left: 6.25rem;
-    padding-right: 6.25rem;
-  }
-
-  .lg\:px-\[60px\] {
-    padding-left: 60px;
-    padding-right: 60px;
-  }
-
-  .lg\:px-\[7\.5rem\] {
-    padding-left: 7.5rem;
-    padding-right: 7.5rem;
-  }
-
-  .lg\:px-gutter {
-    padding-left: 80px;
-    padding-right: 80px;
-  }
-
-  .lg\:px-section {
-    padding-left: 120px;
-    padding-right: 120px;
   }
 
   .lg\:py-0 {
@@ -4075,9 +4042,57 @@ body {
     align-self: stretch;
   }
 
+  .xl\:p-gutter {
+    padding: 80px;
+  }
+
+  .xl\:p-section {
+    padding: 120px;
+  }
+
+  .xl\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .xl\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .xl\:px-16 {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .xl\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .xl\:px-\[6\.25rem\] {
+    padding-left: 6.25rem;
+    padding-right: 6.25rem;
+  }
+
+  .xl\:px-\[60px\] {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .xl\:px-\[7\.5rem\] {
+    padding-left: 7.5rem;
+    padding-right: 7.5rem;
+  }
+
   .xl\:px-gutter {
     padding-left: 80px;
     padding-right: 80px;
+  }
+
+  .xl\:px-section {
+    padding-left: 120px;
+    padding-right: 120px;
   }
 
   .xl\:py-3 {
