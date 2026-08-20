@@ -112,10 +112,10 @@ $btn_outline = 'inline-flex w-full items-center justify-center rounded-btn borde
 						$icon_uri = ( $preset && isset( $icon_map[ $preset ] ) ) ? $icon_map[ $preset ] : '';
 						?>
 						<li
-							class="flex w-[min(100%,20rem)] shrink-0 snap-center flex-col gap-4 rounded-card bg-off-white p-3 lg:w-auto lg:min-h-[11.3rem] lg:min-w-0 lg:snap-align-none"
+							class="flex w-[min(100%,20rem)] shrink-0 snap-center flex-col items-center gap-4 rounded-card bg-off-white p-3 text-center lg:w-auto lg:min-h-[11.3rem] lg:min-w-0 lg:snap-align-none"
 							data-benefits-slide
 						>
-							<div class="flex h-[2.8rem] w-11 items-center justify-start" aria-hidden="true">
+							<div class="flex h-[2.8rem] w-11 items-center justify-center" aria-hidden="true">
 								<?php if ( $icon_id ) : ?>
 									<?php
 									echo wp_get_attachment_image(
