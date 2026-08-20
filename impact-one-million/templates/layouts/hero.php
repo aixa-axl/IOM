@@ -96,7 +96,7 @@ $img_wrap_class = $is_accent
 
 $outer_class = $is_accent
 	? 'relative z-10 mx-auto flex w-full max-w-site flex-col px-page pb-10 pt-0 lg:min-h-[41.75rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20'
-	: 'relative z-10 mx-auto flex w-full max-w-site flex-col px-page pb-12 pt-0 lg:min-h-[52.5rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20';
+	: 'relative z-10 mx-auto flex w-full max-w-site flex-col px-page pb-10 pt-0 lg:min-h-[52.5rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20';
 
 if ( $is_accent ) {
 	$card_class = 'mt-0 flex w-full flex-col items-center gap-8 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:self-auto lg:p-5';

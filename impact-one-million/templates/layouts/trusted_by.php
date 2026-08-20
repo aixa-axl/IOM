@@ -207,7 +207,7 @@ $aria = $section_heading
 	: __( 'Trusted by', 'impact-one-million' );
 ?>
 
-<section class="overflow-x-hidden border-b border-solid border-[#e5e7eb] bg-white py-20 lg:py-24" aria-label="<?php echo esc_attr( $aria ); ?>">
+<section class="overflow-x-hidden border-b border-solid border-[#e5e7eb] bg-white py-10 lg:py-24" aria-label="<?php echo esc_attr( $aria ); ?>">
 	<div class="mx-auto flex w-full max-w-site flex-col items-stretch gap-16 px-0 lg:gap-16">
 		<?php if ( $section_heading ) : ?>
 			<div class="px-page lg:px-section">

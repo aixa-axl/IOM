@@ -99,7 +99,7 @@ $btn_class  = 'inline-flex items-center justify-center rounded-btn border-[1.5px
 
 $section_pad = $has_intro
 	? 'overflow-x-hidden bg-white px-0 py-section lg:px-gutter lg:py-24'
-	: 'overflow-x-hidden bg-white px-0 py-[100px] lg:px-10 lg:py-[100px]';
+	: 'overflow-x-hidden bg-white px-0 py-10 lg:px-10 lg:py-[100px]';
 
 $outer_gap = $has_intro
 	? 'gap-section lg:gap-20'

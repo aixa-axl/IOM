@@ -166,7 +166,7 @@ $select_class = 'appearance-none rounded-btn border border-solid border-[#e5e7eb
 		</form>
 	</div>
 
-	<div class="bg-off-white px-page py-[100px] lg:px-10">
+	<div class="bg-off-white px-page py-10 lg:py-[100px] lg:px-10">
 		<div class="mx-auto flex w-full max-w-site flex-col items-center gap-16">
 			<ul class="m-0 grid w-full list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3" data-case-studies-grid>
 				<?php

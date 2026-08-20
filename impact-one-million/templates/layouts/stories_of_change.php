@@ -64,7 +64,7 @@ $img_attrs = array(
 );
 ?>
 
-<section class="bg-off-white px-page py-[100px] lg:px-16">
+<section class="bg-off-white px-page py-10 lg:py-[100px] lg:px-16">
 	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-12">
 		<div class="flex w-full flex-col gap-11">
 			<?php if ( $heading ) : ?>

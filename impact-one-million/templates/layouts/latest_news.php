@@ -66,7 +66,7 @@ $btn_class  = 'inline-flex w-full items-center justify-center rounded-btn border
 $link_class = 'inline-flex border-b-2 border-solid border-blue py-3.5 font-display text-[20px] uppercase tracking-[1px] text-blue no-underline transition-opacity hover:opacity-70';
 ?>
 
-<section class="bg-off-white px-page py-[100px] lg:px-16">
+<section class="bg-off-white px-page py-10 lg:py-[100px] lg:px-16">
 	<div class="mx-auto flex w-full max-w-site flex-col items-stretch gap-11">
 		<div class="flex w-full flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
 			<?php if ( $heading ) : ?>

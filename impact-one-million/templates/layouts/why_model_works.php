@@ -19,7 +19,7 @@ if ( ! $body ) {
 }
 ?>
 
-<section class="bg-accent-blue px-page py-20 text-white lg:px-section lg:py-gutter">
+<section class="bg-accent-blue px-page py-10 text-white lg:px-section lg:py-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-10 lg:gap-20">
 		<?php if ( $heading ) : ?>
 			<h2 class="m-0 font-display text-headline leading-[1.2]">

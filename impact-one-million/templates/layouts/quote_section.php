@@ -18,7 +18,7 @@ if ( ! $quote && ! $name && ! $role ) {
 }
 ?>
 
-<section class="bg-navy px-page py-20 lg:p-section">
+<section class="bg-navy px-page py-10 lg:p-section">
 	<div class="mx-auto flex w-full max-w-[62.5rem] flex-col items-center gap-8 text-center">
 		<?php if ( $quote ) : ?>
 			<blockquote class="m-0 font-sans text-quote font-extrabold text-white">

@@ -98,8 +98,16 @@
  *   title 40←72 | headline 32←56 | header 24←36 | number 36←60
  *   feature-title 32←48 | quote 32←48 | stat-label 20←32
  *   card-title 20←24 | body 16←18 | label stays 20 (nav)
+ *
+ * Section vertical padding: mobile 40px for py-section / py-gutter tokens.
  */
 @media (max-width: 1023px) {
+  .py-section,
+  .py-gutter {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
   .text-title {
     font-size: 40px;
     line-height: 1.1;

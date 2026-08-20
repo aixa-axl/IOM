@@ -22,7 +22,7 @@ if ( ! is_array( $partners ) ) {
 $link_class = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-70';
 ?>
 
-<section class="border-b border-solid border-[#e5e7eb] bg-off-white px-page py-20 lg:px-section lg:py-24">
+<section class="border-b border-solid border-[#e5e7eb] bg-off-white px-page py-10 lg:px-section lg:py-24">
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-12">
 		<?php if ( $heading ) : ?>
 			<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">
