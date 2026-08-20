@@ -3898,10 +3898,6 @@ body {
     gap: 6.25rem;
   }
 
-  .lg\:gap-\[7\.5rem\] {
-    gap: 7.5rem;
-  }
-
   .lg\:gap-gutter {
     gap: 80px;
   }
@@ -4244,6 +4240,10 @@ body {
 
   .xl\:gap-8 {
     gap: 2rem;
+  }
+
+  .xl\:gap-\[7\.5rem\] {
+    gap: 7.5rem;
   }
 
   .xl\:self-stretch {

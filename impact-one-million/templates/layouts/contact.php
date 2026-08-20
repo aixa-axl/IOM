@@ -57,7 +57,7 @@ if ( $form_shortcode ) {
 			</h1>
 		<?php endif; ?>
 
-		<div class="flex w-full flex-col items-start gap-10 lg:flex-row lg:gap-[7.5rem]">
+		<div class="flex w-full flex-col items-start gap-10 xl:flex-row xl:gap-[7.5rem]">
 			<?php if ( $intro ) : ?>
 				<p class="m-0 w-full max-w-[32.5rem] shrink-0 font-sans text-body leading-[1.2] text-muted">
 					<?php echo esc_html( $intro ); ?>
