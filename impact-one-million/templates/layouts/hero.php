@@ -88,6 +88,11 @@ $fill_bg = array(
 $btn_filled_base = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 lg:w-auto';
 $btn_outline     = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-80 lg:w-auto';
 
+// Bottom navy mid-CTA: slightly smaller type/padding on desktop so dual CTAs fit in the card.
+if ( $is_last_mid_cta ) {
+	$btn_filled_base .= ' lg:px-4 lg:py-3 lg:text-[18px] lg:tracking-[1px]';
+	$btn_outline     .= ' lg:px-4 lg:py-3 lg:text-[18px] lg:tracking-[1px]';
+}
 $btn_primary = $btn_filled_base . ' ' . $fill_bg[ $primary_cta_style ];
 
 if ( 'outline' === $secondary_cta_style ) {
@@ -250,7 +255,7 @@ $eyebrow_is_simple = $subtitle && ! $subtitle_parent;
 			<?php endif; ?>
 
 			<?php if ( $has_ctas ) : ?>
-				<div class="<?php echo esc_attr( $cta_row_class ); ?>">
+				<div class="iom-hero__ctas <?php echo esc_attr( $cta_row_class ); ?>">
 					<?php
 					if ( ! empty( $primary_cta['url'] ) ) {
 						iom_render_link(

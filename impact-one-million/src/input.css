@@ -324,6 +324,18 @@ body {
 
 /* Challenge + stats — desktop gaps (mobile set in max-width block above) */
 @media (min-width: 1024px) {
+  /*
+   * Last navy mid-page CTA: keep dual buttons on one row without hugging the card edge.
+   */
+  .entry-content > section.iom-hero.bg-navy:last-of-type .iom-hero__ctas > a {
+    font-size: 18px;
+    letter-spacing: 1px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
   .iom-challenge-cards,
   [data-challenge-cards] {
     gap: 2.5rem !important; /* gap-10 */
