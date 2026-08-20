@@ -986,10 +986,6 @@ video {
   height: 58px;
 }
 
-.h-\[7\.5rem\] {
-  height: 7.5rem;
-}
-
 .h-\[calc\(100dvh-6rem\)\] {
   height: calc(100dvh - 6rem);
 }
@@ -1430,6 +1426,10 @@ video {
 
 .gap-8 {
   gap: 2rem;
+}
+
+.gap-\[24px\] {
+  gap: 24px;
 }
 
 .gap-\[3\.75rem\] {

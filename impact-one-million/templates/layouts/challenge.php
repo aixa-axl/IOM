@@ -76,7 +76,7 @@ $btn_cta = 'inline-flex items-center justify-center rounded-btn border-[1.5px] b
 		<?php endif; ?>
 
 		<?php if ( ! empty( $cards ) ) : ?>
-			<ul class="m-0 grid w-full list-none grid-cols-1 gap-6 p-0 lg:grid-cols-2 lg:gap-10">
+			<ul class="m-0 grid w-full list-none grid-cols-1 gap-[24px] p-0 lg:grid-cols-2 lg:gap-10">
 				<?php foreach ( $cards as $card ) : ?>
 					<?php
 					$style  = isset( $card['style'] ) ? $card['style'] : 'fact';
@@ -90,7 +90,7 @@ $btn_cta = 'inline-flex items-center justify-center rounded-btn border-[1.5px] b
 
 					$card_class = $is_cta
 						? 'flex flex-col items-center gap-3 rounded-card bg-accent p-[14px] text-center lg:flex-row lg:items-center lg:gap-10 lg:px-10 lg:py-10 lg:text-left'
-						: 'flex flex-col items-center gap-3 rounded-card bg-white p-10 text-center lg:flex-row lg:items-center lg:gap-10 lg:px-10 lg:py-10 lg:text-left';
+						: 'flex flex-col items-center gap-3 rounded-card bg-white p-0 text-center lg:flex-row lg:items-center lg:gap-10 lg:p-10 lg:text-left';
 
 					$title_class = $is_cta
 						? 'm-0 font-display text-[20px] leading-[1.2] text-white lg:text-feature-title lg:leading-[39px]'
@@ -104,9 +104,7 @@ $btn_cta = 'inline-flex items-center justify-center rounded-btn border-[1.5px] b
 						? 'flex w-full flex-col items-center gap-4 lg:items-start'
 						: 'flex w-full flex-col items-center gap-4 lg:min-w-0 lg:flex-1 lg:items-start';
 
-					$icon_wrap_class = $is_cta
-						? 'flex h-auto w-20 shrink-0 items-center justify-center lg:size-[6.25rem]'
-						: 'flex h-[7.5rem] w-20 shrink-0 items-center justify-center lg:size-[6.25rem]';
+					$icon_wrap_class = 'flex h-auto w-20 shrink-0 items-center justify-center lg:size-[6.25rem]';
 					?>
 					<li class="<?php echo esc_attr( $card_class ); ?>">
 						<div class="<?php echo esc_attr( $icon_wrap_class ); ?>" aria-hidden="true">
