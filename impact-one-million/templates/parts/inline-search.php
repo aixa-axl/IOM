@@ -8,6 +8,7 @@
 $iom_inline_id     = wp_unique_id( 'iom-inline-search-' );
 $search_icon_class = isset( $search_icon_class ) ? $search_icon_class : 'size-[13.5px]';
 $form_width_class  = isset( $search_form_class ) ? $search_form_class : 'w-[min(100%,16rem)]';
+$show_search_icon  = ! isset( $show_search_icon ) || $show_search_icon;
 ?>
 <div class="inline-flex min-w-0 max-w-full items-center" data-inline-search>
 	<button
@@ -17,14 +18,16 @@ $form_width_class  = isset( $search_form_class ) ? $search_form_class : 'w-[min(
 		aria-expanded="false"
 		aria-controls="<?php echo esc_attr( $iom_inline_id ); ?>"
 	>
-		<img
-			src="<?php echo esc_url( $icon_search_uri ); ?>"
-			alt=""
-			width="18"
-			height="18"
-			class="<?php echo esc_attr( $search_icon_class ); ?> shrink-0"
-			aria-hidden="true"
-		/>
+		<?php if ( $show_search_icon ) : ?>
+			<img
+				src="<?php echo esc_url( $icon_search_uri ); ?>"
+				alt=""
+				width="18"
+				height="18"
+				class="<?php echo esc_attr( $search_icon_class ); ?> shrink-0"
+				aria-hidden="true"
+			/>
+		<?php endif; ?>
 		<span><?php echo esc_html( $search_label ); ?></span>
 	</button>
 
@@ -36,14 +39,16 @@ $form_width_class  = isset( $search_form_class ) ? $search_form_class : 'w-[min(
 		action="<?php echo esc_url( home_url( '/' ) ); ?>"
 		data-search-form
 	>
-		<img
-			src="<?php echo esc_url( $icon_search_uri ); ?>"
-			alt=""
-			width="18"
-			height="18"
-			class="<?php echo esc_attr( $search_icon_class ); ?> shrink-0"
-			aria-hidden="true"
-		/>
+		<?php if ( $show_search_icon ) : ?>
+			<img
+				src="<?php echo esc_url( $icon_search_uri ); ?>"
+				alt=""
+				width="18"
+				height="18"
+				class="<?php echo esc_attr( $search_icon_class ); ?> shrink-0"
+				aria-hidden="true"
+			/>
+		<?php endif; ?>
 		<label class="sr-only" for="<?php echo esc_attr( $iom_inline_id ); ?>-input">
 			<?php echo esc_html_x( 'Search for:', 'label', 'impact-one-million' ); ?>
 		</label>

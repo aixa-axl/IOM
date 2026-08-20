@@ -182,8 +182,9 @@ $iom_is_footer_search_link = static function ( $link ) {
 													$search_label      = ! empty( $link['title'] ) ? $link['title'] : __( 'Search', 'impact-one-million' );
 													$util_link_class   = $link_class;
 													$search_form_class = 'w-full max-w-[16rem]';
+													$show_search_icon  = false;
 													require locate_template( 'templates/parts/inline-search.php' );
-													unset( $search_form_class );
+													unset( $search_form_class, $show_search_icon );
 													?>
 												<?php else : ?>
 													<?php iom_render_link( $link, $link_class ); ?>
