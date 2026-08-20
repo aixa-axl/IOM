@@ -2121,6 +2121,10 @@ video {
   letter-spacing: 0.02em;
 }
 
+.tracking-\[0\.04em\] {
+  letter-spacing: 0.04em;
+}
+
 .tracking-\[1px\] {
   letter-spacing: 1px;
 }

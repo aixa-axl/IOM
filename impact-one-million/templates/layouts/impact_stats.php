@@ -118,7 +118,7 @@ $fallback_orders = array(
 					</p>
 
 					<?php if ( $label ) : ?>
-						<p class="m-0 font-display text-stat-label text-accent-blue opacity-60">
+						<p class="m-0 font-display text-[20px] leading-[1.2] tracking-[0.04em] text-accent-blue opacity-60 lg:text-stat-label">
 							<?php echo esc_html( $label ); ?>
 						</p>
 					<?php endif; ?>
@@ -133,7 +133,7 @@ $fallback_orders = array(
 		</div>
 
 		<?php if ( $description ) : ?>
-			<p class="m-0 max-w-[56.25rem] text-center font-sans text-stat-label font-semibold leading-[1.2] text-blue">
+			<p class="m-0 max-w-[56.25rem] text-center font-sans text-[20px] font-semibold leading-[1.2] text-blue lg:text-stat-label">
 				<?php echo esc_html( $description ); ?>
 			</p>
 		<?php endif; ?>
