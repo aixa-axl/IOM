@@ -771,10 +771,6 @@ video {
   margin-top: 0.875rem;
 }
 
-.mt-4 {
-  margin-top: 1rem;
-}
-
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -1985,6 +1981,10 @@ video {
 
 .pt-0 {
   padding-top: 0px;
+}
+
+.pt-4 {
+  padding-top: 1rem;
 }
 
 .pt-5 {
@@ -3611,10 +3611,6 @@ body {
     height: auto;
   }
 
-  .lg\:h-full {
-    height: 100%;
-  }
-
   .lg\:min-h-\[11\.3rem\] {
     min-height: 11.3rem;
   }
@@ -4132,6 +4128,10 @@ body {
     display: none;
   }
 
+  .xl\:h-\[22\.2rem\] {
+    height: 22.2rem;
+  }
+
   .xl\:h-\[92\%\] {
     height: 92%;
   }
@@ -4142,6 +4142,14 @@ body {
 
   .xl\:w-\[152px\] {
     width: 152px;
+  }
+
+  .xl\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .xl\:gap-10 {
+    gap: 2.5rem;
   }
 
   .xl\:gap-20 {

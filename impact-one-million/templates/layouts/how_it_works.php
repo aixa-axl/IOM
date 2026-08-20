@@ -125,7 +125,7 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 					data-pillars-carousel
 				>
 					<ul
-						class="iom-pillars-track m-0 flex list-none gap-4 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] lg:grid lg:grid-cols-3 lg:gap-10 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden"
+						class="iom-pillars-track m-0 flex list-none gap-4 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] lg:grid lg:grid-cols-2 lg:gap-8 lg:overflow-visible lg:px-0 lg:pb-0 xl:grid-cols-3 xl:gap-10 [&::-webkit-scrollbar]:hidden"
 						data-pillars-track
 					>
 						<?php foreach ( $pillars as $index => $pillar ) : ?>
@@ -138,7 +138,7 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 							$icon_uri = ( $preset && isset( $icon_map[ $preset ] ) ) ? $icon_map[ $preset ] : '';
 							?>
 							<li
-								class="iom-pillars-slide flex shrink-0 flex-col justify-between rounded-card bg-off-white p-6 text-blue lg:h-full lg:w-auto lg:min-w-0"
+								class="iom-pillars-slide flex shrink-0 flex-col rounded-card bg-off-white p-6 text-blue lg:h-auto lg:w-auto lg:min-w-0 xl:h-[22.2rem]"
 								data-pillars-slide
 							>
 								<div class="flex flex-col gap-4">
@@ -185,7 +185,7 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 
 								<?php
 								if ( ! empty( $link['url'] ) ) {
-									echo '<div class="mt-4">';
+									echo '<div class="mt-auto pt-4">';
 									iom_render_link(
 										$link,
 										$link_class,
