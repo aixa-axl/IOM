@@ -71,7 +71,7 @@ if ( ! is_array( $cards ) || empty( $cards ) ) {
 	);
 }
 
-$btn_base = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+$btn_base = 'inline-flex items-center justify-center whitespace-nowrap rounded-btn border-[1.5px] border-solid border-transparent px-4 py-3.5 font-display text-card-title uppercase tracking-[1.5px] text-white no-underline transition-opacity hover:opacity-90 xl:px-6 xl:tracking-[2px]';
 
 $btn_styles = array(
 	'accent'      => 'bg-accent',

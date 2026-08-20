@@ -2182,6 +2182,10 @@ video {
   letter-spacing: 0.04em;
 }
 
+.tracking-\[1\.5px\] {
+  letter-spacing: 1.5px;
+}
+
 .tracking-\[1px\] {
   letter-spacing: 1px;
 }
@@ -4318,6 +4322,10 @@ body {
   .xl\:py-gutter {
     padding-top: 80px;
     padding-bottom: 80px;
+  }
+
+  .xl\:tracking-\[2px\] {
+    letter-spacing: 2px;
   }
 }
 
