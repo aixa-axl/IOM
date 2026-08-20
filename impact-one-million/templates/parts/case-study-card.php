@@ -73,7 +73,7 @@ $link_class = 'inline-flex border-b-2 border-solid border-blue py-3.5 font-displ
 			<?php endif; ?>
 		</div>
 
-		<div class="mt-auto flex flex-wrap items-center justify-start gap-4 lg:justify-between">
+		<div class="mt-auto flex flex-wrap items-center justify-start gap-4">
 			<?php if ( $country ) : ?>
 				<span class="inline-flex items-center gap-1 rounded-btn bg-[#dfe8ff] px-[7px] py-[3px] font-display text-body uppercase tracking-[1px] text-blue">
 					<span class="size-2.5 shrink-0 rounded-full bg-blue" aria-hidden="true"></span>
