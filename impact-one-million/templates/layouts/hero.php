@@ -53,14 +53,20 @@ $has_eyebrow = ( $subtitle_parent || $subtitle );
 $has_body    = (bool) $body;
 $is_content  = ( $has_eyebrow || $has_body );
 
+// Explicit CMS toggle, or auto for navy mid-page CTAs (no logo / no eyebrow+body).
+$center_content = (bool) get_sub_field( 'center_content' );
+if ( ! $center_content && ! $is_accent && ! $show_logo && ! $is_content ) {
+	$center_content = true;
+}
+
 $bg_class = $is_accent ? 'bg-accent-blue' : 'bg-navy';
 
 $default_logo_uri = get_stylesheet_directory_uri() . '/assets/images/impact-one-million-logo.png';
 $default_logo_abs = get_stylesheet_directory() . '/assets/images/impact-one-million-logo.png';
 $has_default_logo = $show_logo && ! $is_accent && file_exists( $default_logo_abs );
 
-// Mid-page accent variant uses h2; page heroes use h1.
-$heading_tag = $is_accent ? 'h2' : 'h1';
+// Mid-page CTAs use h2; top-of-page heroes use h1.
+$heading_tag = ( $is_accent || $center_content ) ? 'h2' : 'h1';
 
 $fill_bg = array(
 	'accent'      => 'bg-accent',
@@ -81,8 +87,11 @@ if ( 'outline' === $secondary_cta_style ) {
 
 $btn_tertiary = $btn_filled_base . ' ' . $fill_bg[ $primary_cta_style ];
 
-// Accent mid-page CTAs centre on mobile; pillar navy content stays left.
-if ( $is_accent ) {
+// Accent mid-page: centre mobile / left desktop. Navy mid-page CTA: centre always.
+// Pillar navy content: left. Homepage navy: centre mobile / left desktop.
+if ( $center_content ) {
+	$text_align = 'text-center';
+} elseif ( $is_accent ) {
 	$text_align = 'text-center lg:text-left';
 } elseif ( $is_content ) {
 	$text_align = 'text-left';
@@ -100,12 +109,22 @@ $outer_class = $is_accent
 
 if ( $is_accent ) {
 	$card_class = 'mt-0 flex w-full flex-col items-center gap-8 self-center rounded-card bg-white p-[11px] lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:self-auto lg:p-5';
+} elseif ( $center_content ) {
+	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-center gap-5 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:items-center lg:gap-8 lg:self-auto lg:p-5';
 } elseif ( $is_content ) {
 	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-start gap-5 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:gap-8 lg:self-auto lg:p-5';
 } else {
 	// Mobile Figma 671:40555 — 20px padding, 20px stack gap (was 60px).
 	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-center gap-5 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:gap-8 lg:self-auto lg:p-5';
 }
+
+$cta_row_class = $center_content
+	? 'flex w-full flex-col items-center gap-4 lg:flex-row lg:flex-wrap lg:items-center lg:justify-center lg:gap-4 lg:whitespace-nowrap'
+	: 'flex w-full flex-col items-stretch gap-4 lg:flex-row lg:flex-nowrap lg:items-start lg:gap-4 lg:whitespace-nowrap';
+
+$body_class = $is_accent
+	? 'm-0 w-full font-sans text-label leading-[1.5] text-muted ' . $text_align
+	: 'm-0 w-full font-sans text-body leading-[1.2] text-ink ' . ( $center_content ? 'text-center' : 'text-left' );
 
 $has_ctas = ( ! empty( $primary_cta['url'] ) || ! empty( $secondary_cta['url'] ) || ! empty( $tertiary_cta['url'] ) );
 
@@ -203,7 +222,7 @@ $eyebrow_is_simple = $subtitle && ! $subtitle_parent;
 					<?php endif; ?>
 
 					<?php if ( $has_body ) : ?>
-						<p class="m-0 w-full font-sans <?php echo esc_attr( $is_accent ? 'text-label leading-[1.5] text-muted ' . $text_align : 'text-body leading-[1.2] text-ink text-left' ); ?>">
+						<p class="<?php echo esc_attr( $body_class ); ?>">
 							<?php echo esc_html( $body ); ?>
 						</p>
 					<?php endif; ?>
@@ -211,7 +230,7 @@ $eyebrow_is_simple = $subtitle && ! $subtitle_parent;
 			<?php endif; ?>
 
 			<?php if ( $has_ctas ) : ?>
-				<div class="flex w-full flex-col items-stretch gap-4 lg:flex-row lg:flex-nowrap lg:items-start lg:gap-4 lg:whitespace-nowrap">
+				<div class="<?php echo esc_attr( $cta_row_class ); ?>">
 					<?php
 					if ( ! empty( $primary_cta['url'] ) ) {
 						iom_render_link(
