@@ -1060,3 +1060,54 @@
 		});
 	});
 })();
+
+/**
+ * Logo marquee — keep the animated track in document flow on iOS Safari.
+ * Restarting animation when it enters the viewport repairs detached layers
+ * that otherwise leave an empty gap and paint logos over the browser chrome.
+ */
+(function () {
+	const marquees = document.querySelectorAll('[data-logo-marquee]');
+	if (!marquees.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		return;
+	}
+
+	function restartTrack(track) {
+		if (!track) {
+			return;
+		}
+		track.style.animation = 'none';
+		// Force reflow so the next animation assignment takes effect.
+		void track.offsetWidth;
+		track.style.animation = '';
+	}
+
+	if (!('IntersectionObserver' in window)) {
+		marquees.forEach(function (marquee) {
+			restartTrack(marquee.querySelector('[data-logo-marquee-track]'));
+		});
+		return;
+	}
+
+	const observer = new IntersectionObserver(
+		function (entries) {
+			entries.forEach(function (entry) {
+				const track = entry.target.querySelector('[data-logo-marquee-track]');
+				if (!track) {
+					return;
+				}
+				if (entry.isIntersecting) {
+					restartTrack(track);
+					track.style.animationPlayState = 'running';
+				} else {
+					track.style.animationPlayState = 'paused';
+				}
+			});
+		},
+		{ rootMargin: '80px 0px', threshold: 0.01 }
+	);
+
+	marquees.forEach(function (marquee) {
+		observer.observe(marquee);
+	});
+})();

@@ -218,16 +218,30 @@ body {
 /* Trusted By — continuous logo marquee */
 @keyframes iom-marquee {
   from {
-    transform: translate3d(0, 0, 0);
+    transform: translateX(0);
   }
   to {
-    transform: translate3d(-50%, 0, 0);
+    transform: translateX(-50%);
   }
+}
+
+/*
+ * Clip the track here only (not on ancestor sections). Nested overflow-x +
+ * transform animations can detach the layer on iOS Safari so logos vanish
+ * from flow and paint over the browser chrome instead.
+ */
+.iom-marquee {
+  overflow: hidden;
+  max-width: 100%;
+  min-height: 4.6875rem;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .iom-marquee-track {
   animation: iom-marquee 40s linear infinite;
-  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .iom-marquee-track:hover {

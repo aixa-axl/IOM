@@ -129,15 +129,24 @@ $iom_render_marquee = function ( $resolved ) {
 	$marquee_logos = array_merge( $resolved, $resolved );
 	$count         = count( $resolved );
 	?>
-	<div class="relative w-full overflow-x-hidden py-3" data-logo-marquee>
-		<div class="iom-marquee-track flex w-max items-center gap-8 lg:gap-[5.75rem]" data-logo-marquee-track>
+	<div
+		class="iom-marquee relative w-full max-w-full overflow-hidden py-3"
+		data-logo-marquee
+	>
+		<div
+			class="iom-marquee-track flex w-max items-center gap-8 lg:gap-[5.75rem]"
+			data-logo-marquee-track
+		>
 			<?php foreach ( $marquee_logos as $i => $logo ) : ?>
-				<div class="flex h-[4.6875rem] shrink-0 items-center justify-center" <?php echo $i >= $count ? 'aria-hidden="true"' : ''; ?>>
+				<div
+					class="flex h-[4.6875rem] w-auto shrink-0 items-center justify-center"
+					<?php echo $i >= $count ? 'aria-hidden="true"' : ''; ?>
+				>
 					<img
 						src="<?php echo esc_url( $logo['src'] ); ?>"
 						alt="<?php echo $i >= $count ? '' : esc_attr( $logo['alt'] ); ?>"
 						class="max-h-[4.6875rem] w-auto max-w-[8.75rem] object-contain"
-						loading="lazy"
+						loading="eager"
 						decoding="async"
 					/>
 				</div>
@@ -207,8 +216,8 @@ $aria = $section_heading
 	: __( 'Trusted by', 'impact-one-million' );
 ?>
 
-<section class="overflow-x-hidden border-b border-solid border-[#e5e7eb] bg-white py-10 lg:py-24" aria-label="<?php echo esc_attr( $aria ); ?>">
-	<div class="mx-auto flex w-full max-w-site flex-col items-stretch gap-16 px-0 lg:gap-16">
+<section class="border-b border-solid border-[#e5e7eb] bg-white py-10 lg:py-24" aria-label="<?php echo esc_attr( $aria ); ?>">
+	<div class="mx-auto flex w-full max-w-site flex-col items-stretch gap-10 px-0 lg:gap-16">
 		<?php if ( $section_heading ) : ?>
 			<div class="px-page lg:px-section">
 				<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">
@@ -217,7 +226,7 @@ $aria = $section_heading
 			</div>
 		<?php endif; ?>
 
-		<div class="flex w-full flex-col items-stretch gap-20 lg:gap-40">
+		<div class="flex w-full flex-col items-stretch gap-10 lg:gap-40">
 			<?php foreach ( $render_groups as $group ) : ?>
 				<?php
 				$is_legacy = ! empty( $group['is_legacy'] );
@@ -227,7 +236,7 @@ $aria = $section_heading
 					? 'items-start text-left'
 					: 'items-center text-center';
 				?>
-				<div class="flex w-full flex-col items-stretch gap-6">
+				<div class="flex w-full min-w-0 flex-col items-stretch gap-6">
 					<?php if ( $is_legacy ) : ?>
 						<?php if ( ! empty( $group['primary'] ) || ! empty( $group['secondary'] ) || ! empty( $group['intro'] ) ) : ?>
 							<div class="mx-auto flex w-full max-w-site flex-col px-page lg:px-gutter <?php echo $is_left ? 'items-start' : 'items-center'; ?>">
