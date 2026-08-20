@@ -84,7 +84,7 @@ if ( $video_url ) {
 <section class="bg-blue px-page py-[26px] md:py-10 xl:px-gutter xl:py-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col overflow-hidden rounded-card border-2 border-solid border-[#dfe8ff] xl:flex-row xl:items-center xl:gap-20 xl:overflow-visible xl:border-0">
 		<!-- Copy card -->
-		<div class="flex w-full flex-col items-start gap-8 rounded-t-card bg-white px-6 py-4 md:gap-8 md:px-8 md:py-6 xl:flex-1 xl:min-w-0 xl:rounded-card xl:px-6 xl:py-5">
+		<div class="order-1 flex w-full flex-col items-start gap-8 rounded-t-card bg-white px-6 py-4 md:order-2 md:gap-8 md:rounded-t-none md:rounded-b-card md:px-8 md:py-6 xl:order-1 xl:flex-1 xl:min-w-0 xl:rounded-card xl:px-6 xl:py-5">
 			<div class="flex w-full flex-col gap-4">
 				<?php if ( $heading ) : ?>
 					<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">
@@ -118,7 +118,7 @@ if ( $video_url ) {
 
 		<!-- Media / video -->
 		<div
-			class="relative aspect-[560/550] w-full shrink-0 overflow-hidden rounded-b-card bg-navy md:aspect-[16/10] xl:aspect-auto xl:h-[34.375rem] xl:w-[35rem] xl:rounded-card"
+			class="relative order-2 aspect-[560/550] w-full shrink-0 overflow-hidden rounded-b-card bg-navy md:order-1 md:aspect-[16/10] md:rounded-b-none md:rounded-t-card xl:order-2 xl:aspect-auto xl:h-[34.375rem] xl:w-[35rem] xl:rounded-card"
 			data-featured-story-media
 			<?php if ( $iom_fs_embed ) : ?>
 				data-video-type="<?php echo esc_attr( $iom_fs_embed['type'] ); ?>"

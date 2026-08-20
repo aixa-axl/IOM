@@ -3360,6 +3360,14 @@ body {
     left: 0px;
   }
 
+  .md\:order-1 {
+    order: 1;
+  }
+
+  .md\:order-2 {
+    order: 2;
+  }
+
   .md\:mt-0 {
     margin-top: 0px;
   }
@@ -3443,6 +3451,26 @@ body {
 
   .md\:whitespace-nowrap {
     white-space: nowrap;
+  }
+
+  .md\:rounded-b-card {
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  .md\:rounded-b-none {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+
+  .md\:rounded-t-card {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  .md\:rounded-t-none {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
   }
 
   .md\:object-cover {
@@ -4121,6 +4149,14 @@ body {
 }
 
 @media (min-width: 1280px) {
+  .xl\:order-1 {
+    order: 1;
+  }
+
+  .xl\:order-2 {
+    order: 2;
+  }
+
   .xl\:flex {
     display: flex;
   }
