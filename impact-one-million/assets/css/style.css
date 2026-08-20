@@ -3643,6 +3643,11 @@ body {
     line-height: 1.2;
   }
 
+  .lg\:text-number {
+    font-size: 60px;
+    line-height: 1;
+  }
+
   .lg\:text-stat-label {
     font-size: 32px;
     line-height: 1.2;

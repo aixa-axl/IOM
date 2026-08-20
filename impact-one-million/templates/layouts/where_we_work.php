@@ -163,7 +163,7 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 
 	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-10 lg:gap-10">
 		<?php if ( $heading ) : ?>
-			<h2 class="m-0 text-center font-display text-number text-navy">
+			<h2 class="m-0 text-center font-display text-[32px] leading-none text-navy lg:text-number">
 				<?php echo esc_html( $heading ); ?>
 			</h2>
 		<?php endif; ?>
@@ -178,7 +178,7 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 					data-country-panel
 					aria-live="polite"
 				>
-					<h3 class="m-0 font-display text-header text-blue" data-panel-name>
+					<h3 class="m-0 font-display text-[24px] leading-none text-blue lg:text-header" data-panel-name>
 						<?php echo esc_html( $initial['name'] ); ?>
 					</h3>
 					<div class="flex flex-col gap-2 border-b border-t border-solid border-gray-300 py-3 font-sans text-sm font-semibold text-ink">
@@ -206,7 +206,7 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 				data-country-panel-mobile
 				aria-live="polite"
 			>
-				<h3 class="m-0 font-display text-header text-blue" data-panel-name>
+				<h3 class="m-0 font-display text-[24px] leading-none text-blue lg:text-header" data-panel-name>
 					<?php echo esc_html( $initial['name'] ); ?>
 				</h3>
 				<div class="flex flex-col gap-2 border-b border-solid border-blue pb-3 font-sans text-body text-ink">
