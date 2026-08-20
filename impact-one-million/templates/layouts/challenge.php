@@ -76,7 +76,7 @@ $btn_cta = 'inline-flex items-center justify-center rounded-btn border-[1.5px] b
 		<?php endif; ?>
 
 		<?php if ( ! empty( $cards ) ) : ?>
-			<ul class="m-0 grid w-full list-none grid-cols-1 gap-2 p-0 lg:grid-cols-2 lg:gap-10">
+			<ul class="m-0 grid w-full list-none grid-cols-1 gap-6 p-0 lg:grid-cols-2 lg:gap-10">
 				<?php foreach ( $cards as $card ) : ?>
 					<?php
 					$style  = isset( $card['style'] ) ? $card['style'] : 'fact';
