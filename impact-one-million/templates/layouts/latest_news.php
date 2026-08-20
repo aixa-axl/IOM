@@ -87,7 +87,7 @@ $link_class = 'inline-flex border-b-2 border-solid border-blue py-3.5 font-displ
 		</div>
 
 		<?php if ( $news_query->have_posts() ) : ?>
-			<ul class="m-0 grid w-full list-none grid-cols-1 gap-6 p-0 lg:grid-cols-3">
+			<ul class="m-0 grid w-full list-none grid-cols-1 gap-6 p-0 md:grid-cols-2 lg:grid-cols-3">
 				<?php
 				while ( $news_query->have_posts() ) :
 					$news_query->the_post();
