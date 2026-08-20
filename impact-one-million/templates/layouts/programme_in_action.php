@@ -47,8 +47,8 @@ if ( ! is_array( $secondary_cta ) || empty( $secondary_cta['url'] ) ) {
 	);
 }
 
-$btn_primary = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
-$btn_outline = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-navy px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-80';
+$btn_primary = 'inline-flex flex-1 items-center justify-center whitespace-nowrap rounded-btn border-[1.5px] border-solid border-transparent bg-accent-blue px-4 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 lg:flex-none lg:px-6';
+$btn_outline = 'inline-flex flex-1 items-center justify-center whitespace-nowrap rounded-btn border-[1.5px] border-solid border-navy px-4 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-80 lg:flex-none lg:px-6';
 
 $img_attrs = array(
 	'class'   => 'absolute inset-0 size-full rounded-card object-cover',
@@ -95,7 +95,7 @@ $img_attrs = array(
 			</div>
 
 			<?php if ( ! empty( $primary_cta['url'] ) || ! empty( $secondary_cta['url'] ) ) : ?>
-				<div class="flex flex-wrap items-start gap-4">
+				<div class="flex w-full flex-nowrap items-stretch gap-3 lg:w-auto lg:items-start lg:gap-4">
 					<?php
 					if ( ! empty( $primary_cta['url'] ) ) {
 						iom_render_link(
