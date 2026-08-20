@@ -3350,6 +3350,38 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_legal": {
+                    "key": "layout_iom_legal",
+                    "name": "legal",
+                    "label": "Legal",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_legal_heading",
+                            "label": "Title",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "Page title, e.g. Privacy Policy or Terms & Conditions.",
+                            "required": 0,
+                            "default_value": ""
+                        },
+                        {
+                            "key": "field_iom_legal_body",
+                            "label": "Content",
+                            "name": "body",
+                            "type": "wysiwyg",
+                            "instructions": "Legal page body. Supports headings, paragraphs, lists, and links.",
+                            "required": 0,
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0,
+                            "default_value": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -3375,5 +3407,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1787244000
+    "modified": 1787247724
 }

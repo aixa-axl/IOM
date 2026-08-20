@@ -3831,12 +3831,22 @@ body {
     letter-spacing: 0.04em;
   }
 
+  .lg\:text-title {
+    font-size: 72px;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+
   .lg\:font-semibold {
     font-weight: 600;
   }
 
   .lg\:leading-6 {
     line-height: 1.5rem;
+  }
+
+  .lg\:leading-\[1\.1\] {
+    line-height: 1.1;
   }
 
   .lg\:leading-\[1\.2\] {
@@ -3849,6 +3859,10 @@ body {
 
   .lg\:leading-none {
     line-height: 1;
+  }
+
+  .lg\:tracking-\[0\.02em\] {
+    letter-spacing: 0.02em;
   }
 
   .lg\:tracking-\[1\.5px\] {
@@ -3879,6 +3893,97 @@ body {
   display: none;
 }
 
+.\[\&_a\]\:text-blue a {
+  --tw-text-opacity: 1;
+  color: rgb(21 58 129 / var(--tw-text-opacity, 1));
+}
+
+.\[\&_a\]\:underline a {
+  text-decoration-line: underline;
+}
+
+.\[\&_a\]\:transition-opacity a {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.hover\:\[\&_a\]\:opacity-70 a:hover {
+  opacity: 0.7;
+}
+
+.\[\&_h2\:first-child\]\:mt-0 h2:first-child {
+  margin-top: 0px;
+}
+
+.\[\&_h2\]\:mb-4 h2 {
+  margin-bottom: 1rem;
+}
+
+.\[\&_h2\]\:mt-10 h2 {
+  margin-top: 2.5rem;
+}
+
+.\[\&_h2\]\:font-display h2 {
+  font-family: "Londrina Solid", Impact, sans-serif;
+}
+
+.\[\&_h2\]\:text-header h2 {
+  font-size: 36px;
+  line-height: 1;
+}
+
+.\[\&_h2\]\:leading-none h2 {
+  line-height: 1;
+}
+
+.\[\&_h2\]\:text-blue h2 {
+  --tw-text-opacity: 1;
+  color: rgb(21 58 129 / var(--tw-text-opacity, 1));
+}
+
+.\[\&_h3\]\:mb-3 h3 {
+  margin-bottom: 0.75rem;
+}
+
+.\[\&_h3\]\:mt-8 h3 {
+  margin-top: 2rem;
+}
+
+.\[\&_h3\]\:font-display h3 {
+  font-family: "Londrina Solid", Impact, sans-serif;
+}
+
+.\[\&_h3\]\:text-card-title h3 {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.\[\&_h3\]\:leading-none h3 {
+  line-height: 1;
+}
+
+.\[\&_h3\]\:text-blue h3 {
+  --tw-text-opacity: 1;
+  color: rgb(21 58 129 / var(--tw-text-opacity, 1));
+}
+
+.\[\&_li\]\:mt-2 li {
+  margin-top: 0.5rem;
+}
+
+.\[\&_ol\]\:mt-6 ol {
+  margin-top: 1.5rem;
+}
+
+.\[\&_ol\]\:list-decimal ol {
+  list-style-type: decimal;
+}
+
+.\[\&_ol\]\:pl-6 ol {
+  padding-left: 1.5rem;
+}
+
 .\[\&_p\+p\]\:mt-6 p+p {
   margin-top: 1.5rem;
 }
@@ -3898,4 +4003,16 @@ body {
 
 .\[\&_p\]\:m-0 p {
   margin: 0px;
+}
+
+.\[\&_ul\]\:mt-6 ul {
+  margin-top: 1.5rem;
+}
+
+.\[\&_ul\]\:list-disc ul {
+  list-style-type: disc;
+}
+
+.\[\&_ul\]\:pl-6 ul {
+  padding-left: 1.5rem;
 }
