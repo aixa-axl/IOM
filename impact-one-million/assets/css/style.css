@@ -653,10 +653,6 @@ video {
   left: 0px;
 }
 
-.left-1\/2 {
-  left: 50%;
-}
-
 .left-5 {
   left: 1.25rem;
 }
@@ -719,6 +715,11 @@ video {
 
 .m-0 {
   margin: 0px;
+}
+
+.-mx-page {
+  margin-left: -26px;
+  margin-right: -26px;
 }
 
 .mx-auto {
@@ -1073,6 +1074,10 @@ video {
   width: calc((200% - 1.5rem) / 3);
 }
 
+.w-\[calc\(100\%\+3\.25rem\)\] {
+  width: calc(100% + 3.25rem);
+}
+
 .w-\[min\(100\%\2c 16rem\)\] {
   width: min(100%, 16rem);
 }
@@ -1102,10 +1107,6 @@ video {
   width: max-content;
 }
 
-.w-screen {
-  width: 100vw;
-}
-
 .min-w-0 {
   min-width: 0px;
 }
@@ -1124,10 +1125,6 @@ video {
 
 .max-w-2xl {
   max-width: 42rem;
-}
-
-.max-w-\[100vw\] {
-  max-width: 100vw;
 }
 
 .max-w-\[12\.5rem\] {
@@ -1248,11 +1245,6 @@ video {
 
 .shrink-0 {
   flex-shrink: 0;
-}
-
-.-translate-x-1\/2 {
-  --tw-translate-x: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .-translate-y-1\/2 {
@@ -2727,18 +2719,33 @@ body {
 
 /*
  * How it works — mobile pillars carousel.
- * Center the active card; peek neighbors on both sides; never clip the focused card.
+ * Active card centered; soft edge fade so neighbor peeks don’t look hard-clipped.
  */
 
 @media (max-width: 1023px) {
   .iom-pillars-track {
     scroll-snap-type: x mandatory;
-    scroll-padding-inline: calc(50vw - min(8.75rem, 39vw));
-    padding-inline: calc(50vw - min(8.75rem, 39vw));
+    /* Side inset = half the leftover space so the first/last card can sit centered. */
+    padding-inline: calc((100% - min(17.5rem, 82%)) / 2);
+    scroll-padding-inline: calc((100% - min(17.5rem, 82%)) / 2);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 20px,
+      #000 calc(100% - 20px),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 20px,
+      #000 calc(100% - 20px),
+      transparent 100%
+    );
   }
 
   .iom-pillars-slide {
-    width: min(17.5rem, 78vw);
+    width: min(17.5rem, 82%);
     scroll-snap-align: center;
   }
 }
@@ -2981,10 +2988,6 @@ body {
 }
 
 @media (min-width: 1024px) {
-  .lg\:static {
-    position: static;
-  }
-
   .lg\:absolute {
     position: absolute;
   }
@@ -3002,10 +3005,6 @@ body {
     left: 50%;
   }
 
-  .lg\:left-auto {
-    left: auto;
-  }
-
   .lg\:order-1 {
     order: 1;
   }
@@ -3016,6 +3015,11 @@ body {
 
   .lg\:order-3 {
     order: 3;
+  }
+
+  .lg\:mx-0 {
+    margin-left: 0px;
+    margin-right: 0px;
   }
 
   .lg\:ml-auto {
@@ -3254,11 +3258,6 @@ body {
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
-  .lg\:translate-x-0 {
-    --tw-translate-x: 0px;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-
   .lg\:snap-none {
     scroll-snap-type: none;
   }
@@ -3398,6 +3397,10 @@ body {
 
   .lg\:overflow-visible {
     overflow: visible;
+  }
+
+  .lg\:overflow-x-visible {
+    overflow-x: visible;
   }
 
   .lg\:whitespace-nowrap {

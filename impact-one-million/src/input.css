@@ -368,17 +368,32 @@ body {
 
 /*
  * How it works — mobile pillars carousel.
- * Center the active card; peek neighbors on both sides; never clip the focused card.
+ * Active card centered; soft edge fade so neighbor peeks don’t look hard-clipped.
  */
 @media (max-width: 1023px) {
   .iom-pillars-track {
     scroll-snap-type: x mandatory;
-    scroll-padding-inline: calc(50vw - min(8.75rem, 39vw));
-    padding-inline: calc(50vw - min(8.75rem, 39vw));
+    /* Side inset = half the leftover space so the first/last card can sit centered. */
+    padding-inline: calc((100% - min(17.5rem, 82%)) / 2);
+    scroll-padding-inline: calc((100% - min(17.5rem, 82%)) / 2);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 20px,
+      #000 calc(100% - 20px),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 20px,
+      #000 calc(100% - 20px),
+      transparent 100%
+    );
   }
 
   .iom-pillars-slide {
-    width: min(17.5rem, 78vw);
+    width: min(17.5rem, 82%);
     scroll-snap-align: center;
   }
 }

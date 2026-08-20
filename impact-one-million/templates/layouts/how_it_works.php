@@ -84,7 +84,7 @@ $pillar_count = count( $pillars );
 $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-70';
 ?>
 
-<section class="overflow-x-hidden bg-blue px-page py-section text-white lg:px-gutter">
+<section class="bg-blue px-page py-section text-white lg:overflow-x-visible lg:px-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col gap-20">
 		<div class="flex flex-col gap-20 lg:flex-row lg:items-start lg:gap-gutter">
 			<?php if ( $heading ) : ?>
@@ -121,7 +121,7 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 
 			<?php if ( ! empty( $pillars ) ) : ?>
 				<div
-					class="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 lg:static lg:left-auto lg:w-full lg:max-w-none lg:translate-x-0"
+					class="iom-pillars-carousel w-[calc(100%+3.25rem)] max-w-none -mx-page lg:mx-0 lg:w-full"
 					data-pillars-carousel
 				>
 					<ul
