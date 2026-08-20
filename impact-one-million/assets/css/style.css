@@ -2460,6 +2460,7 @@ video {
  *   card-title 20←24 | body 16←18 | label stays 20 (nav)
  *
  * Section vertical padding: mobile 40px for py-section / py-gutter tokens.
+ * Layout internal stack gaps: mobile 26px (Figma spacing/80 / page token).
  */
 
 @media (max-width: 1023px) {
@@ -2467,6 +2468,26 @@ video {
   .py-gutter {
     padding-top: 40px;
     padding-bottom: 40px;
+  }
+
+  .gap-section,
+  .gap-20,
+  .gap-16,
+  .gap-14,
+  .gap-12,
+  .gap-10,
+  .gap-8,
+  .gap-\[3\.75rem\] {
+    gap: 26px;
+  }
+
+  .gap-y-20,
+  .gap-y-16,
+  .gap-y-14,
+  .gap-y-12,
+  .gap-y-10,
+  .gap-y-8 {
+    row-gap: 26px;
   }
 
   .text-title {
