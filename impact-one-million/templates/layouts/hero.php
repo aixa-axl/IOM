@@ -90,8 +90,8 @@ $btn_outline     = 'inline-flex w-full items-center justify-center rounded-btn b
 
 // History page bottom navy CTA only: mild desktop type tweak so dual buttons fit the card.
 if ( $is_last_mid_cta && function_exists( 'is_page' ) && is_page( 'history' ) ) {
-	$btn_filled_base .= ' lg:px-5 lg:text-[20px] lg:tracking-[1.5px]';
-	$btn_outline     .= ' lg:px-5 lg:text-[20px] lg:tracking-[1.5px]';
+	$btn_filled_base .= ' lg:px-5 lg:text-[22px] lg:tracking-[1.5px]';
+	$btn_outline     .= ' lg:px-5 lg:text-[22px] lg:tracking-[1.5px]';
 }
 
 $btn_primary = $btn_filled_base . ' ' . $fill_bg[ $primary_cta_style ];

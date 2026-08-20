@@ -326,10 +326,10 @@ body {
 @media (min-width: 1024px) {
   /*
    * History page — last navy mid-CTA: mild desktop button size so dual CTAs
-   * stay on one row without hugging the card edge (24px → 20px).
+   * stay on one row without hugging the card edge (24px → 22px).
    */
   body.page-history .entry-content > section.iom-hero.bg-navy:last-of-type .iom-hero__ctas > a {
-    font-size: 20px;
+    font-size: 22px;
     letter-spacing: 1.5px;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
