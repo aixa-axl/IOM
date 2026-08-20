@@ -829,7 +829,8 @@
 
 /**
  * Ambassadors grid pagination (client-side).
- * Page height follows visible cards; on change, jump to the top of this layout (under sticky header).
+ * Page height follows visible cards; on change, jump to the top of this layout
+ * (under sticky header) on mobile and desktop — no scroll-to-bottom.
  */
 (function () {
 	document.querySelectorAll('[data-ambassadors-grid]').forEach(function (section) {
@@ -869,23 +870,37 @@
 		function scrollToLayoutTop() {
 			const header = document.getElementById('masthead');
 			const headerH = header ? header.getBoundingClientRect().height : 0;
-			const y =
-				(window.scrollY || window.pageYOffset || 0) +
-				section.getBoundingClientRect().top -
-				headerH;
-			window.scrollTo(0, Math.max(0, Math.round(y)));
+			const pageY = window.pageYOffset || document.documentElement.scrollTop || 0;
+			const y = Math.max(0, Math.round(pageY + section.getBoundingClientRect().top - headerH));
+
+			window.scrollTo(0, y);
+			document.documentElement.scrollTop = y;
+			if (document.body) {
+				document.body.scrollTop = y;
+			}
 		}
 
 		buttons.forEach(function (btn) {
 			btn.addEventListener('click', function (event) {
 				event.preventDefault();
 
+				if (typeof btn.blur === 'function') {
+					btn.blur();
+				}
+
 				if (wrap) {
 					wrap.style.minHeight = '';
 				}
 
 				setPage(Number(btn.getAttribute('data-ambassadors-page')));
+
+				// Run now + after layout/focus settle (iOS often re-scrolls on tap).
 				scrollToLayoutTop();
+				window.requestAnimationFrame(function () {
+					scrollToLayoutTop();
+					window.setTimeout(scrollToLayoutTop, 0);
+					window.setTimeout(scrollToLayoutTop, 50);
+				});
 			});
 		});
 	});

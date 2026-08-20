@@ -312,6 +312,11 @@ body {
   overflow-anchor: none;
 }
 
+[data-ambassadors-grid] {
+  /* Keep section title clear of sticky header when jumping to layout top. */
+  scroll-margin-top: 5.5rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .iom-marquee-track {
     animation: none;
