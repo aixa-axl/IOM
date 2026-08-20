@@ -7,6 +7,7 @@
 
 $iom_inline_id     = wp_unique_id( 'iom-inline-search-' );
 $search_icon_class = isset( $search_icon_class ) ? $search_icon_class : 'size-[13.5px]';
+$form_width_class  = isset( $search_form_class ) ? $search_form_class : 'w-[min(100%,16rem)]';
 ?>
 <div class="inline-flex min-w-0 max-w-full items-center" data-inline-search>
 	<button
@@ -31,7 +32,7 @@ $search_icon_class = isset( $search_icon_class ) ? $search_icon_class : 'size-[1
 		id="<?php echo esc_attr( $iom_inline_id ); ?>"
 		role="search"
 		method="get"
-		class="hidden w-[min(100%,16rem)] items-center gap-2"
+		class="hidden <?php echo esc_attr( $form_width_class ); ?> items-center gap-2"
 		action="<?php echo esc_url( home_url( '/' ) ); ?>"
 		data-search-form
 	>
@@ -50,10 +51,11 @@ $search_icon_class = isset( $search_icon_class ) ? $search_icon_class : 'size-[1
 			<input
 				type="search"
 				id="<?php echo esc_attr( $iom_inline_id ); ?>-input"
-				class="min-w-0 flex-1 appearance-none border-0 bg-transparent px-2 py-1 font-sans text-sm text-white placeholder:text-white/60 focus:outline-none focus:ring-0 [&::-webkit-search-cancel-button]:hidden"
+				class="min-w-0 flex-1 appearance-none border-0 bg-transparent px-2 py-1.5 font-sans text-base leading-normal text-white placeholder:text-white/60 focus:outline-none focus:ring-0 [&::-webkit-search-cancel-button]:hidden"
 				placeholder="<?php echo esc_attr_x( 'Search…', 'placeholder', 'impact-one-million' ); ?>"
 				value="<?php echo esc_attr( get_search_query() ); ?>"
 				name="s"
+				enterkeyhint="search"
 				data-search-input
 			/>
 			<button

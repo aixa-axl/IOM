@@ -19,6 +19,7 @@ $default_logo_uri    = $theme_uri . '/assets/images/impact-one-million-logo-whit
 $default_logo_abs    = $theme_dir . '/assets/images/impact-one-million-logo-white.png';
 $default_partner_uri = $theme_uri . '/assets/images/escp-founded-by-icti.svg';
 $default_partner_abs = $theme_dir . '/assets/images/escp-founded-by-icti.svg';
+$icon_search_uri     = $theme_uri . '/assets/images/icons/search.svg';
 $has_default_logo    = file_exists( $default_logo_abs );
 $has_default_partner = file_exists( $default_partner_abs );
 
@@ -90,6 +91,20 @@ if ( ! $has_legal ) {
 
 $link_class  = 'font-sans text-body text-white no-underline transition-opacity hover:opacity-70';
 $legal_class = 'font-sans text-[10px] font-semibold uppercase leading-none tracking-[1px] text-white no-underline transition-opacity hover:opacity-70';
+
+/**
+ * Whether a footer link should open the inline search UI.
+ *
+ * @param array|null $link ACF link array.
+ * @return bool
+ */
+$iom_is_footer_search_link = static function ( $link ) {
+	if ( ! is_array( $link ) ) {
+		return false;
+	}
+	$title = isset( $link['title'] ) ? trim( wp_strip_all_tags( (string) $link['title'] ) ) : '';
+	return (bool) $title && 0 === strcasecmp( $title, 'Search' );
+};
 ?>
 
 	<footer id="site-footer" class="site-footer mt-auto bg-blue px-page py-20 text-white lg:px-gutter lg:py-[3.75rem]">
@@ -157,12 +172,22 @@ $legal_class = 'font-sans text-[10px] font-semibold uppercase leading-none track
 										<?php foreach ( $links as $row ) : ?>
 											<?php
 											$link = isset( $row['link'] ) ? $row['link'] : null;
-											if ( empty( $link['url'] ) ) {
+											if ( empty( $link['url'] ) && ! $iom_is_footer_search_link( $link ) ) {
 												continue;
 											}
 											?>
 											<li>
-												<?php iom_render_link( $link, $link_class ); ?>
+												<?php if ( $iom_is_footer_search_link( $link ) ) : ?>
+													<?php
+													$search_label      = ! empty( $link['title'] ) ? $link['title'] : __( 'Search', 'impact-one-million' );
+													$util_link_class   = $link_class;
+													$search_form_class = 'w-full max-w-[16rem]';
+													require locate_template( 'templates/parts/inline-search.php' );
+													unset( $search_form_class );
+													?>
+												<?php else : ?>
+													<?php iom_render_link( $link, $link_class ); ?>
+												<?php endif; ?>
 											</li>
 										<?php endforeach; ?>
 									</ul>

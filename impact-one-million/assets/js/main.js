@@ -3,7 +3,96 @@
  */
 (function () {
 	const header = document.querySelector('[data-mobile-nav]');
+	const searchWidgets = document.querySelectorAll('[data-inline-search]');
+	const mqDesktop = window.matchMedia('(min-width: 1024px)');
+	const mqFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+	function isSearchOpen(widget) {
+		const form = widget.querySelector('[data-search-form]');
+		return Boolean(form && !form.classList.contains('hidden'));
+	}
+
+	function setSearchOpen(widget, open) {
+		const toggle = widget.querySelector('[data-search-toggle]');
+		const form = widget.querySelector('[data-search-form]');
+		const input = widget.querySelector('[data-search-input]');
+
+		if (!toggle || !form) {
+			return;
+		}
+
+		toggle.classList.toggle('hidden', open);
+		toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+
+		form.classList.toggle('hidden', !open);
+		form.classList.toggle('flex', open);
+
+		if (open && input) {
+			window.requestAnimationFrame(function () {
+				input.focus({ preventScroll: true });
+				if (typeof input.select === 'function') {
+					input.select();
+				}
+			});
+			return;
+		}
+
+		// Closing: blur first so iOS drops the input zoom cleanly.
+		if (input) {
+			input.blur();
+		}
+	}
+
+	function closeAllSearch(except) {
+		searchWidgets.forEach(function (widget) {
+			if (widget !== except) {
+				setSearchOpen(widget, false);
+			}
+		});
+	}
+
+	searchWidgets.forEach(function (widget) {
+		const toggle = widget.querySelector('[data-search-toggle]');
+		const close = widget.querySelector('[data-search-close]');
+
+		if (toggle) {
+			toggle.addEventListener('click', function (event) {
+				event.preventDefault();
+				closeAllSearch(widget);
+				setSearchOpen(widget, true);
+			});
+		}
+
+		if (close) {
+			close.addEventListener('click', function (event) {
+				event.preventDefault();
+				event.stopPropagation();
+				setSearchOpen(widget, false);
+				// Avoid refocusing the toggle on touch — that can re-trigger mobile zoom.
+				if (toggle && mqFinePointer.matches) {
+					toggle.focus({ preventScroll: true });
+				}
+			});
+		}
+	});
+
+	document.addEventListener('click', function (event) {
+		searchWidgets.forEach(function (widget) {
+			if (!isSearchOpen(widget)) {
+				return;
+			}
+			if (!widget.contains(event.target)) {
+				setSearchOpen(widget, false);
+			}
+		});
+	});
+
 	if (!header) {
+		document.addEventListener('keydown', function (event) {
+			if (event.key === 'Escape') {
+				closeAllSearch();
+			}
+		});
 		return;
 	}
 
@@ -11,10 +100,8 @@
 	const mobilePanel = header.querySelector('[data-mobile-nav-panel]');
 	const iconOpen = header.querySelector('[data-mobile-nav-icon-open]');
 	const iconClose = header.querySelector('[data-mobile-nav-icon-close]');
-	const searchWidgets = header.querySelectorAll('[data-inline-search]');
 	const accordions = header.querySelectorAll('[data-mobile-nav-accordion]');
 	const headerBar = header.firstElementChild;
-	const mqDesktop = window.matchMedia('(min-width: 1024px)');
 
 	function syncMobilePanelHeight() {
 		if (!mobilePanel || !headerBar) {
@@ -44,7 +131,6 @@
 
 		mobilePanel.hidden = !open;
 		mobilePanel.setAttribute('data-open', open ? 'true' : 'false');
-		// Keep class toggles as a fallback; CSS [data-open] rules are the source of truth.
 		mobilePanel.classList.toggle('hidden', !open);
 		mobilePanel.classList.toggle('flex', open);
 
@@ -63,6 +149,7 @@
 			accordions.forEach(function (btn) {
 				setAccordionOpen(btn, false);
 			});
+			closeAllSearch();
 		}
 	}
 
@@ -76,44 +163,7 @@
 		}
 	}
 
-	function isSearchOpen(widget) {
-		const form = widget.querySelector('[data-search-form]');
-		return Boolean(form && !form.classList.contains('hidden'));
-	}
-
-	function setSearchOpen(widget, open) {
-		const toggle = widget.querySelector('[data-search-toggle]');
-		const form = widget.querySelector('[data-search-form]');
-		const input = widget.querySelector('[data-search-input]');
-
-		if (!toggle || !form) {
-			return;
-		}
-
-		toggle.classList.toggle('hidden', open);
-		toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-
-		form.classList.toggle('hidden', !open);
-		form.classList.toggle('flex', open);
-
-		if (open && input) {
-			window.requestAnimationFrame(function () {
-				input.focus();
-				input.select();
-			});
-		}
-	}
-
-	function closeAllSearch(except) {
-		searchWidgets.forEach(function (widget) {
-			if (widget !== except) {
-				setSearchOpen(widget, false);
-			}
-		});
-	}
-
 	if (mobileToggle && mobilePanel) {
-		// Force closed on load (panel must not use a permanent `flex` class — it overrides [hidden]).
 		setMobileOpen(false);
 
 		mobileToggle.addEventListener('click', function (event) {
@@ -139,29 +189,6 @@
 		});
 	});
 
-	searchWidgets.forEach(function (widget) {
-		const toggle = widget.querySelector('[data-search-toggle]');
-		const close = widget.querySelector('[data-search-close]');
-
-		if (toggle) {
-			toggle.addEventListener('click', function () {
-				closeAllSearch(widget);
-				setSearchOpen(widget, true);
-			});
-		}
-
-		if (close) {
-			close.addEventListener('click', function (event) {
-				event.preventDefault();
-				event.stopPropagation();
-				setSearchOpen(widget, false);
-				if (toggle) {
-					toggle.focus();
-				}
-			});
-		}
-	});
-
 	document.addEventListener('keydown', function (event) {
 		if (event.key !== 'Escape') {
 			return;
@@ -169,7 +196,9 @@
 		closeAllSearch();
 		if (isMobileOpen()) {
 			setMobileOpen(false);
-			mobileToggle.focus();
+			if (mobileToggle) {
+				mobileToggle.focus({ preventScroll: true });
+			}
 		}
 	});
 
@@ -193,17 +222,6 @@
 		if (isMobileOpen()) {
 			syncMobilePanelHeight();
 		}
-	});
-
-	document.addEventListener('click', function (event) {
-		searchWidgets.forEach(function (widget) {
-			if (!isSearchOpen(widget)) {
-				return;
-			}
-			if (!widget.contains(event.target)) {
-				setSearchOpen(widget, false);
-			}
-		});
 	});
 })();
 
