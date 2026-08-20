@@ -829,15 +829,29 @@
 
 /**
  * Ambassadors grid pagination (client-side).
+ * Keeps grid height / scroll stable when switching pages (avoids layout jump).
  */
 (function () {
 	document.querySelectorAll('[data-ambassadors-grid]').forEach(function (section) {
 		const perPage = Number(section.getAttribute('data-per-page')) || 0;
 		const cards = Array.prototype.slice.call(section.querySelectorAll('[data-ambassadors-card]'));
 		const buttons = Array.prototype.slice.call(section.querySelectorAll('[data-ambassadors-page]'));
+		const grid = section.querySelector('ul');
+		const pagination = section.querySelector('[data-ambassadors-pagination]');
 
 		if (perPage < 1 || !cards.length || !buttons.length) {
 			return;
+		}
+
+		function lockGridMinHeight() {
+			if (!grid) {
+				return;
+			}
+			const height = grid.getBoundingClientRect().height;
+			const current = parseFloat(grid.style.minHeight) || 0;
+			if (height > current) {
+				grid.style.minHeight = height + 'px';
+			}
 		}
 
 		function setPage(page) {
@@ -856,13 +870,26 @@
 					? 'inline-flex items-center justify-center rounded-btn px-3 py-2 font-display text-card-title uppercase tracking-[2px] transition-colors bg-blue text-white'
 					: 'inline-flex items-center justify-center rounded-btn px-3 py-2 font-display text-card-title uppercase tracking-[2px] transition-colors border border-solid border-[#dfe8ff] bg-white text-blue';
 			});
+
+			window.requestAnimationFrame(lockGridMinHeight);
 		}
 
 		buttons.forEach(function (btn) {
 			btn.addEventListener('click', function () {
+				const before = pagination ? pagination.getBoundingClientRect().top : 0;
 				setPage(Number(btn.getAttribute('data-ambassadors-page')));
+				if (pagination) {
+					const after = pagination.getBoundingClientRect().top;
+					const delta = after - before;
+					if (delta) {
+						window.scrollBy(0, delta);
+					}
+				}
 			});
 		});
+
+		window.requestAnimationFrame(lockGridMinHeight);
+		window.addEventListener('load', lockGridMinHeight);
 	});
 })();
 
