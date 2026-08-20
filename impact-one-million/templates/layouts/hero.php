@@ -87,11 +87,9 @@ if ( 'outline' === $secondary_cta_style ) {
 
 $btn_tertiary = $btn_filled_base . ' ' . $fill_bg[ $primary_cta_style ];
 
-// Accent mid-page: centre mobile / left desktop. Navy mid-page CTA: centre always.
+// Accent mid-page: centre mobile / left desktop. Navy mid-page CTA: centre mobile only.
 // Pillar navy content: left. Homepage navy: centre mobile / left desktop.
-if ( $center_content ) {
-	$text_align = 'text-center';
-} elseif ( $is_accent ) {
+if ( $center_content || $is_accent ) {
 	$text_align = 'text-center lg:text-left';
 } elseif ( $is_content ) {
 	$text_align = 'text-left';
@@ -110,7 +108,7 @@ $outer_class = $is_accent
 if ( $is_accent ) {
 	$card_class = 'mt-0 flex w-full flex-col items-center gap-8 self-center rounded-card bg-white p-[11px] lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:self-auto lg:p-5';
 } elseif ( $center_content ) {
-	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-center gap-5 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:items-center lg:gap-8 lg:self-auto lg:p-5';
+	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-center gap-5 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:gap-8 lg:self-auto lg:p-5';
 } elseif ( $is_content ) {
 	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-start gap-5 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:gap-8 lg:self-auto lg:p-5';
 } else {
@@ -119,12 +117,12 @@ if ( $is_accent ) {
 }
 
 $cta_row_class = $center_content
-	? 'flex w-full flex-col items-center gap-4 lg:flex-row lg:flex-wrap lg:items-center lg:justify-center lg:gap-4 lg:whitespace-nowrap'
+	? 'flex w-full flex-col items-center gap-4 lg:flex-row lg:flex-nowrap lg:items-start lg:justify-start lg:gap-4 lg:whitespace-nowrap'
 	: 'flex w-full flex-col items-stretch gap-4 lg:flex-row lg:flex-nowrap lg:items-start lg:gap-4 lg:whitespace-nowrap';
 
 $body_class = $is_accent
 	? 'm-0 w-full font-sans text-label leading-[1.5] text-muted ' . $text_align
-	: 'm-0 w-full font-sans text-body leading-[1.2] text-ink ' . ( $center_content ? 'text-center' : 'text-left' );
+	: 'm-0 w-full font-sans text-body leading-[1.2] text-ink ' . ( $center_content ? 'text-center lg:text-left' : 'text-left' );
 
 $has_ctas = ( ! empty( $primary_cta['url'] ) || ! empty( $secondary_cta['url'] ) || ! empty( $tertiary_cta['url'] ) );
 

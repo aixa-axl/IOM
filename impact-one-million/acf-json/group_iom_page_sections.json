@@ -43,7 +43,7 @@
                             "label": "Center Content",
                             "name": "center_content",
                             "type": "true_false",
-                            "instructions": "Center heading, body and CTAs. Use for navy mid-page CTAs (Ambassadors, History, Team, Governance, Ambition). Auto-on when logo is off and there is no subtitle\/body.",
+                            "instructions": "Center heading, body and CTAs on mobile. Use for navy mid-page CTAs (Ambassadors, History, Team, Governance, Ambition). Auto-on when logo is off and there is no subtitle\/body. Desktop stays left-aligned.",
                             "required": 0,
                             "default_value": 0,
                             "ui": 1
