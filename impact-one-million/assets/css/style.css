@@ -1151,6 +1151,10 @@ video {
   max-width: 26.25rem;
 }
 
+.max-w-\[32\.5rem\] {
+  max-width: 32.5rem;
+}
+
 .max-w-\[37\.375rem\] {
   max-width: 37.375rem;
 }
@@ -1588,6 +1592,10 @@ video {
 
 .border-solid {
   border-style: solid;
+}
+
+.border-dashed {
+  border-style: dashed;
 }
 
 .border-\[\#dfe8ff\] {
@@ -2884,6 +2892,165 @@ body {
 }
 
 /*
+ * Contact layout — Fluent Forms skin (Figma 776:8680).
+ * Scope to .iom-contact-form so other Fluent embeds stay untouched.
+ */
+
+.iom-contact-form .fluentform,
+.iom-contact-form .ff-el-group {
+  width: 100%;
+}
+
+.iom-contact-form .ff-el-group {
+  margin-bottom: 1.5rem;
+}
+
+.iom-contact-form .ff-el-input--label label,
+.iom-contact-form .ff-el-input--label {
+  margin: 0 0 0.5rem;
+  font-family: 'Londrina Solid', Impact, sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #002460;
+}
+
+.iom-contact-form .ff-el-form-control,
+.iom-contact-form input[type='text'],
+.iom-contact-form input[type='email'],
+.iom-contact-form input[type='tel'],
+.iom-contact-form textarea,
+.iom-contact-form select {
+  width: 100%;
+  border: 1px solid #dfe8ff;
+  border-radius: 4px;
+  padding: 12px;
+  font-family: 'Foundry Context', system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #002460;
+  background: #fff;
+  box-shadow: none;
+}
+
+.iom-contact-form .ff-el-form-control:focus,
+.iom-contact-form input[type='text']:focus,
+.iom-contact-form input[type='email']:focus,
+.iom-contact-form input[type='tel']:focus,
+.iom-contact-form textarea:focus,
+.iom-contact-form select:focus {
+  outline: none;
+  border-color: #5ba6dd;
+  border-width: 3px;
+  box-shadow: none;
+}
+
+.iom-contact-form .ff-el-form-control::-moz-placeholder, .iom-contact-form input::-moz-placeholder, .iom-contact-form textarea::-moz-placeholder {
+  color: #707c83;
+}
+
+.iom-contact-form .ff-el-form-control::placeholder,
+.iom-contact-form input::placeholder,
+.iom-contact-form textarea::placeholder {
+  color: #707c83;
+}
+
+.iom-contact-form .ff-el-form-check,
+.iom-contact-form .ff-el-form-check-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0 0 12px;
+  font-family: 'Foundry Context', system-ui, sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #153a81;
+}
+
+.iom-contact-form .ff-el-form-check-input,
+.iom-contact-form input[type='checkbox'] {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  border: 3px solid #153a81;
+  border-radius: 4px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: #fff;
+  cursor: pointer;
+}
+
+.iom-contact-form .ff-el-form-check-input:checked,
+.iom-contact-form input[type='checkbox']:checked {
+  background-color: #5ba6dd;
+  border-color: #153a81;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 8.5L6.5 11.5L12.5 4.5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px 18px;
+}
+
+.iom-contact-form .ff-btn-submit,
+.iom-contact-form button[type='submit'],
+.iom-contact-form .ff-btn.ff-btn-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+  border: 0;
+  border-radius: 4px;
+  padding: 14px 24px;
+  font-family: 'Londrina Solid', Impact, sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  background: #5ba6dd;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.iom-contact-form .ff-btn-submit:hover,
+.iom-contact-form button[type='submit']:hover,
+.iom-contact-form .ff-btn.ff-btn-submit:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 1023px) {
+  .iom-contact-form .ff-el-input--label label,
+  .iom-contact-form .ff-el-input--label {
+    font-size: 16px;
+  }
+
+  .iom-contact-form .ff-el-form-control,
+  .iom-contact-form input[type='text'],
+  .iom-contact-form input[type='email'],
+  .iom-contact-form input[type='tel'],
+  .iom-contact-form textarea,
+  .iom-contact-form select {
+    font-size: 16px;
+  }
+
+  .iom-contact-form .ff-el-form-check,
+  .iom-contact-form .ff-el-form-check-label {
+    font-size: 16px;
+  }
+
+  .iom-contact-form .ff-btn-submit,
+  .iom-contact-form button[type='submit'],
+  .iom-contact-form .ff-btn.ff-btn-submit {
+    font-size: 20px;
+    width: 100%;
+  }
+}
+
+/*
  * How it works — mobile pillars carousel.
  * Active card centered. Card width: original min(280px, 80vw).
  */
@@ -3540,6 +3707,10 @@ body {
 
   .lg\:gap-\[6\.25rem\] {
     gap: 6.25rem;
+  }
+
+  .lg\:gap-\[7\.5rem\] {
+    gap: 7.5rem;
   }
 
   .lg\:gap-gutter {

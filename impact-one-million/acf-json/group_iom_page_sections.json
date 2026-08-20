@@ -3382,6 +3382,46 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_contact": {
+                    "key": "layout_iom_contact",
+                    "name": "contact",
+                    "label": "Contact",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_contact_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "Page title, e.g. Get in touch.",
+                            "required": 0,
+                            "default_value": "Get in touch"
+                        },
+                        {
+                            "key": "field_iom_contact_intro",
+                            "label": "Intro",
+                            "name": "intro",
+                            "type": "textarea",
+                            "instructions": "Short supporting copy shown beside the form on desktop.",
+                            "required": 0,
+                            "rows": 3,
+                            "new_lines": "",
+                            "default_value": "We’d love to hear from you! Please complete this short form and a member of the team will be in touch shortly."
+                        },
+                        {
+                            "key": "field_iom_contact_form_shortcode",
+                            "label": "Fluent Forms Shortcode",
+                            "name": "form_shortcode",
+                            "type": "text",
+                            "instructions": "Paste the Fluent Forms shortcode, e.g. [fluentform id=\"1\"]. Build the form fields in Fluent Forms to match the Figma contact form.",
+                            "required": 0,
+                            "placeholder": "[fluentform id=\"1\"]",
+                            "default_value": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -3407,5 +3447,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1787247724
+    "modified": 1787248294
 }
