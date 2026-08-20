@@ -95,11 +95,11 @@ $img_wrap_class = $is_accent
 	: 'relative h-[260px] w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-auto lg:w-[min(100%,67.5rem)] lg:max-w-[75%]';
 
 $outer_class = $is_accent
-	? 'relative z-10 mx-auto flex w-full max-w-site flex-col px-page pb-10 pt-0 lg:min-h-[41.75rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20'
+	? 'relative z-10 mx-auto flex w-full max-w-site flex-col px-[11px] pb-[11px] pt-[11px] lg:min-h-[41.75rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20'
 	: 'relative z-10 mx-auto flex w-full max-w-site flex-col px-page pb-10 pt-0 lg:min-h-[52.5rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20';
 
 if ( $is_accent ) {
-	$card_class = 'mt-0 flex w-full flex-col items-center gap-8 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:self-auto lg:p-5';
+	$card_class = 'mt-0 flex w-full flex-col items-center gap-8 self-center rounded-card bg-white p-[11px] lg:mt-0 lg:max-w-[36.625rem] lg:items-start lg:self-auto lg:p-5';
 } elseif ( $is_content ) {
 	$card_class = '-mt-[4.5rem] flex w-full max-w-[21.75rem] flex-col items-start gap-5 self-center rounded-card bg-white p-5 lg:mt-0 lg:max-w-[36.625rem] lg:gap-8 lg:self-auto lg:p-5';
 } else {
