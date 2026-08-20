@@ -3622,10 +3622,6 @@ body {
     height: 6.25rem;
   }
 
-  .lg\:h-\[22\.2rem\] {
-    height: 22.2rem;
-  }
-
   .lg\:h-\[23\.6875rem\] {
     height: 23.6875rem;
   }
@@ -3808,10 +3804,6 @@ body {
 
   .lg\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .lg\:grid-cols-5 {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .lg\:grid-cols-none {
@@ -4214,6 +4206,10 @@ body {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .xl\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
   .xl\:flex-row {
     flex-direction: row;
   }
@@ -4228,6 +4224,10 @@ body {
 
   .xl\:gap-20 {
     gap: 5rem;
+  }
+
+  .xl\:gap-4 {
+    gap: 1rem;
   }
 
   .xl\:self-stretch {

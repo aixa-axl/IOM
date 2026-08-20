@@ -164,7 +164,7 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 			<?php if ( ! empty( $cards ) ) : ?>
 				<div class="w-full min-w-0" data-other-pillars-carousel>
 					<ul
-						class="m-0 flex w-full list-none gap-4 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-5 lg:overflow-visible xl:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
+						class="m-0 flex w-full list-none gap-4 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible xl:grid-cols-5 xl:gap-4 xl:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
 						data-other-pillars-track
 					>
 					<?php foreach ( $cards as $card ) : ?>
@@ -177,7 +177,7 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 						$icon_uri = ( $preset && isset( $icon_map[ $preset ] ) ) ? $icon_map[ $preset ] : '';
 						?>
 						<li
-							class="flex w-[min(100%,25rem)] shrink-0 snap-center flex-col justify-between gap-4 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-6 lg:h-[22.2rem] lg:w-auto lg:min-w-0 lg:snap-align-none"
+							class="flex w-[min(100%,25rem)] shrink-0 snap-center flex-col justify-between gap-4 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-6 lg:h-auto lg:w-auto lg:min-w-0 lg:snap-align-none xl:h-[22.2rem]"
 							data-other-pillars-slide
 						>
 							<div class="flex flex-col gap-4">
