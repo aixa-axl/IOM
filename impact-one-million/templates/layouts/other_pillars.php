@@ -132,7 +132,7 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 							}
 							?>
 							<li class="flex min-w-0 items-center justify-center rounded-card bg-accent-blue px-3 py-3 lg:min-w-[7.5rem] lg:flex-none lg:shrink-0 lg:px-6">
-								<span class="whitespace-nowrap font-display text-[14px] leading-[1.2] text-white lg:text-stat-label">
+								<span class="whitespace-nowrap font-display text-stat-label leading-[1.2] text-white">
 									<?php echo esc_html( $label ); ?>
 								</span>
 							</li>
