@@ -1455,18 +1455,6 @@ video {
   row-gap: 0.875rem;
 }
 
-.space-y-\[24px\] > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(24px * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(24px * var(--tw-space-y-reverse));
-}
-
-.space-y-\[28px\] > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(28px * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(28px * var(--tw-space-y-reverse));
-}
-
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -2488,22 +2476,16 @@ video {
     row-gap: 26px;
   }
 
-  /* Section-specific mobile spacing (margin, not gap — avoids the 26px gap override) */
+  /* Section-specific mobile spacing — !important beats utility gap-0 / gap overrides */
 
+  .iom-challenge-cards,
   [data-challenge-cards] {
-    gap: 0;
+    gap: 28px !important;
   }
 
-  [data-challenge-cards] > li + li {
-    margin-top: 28px;
-  }
-
+  .iom-stats-list,
   [data-impact-stats-list] {
-    gap: 0;
-  }
-
-  [data-impact-stats-list] > li + li {
-    margin-top: 24px;
+    gap: 24px !important;
   }
 
   .text-title {
@@ -2642,6 +2624,21 @@ body {
 
   .iom-marquee-track [aria-hidden='true'] {
     display: none;
+  }
+}
+
+/* Challenge + stats — desktop gaps (mobile set in max-width block above) */
+
+@media (min-width: 1024px) {
+  .iom-challenge-cards,
+  [data-challenge-cards] {
+    gap: 2.5rem !important;
+    /* gap-10 */
+  }
+
+  .iom-stats-list,
+  [data-impact-stats-list] {
+    gap: 0 !important;
   }
 }
 
@@ -3416,12 +3413,6 @@ body {
 
   .lg\:gap-y-3\.5 {
     row-gap: 0.875rem;
-  }
-
-  .lg\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-y-reverse: 0;
-    margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
-    margin-bottom: calc(0px * var(--tw-space-y-reverse));
   }
 
   .lg\:self-auto {
