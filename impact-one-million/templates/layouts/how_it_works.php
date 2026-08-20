@@ -88,7 +88,7 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 	<div class="mx-auto flex w-full max-w-site flex-col gap-20">
 		<div class="flex flex-col gap-20 lg:flex-row lg:items-start lg:gap-gutter">
 			<?php if ( $heading ) : ?>
-				<h2 class="m-0 flex-1 font-display text-headline text-white lg:max-w-none">
+				<h2 class="m-0 flex-1 font-display text-[32px] leading-[1.2] text-white lg:text-headline lg:max-w-none">
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 			<?php endif; ?>
@@ -103,7 +103,7 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 						}
 						?>
 						<li class="rounded-btn border-[1.5px] border-solid border-transparent bg-white px-6 py-4">
-							<p class="m-0 font-display text-header text-blue">
+							<p class="m-0 font-display text-[24px] leading-none text-blue lg:text-header">
 								<?php echo esc_html( $text ); ?>
 							</p>
 						</li>
@@ -120,9 +120,9 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 			<?php endif; ?>
 
 			<?php if ( ! empty( $pillars ) ) : ?>
-				<div class="w-full" data-pillars-carousel>
+				<div class="w-[calc(100%+1.625rem)] min-w-0 -mr-page lg:mr-0 lg:w-full" data-pillars-carousel>
 					<ul
-						class="m-0 flex list-none gap-10 overflow-x-auto scroll-smooth px-[10%] pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-10 lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
+						class="m-0 flex list-none gap-4 overflow-x-auto scroll-smooth pr-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-10 lg:overflow-visible lg:px-0 lg:pb-0 lg:pr-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
 						data-pillars-track
 					>
 						<?php foreach ( $pillars as $index => $pillar ) : ?>
@@ -135,7 +135,7 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 							$icon_uri = ( $preset && isset( $icon_map[ $preset ] ) ) ? $icon_map[ $preset ] : '';
 							?>
 							<li
-								class="flex w-[min(280px,80vw)] shrink-0 snap-center flex-col justify-between rounded-card bg-off-white p-6 text-blue lg:h-[22.2rem] lg:w-auto lg:min-w-0"
+								class="flex w-[min(17.5rem,calc(100vw-5.5rem))] shrink-0 snap-start flex-col justify-between rounded-card bg-off-white p-6 text-blue lg:h-[22.2rem] lg:w-auto lg:min-w-0 lg:snap-align-none"
 								data-pillars-slide
 							>
 								<div class="flex flex-col gap-4">
