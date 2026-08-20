@@ -829,7 +829,7 @@
 
 /**
  * Ambassadors grid pagination (client-side).
- * Reserves grid height on a wrapper so page swaps do not scroll or jump; cards stay self-sized.
+ * Page height follows the visible cards; scroll is adjusted so the grid stays put (no jump-to-bottom).
  */
 (function () {
 	document.querySelectorAll('[data-ambassadors-grid]').forEach(function (section) {
@@ -837,22 +837,16 @@
 		const cards = Array.prototype.slice.call(section.querySelectorAll('[data-ambassadors-card]'));
 		const buttons = Array.prototype.slice.call(section.querySelectorAll('[data-ambassadors-page]'));
 		const wrap = section.querySelector('[data-ambassadors-grid-wrap]');
+		const grid = section.querySelector('ul');
 
 		if (perPage < 1 || !cards.length || !buttons.length) {
 			return;
 		}
 
 		section.style.overflowAnchor = 'none';
-
-		function lockWrapHeight() {
-			if (!wrap) {
-				return;
-			}
-			const height = wrap.getBoundingClientRect().height;
-			const current = parseFloat(wrap.style.minHeight) || 0;
-			if (height > current) {
-				wrap.style.minHeight = Math.ceil(height) + 'px';
-			}
+		if (wrap) {
+			wrap.style.overflowAnchor = 'none';
+			wrap.style.minHeight = '';
 		}
 
 		function setPage(page) {
@@ -876,13 +870,27 @@
 		buttons.forEach(function (btn) {
 			btn.addEventListener('click', function (event) {
 				event.preventDefault();
-				lockWrapHeight();
+
+				const anchor = grid || wrap || section;
+				const yBefore = window.scrollY || window.pageYOffset || 0;
+				const topBefore = anchor.getBoundingClientRect().top;
+
+				if (wrap) {
+					wrap.style.minHeight = '';
+				}
+
 				setPage(Number(btn.getAttribute('data-ambassadors-page')));
+
+				const topAfter = anchor.getBoundingClientRect().top;
+				const nextY = yBefore + (topAfter - topBefore);
+				const maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+				const clampedY = Math.min(Math.max(0, nextY), maxY);
+
+				if (clampedY !== (window.scrollY || window.pageYOffset || 0)) {
+					window.scrollTo(0, clampedY);
+				}
 			});
 		});
-
-		window.requestAnimationFrame(lockWrapHeight);
-		window.addEventListener('load', lockWrapHeight);
 	});
 })();
 
