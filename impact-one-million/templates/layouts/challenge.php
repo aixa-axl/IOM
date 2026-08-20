@@ -67,7 +67,7 @@ if ( ! is_array( $cards ) || empty( $cards ) ) {
 $btn_cta = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-white px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-90';
 ?>
 
-<section class="bg-white px-page py-section lg:px-gutter lg:py-gutter">
+<section class="bg-white px-page pt-5 pb-10 lg:px-gutter lg:py-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-10">
 		<?php if ( $heading ) : ?>
 			<h2 class="m-0 max-w-full text-center font-display text-headline text-navy">
@@ -76,7 +76,7 @@ $btn_cta = 'inline-flex items-center justify-center rounded-btn border-[1.5px] b
 		<?php endif; ?>
 
 		<?php if ( ! empty( $cards ) ) : ?>
-			<ul class="m-0 grid w-full list-none grid-cols-1 gap-4 p-0 lg:grid-cols-2 lg:gap-10">
+			<ul class="m-0 grid w-full list-none grid-cols-1 gap-2 p-0 lg:grid-cols-2 lg:gap-10">
 				<?php foreach ( $cards as $card ) : ?>
 					<?php
 					$style  = isset( $card['style'] ) ? $card['style'] : 'fact';
@@ -89,16 +89,16 @@ $btn_cta = 'inline-flex items-center justify-center rounded-btn border-[1.5px] b
 					$icon_uri = ( $preset && isset( $icon_map[ $preset ] ) ) ? $icon_map[ $preset ] : '';
 
 					$card_class = $is_cta
-						? 'flex flex-col items-center gap-6 rounded-card bg-accent p-10 text-center lg:flex-row lg:items-center lg:gap-10 lg:px-10 lg:py-10 lg:text-left'
-						: 'flex flex-col items-center gap-6 rounded-card bg-white p-10 text-center lg:flex-row lg:items-center lg:gap-10 lg:px-10 lg:py-10 lg:text-left';
+						? 'flex flex-col items-center gap-3 rounded-card bg-accent p-[14px] text-center lg:flex-row lg:items-center lg:gap-10 lg:px-10 lg:py-10 lg:text-left'
+						: 'flex flex-col items-center gap-3 rounded-card bg-white p-10 text-center lg:flex-row lg:items-center lg:gap-10 lg:px-10 lg:py-10 lg:text-left';
 
 					$title_class = $is_cta
-						? 'm-0 font-display text-stat-label text-white lg:text-feature-title lg:leading-[39px]'
-						: 'm-0 font-display text-stat-label text-blue lg:text-feature-title lg:leading-[39px]';
+						? 'm-0 font-display text-[20px] leading-[1.2] text-white lg:text-feature-title lg:leading-[39px]'
+						: 'm-0 font-display text-[20px] leading-[1.2] text-blue lg:text-feature-title lg:leading-[39px]';
 
 					$body_class = $is_cta
-						? 'm-0 font-sans text-label font-normal leading-[1.5] text-white lg:font-semibold lg:leading-6'
-						: 'm-0 font-sans text-label font-normal leading-[1.5] text-blue lg:font-semibold lg:leading-6';
+						? 'm-0 font-sans text-[20px] font-normal leading-[1.5] text-white lg:text-label lg:font-semibold lg:leading-6'
+						: 'm-0 font-sans text-[20px] font-normal leading-[1.5] text-blue lg:text-label lg:font-semibold lg:leading-6';
 
 					$text_wrap_class = $is_cta
 						? 'flex w-full flex-col items-center gap-4 lg:items-start'
