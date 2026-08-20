@@ -123,7 +123,7 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 				<?php endif; ?>
 
 				<?php if ( ! empty( $tags ) ) : ?>
-					<ul class="m-0 flex w-full list-none flex-wrap content-center items-center justify-center gap-4 p-0">
+					<ul class="m-0 flex w-full list-none flex-nowrap items-center justify-center gap-2 overflow-x-auto p-0 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex-wrap lg:gap-4 lg:overflow-visible [&::-webkit-scrollbar]:hidden">
 						<?php foreach ( $tags as $tag ) : ?>
 							<?php
 							$label = isset( $tag['label'] ) ? $tag['label'] : '';
@@ -131,8 +131,8 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 								continue;
 							}
 							?>
-							<li class="flex min-w-[7.5rem] flex-1 items-center justify-center rounded-card bg-accent-blue px-6 py-3 lg:flex-none lg:shrink-0">
-								<span class="font-display text-stat-label leading-[1.2] text-white">
+							<li class="flex shrink-0 items-center justify-center rounded-card bg-accent-blue px-3 py-2 lg:px-6 lg:py-3">
+								<span class="whitespace-nowrap font-display text-[14px] leading-[1.2] text-white lg:text-stat-label">
 									<?php echo esc_html( $label ); ?>
 								</span>
 							</li>

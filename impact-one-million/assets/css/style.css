@@ -1111,10 +1111,6 @@ video {
   min-width: 16.5rem;
 }
 
-.min-w-\[7\.5rem\] {
-  min-width: 7.5rem;
-}
-
 .min-w-full {
   min-width: 100%;
 }
@@ -1322,10 +1318,6 @@ video {
 
 .flex-nowrap {
   flex-wrap: nowrap;
-}
-
-.content-center {
-  align-content: center;
 }
 
 .content-start {
