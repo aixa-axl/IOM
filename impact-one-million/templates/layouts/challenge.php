@@ -96,8 +96,8 @@ $btn_cta = 'inline-flex items-center justify-center rounded-btn border-[1.5px] b
 						: 'flex flex-col items-center gap-3 rounded-card bg-white p-0 text-center max-lg:mb-[28px] max-lg:last:mb-0 lg:mb-0 lg:flex-row lg:items-center lg:gap-10 lg:p-10 lg:text-left';
 
 					$title_class = $is_cta
-						? 'm-0 font-display text-[32px] leading-[1.2] text-white lg:text-feature-title lg:leading-[39px]'
-						: 'm-0 font-display text-[32px] leading-[1.2] text-blue lg:text-feature-title lg:leading-[39px]';
+						? 'm-0 font-display text-[20px] leading-[1.2] text-white lg:text-feature-title lg:leading-[39px]'
+						: 'm-0 font-display text-[20px] leading-[1.2] text-blue lg:text-feature-title lg:leading-[39px]';
 
 					$body_class = $is_cta
 						? 'm-0 font-sans text-[20px] font-normal leading-[1.5] text-white lg:text-label lg:font-semibold lg:leading-6'
