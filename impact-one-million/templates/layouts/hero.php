@@ -70,6 +70,14 @@ if ( isset( $iom_is_last_section ) ) {
 // Any navy hero as the final layout — not only center_content mid-CTAs (e.g. Ambassadors).
 $is_last_mid_cta = $is_last_layout && ! $is_accent;
 
+// Homepage only: first page_sections row = full-viewport hero.
+if ( isset( $iom_section_i ) ) {
+	$is_first_section = ( 1 === (int) $iom_section_i );
+} else {
+	$is_first_section = ( 1 === (int) get_row_index() );
+}
+$is_home_hero = function_exists( 'is_front_page' ) && is_front_page() && $is_first_section;
+
 $bg_class = $is_accent ? 'bg-accent-blue' : 'bg-navy';
 
 $default_logo_uri = get_stylesheet_directory_uri() . '/assets/images/impact-one-million-logo.png';
@@ -126,6 +134,9 @@ if ( $is_accent ) {
 	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-[11px] pb-[11px] pt-[11px] lg:min-h-[41.75rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20';
 } elseif ( $is_last_mid_cta ) {
 	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-[11px] pb-[11px] pt-[11px] lg:min-h-[52.5rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20';
+} elseif ( $is_home_hero ) {
+	// Fill the 100svh section; floor height handled on the section itself.
+	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-1 flex-col px-page pb-10 pt-0 lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20';
 } else {
 	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-page pb-10 pt-0 lg:min-h-[52.5rem] lg:flex-row lg:items-center lg:justify-end lg:px-gutter lg:py-20';
 }
@@ -158,9 +169,15 @@ $has_ctas = ( ! empty( $primary_cta['url'] ) || ! empty( $secondary_cta['url'] )
  * Eyebrow colour: single subtitle on accent = blue; breadcrumb uses muted + ink.
  */
 $eyebrow_is_simple = $subtitle && ! $subtitle_parent;
+
+$section_class = 'iom-hero relative overflow-hidden ' . $bg_class;
+if ( $is_home_hero ) {
+	// Full viewport on homepage only; 35rem floor protects short / landscape phones.
+	$section_class .= ' iom-hero--home flex min-h-[35rem] min-h-[100svh] flex-col';
+}
 ?>
 
-<section class="iom-hero relative overflow-hidden <?php echo esc_attr( $bg_class ); ?>">
+<section class="<?php echo esc_attr( $section_class ); ?>">
 	<?php if ( $background_image ) : ?>
 		<div class="iom-hero__media <?php echo esc_attr( $img_wrap_class ); ?>">
 			<?php
