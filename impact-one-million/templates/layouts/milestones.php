@@ -70,7 +70,7 @@ $iom_render_milestone_copy = function ( $title, $body, $right = false ) {
 		<?php if ( ! empty( $milestones ) ) : ?>
 			<ol class="relative m-0 flex w-full list-none flex-col p-0">
 				<span
-					class="absolute bottom-0 left-5 top-0 w-0.5 bg-[#dfe8ff] lg:left-1/2 lg:-translate-x-1/2"
+					class="absolute bottom-0 left-2 top-0 w-0.5 bg-[#dfe8ff] lg:left-1/2 lg:-translate-x-1/2"
 					aria-hidden="true"
 				></span>
 
@@ -94,7 +94,7 @@ $iom_render_milestone_copy = function ( $title, $body, $right = false ) {
 
 						<!-- Node -->
 						<span
-							class="relative z-10 mt-1 size-10 shrink-0 rounded-full bg-[#dfe8ff] lg:mt-0"
+							class="relative z-10 mt-1 size-4 shrink-0 rounded-full border border-solid border-accent-blue bg-[#dfe8ff] lg:mt-0"
 							aria-hidden="true"
 						></span>
 
