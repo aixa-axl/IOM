@@ -829,7 +829,7 @@
 
 /**
  * Ambassadors grid pagination (client-side).
- * Page height follows the visible cards; scroll is adjusted so the grid stays put (no jump-to-bottom).
+ * Page height follows visible cards; on change, jump to the top of this layout (under sticky header).
  */
 (function () {
 	document.querySelectorAll('[data-ambassadors-grid]').forEach(function (section) {
@@ -837,7 +837,6 @@
 		const cards = Array.prototype.slice.call(section.querySelectorAll('[data-ambassadors-card]'));
 		const buttons = Array.prototype.slice.call(section.querySelectorAll('[data-ambassadors-page]'));
 		const wrap = section.querySelector('[data-ambassadors-grid-wrap]');
-		const grid = section.querySelector('ul');
 
 		if (perPage < 1 || !cards.length || !buttons.length) {
 			return;
@@ -867,28 +866,26 @@
 			});
 		}
 
+		function scrollToLayoutTop() {
+			const header = document.getElementById('masthead');
+			const headerH = header ? header.getBoundingClientRect().height : 0;
+			const y =
+				(window.scrollY || window.pageYOffset || 0) +
+				section.getBoundingClientRect().top -
+				headerH;
+			window.scrollTo(0, Math.max(0, Math.round(y)));
+		}
+
 		buttons.forEach(function (btn) {
 			btn.addEventListener('click', function (event) {
 				event.preventDefault();
-
-				const anchor = grid || wrap || section;
-				const yBefore = window.scrollY || window.pageYOffset || 0;
-				const topBefore = anchor.getBoundingClientRect().top;
 
 				if (wrap) {
 					wrap.style.minHeight = '';
 				}
 
 				setPage(Number(btn.getAttribute('data-ambassadors-page')));
-
-				const topAfter = anchor.getBoundingClientRect().top;
-				const nextY = yBefore + (topAfter - topBefore);
-				const maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-				const clampedY = Math.min(Math.max(0, nextY), maxY);
-
-				if (clampedY !== (window.scrollY || window.pageYOffset || 0)) {
-					window.scrollTo(0, clampedY);
-				}
+				scrollToLayoutTop();
 			});
 		});
 	});
