@@ -2719,33 +2719,18 @@ body {
 
 /*
  * How it works — mobile pillars carousel.
- * Active card centered; soft edge fade so neighbor peeks don’t look hard-clipped.
+ * Active card centered. Card width: original min(280px, 80vw).
  */
 
 @media (max-width: 1023px) {
   .iom-pillars-track {
     scroll-snap-type: x mandatory;
-    /* Side inset = half the leftover space so the first/last card can sit centered. */
-    padding-inline: calc((100% - min(17.5rem, 82%)) / 2);
-    scroll-padding-inline: calc((100% - min(17.5rem, 82%)) / 2);
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      #000 20px,
-      #000 calc(100% - 20px),
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      #000 20px,
-      #000 calc(100% - 20px),
-      transparent 100%
-    );
+    padding-inline: calc((100% - min(280px, 80vw)) / 2);
+    scroll-padding-inline: calc((100% - min(280px, 80vw)) / 2);
   }
 
   .iom-pillars-slide {
-    width: min(17.5rem, 82%);
+    width: min(280px, 80vw);
     scroll-snap-align: center;
   }
 }
