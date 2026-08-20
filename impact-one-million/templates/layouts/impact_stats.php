@@ -66,7 +66,7 @@ $fallback_orders = array(
 
 <section class="bg-white px-page py-section lg:px-gutter lg:py-gutter" data-impact-stats>
 	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-20 lg:gap-[3.75rem]">
-		<ul class="m-0 flex w-full list-none flex-col items-center gap-[24px] p-0 lg:flex-row lg:items-start lg:justify-between lg:gap-0" data-impact-stats-list>
+		<ul class="m-0 flex w-full list-none flex-col items-center gap-0 space-y-[24px] p-0 lg:flex-row lg:items-start lg:justify-between lg:gap-0 lg:space-y-0" data-impact-stats-list>
 			<?php foreach ( $stats as $index => $row ) : ?>
 				<?php
 				$icon_id     = isset( $row['icon'] ) ? $row['icon'] : null;

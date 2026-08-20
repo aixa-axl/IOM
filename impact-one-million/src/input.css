@@ -129,13 +129,21 @@
     row-gap: 26px;
   }
 
-  /* Section-specific gaps that must not inherit the 26px stack override */
+  /* Section-specific mobile spacing (margin, not gap — avoids the 26px gap override) */
   [data-challenge-cards] {
-    gap: 28px;
+    gap: 0;
+  }
+
+  [data-challenge-cards] > li + li {
+    margin-top: 28px;
   }
 
   [data-impact-stats-list] {
-    gap: 24px;
+    gap: 0;
+  }
+
+  [data-impact-stats-list] > li + li {
+    margin-top: 24px;
   }
 
   .text-title {

@@ -1424,14 +1424,6 @@ video {
   gap: 2rem;
 }
 
-.gap-\[24px\] {
-  gap: 24px;
-}
-
-.gap-\[28px\] {
-  gap: 28px;
-}
-
 .gap-\[3\.75rem\] {
   gap: 3.75rem;
 }
@@ -1461,6 +1453,18 @@ video {
 
 .gap-y-3\.5 {
   row-gap: 0.875rem;
+}
+
+.space-y-\[24px\] > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(24px * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(24px * var(--tw-space-y-reverse));
+}
+
+.space-y-\[28px\] > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(28px * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(28px * var(--tw-space-y-reverse));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -2484,14 +2488,22 @@ video {
     row-gap: 26px;
   }
 
-  /* Section-specific gaps that must not inherit the 26px stack override */
+  /* Section-specific mobile spacing (margin, not gap — avoids the 26px gap override) */
 
   [data-challenge-cards] {
-    gap: 28px;
+    gap: 0;
+  }
+
+  [data-challenge-cards] > li + li {
+    margin-top: 28px;
   }
 
   [data-impact-stats-list] {
-    gap: 24px;
+    gap: 0;
+  }
+
+  [data-impact-stats-list] > li + li {
+    margin-top: 24px;
   }
 
   .text-title {
@@ -3404,6 +3416,12 @@ body {
 
   .lg\:gap-y-3\.5 {
     row-gap: 0.875rem;
+  }
+
+  .lg\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0px * var(--tw-space-y-reverse));
   }
 
   .lg\:self-auto {

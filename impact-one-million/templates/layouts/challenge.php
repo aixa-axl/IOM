@@ -77,7 +77,7 @@ $btn_cta = 'inline-flex items-center justify-center rounded-btn border-[1.5px] b
 
 		<?php if ( ! empty( $cards ) ) : ?>
 			<ul
-				class="m-0 grid w-full list-none grid-cols-1 gap-[28px] p-0 lg:grid-cols-2 lg:gap-10"
+				class="m-0 grid w-full list-none grid-cols-1 gap-0 space-y-[28px] p-0 lg:grid-cols-2 lg:gap-10 lg:space-y-0"
 				data-challenge-cards
 			>
 				<?php foreach ( $cards as $card ) : ?>
