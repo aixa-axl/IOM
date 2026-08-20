@@ -73,14 +73,12 @@ $link_class = 'inline-flex border-b-2 border-solid border-blue py-3.5 font-displ
 			<?php endif; ?>
 		</div>
 
-		<div class="mt-auto flex flex-wrap items-center justify-between gap-4">
+		<div class="mt-auto flex flex-wrap items-center justify-start gap-4 lg:justify-between">
 			<?php if ( $country ) : ?>
 				<span class="inline-flex items-center gap-1 rounded-btn bg-[#dfe8ff] px-[7px] py-[3px] font-display text-body uppercase tracking-[1px] text-blue">
 					<span class="size-2.5 shrink-0 rounded-full bg-blue" aria-hidden="true"></span>
 					<?php echo esc_html( $country ); ?>
 				</span>
-			<?php else : ?>
-				<span></span>
 			<?php endif; ?>
 
 			<a href="<?php echo esc_url( $permalink ); ?>" class="<?php echo esc_attr( $link_class ); ?>">
