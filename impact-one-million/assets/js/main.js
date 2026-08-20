@@ -829,18 +829,19 @@
 
 /**
  * Ambassadors grid pagination (client-side).
- * Compensates scroll when the grid height changes so the layout does not jump.
+ * Pins scrollY during the swap so the browser does not auto-scroll when height changes.
  */
 (function () {
 	document.querySelectorAll('[data-ambassadors-grid]').forEach(function (section) {
 		const perPage = Number(section.getAttribute('data-per-page')) || 0;
 		const cards = Array.prototype.slice.call(section.querySelectorAll('[data-ambassadors-card]'));
 		const buttons = Array.prototype.slice.call(section.querySelectorAll('[data-ambassadors-page]'));
-		const pagination = section.querySelector('[data-ambassadors-pagination]');
 
 		if (perPage < 1 || !cards.length || !buttons.length) {
 			return;
 		}
+
+		section.style.overflowAnchor = 'none';
 
 		function setPage(page) {
 			const start = (page - 1) * perPage;
@@ -861,15 +862,13 @@
 		}
 
 		buttons.forEach(function (btn) {
-			btn.addEventListener('click', function () {
-				const before = pagination ? pagination.getBoundingClientRect().top : 0;
+			btn.addEventListener('click', function (event) {
+				event.preventDefault();
+				const lockedY = window.scrollY || window.pageYOffset || 0;
 				setPage(Number(btn.getAttribute('data-ambassadors-page')));
-				if (pagination) {
-					const after = pagination.getBoundingClientRect().top;
-					const delta = after - before;
-					if (delta) {
-						window.scrollBy(0, delta);
-					}
+				// Restore immediately if scroll anchoring moved the page.
+				if ((window.scrollY || window.pageYOffset || 0) !== lockedY) {
+					window.scrollTo(0, lockedY);
 				}
 			});
 		});

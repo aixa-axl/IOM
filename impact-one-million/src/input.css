@@ -306,6 +306,12 @@ body {
   animation-play-state: paused;
 }
 
+/* Ambassadors pagination: stop browser scroll-anchoring when cards toggle. */
+[data-ambassadors-grid],
+[data-ambassadors-grid] [data-ambassadors-card] {
+  overflow-anchor: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .iom-marquee-track {
     animation: none;
