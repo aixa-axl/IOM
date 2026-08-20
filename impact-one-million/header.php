@@ -33,7 +33,7 @@ $nav_link_class  = 'font-display text-label uppercase tracking-[1px] text-navy n
 $btn_outline     = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-80';
 $btn_primary     = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 
-$mobile_nav_class     = 'font-display text-label uppercase tracking-[1px] text-white no-underline';
+$mobile_nav_class     = 'font-display text-label uppercase tracking-[1px] text-white no-underline text-left';
 $mobile_child_class   = 'block px-page py-3 font-sans text-body leading-[1.2] text-white no-underline transition-colors hover:bg-[#dfe8ff] hover:text-blue focus:bg-[#dfe8ff] focus:text-blue focus:outline-none';
 $mobile_btn_primary   = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-2 py-3.5 font-display text-label uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 $mobile_btn_outline   = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-white px-2 py-3.5 font-display text-label uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-80';
@@ -246,10 +246,10 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 			data-open="false"
 			hidden
 		>
-			<div class="mx-auto flex w-full max-w-[22rem] flex-1 flex-col gap-8 px-page pb-8 pt-7">
+			<div class="mx-auto flex w-full max-w-[22rem] flex-1 flex-col gap-8 px-page pb-8 pt-7 md:mx-0 md:max-w-none md:gap-4 md:px-[30px]">
 				<?php if ( $has_acf_nav ) : ?>
 					<nav aria-label="<?php echo esc_attr__( 'Primary', 'impact-one-million' ); ?>">
-						<ul class="m-0 flex list-none flex-col gap-8 p-0">
+						<ul class="m-0 flex list-none flex-col items-start gap-8 p-0">
 							<?php foreach ( $header_nav as $index => $row ) : ?>
 								<?php
 								$link     = isset( $row['link'] ) ? $row['link'] : null;
@@ -330,7 +330,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 				<?php endif; ?>
 
 				<?php if ( ! empty( $primary_cta['url'] ) || ! empty( $secondary_cta['url'] ) ) : ?>
-					<div class="mt-auto flex flex-col gap-5">
+					<div class="mt-auto flex w-full flex-col gap-5 md:mt-0 md:max-w-[22rem]">
 						<?php
 						if ( ! empty( $primary_cta['url'] ) ) {
 							iom_render_link(

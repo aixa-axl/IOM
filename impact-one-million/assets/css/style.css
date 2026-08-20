@@ -3372,6 +3372,11 @@ body {
     order: 2;
   }
 
+  .md\:mx-0 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
   .md\:mt-0 {
     margin-top: 0px;
   }
@@ -3413,12 +3418,20 @@ body {
     width: auto;
   }
 
+  .md\:max-w-\[22rem\] {
+    max-width: 22rem;
+  }
+
   .md\:max-w-\[36\.625rem\] {
     max-width: 36.625rem;
   }
 
   .md\:max-w-\[75\%\] {
     max-width: 75%;
+  }
+
+  .md\:max-w-none {
+    max-width: none;
   }
 
   .md\:grid-cols-2 {
