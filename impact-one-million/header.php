@@ -50,10 +50,10 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 	<?php wp_body_open(); ?>
 
 	<header id="masthead" class="site-header relative sticky top-0 z-50 bg-white" data-mobile-nav>
-		<div class="relative z-50 mx-auto flex w-full max-w-site items-center justify-between gap-6 px-page py-3 lg:gap-20 lg:px-gutter lg:py-3">
+		<div class="relative z-50 mx-auto flex w-full max-w-site items-center justify-between gap-6 px-page py-3 xl:gap-20 xl:px-gutter xl:py-3">
 			<a
 				href="<?php echo esc_url( home_url( '/' ) ); ?>"
-				class="site-header__logo flex h-[58px] w-[77px] shrink-0 items-center justify-center no-underline lg:h-auto lg:w-[152px] lg:self-stretch"
+				class="site-header__logo flex h-[58px] w-[77px] shrink-0 items-center justify-center no-underline xl:h-auto xl:w-[152px] xl:self-stretch"
 			>
 				<?php
 				/*
@@ -66,7 +66,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 					<img
 						src="<?php echo esc_url( $default_logo_uri ); ?>"
 						alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
-						class="pointer-events-none h-full w-auto max-w-full object-contain object-center lg:h-[92%]"
+						class="pointer-events-none h-full w-auto max-w-full object-contain object-center xl:h-[92%]"
 						width="152"
 						height="115"
 						loading="eager"
@@ -75,7 +75,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 					/>
 				<?php elseif ( $header_logo ) :
 					$header_logo_attrs = array(
-						'class'    => 'pointer-events-none h-full w-auto max-w-full object-contain object-center lg:h-[92%]',
+						'class'    => 'pointer-events-none h-full w-auto max-w-full object-contain object-center xl:h-[92%]',
 						'alt'      => get_bloginfo( 'name' ),
 						'decoding' => 'async',
 						'loading'  => 'eager',
@@ -92,7 +92,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 				<?php endif; ?>
 			</a>
 
-			<div class="hidden min-w-0 flex-1 flex-col items-end gap-3 lg:flex">
+			<div class="hidden min-w-0 flex-1 flex-col items-end gap-3 xl:flex">
 				<?php if ( $has_util_bar ) : ?>
 					<div class="flex items-center justify-end gap-10 rounded-card bg-blue px-6 py-3">
 						<?php if ( $has_utility ) : ?>
@@ -222,7 +222,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 
 			<button
 				type="button"
-				class="relative z-50 inline-flex size-8 items-center justify-center text-blue lg:hidden"
+				class="relative z-50 inline-flex size-8 items-center justify-center text-blue xl:hidden"
 				data-mobile-nav-toggle
 				aria-expanded="false"
 				aria-controls="mobile-nav-panel"
@@ -241,7 +241,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 
 		<div
 			id="mobile-nav-panel"
-			class="absolute inset-x-0 top-full z-40 h-[calc(100dvh-6rem)] max-h-[calc(100dvh-6rem)] flex-col overflow-y-auto bg-blue lg:hidden"
+			class="absolute inset-x-0 top-full z-40 h-[calc(100dvh-6rem)] max-h-[calc(100dvh-6rem)] flex-col overflow-y-auto bg-blue xl:hidden"
 			data-mobile-nav-panel
 			data-open="false"
 			hidden

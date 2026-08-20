@@ -464,7 +464,7 @@ body {
   display: flex !important;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   [data-mobile-nav-panel] {
     display: none !important;
   }

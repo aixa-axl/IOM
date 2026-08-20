@@ -4,7 +4,7 @@
 (function () {
 	const header = document.querySelector('[data-mobile-nav]');
 	const searchWidgets = document.querySelectorAll('[data-inline-search]');
-	const mqDesktop = window.matchMedia('(min-width: 1024px)');
+	const mqDesktop = window.matchMedia('(min-width: 1280px)');
 	const mqFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
 	function isSearchOpen(widget) {
