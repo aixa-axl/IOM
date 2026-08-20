@@ -3385,6 +3385,10 @@ body {
     height: 5.5rem;
   }
 
+  .md\:h-\[22rem\] {
+    height: 22rem;
+  }
+
   .md\:h-auto {
     height: auto;
   }
@@ -3688,10 +3692,6 @@ body {
 
   .lg\:w-\[36\.5rem\] {
     width: 36.5rem;
-  }
-
-  .lg\:w-\[39\.0625rem\] {
-    width: 39.0625rem;
   }
 
   .lg\:w-\[39rem\] {
@@ -4178,6 +4178,10 @@ body {
     height: 22.2rem;
   }
 
+  .xl\:h-\[26rem\] {
+    height: 26rem;
+  }
+
   .xl\:h-\[34\.375rem\] {
     height: 34.375rem;
   }
@@ -4196,6 +4200,10 @@ body {
 
   .xl\:w-\[35rem\] {
     width: 35rem;
+  }
+
+  .xl\:w-\[39\.0625rem\] {
+    width: 39.0625rem;
   }
 
   .xl\:min-w-0 {
@@ -4232,6 +4240,10 @@ body {
 
   .xl\:gap-4 {
     gap: 1rem;
+  }
+
+  .xl\:gap-8 {
+    gap: 2rem;
   }
 
   .xl\:self-stretch {
@@ -4326,6 +4338,12 @@ body {
   .xl\:py-gutter {
     padding-top: 80px;
     padding-bottom: 80px;
+  }
+
+  .xl\:text-stat-label {
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
   }
 
   .xl\:tracking-\[2px\] {

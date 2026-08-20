@@ -65,13 +65,13 @@ $bg_class  = ( 'accent_blue' === $background_color ) ? 'bg-accent-blue' : 'bg-bl
 
 <section class="<?php echo esc_attr( $bg_class ); ?> px-page py-section text-white xl:px-16">
 	<div class="mx-auto flex w-full max-w-site flex-col gap-16">
-		<div class="flex w-full flex-col items-stretch gap-8 lg:flex-row lg:items-center lg:gap-8">
+		<div class="flex w-full flex-col items-stretch gap-8 xl:flex-row xl:items-center xl:gap-8">
 			<div class="flex min-w-0 flex-1 flex-col items-start gap-10">
 				<div class="flex w-full flex-col items-start gap-4">
 					<span class="font-display text-headline leading-[1.2] text-[#dfe8ff]" aria-hidden="true">&ldquo;</span>
 
 					<?php if ( $quote ) : ?>
-						<blockquote class="m-0 font-sans text-label font-semibold leading-[1.2] lg:text-stat-label">
+						<blockquote class="m-0 font-sans text-label font-semibold leading-[1.2] xl:text-stat-label">
 							<?php echo esc_html( $quote ); ?>
 						</blockquote>
 					<?php endif; ?>
@@ -127,7 +127,7 @@ $bg_class  = ( 'accent_blue' === $background_color ) ? 'bg-accent-blue' : 'bg-bl
 			</div>
 
 			<?php if ( $has_image ) : ?>
-				<div class="relative h-[16rem] w-full shrink-0 overflow-hidden rounded-card lg:h-[26rem] lg:w-[39.0625rem]">
+				<div class="relative h-[16rem] w-full shrink-0 overflow-hidden rounded-card md:h-[22rem] xl:h-[26rem] xl:w-[39.0625rem]">
 					<?php if ( $image_id ) : ?>
 						<?php echo wp_get_attachment_image( (int) $image_id, 'large', false, $img_attrs ); ?>
 					<?php else : ?>
