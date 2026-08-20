@@ -133,10 +133,14 @@ if ( $is_accent || $is_last_mid_cta ) {
 if ( $is_accent ) {
 	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-[11px] pb-[11px] pt-[11px] md:min-h-[41.75rem] md:flex-row md:items-center md:justify-end md:px-[30px] md:py-20 xl:px-gutter';
 } elseif ( $is_last_mid_cta ) {
-	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-[11px] pb-[11px] pt-[11px] md:min-h-[52.5rem] md:flex-row md:items-center md:justify-end md:px-[30px] md:py-20 xl:px-gutter';
+	// Navy mid-page CTA: match accent height on tablet; keep taller desktop height.
+	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-[11px] pb-[11px] pt-[11px] md:min-h-[41.75rem] md:flex-row md:items-center md:justify-end md:px-[30px] md:py-20 xl:min-h-[52.5rem] xl:px-gutter';
 } elseif ( $is_home_hero ) {
 	// Fill the 100svh section; floor height handled on the section itself.
 	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-1 flex-col px-page pb-10 pt-0 md:flex-row md:items-center md:justify-end md:py-20 xl:px-gutter';
+} elseif ( $center_content ) {
+	// Navy mid-page CTA (centered): same tablet height as accent.
+	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-page pb-10 pt-0 md:min-h-[41.75rem] md:flex-row md:items-center md:justify-end md:py-20 xl:min-h-[52.5rem] xl:px-gutter';
 } else {
 	$outer_class = 'relative z-10 mx-auto flex w-full max-w-site flex-col px-page pb-10 pt-0 md:min-h-[52.5rem] md:flex-row md:items-center md:justify-end md:py-20 xl:px-gutter';
 }

@@ -4190,6 +4190,10 @@ body {
     height: auto;
   }
 
+  .xl\:min-h-\[52\.5rem\] {
+    min-height: 52.5rem;
+  }
+
   .xl\:w-\[152px\] {
     width: 152px;
   }
