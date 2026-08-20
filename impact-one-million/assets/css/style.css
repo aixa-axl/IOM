@@ -1648,10 +1648,6 @@ video {
   background-color: rgb(91 166 221 / var(--tw-bg-opacity, 1));
 }
 
-.bg-accent-blue\/20 {
-  background-color: rgb(91 166 221 / 0.2);
-}
-
 .bg-accent-blue\/25 {
   background-color: rgb(91 166 221 / 0.25);
 }
