@@ -129,6 +129,15 @@
     row-gap: 26px;
   }
 
+  /* Section-specific gaps that must not inherit the 26px stack override */
+  [data-challenge-cards] {
+    gap: 28px;
+  }
+
+  [data-impact-stats-list] {
+    gap: 24px;
+  }
+
   .text-title {
     font-size: 40px;
     line-height: 1.1;
