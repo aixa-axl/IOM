@@ -829,19 +829,31 @@
 
 /**
  * Ambassadors grid pagination (client-side).
- * Pins scrollY during the swap so the browser does not auto-scroll when height changes.
+ * Reserves grid height on a wrapper so page swaps do not scroll or jump; cards stay self-sized.
  */
 (function () {
 	document.querySelectorAll('[data-ambassadors-grid]').forEach(function (section) {
 		const perPage = Number(section.getAttribute('data-per-page')) || 0;
 		const cards = Array.prototype.slice.call(section.querySelectorAll('[data-ambassadors-card]'));
 		const buttons = Array.prototype.slice.call(section.querySelectorAll('[data-ambassadors-page]'));
+		const wrap = section.querySelector('[data-ambassadors-grid-wrap]');
 
 		if (perPage < 1 || !cards.length || !buttons.length) {
 			return;
 		}
 
 		section.style.overflowAnchor = 'none';
+
+		function lockWrapHeight() {
+			if (!wrap) {
+				return;
+			}
+			const height = wrap.getBoundingClientRect().height;
+			const current = parseFloat(wrap.style.minHeight) || 0;
+			if (height > current) {
+				wrap.style.minHeight = Math.ceil(height) + 'px';
+			}
+		}
 
 		function setPage(page) {
 			const start = (page - 1) * perPage;
@@ -864,14 +876,13 @@
 		buttons.forEach(function (btn) {
 			btn.addEventListener('click', function (event) {
 				event.preventDefault();
-				const lockedY = window.scrollY || window.pageYOffset || 0;
+				lockWrapHeight();
 				setPage(Number(btn.getAttribute('data-ambassadors-page')));
-				// Restore immediately if scroll anchoring moved the page.
-				if ((window.scrollY || window.pageYOffset || 0) !== lockedY) {
-					window.scrollTo(0, lockedY);
-				}
 			});
 		});
+
+		window.requestAnimationFrame(lockWrapHeight);
+		window.addEventListener('load', lockWrapHeight);
 	});
 })();
 

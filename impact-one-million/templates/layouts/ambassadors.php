@@ -58,7 +58,8 @@ $img_attrs = array(
 		<?php endif; ?>
 
 		<?php if ( ! empty( $ambassadors ) ) : ?>
-			<ul class="m-0 grid w-full list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2 lg:grid-cols-3">
+			<div class="w-full" <?php echo $use_paging ? 'data-ambassadors-grid-wrap' : ''; ?>>
+			<ul class="m-0 grid w-full list-none grid-cols-1 content-start gap-8 p-0 sm:grid-cols-2 lg:grid-cols-3">
 				<?php foreach ( $ambassadors as $index => $person ) : ?>
 					<?php
 					$image_id     = isset( $person['image'] ) ? $person['image'] : null;
@@ -75,7 +76,7 @@ $img_attrs = array(
 					$hidden           = ( $use_paging && $index >= $per_page );
 					?>
 					<li
-						class="flex flex-col gap-5 rounded-card border border-solid border-[#dfe8ff] bg-white p-6<?php echo $hidden ? ' hidden' : ''; ?>"
+						class="flex flex-col gap-5 self-start rounded-card border border-solid border-[#dfe8ff] bg-white p-6<?php echo $hidden ? ' hidden' : ''; ?>"
 						<?php echo $use_paging ? 'data-ambassadors-card' : ''; ?>
 					>
 						<div class="relative h-[15rem] w-full overflow-hidden rounded-card bg-off-white">
@@ -134,6 +135,7 @@ $img_attrs = array(
 					</li>
 				<?php endforeach; ?>
 			</ul>
+			</div>
 
 			<?php if ( $use_paging ) : ?>
 				<nav class="flex flex-wrap items-center gap-2" data-ambassadors-pagination aria-label="<?php echo esc_attr__( 'Ambassadors pagination', 'impact-one-million' ); ?>">
