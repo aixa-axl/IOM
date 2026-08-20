@@ -3364,6 +3364,15 @@ body {
     margin-top: 0px;
   }
 
+  .md\:aspect-\[16\/10\] {
+    aspect-ratio: 16/10;
+  }
+
+  .md\:size-\[5\.5rem\] {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
   .md\:h-auto {
     height: auto;
   }
@@ -3450,14 +3459,29 @@ body {
     padding-right: 1.25rem;
   }
 
+  .md\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
   .md\:px-\[30px\] {
     padding-left: 30px;
     padding-right: 30px;
   }
 
+  .md\:py-10 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
   .md\:py-20 {
     padding-top: 5rem;
     padding-bottom: 5rem;
+  }
+
+  .md\:py-6 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 
   .md\:pl-5 {
@@ -3561,11 +3585,6 @@ body {
     height: 5rem;
   }
 
-  .lg\:size-24 {
-    width: 6rem;
-    height: 6rem;
-  }
-
   .lg\:size-\[6\.25rem\] {
     width: 6.25rem;
     height: 6.25rem;
@@ -3597,10 +3616,6 @@ body {
 
   .lg\:h-\[31\.3125rem\] {
     height: 31.3125rem;
-  }
-
-  .lg\:h-\[34\.375rem\] {
-    height: 34.375rem;
   }
 
   .lg\:h-\[37\.5rem\] {
@@ -3892,21 +3907,12 @@ body {
     white-space: nowrap;
   }
 
-  .lg\:rounded-card {
-    border-radius: 8px;
-  }
-
   .lg\:border-0 {
     border-width: 0px;
   }
 
   .lg\:border-b-0 {
     border-bottom-width: 0px;
-  }
-
-  .lg\:bg-blue {
-    --tw-bg-opacity: 1;
-    background-color: rgb(21 58 129 / var(--tw-bg-opacity, 1));
   }
 
   .lg\:bg-white {
@@ -3977,11 +3983,6 @@ body {
   .lg\:py-24 {
     padding-top: 6rem;
     padding-bottom: 6rem;
-  }
-
-  .lg\:py-5 {
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
   }
 
   .lg\:py-6 {
@@ -4128,8 +4129,21 @@ body {
     display: none;
   }
 
+  .xl\:aspect-auto {
+    aspect-ratio: auto;
+  }
+
+  .xl\:size-24 {
+    width: 6rem;
+    height: 6rem;
+  }
+
   .xl\:h-\[22\.2rem\] {
     height: 22.2rem;
+  }
+
+  .xl\:h-\[34\.375rem\] {
+    height: 34.375rem;
   }
 
   .xl\:h-\[92\%\] {
@@ -4144,8 +4158,28 @@ body {
     width: 152px;
   }
 
+  .xl\:w-\[35rem\] {
+    width: 35rem;
+  }
+
+  .xl\:min-w-0 {
+    min-width: 0px;
+  }
+
+  .xl\:flex-1 {
+    flex: 1 1 0%;
+  }
+
   .xl\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .xl\:flex-row {
+    flex-direction: row;
+  }
+
+  .xl\:items-center {
+    align-items: center;
   }
 
   .xl\:gap-10 {
@@ -4158,6 +4192,23 @@ body {
 
   .xl\:self-stretch {
     align-self: stretch;
+  }
+
+  .xl\:overflow-visible {
+    overflow: visible;
+  }
+
+  .xl\:rounded-card {
+    border-radius: 8px;
+  }
+
+  .xl\:border-0 {
+    border-width: 0px;
+  }
+
+  .xl\:bg-blue {
+    --tw-bg-opacity: 1;
+    background-color: rgb(21 58 129 / var(--tw-bg-opacity, 1));
   }
 
   .xl\:p-gutter {
@@ -4188,6 +4239,11 @@ body {
     padding-right: 5rem;
   }
 
+  .xl\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
   .xl\:px-\[6\.25rem\] {
     padding-left: 6.25rem;
     padding-right: 6.25rem;
@@ -4216,6 +4272,16 @@ body {
   .xl\:py-3 {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
+  }
+
+  .xl\:py-5 {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .xl\:py-gutter {
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
 }
 

@@ -81,10 +81,10 @@ if ( $video_url ) {
 }
 ?>
 
-<section class="bg-blue px-page py-[26px] xl:px-gutter lg:py-gutter">
-	<div class="mx-auto flex w-full max-w-site flex-col overflow-hidden rounded-card border-2 border-solid border-[#dfe8ff] lg:flex-row lg:items-center lg:gap-20 lg:overflow-visible lg:border-0">
+<section class="bg-blue px-page py-[26px] md:py-10 xl:px-gutter xl:py-gutter">
+	<div class="mx-auto flex w-full max-w-site flex-col overflow-hidden rounded-card border-2 border-solid border-[#dfe8ff] xl:flex-row xl:items-center xl:gap-20 xl:overflow-visible xl:border-0">
 		<!-- Copy card -->
-		<div class="flex w-full flex-col items-start gap-8 rounded-t-card bg-white px-6 py-4 lg:flex-1 lg:gap-8 lg:rounded-card lg:px-6 lg:py-5">
+		<div class="flex w-full flex-col items-start gap-8 rounded-t-card bg-white px-6 py-4 md:gap-8 md:px-8 md:py-6 xl:flex-1 xl:min-w-0 xl:rounded-card xl:px-6 xl:py-5">
 			<div class="flex w-full flex-col gap-4">
 				<?php if ( $heading ) : ?>
 					<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">
@@ -118,7 +118,7 @@ if ( $video_url ) {
 
 		<!-- Media / video -->
 		<div
-			class="relative aspect-[560/550] w-full shrink-0 overflow-hidden rounded-b-card bg-navy lg:aspect-auto lg:h-[34.375rem] lg:w-[35rem] lg:rounded-card"
+			class="relative aspect-[560/550] w-full shrink-0 overflow-hidden rounded-b-card bg-navy md:aspect-[16/10] xl:aspect-auto xl:h-[34.375rem] xl:w-[35rem] xl:rounded-card"
 			data-featured-story-media
 			<?php if ( $iom_fs_embed ) : ?>
 				data-video-type="<?php echo esc_attr( $iom_fs_embed['type'] ); ?>"
@@ -166,7 +166,7 @@ if ( $video_url ) {
 					aria-label="<?php echo esc_attr( $play_label ); ?>"
 				>
 					<span
-						class="flex size-[4.75rem] items-center justify-center rounded-full border-2 border-solid border-[#dfe8ff] bg-accent shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] lg:size-24 lg:border-0 lg:bg-blue"
+						class="flex size-[4.75rem] items-center justify-center rounded-full border-2 border-solid border-[#dfe8ff] bg-accent shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] md:size-[5.5rem] xl:size-24 xl:border-0 xl:bg-blue"
 						aria-hidden="true"
 					>
 						<img
@@ -181,7 +181,7 @@ if ( $video_url ) {
 			<?php else : ?>
 				<div class="absolute inset-0 z-10 flex items-center justify-center" aria-hidden="true">
 					<span
-						class="flex size-[4.75rem] items-center justify-center rounded-full border-2 border-solid border-[#dfe8ff] bg-accent shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] lg:size-24 lg:border-0 lg:bg-blue"
+						class="flex size-[4.75rem] items-center justify-center rounded-full border-2 border-solid border-[#dfe8ff] bg-accent shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] md:size-[5.5rem] xl:size-24 xl:border-0 xl:bg-blue"
 					>
 						<img
 							src="<?php echo esc_url( $play_uri ); ?>"
