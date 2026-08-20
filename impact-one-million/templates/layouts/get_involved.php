@@ -97,8 +97,10 @@ $list_class = $is_dark
 	: 'm-0 flex w-full list-none gap-8 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden';
 
 $card_class = $is_dark
-	? 'flex w-full flex-col items-center gap-6 rounded-card bg-white p-10 text-center'
-	: 'flex w-[min(100%,20.3125rem)] shrink-0 snap-center flex-col justify-between gap-10 rounded-card bg-off-white p-10 lg:h-[26.25rem] lg:w-auto lg:snap-align-none lg:gap-0';
+	? 'flex w-full flex-col items-center gap-6 rounded-card bg-white p-[14px] text-center lg:p-10'
+	: 'flex w-[min(100%,20.3125rem)] shrink-0 snap-center flex-col justify-between gap-10 rounded-card bg-off-white p-[14px] lg:h-[26.25rem] lg:w-auto lg:snap-align-none lg:gap-0 lg:p-10';
+
+$card_count = is_array( $cards ) ? count( $cards ) : 0;
 ?>
 
 <section class="<?php echo esc_attr( $section_class ); ?>">
@@ -118,52 +120,116 @@ $card_class = $is_dark
 		</div>
 
 		<?php if ( ! empty( $cards ) ) : ?>
-			<ul
-				class="<?php echo esc_attr( $list_class ); ?>"
-				<?php echo $is_dark ? '' : 'data-get-involved-track'; ?>
-			>
-				<?php foreach ( $cards as $card ) : ?>
-					<?php
-					$title = isset( $card['title'] ) ? $card['title'] : '';
-					$body  = isset( $card['body'] ) ? $card['body'] : '';
-					$link  = isset( $card['link'] ) && is_array( $card['link'] ) ? $card['link'] : array();
-					$style = isset( $card['button_style'] ) ? $card['button_style'] : ( $is_dark ? 'navy' : 'accent' );
-					if ( ! isset( $btn_styles[ $style ] ) ) {
-						$style = $is_dark ? 'navy' : 'accent';
-					}
+			<?php if ( $is_dark ) : ?>
+				<ul class="<?php echo esc_attr( $list_class ); ?>">
+					<?php foreach ( $cards as $card ) : ?>
+						<?php
+						$title = isset( $card['title'] ) ? $card['title'] : '';
+						$body  = isset( $card['body'] ) ? $card['body'] : '';
+						$link  = isset( $card['link'] ) && is_array( $card['link'] ) ? $card['link'] : array();
+						$style = isset( $card['button_style'] ) ? $card['button_style'] : 'navy';
+						if ( ! isset( $btn_styles[ $style ] ) ) {
+							$style = 'navy';
+						}
 
-					$link_url    = ! empty( $link['url'] ) ? $link['url'] : '';
-					$link_title  = ! empty( $link['title'] ) ? $link['title'] : __( 'Partner With Us', 'impact-one-million' );
-					$link_target = ! empty( $link['target'] ) ? $link['target'] : '';
-					$btn_class   = $btn_base . ' ' . $btn_styles[ $style ];
-					?>
-					<li class="<?php echo esc_attr( $card_class ); ?>">
-						<div class="flex flex-col <?php echo $is_dark ? 'items-center gap-3' : 'gap-3'; ?>">
-							<?php if ( $title ) : ?>
-								<h3 class="m-0 font-display text-card-title <?php echo $is_dark ? 'text-blue' : 'text-navy'; ?>">
-									<?php echo esc_html( $title ); ?>
-								</h3>
-							<?php endif; ?>
+						$link_url    = ! empty( $link['url'] ) ? $link['url'] : '';
+						$link_title  = ! empty( $link['title'] ) ? $link['title'] : __( 'Partner With Us', 'impact-one-million' );
+						$link_target = ! empty( $link['target'] ) ? $link['target'] : '';
+						$btn_class   = $btn_base . ' ' . $btn_styles[ $style ];
+						?>
+						<li class="<?php echo esc_attr( $card_class ); ?>">
+							<div class="flex flex-col items-center gap-3">
+								<?php if ( $title ) : ?>
+									<h3 class="m-0 font-display text-card-title text-blue">
+										<?php echo esc_html( $title ); ?>
+									</h3>
+								<?php endif; ?>
 
-							<?php if ( $body ) : ?>
-								<p class="m-0 font-sans <?php echo $is_dark ? 'text-sm leading-normal text-ink' : 'text-body leading-[1.2] text-muted'; ?>">
-									<?php echo esc_html( $body ); ?>
-								</p>
+								<?php if ( $body ) : ?>
+									<p class="m-0 font-sans text-sm leading-normal text-ink">
+										<?php echo esc_html( $body ); ?>
+									</p>
+								<?php endif; ?>
+							</div>
+
+							<?php if ( $link_url ) : ?>
+								<a
+									class="<?php echo esc_attr( $btn_class ); ?>"
+									href="<?php echo esc_url( $link_url ); ?>"
+									<?php echo $link_target ? 'target="' . esc_attr( $link_target ) . '" rel="noopener noreferrer"' : ''; ?>
+								>
+									<?php echo esc_html( $link_title ); ?>
+								</a>
 							<?php endif; ?>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			<?php else : ?>
+				<div class="w-full min-w-0" data-get-involved-carousel>
+					<ul
+						class="<?php echo esc_attr( $list_class ); ?>"
+						data-get-involved-track
+					>
+						<?php foreach ( $cards as $card ) : ?>
+							<?php
+							$title = isset( $card['title'] ) ? $card['title'] : '';
+							$body  = isset( $card['body'] ) ? $card['body'] : '';
+							$link  = isset( $card['link'] ) && is_array( $card['link'] ) ? $card['link'] : array();
+							$style = isset( $card['button_style'] ) ? $card['button_style'] : 'accent';
+							if ( ! isset( $btn_styles[ $style ] ) ) {
+								$style = 'accent';
+							}
+
+							$link_url    = ! empty( $link['url'] ) ? $link['url'] : '';
+							$link_title  = ! empty( $link['title'] ) ? $link['title'] : __( 'Partner With Us', 'impact-one-million' );
+							$link_target = ! empty( $link['target'] ) ? $link['target'] : '';
+							$btn_class   = $btn_base . ' ' . $btn_styles[ $style ];
+							?>
+							<li class="<?php echo esc_attr( $card_class ); ?>" data-get-involved-slide>
+								<div class="flex flex-col gap-3">
+									<?php if ( $title ) : ?>
+										<h3 class="m-0 font-display text-card-title text-navy">
+											<?php echo esc_html( $title ); ?>
+										</h3>
+									<?php endif; ?>
+
+									<?php if ( $body ) : ?>
+										<p class="m-0 font-sans text-body leading-[1.2] text-muted">
+											<?php echo esc_html( $body ); ?>
+										</p>
+									<?php endif; ?>
+								</div>
+
+								<?php if ( $link_url ) : ?>
+									<a
+										class="<?php echo esc_attr( $btn_class ); ?> self-start"
+										href="<?php echo esc_url( $link_url ); ?>"
+										<?php echo $link_target ? 'target="' . esc_attr( $link_target ) . '" rel="noopener noreferrer"' : ''; ?>
+									>
+										<?php echo esc_html( $link_title ); ?>
+									</a>
+								<?php endif; ?>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+
+					<?php if ( $card_count > 1 ) : ?>
+						<div
+							class="mt-6 flex items-center justify-center gap-2 lg:hidden"
+							data-get-involved-dots
+							aria-hidden="true"
+						>
+							<?php for ( $i = 0; $i < $card_count; $i++ ) : ?>
+								<span
+									class="size-1.5 rounded-full bg-accent-blue/25 transition-colors data-[active=true]:bg-accent-blue"
+									data-get-involved-dot
+									<?php echo 0 === $i ? 'data-active="true"' : ''; ?>
+								></span>
+							<?php endfor; ?>
 						</div>
-
-						<?php if ( $link_url ) : ?>
-							<a
-								class="<?php echo esc_attr( $btn_class ); ?><?php echo $is_dark ? '' : ' self-start'; ?>"
-								href="<?php echo esc_url( $link_url ); ?>"
-								<?php echo $link_target ? 'target="' . esc_attr( $link_target ) . '" rel="noopener noreferrer"' : ''; ?>
-							>
-								<?php echo esc_html( $link_title ); ?>
-							</a>
-						<?php endif; ?>
-					</li>
-				<?php endforeach; ?>
-			</ul>
+					<?php endif; ?>
+				</div>
+			<?php endif; ?>
 		<?php endif; ?>
 	</div>
 </section>

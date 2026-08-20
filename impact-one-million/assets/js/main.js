@@ -350,6 +350,22 @@
 			dot: '[data-why-join-dot]',
 		});
 	});
+
+	document.querySelectorAll('[data-get-involved-carousel]').forEach(function (carousel) {
+		bindSnapCarousel(carousel, {
+			track: '[data-get-involved-track]',
+			slide: '[data-get-involved-slide]',
+			dot: '[data-get-involved-dot]',
+		});
+	});
+
+	document.querySelectorAll('[data-other-pillars-carousel]').forEach(function (carousel) {
+		bindSnapCarousel(carousel, {
+			track: '[data-other-pillars-track]',
+			slide: '[data-other-pillars-slide]',
+			dot: '[data-other-pillars-dot]',
+		});
+	});
 })();
 
 /**
@@ -552,6 +568,7 @@
 		const slides = section.querySelectorAll('[data-timeline-slide]');
 		const prevBtns = section.querySelectorAll('[data-timeline-prev]');
 		const nextBtns = section.querySelectorAll('[data-timeline-next]');
+		const dots = section.querySelectorAll('[data-timeline-dot]');
 
 		if (!track || !slides.length) {
 			return;
@@ -581,6 +598,14 @@
 
 			slides.forEach(function (slide, i) {
 				slide.setAttribute('data-active', i === index ? 'true' : 'false');
+			});
+
+			dots.forEach(function (dot, i) {
+				if (i === index) {
+					dot.setAttribute('data-active', 'true');
+				} else {
+					dot.removeAttribute('data-active');
+				}
 			});
 
 			prevBtns.forEach(function (btn) {

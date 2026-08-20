@@ -108,6 +108,8 @@ $outer_gap = $has_intro
 $heading_class = $has_intro
 	? 'm-0 px-page text-center font-display text-header leading-none text-navy lg:px-0'
 	: 'm-0 px-page text-center font-display text-headline leading-[1.2] text-blue lg:px-0';
+
+$card_count = is_array( $cards ) ? count( $cards ) : 0;
 ?>
 
 <section class="<?php echo esc_attr( $section_pad ); ?>">
@@ -160,9 +162,11 @@ $heading_class = $has_intro
 			<?php endif; ?>
 
 			<?php if ( ! empty( $cards ) ) : ?>
-				<ul
-					class="m-0 flex w-full list-none gap-4 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-5 lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
-				>
+				<div class="w-full min-w-0" data-other-pillars-carousel>
+					<ul
+						class="m-0 flex w-full list-none gap-4 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-5 lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
+						data-other-pillars-track
+					>
 					<?php foreach ( $cards as $card ) : ?>
 						<?php
 						$icon_id  = isset( $card['icon'] ) ? $card['icon'] : null;
@@ -174,6 +178,7 @@ $heading_class = $has_intro
 						?>
 						<li
 							class="flex w-[min(100%,25rem)] shrink-0 snap-center flex-col justify-between gap-4 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-6 lg:h-[22.2rem] lg:w-auto lg:min-w-0 lg:snap-align-none"
+							data-other-pillars-slide
 						>
 							<div class="flex flex-col gap-4">
 								<div class="flex flex-col gap-4">
@@ -235,6 +240,23 @@ $heading_class = $has_intro
 						</li>
 					<?php endforeach; ?>
 				</ul>
+
+					<?php if ( $card_count > 1 ) : ?>
+						<div
+							class="mt-6 flex items-center justify-center gap-2 lg:hidden"
+							data-other-pillars-dots
+							aria-hidden="true"
+						>
+							<?php for ( $i = 0; $i < $card_count; $i++ ) : ?>
+								<span
+									class="size-1.5 rounded-full bg-accent-blue/25 transition-colors data-[active=true]:bg-accent-blue"
+									data-other-pillars-dot
+									<?php echo 0 === $i ? 'data-active="true"' : ''; ?>
+								></span>
+							<?php endfor; ?>
+						</div>
+					<?php endif; ?>
+				</div>
 			<?php endif; ?>
 
 			<?php if ( ! empty( $cta['url'] ) ) : ?>

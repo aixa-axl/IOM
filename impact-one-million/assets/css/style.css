@@ -1771,6 +1771,10 @@ video {
   padding: 2rem;
 }
 
+.p-\[14px\] {
+  padding: 14px;
+}
+
 .p-\[60px\] {
   padding: 60px;
 }

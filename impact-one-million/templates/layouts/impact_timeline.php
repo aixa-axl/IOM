@@ -150,7 +150,26 @@ $iom_timeline_arrow = static function ( $extra_class = '' ) {
 						<?php endif; ?>
 					</li>
 				<?php endforeach; ?>
-			</ul>
+				</ul>
+
+			<?php
+			$item_count = count( $items );
+			if ( $item_count > 1 ) :
+				?>
+				<div
+					class="flex items-center justify-center gap-2 lg:hidden"
+					data-timeline-dots
+					aria-hidden="true"
+				>
+					<?php for ( $i = 0; $i < $item_count; $i++ ) : ?>
+						<span
+							class="size-1.5 rounded-full bg-accent-blue/25 transition-colors data-[active=true]:bg-accent-blue"
+							data-timeline-dot
+							<?php echo 0 === $i ? 'data-active="true"' : ''; ?>
+						></span>
+					<?php endfor; ?>
+				</div>
+			<?php endif; ?>
 
 			<div class="flex items-center justify-between gap-4">
 				<?php if ( $cta_url ) : ?>
