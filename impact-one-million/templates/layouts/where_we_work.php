@@ -235,47 +235,66 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 		<?php endif; ?>
 
 		<nav aria-label="<?php echo esc_attr__( 'Countries', 'impact-one-million' ); ?>">
-			<ul class="m-0 flex list-none flex-wrap items-center justify-center gap-x-6 gap-y-3.5 p-0 lg:gap-x-10">
-				<?php
-				$country_tabs = array();
-				foreach ( $countries as $c ) {
-					$name = isset( $c['name'] ) ? $c['name'] : '';
-					$slug = ! empty( $c['slug'] ) ? sanitize_title( $c['slug'] ) : sanitize_title( $name );
-					if ( ! $slug ) {
-						continue;
-					}
-					$country_tabs[] = array(
-						'name' => $name,
-						'slug' => $slug,
-					);
+			<?php
+			$country_tabs = array();
+			foreach ( $countries as $c ) {
+				$name = isset( $c['name'] ) ? $c['name'] : '';
+				$slug = ! empty( $c['slug'] ) ? sanitize_title( $c['slug'] ) : sanitize_title( $name );
+				if ( ! $slug ) {
+					continue;
 				}
-				$tab_count         = count( $country_tabs );
-				// Mobile Figma (671:40649): 4 on row 1, remainder centered on row 2.
-				$mobile_break_after = 4;
+				$country_tabs[] = array(
+					'name' => $name,
+					'slug' => $slug,
+				);
+			}
+			// Mobile Figma (671:40649): row 1 = first 4 (nowrap), row 2 = rest (centered).
+			$row_one = array_slice( $country_tabs, 0, 4 );
+			$row_two = array_slice( $country_tabs, 4 );
 
-				foreach ( $country_tabs as $i => $tab ) :
-					$is_active     = ( $tab['slug'] === $default_slug );
-					$is_mobile_end = ( $i === $mobile_break_after - 1 );
-					$is_last       = ( $i === $tab_count - 1 );
+			/**
+			 * @param array  $tabs   Tab rows.
+			 * @param string $active Active slug.
+			 * @param bool   $lead_dot Prefix a desktop-only leading · (row 2).
+			 */
+			$iom_render_country_row = function ( $tabs, $active, $lead_dot = false ) {
+				$count = count( $tabs );
+				if ( ! $count ) {
+					return;
+				}
+				if ( $lead_dot ) :
 					?>
-					<li>
-						<button
-							type="button"
-							class="border-0 border-b-2 border-solid border-transparent bg-transparent p-0 font-display text-label uppercase leading-[1.2] tracking-[1px] text-navy transition-opacity hover:opacity-70 <?php echo $is_active ? 'lg:border-navy' : 'lg:border-transparent'; ?>"
-							data-country-tab
-							data-country="<?php echo esc_attr( $tab['slug'] ); ?>"
-							aria-pressed="<?php echo $is_active ? 'true' : 'false'; ?>"
-						>
-							<?php echo esc_html( $tab['name'] ); ?>
-						</button>
-					</li>
-					<?php if ( ! $is_last && ! $is_mobile_end ) : ?>
-						<li class="text-sm leading-none text-gray-300" aria-hidden="true">·</li>
-					<?php elseif ( ! $is_last && $is_mobile_end ) : ?>
-						<li class="hidden text-sm leading-none text-gray-300 lg:block" aria-hidden="true">·</li>
-						<li class="h-0 w-full basis-full lg:hidden" aria-hidden="true"></li>
+					<span class="hidden text-sm leading-none text-gray-300 lg:inline" aria-hidden="true">·</span>
+					<?php
+				endif;
+				foreach ( $tabs as $i => $tab ) :
+					$is_active = ( $tab['slug'] === $active );
+					?>
+					<button
+						type="button"
+						class="shrink-0 border-0 border-b-2 border-solid border-transparent bg-transparent p-0 font-display text-label uppercase leading-[1.2] tracking-[1px] text-navy transition-opacity hover:opacity-70 <?php echo $is_active ? 'lg:border-navy' : 'lg:border-transparent'; ?>"
+						data-country-tab
+						data-country="<?php echo esc_attr( $tab['slug'] ); ?>"
+						aria-pressed="<?php echo $is_active ? 'true' : 'false'; ?>"
+					>
+						<?php echo esc_html( $tab['name'] ); ?>
+					</button>
+					<?php if ( $i < $count - 1 ) : ?>
+						<span class="shrink-0 text-sm leading-none text-gray-300" aria-hidden="true">·</span>
 					<?php endif; ?>
 				<?php endforeach; ?>
+				<?php
+			};
+			?>
+			<ul class="m-0 flex list-none flex-col items-center gap-y-3.5 p-0 lg:flex-row lg:flex-wrap lg:justify-center lg:gap-x-10 lg:gap-y-3.5">
+				<li class="flex max-w-full flex-nowrap items-center justify-center gap-x-2.5 sm:gap-x-4 lg:contents">
+					<?php $iom_render_country_row( $row_one, $default_slug, false ); ?>
+				</li>
+				<?php if ( ! empty( $row_two ) ) : ?>
+					<li class="flex max-w-full flex-nowrap items-center justify-center gap-x-2.5 sm:gap-x-4 lg:contents">
+						<?php $iom_render_country_row( $row_two, $default_slug, true ); ?>
+					</li>
+				<?php endif; ?>
 			</ul>
 		</nav>
 	</div>
