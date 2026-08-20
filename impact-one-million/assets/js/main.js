@@ -502,8 +502,10 @@
 		tabs.forEach(function (tab) {
 			const active = tab.getAttribute('data-country') === slug;
 			tab.setAttribute('aria-pressed', active ? 'true' : 'false');
-			tab.classList.toggle('border-navy', active);
+			tab.classList.toggle('border-blue', active);
+			tab.classList.toggle('text-blue', active);
 			tab.classList.toggle('border-transparent', !active);
+			tab.classList.toggle('text-navy', !active);
 		});
 
 		panels.forEach(function (panel) {

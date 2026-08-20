@@ -276,7 +276,7 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 					?>
 					<button
 						type="button"
-						class="shrink-0 border-0 border-b-2 border-solid bg-transparent p-0 font-display text-label uppercase leading-[1.2] tracking-[1px] text-navy transition-opacity hover:opacity-70 <?php echo $is_active ? 'border-navy' : 'border-transparent'; ?>"
+						class="shrink-0 border-0 border-b-2 border-solid bg-transparent p-0 font-display text-label uppercase leading-[1.2] tracking-[1px] transition-colors hover:opacity-70 <?php echo $is_active ? 'border-blue text-blue' : 'border-transparent text-navy'; ?>"
 						data-country-tab
 						data-country="<?php echo esc_attr( $tab['slug'] ); ?>"
 						aria-pressed="<?php echo $is_active ? 'true' : 'false'; ?>"
