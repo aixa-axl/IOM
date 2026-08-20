@@ -3398,6 +3398,10 @@ body {
     height: auto;
   }
 
+  .md\:min-h-0 {
+    min-height: 0px;
+  }
+
   .md\:min-h-\[41\.75rem\] {
     min-height: 41.75rem;
   }
@@ -3432,6 +3436,10 @@ body {
 
   .md\:max-w-none {
     max-width: none;
+  }
+
+  .md\:flex-1 {
+    flex: 1 1 0%;
   }
 
   .md\:flex-none {

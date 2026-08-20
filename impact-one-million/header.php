@@ -241,7 +241,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 
 		<div
 			id="mobile-nav-panel"
-			class="absolute inset-x-0 top-full z-40 h-[calc(100dvh-6rem)] max-h-[calc(100dvh-6rem)] flex-col overflow-y-auto bg-blue md:h-auto xl:hidden"
+			class="absolute inset-x-0 top-full z-40 flex h-[calc(100dvh-6rem)] max-h-[calc(100dvh-6rem)] flex-col overflow-y-auto bg-blue xl:hidden"
 			data-mobile-nav-panel
 			data-open="false"
 			hidden
@@ -352,7 +352,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 			</div>
 
 			<?php if ( $has_util_bar ) : ?>
-				<div class="mt-auto flex w-full flex-col gap-5 bg-ink px-page py-5 md:mt-0 md:px-[30px]">
+				<div class="mt-auto flex w-full flex-col gap-5 bg-ink px-page py-5 md:mt-0 md:min-h-0 md:flex-1 md:px-[30px]">
 					<?php if ( $has_utility ) : ?>
 						<?php foreach ( $utility_links as $row ) : ?>
 							<?php
