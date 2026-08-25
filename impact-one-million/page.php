@@ -21,6 +21,10 @@ get_header();
 						$iom_sections_total = is_array( $page_sections_rows ) ? count( $page_sections_rows ) : 0;
 						$iom_section_i      = 0;
 						$iom_is_history      = function_exists( 'is_page' ) && is_page( 'history' );
+						$iom_is_ambition     = function_exists( 'is_page' ) && (
+							is_page( array( 'ambition', 'our-ambition' ) )
+							|| ( is_singular( 'page' ) && false !== stripos( (string) get_the_title(), 'Ambition' ) )
+						);
 						$iom_is_partners     = function_exists( 'is_page' ) && is_page( 'partners' );
 						$iom_is_supply_chain = function_exists( 'is_page' ) && is_page( array( 'supply-chain', 'supply_chain' ) );
 						$iom_is_gender_equality = function_exists( 'is_page' ) && (
@@ -154,6 +158,18 @@ get_header();
 								( $iom_is_gender_equality || $iom_is_respect_remedy || $iom_is_healthcare || $iom_is_financial_wellbeing || $iom_is_education_skills )
 								&& 'programme_in_action' === $layout
 								&& 'other_pillars' === $iom_next_layout
+							);
+
+							// Ambition only: Why This Matters immediately followed by Our Ambition.
+							$iom_tighten_why_this_matters_bottom = (
+								$iom_is_ambition
+								&& 'why_this_matters' === $layout
+								&& 'our_ambition' === $iom_next_layout
+							);
+							$iom_tighten_our_ambition_top = (
+								$iom_is_ambition
+								&& 'our_ambition' === $layout
+								&& 'why_this_matters' === $iom_prev_layout
 							);
 
 							$layout_path = locate_template(

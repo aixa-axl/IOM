@@ -17,9 +17,14 @@ $items   = get_sub_field( 'items' );
 if ( ! is_array( $items ) ) {
 	$items = array();
 }
+
+// Ambition page only: less top padding on mobile when Why This Matters precedes (set in page.php).
+$section_class = ! empty( $iom_tighten_our_ambition_top )
+	? 'iom-our-ambition bg-white px-page pt-6 pb-10 xl:px-section lg:py-gutter'
+	: 'iom-our-ambition bg-white px-page py-10 xl:px-section lg:py-gutter';
 ?>
 
-<section class="bg-white px-page py-10 xl:px-section lg:py-gutter">
+<section class="<?php echo esc_attr( $section_class ); ?>">
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-10 lg:flex-row lg:gap-20">
 		<div class="flex w-full shrink-0 flex-col gap-6 lg:w-[31.25rem]">
 			<?php if ( $heading ) : ?>

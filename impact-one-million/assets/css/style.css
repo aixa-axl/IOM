@@ -1989,6 +1989,10 @@ video {
   padding-bottom: 1rem;
 }
 
+.pb-6 {
+  padding-bottom: 1.5rem;
+}
+
 .pb-\[11px\] {
   padding-bottom: 11px;
 }
@@ -2023,6 +2027,10 @@ video {
 
 .pt-0 {
   padding-top: 0px;
+}
+
+.pt-10 {
+  padding-top: 2.5rem;
 }
 
 .pt-4 {
@@ -2982,6 +2990,20 @@ body {
 /* Gender Equality — top hero CTA: one line on mobile */
 
 @media (max-width: 767px) {
+  /*
+   * Ambition — Why This Matters → Our Ambition (backup for PHP class toggle).
+   */
+
+  body.page-ambition .entry-content > section.iom-why-this-matters:has(+ section.iom-our-ambition),
+  body.page-our-ambition .entry-content > section.iom-why-this-matters:has(+ section.iom-our-ambition) {
+    padding-bottom: 1.5rem !important;
+  }
+
+  body.page-ambition .entry-content > section.iom-why-this-matters + section.iom-our-ambition,
+  body.page-our-ambition .entry-content > section.iom-why-this-matters + section.iom-our-ambition {
+    padding-top: 1.5rem !important;
+  }
+
   body.page-gender-equality .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a,
   body.page-gender-and-equality .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a,
   body.page-gender .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a {

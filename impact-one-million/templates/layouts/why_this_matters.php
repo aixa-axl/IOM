@@ -22,9 +22,14 @@ $arrow_uri = $theme_uri . '/assets/images/icons/why-join-arrow.svg';
 if ( ! is_array( $cards ) ) {
 	$cards = array();
 }
+
+// Ambition page only: less bottom padding on mobile when Our Ambition follows (set in page.php).
+$section_class = ! empty( $iom_tighten_why_this_matters_bottom )
+	? 'iom-why-this-matters bg-white px-page pt-10 pb-6 xl:px-section lg:py-gutter'
+	: 'iom-why-this-matters bg-white px-page py-10 xl:px-section lg:py-gutter';
 ?>
 
-<section class="bg-white px-page py-10 xl:px-section lg:py-gutter">
+<section class="<?php echo esc_attr( $section_class ); ?>">
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-10">
 		<?php if ( $heading || $intro ) : ?>
 			<div class="flex w-full flex-col items-start gap-4">
