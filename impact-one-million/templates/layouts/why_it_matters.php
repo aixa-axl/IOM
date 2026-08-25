@@ -25,7 +25,7 @@ if ( ! $body ) {
 }
 ?>
 
-<section class="bg-accent px-page py-section xl:px-gutter">
+<section class="bg-accent px-page py-20 xl:px-gutter xl:py-24">
 	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-10 text-center text-white">
 		<?php if ( $eyebrow ) : ?>
 			<p class="m-0 font-display text-label uppercase tracking-[1px]">
