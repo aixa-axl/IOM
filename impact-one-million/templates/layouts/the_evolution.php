@@ -42,7 +42,7 @@ $list_class = $use_grid
 <section class="<?php echo esc_attr( $section_class ); ?>">
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-16">
 		<?php if ( $eyebrow || $heading || $intro ) : ?>
-			<div class="flex w-full max-w-[50rem] flex-col items-start gap-4">
+			<div class="flex w-full max-w-[50rem] flex-col items-start gap-4 text-left">
 				<?php if ( $eyebrow ) : ?>
 					<p class="m-0 font-display text-body uppercase tracking-[1px] text-accent">
 						<?php echo esc_html( $eyebrow ); ?>
@@ -50,13 +50,13 @@ $list_class = $use_grid
 				<?php endif; ?>
 
 				<?php if ( $heading ) : ?>
-					<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">
+					<h2 class="m-0 w-full font-display text-headline leading-[1.2] text-blue">
 						<?php echo esc_html( $heading ); ?>
 					</h2>
 				<?php endif; ?>
 
 				<?php if ( $intro ) : ?>
-					<p class="m-0 font-sans text-body leading-[1.2] text-muted">
+					<p class="m-0 w-full font-sans text-body leading-[1.2] text-muted">
 						<?php echo esc_html( $intro ); ?>
 					</p>
 				<?php endif; ?>
@@ -92,7 +92,7 @@ $list_class = $use_grid
 						<?php endif; ?>
 
 						<?php if ( ! empty( $points ) ) : ?>
-							<ul class="m-0 flex w-full list-none flex-col items-start gap-4 p-0 pl-4">
+							<ul class="m-0 flex w-full list-none flex-col items-start gap-4 p-0">
 								<?php foreach ( $points as $point ) : ?>
 									<?php
 									$label = isset( $point['label'] ) ? $point['label'] : '';
@@ -100,7 +100,7 @@ $list_class = $use_grid
 										continue;
 									}
 									?>
-									<li class="font-sans text-[15px] leading-normal text-muted">
+									<li class="w-full font-sans text-[15px] leading-normal text-muted">
 										<?php echo esc_html( $label ); ?>
 									</li>
 								<?php endforeach; ?>
