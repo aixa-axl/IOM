@@ -33,6 +33,19 @@ get_header();
 							)
 							|| ( is_singular( 'page' ) && false !== stripos( (string) get_the_title(), 'Gender Equality' ) )
 						);
+						$iom_is_respect_remedy = function_exists( 'is_page' ) && (
+							is_page(
+								array(
+									'respect-and-remedy',
+									'respect-remedy',
+								)
+							)
+							|| (
+								is_singular( 'page' )
+								&& false !== stripos( (string) get_the_title(), 'Respect' )
+								&& false !== stripos( (string) get_the_title(), 'Remedy' )
+							)
+						);
 
 						while ( have_rows( 'page_sections' ) ) {
 							the_row();
@@ -90,15 +103,15 @@ get_header();
 									&& 'join_reasons' === $iom_prev_layout
 								)
 								|| (
-									$iom_is_gender_equality
+									( $iom_is_gender_equality || $iom_is_respect_remedy )
 									&& 'other_pillars' === $layout
 									&& 'programme_in_action' === $iom_prev_layout
 								)
 							);
 
-							// Gender Equality only: Programme in Action immediately followed by Pillars.
+							// Gender Equality / Respect & Remedy: Programme in Action → Pillars.
 							$iom_tighten_programme_in_action_bottom = (
-								$iom_is_gender_equality
+								( $iom_is_gender_equality || $iom_is_respect_remedy )
 								&& 'programme_in_action' === $layout
 								&& 'other_pillars' === $iom_next_layout
 							);
