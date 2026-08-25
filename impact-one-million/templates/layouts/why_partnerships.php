@@ -56,11 +56,12 @@ if ( ! is_array( $items ) ) {
 				<?php foreach ( $items as $item ) : ?>
 					<?php
 					$label = isset( $item['label'] ) ? $item['label'] : '';
-					if ( ! $label ) {
+					$text  = isset( $item['text'] ) ? $item['text'] : '';
+					if ( ! $label && ! $text ) {
 						continue;
 					}
 					?>
-					<li class="flex w-full items-center gap-4">
+					<li class="flex w-full items-start gap-4">
 						<img
 							src="<?php echo esc_url( $arrow_uri ); ?>"
 							alt=""
@@ -71,9 +72,19 @@ if ( ! is_array( $items ) ) {
 							decoding="async"
 							aria-hidden="true"
 						>
-						<span class="min-w-0 font-display text-label uppercase leading-[1.2] tracking-[1px] text-blue">
-							<?php echo esc_html( $label ); ?>
-						</span>
+						<div class="flex min-w-0 flex-col gap-2">
+							<?php if ( $label ) : ?>
+								<span class="font-display text-label uppercase leading-[1.2] tracking-[1px] text-blue">
+									<?php echo esc_html( $label ); ?>
+								</span>
+							<?php endif; ?>
+
+							<?php if ( $text ) : ?>
+								<p class="m-0 font-sans text-body leading-[1.2] text-muted">
+									<?php echo esc_html( $text ); ?>
+								</p>
+							<?php endif; ?>
+						</div>
 					</li>
 				<?php endforeach; ?>
 			</ul>
