@@ -9,6 +9,8 @@
  */
 
 $heading      = get_sub_field( 'heading' );
+$subtitle     = get_sub_field( 'subtitle' );
+$intro        = get_sub_field( 'intro' );
 $ambassadors  = get_sub_field( 'ambassadors' );
 $background   = get_sub_field( 'background' );
 $per_page     = (int) get_sub_field( 'per_page' );
@@ -51,10 +53,26 @@ $img_attrs = array(
 	<?php echo $use_paging ? 'data-ambassadors-grid data-per-page="' . esc_attr( (string) $per_page ) . '"' : ''; ?>
 >
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-12">
-		<?php if ( $heading ) : ?>
-			<h2 class="m-0 px-page font-display text-headline leading-[1.2] text-navy xl:px-0">
-				<?php echo esc_html( $heading ); ?>
-			</h2>
+		<?php if ( $heading || $subtitle || $intro ) : ?>
+			<div class="flex w-full max-w-[50rem] flex-col items-start gap-4 px-page xl:px-0">
+				<?php if ( $heading ) : ?>
+					<h2 class="m-0 font-display text-headline leading-[1.2] text-navy">
+						<?php echo esc_html( $heading ); ?>
+					</h2>
+				<?php endif; ?>
+
+				<?php if ( $subtitle ) : ?>
+					<p class="m-0 font-sans text-body font-semibold italic leading-[1.2] text-navy">
+						<?php echo esc_html( $subtitle ); ?>
+					</p>
+				<?php endif; ?>
+
+				<?php if ( $intro ) : ?>
+					<p class="m-0 font-sans text-body leading-[1.2] text-navy">
+						<?php echo esc_html( $intro ); ?>
+					</p>
+				<?php endif; ?>
+			</div>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $ambassadors ) ) : ?>

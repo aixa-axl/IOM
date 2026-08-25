@@ -2298,6 +2298,24 @@
                             "required": 0
                         },
                         {
+                            "key": "field_iom_amb_subtitle",
+                            "label": "Subtitle",
+                            "name": "subtitle",
+                            "type": "text",
+                            "instructions": "Optional line below the heading. e.g. Champions for a fairer future for workers and families",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_amb_intro",
+                            "label": "Intro",
+                            "name": "intro",
+                            "type": "textarea",
+                            "instructions": "Optional supporting paragraph below the subtitle.",
+                            "required": 0,
+                            "rows": 4,
+                            "new_lines": ""
+                        },
+                        {
                             "key": "field_iom_amb_background",
                             "label": "Background",
                             "name": "background",
