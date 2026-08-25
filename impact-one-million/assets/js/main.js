@@ -1283,6 +1283,7 @@
 	}
 
 	const INTERVAL_MS = 8000;
+	const SWIPE_THRESHOLD = 40;
 	const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 	roots.forEach(function (root) {
@@ -1296,6 +1297,9 @@
 		let index = 0;
 		let timer = null;
 		let paused = false;
+		let pointerId = null;
+		let startX = 0;
+		let startY = 0;
 
 		function lockHeight() {
 			let max = 0;
@@ -1327,6 +1331,11 @@
 			});
 		}
 
+		function go(delta) {
+			setActive(index + delta);
+			start();
+		}
+
 		function stop() {
 			paused = true;
 			if (timer) {
@@ -1355,6 +1364,59 @@
 				setActive(i);
 				start();
 			});
+		});
+
+		// Swipe / drag to change slides.
+		slidesWrap.style.touchAction = 'pan-y';
+		slidesWrap.style.cursor = 'grab';
+
+		slidesWrap.addEventListener('pointerdown', function (event) {
+			if (event.button && event.button !== 0) {
+				return;
+			}
+			pointerId = event.pointerId;
+			startX = event.clientX;
+			startY = event.clientY;
+			slidesWrap.style.cursor = 'grabbing';
+			try {
+				slidesWrap.setPointerCapture(event.pointerId);
+			} catch (err) {
+				/* ignore */
+			}
+		});
+
+		slidesWrap.addEventListener('pointerup', function (event) {
+			if (pointerId !== event.pointerId) {
+				return;
+			}
+			pointerId = null;
+			slidesWrap.style.cursor = 'grab';
+
+			const dx = event.clientX - startX;
+			const dy = event.clientY - startY;
+			if (Math.abs(dx) < SWIPE_THRESHOLD || Math.abs(dx) < Math.abs(dy)) {
+				return;
+			}
+
+			// Swipe left → next; swipe right → previous.
+			go(dx < 0 ? 1 : -1);
+		});
+
+		slidesWrap.addEventListener('pointercancel', function () {
+			pointerId = null;
+			slidesWrap.style.cursor = 'grab';
+		});
+
+		// Keyboard arrows when the section is focused.
+		root.setAttribute('tabindex', '0');
+		root.addEventListener('keydown', function (event) {
+			if (event.key === 'ArrowRight') {
+				event.preventDefault();
+				go(1);
+			} else if (event.key === 'ArrowLeft') {
+				event.preventDefault();
+				go(-1);
+			}
 		});
 
 		slidesWrap.addEventListener('mouseenter', stop);

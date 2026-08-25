@@ -1494,6 +1494,22 @@
                             "new_lines": ""
                         },
                         {
+                            "key": "field_iom_pia_name",
+                            "label": "Quote Person Name",
+                            "name": "name",
+                            "type": "text",
+                            "instructions": "Optional. Shown under the quote.",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_pia_title",
+                            "label": "Quote Person Title",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "Optional. Role or title under the name.",
+                            "required": 0
+                        },
+                        {
                             "key": "field_iom_pia_body",
                             "label": "Body",
                             "name": "body",

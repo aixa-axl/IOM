@@ -2,7 +2,7 @@
 /**
  * Layout: programme_in_action
  *
- * Story block — eyebrow, quote, body, CTAs + image.
+ * Story block — eyebrow, quote, attribution, body, CTAs + image.
  * Desktop: text left / image right. Mobile: image above text.
  *
  * Figma desktop: 606:11740 — Figma mobile: 677:41502
@@ -10,6 +10,8 @@
 
 $eyebrow       = get_sub_field( 'eyebrow' );
 $heading       = get_sub_field( 'heading' );
+$name          = get_sub_field( 'name' );
+$title         = get_sub_field( 'title' );
 $body          = get_sub_field( 'body' );
 $image_id      = get_sub_field( 'image' );
 $primary_cta   = get_sub_field( 'primary_cta' );
@@ -85,6 +87,22 @@ $img_attrs = array(
 					<h2 class="m-0 font-display text-stat-label leading-[1.2] text-blue">
 						<?php echo esc_html( $heading ); ?>
 					</h2>
+				<?php endif; ?>
+
+				<?php if ( $name || $title ) : ?>
+					<footer class="flex flex-col gap-1">
+						<?php if ( $name ) : ?>
+							<p class="m-0 font-display text-card-title leading-none text-ink">
+								<?php echo esc_html( $name ); ?>
+							</p>
+						<?php endif; ?>
+
+						<?php if ( $title ) : ?>
+							<p class="m-0 font-sans text-label leading-[1.5] text-muted">
+								<?php echo esc_html( $title ); ?>
+							</p>
+						<?php endif; ?>
+					</footer>
 				<?php endif; ?>
 
 				<?php if ( $body ) : ?>
