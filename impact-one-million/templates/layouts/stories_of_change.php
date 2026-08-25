@@ -46,12 +46,8 @@ if ( ! is_array( $primary_cta ) || empty( $primary_cta['url'] ) ) {
 	);
 }
 
-if ( ! is_array( $secondary_cta ) || empty( $secondary_cta['url'] ) ) {
-	$secondary_cta = array(
-		'url'    => '#',
-		'title'  => __( 'Secondary - view more casestudies', 'impact-one-million' ),
-		'target' => '',
-	);
+if ( ! is_array( $secondary_cta ) ) {
+	$secondary_cta = array();
 }
 
 $btn_primary   = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-navy px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 lg:w-auto';
