@@ -183,12 +183,9 @@ if ( $has_groups ) {
 		);
 	}
 } else {
-	// Legacy single-group mode — keep defaults when logos empty.
+	// Legacy single-group mode — keep primary default when logos empty.
 	if ( ! $heading_primary && ! $section_heading ) {
 		$heading_primary = __( '20 years of delivery.', 'impact-one-million' );
-	}
-	if ( ! $heading_secondary && ! $section_heading ) {
-		$heading_secondary = __( '150,000+ workers reached across 6 countries.', 'impact-one-million' );
 	}
 
 	$single_logos = $iom_resolve_logos( $logos, true );
