@@ -3221,7 +3221,7 @@
                             "label": "Cards",
                             "name": "cards",
                             "type": "repeater",
-                            "instructions": "Typically 3 cards. Desktop: 3 columns. Mobile: stacked.",
+                            "instructions": "Typically 3 or 6 cards. Desktop: 3 columns (3+3 when six). Mobile: stacked.",
                             "required": 0,
                             "layout": "block",
                             "button_label": "Add Card",
