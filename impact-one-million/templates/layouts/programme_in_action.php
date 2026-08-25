@@ -88,9 +88,7 @@ $img_attrs = array(
 				<?php endif; ?>
 
 				<?php if ( $body ) : ?>
-					<p class="m-0 font-sans text-body leading-[1.2] text-navy">
-						<?php echo esc_html( $body ); ?>
-					</p>
+					<?php echo iom_format_multiline_text( $body, 'm-0 font-sans text-body leading-[1.2] text-navy' ); ?>
 				<?php endif; ?>
 			</div>
 

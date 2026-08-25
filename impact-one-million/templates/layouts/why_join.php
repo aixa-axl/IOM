@@ -119,9 +119,12 @@ $iom_render_why_join_card = function ( $card, $arrow_uri, $carousel = false ) us
 		<?php endif; ?>
 
 		<?php if ( $body ) : ?>
-			<p class="m-0 <?php echo esc_attr( $body_clamp_class ); ?>font-sans text-body leading-[1.2] text-muted">
-				<?php echo esc_html( $body ); ?>
-			</p>
+			<?php
+			echo iom_format_multiline_text(
+				$body,
+				$body_clamp_class . 'm-0 font-sans text-body leading-[1.2] text-muted'
+			);
+			?>
 		<?php endif; ?>
 	</li>
 	<?php
@@ -139,9 +142,7 @@ $iom_render_why_join_card = function ( $card, $arrow_uri, $carousel = false ) us
 				<?php endif; ?>
 
 				<?php if ( $has_intro ) : ?>
-					<p class="m-0 font-sans text-body leading-[1.2] text-ink">
-						<?php echo esc_html( $intro ); ?>
-					</p>
+					<?php echo iom_format_multiline_text( $intro, 'm-0 font-sans text-body leading-[1.2] text-ink' ); ?>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>

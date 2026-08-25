@@ -129,9 +129,7 @@ $fallback_orders = array(
 
 	<?php if ( $description ) : ?>
 		<div class="bg-accent px-page py-10 xl:px-gutter lg:py-12">
-			<p class="mx-auto m-0 max-w-[56.25rem] text-center font-sans text-[22px] font-semibold leading-[1.2] text-white lg:text-stat-label">
-				<?php echo esc_html( $description ); ?>
-			</p>
+			<?php echo iom_format_multiline_text( $description, 'mx-auto m-0 max-w-[56.25rem] text-center font-sans text-[22px] font-semibold leading-[1.2] text-white lg:text-stat-label' ); ?>
 		</div>
 	<?php endif; ?>
 </section>

@@ -151,9 +151,7 @@ $btn_outline = 'inline-flex w-full items-center justify-center rounded-btn borde
 									<?php endif; ?>
 
 									<?php if ( $body ) : ?>
-										<p class="m-0 font-sans text-body leading-[1.2] text-muted">
-											<?php echo esc_html( $body ); ?>
-										</p>
+										<?php echo iom_format_multiline_text( $body, 'm-0 font-sans text-body leading-[1.2] text-muted' ); ?>
 									<?php endif; ?>
 								</div>
 							<?php endif; ?>

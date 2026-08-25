@@ -111,9 +111,7 @@ $outer_gap = $is_vertical ? 'gap-20 lg:gap-10' : 'gap-10';
 								</div>
 
 								<?php if ( $body ) : ?>
-									<p class="m-0 font-sans text-body leading-[1.2] text-muted">
-										<?php echo esc_html( $body ); ?>
-									</p>
+									<?php echo iom_format_multiline_text( $body, 'm-0 font-sans text-body leading-[1.2] text-muted' ); ?>
 								<?php endif; ?>
 							</div>
 
@@ -165,9 +163,7 @@ $outer_gap = $is_vertical ? 'gap-20 lg:gap-10' : 'gap-10';
 							</div>
 
 							<?php if ( $body ) : ?>
-								<p class="m-0 font-sans text-body leading-[1.2] text-muted">
-									<?php echo esc_html( $body ); ?>
-								</p>
+								<?php echo iom_format_multiline_text( $body, 'm-0 font-sans text-body leading-[1.2] text-muted' ); ?>
 							<?php endif; ?>
 						</li>
 					<?php endforeach; ?>

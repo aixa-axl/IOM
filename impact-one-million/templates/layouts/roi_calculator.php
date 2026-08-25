@@ -145,9 +145,7 @@ $pct = ( ( $default_amount - $min_amount ) / max( 1, ( $max_amount - $min_amount
 				<?php endif; ?>
 
 				<?php if ( $section_intro ) : ?>
-					<p class="m-0 font-sans text-body leading-[1.2] text-white/90">
-						<?php echo esc_html( $section_intro ); ?>
-					</p>
+					<?php echo iom_format_multiline_text( $section_intro, 'm-0 font-sans text-body leading-[1.2] text-white/90' ); ?>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>

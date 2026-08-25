@@ -269,9 +269,7 @@ if ( $is_home_hero ) {
 					<?php endif; ?>
 
 					<?php if ( $has_body ) : ?>
-						<p class="<?php echo esc_attr( $body_class ); ?>">
-							<?php echo esc_html( $body ); ?>
-						</p>
+						<?php echo iom_format_multiline_text( $body, $body_class ); ?>
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>

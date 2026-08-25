@@ -59,9 +59,7 @@ if ( $form_shortcode ) {
 
 		<div class="flex w-full flex-col items-start gap-10 xl:flex-row xl:gap-[7.5rem]">
 			<?php if ( $intro ) : ?>
-				<p class="m-0 w-full max-w-[32.5rem] shrink-0 font-sans text-body leading-[1.2] text-muted">
-					<?php echo esc_html( $intro ); ?>
-				</p>
+				<?php echo iom_format_multiline_text( $intro, 'm-0 w-full max-w-[32.5rem] shrink-0 font-sans text-body leading-[1.2] text-muted' ); ?>
 			<?php endif; ?>
 
 			<div class="iom-contact-form min-w-0 w-full flex-1">

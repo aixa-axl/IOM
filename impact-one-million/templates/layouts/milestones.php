@@ -40,9 +40,7 @@ $iom_render_milestone_copy = function ( $title, $body, $right = false ) {
 			</p>
 		<?php endif; ?>
 		<?php if ( $body ) : ?>
-			<p class="m-0 max-w-md font-sans text-label leading-normal">
-				<?php echo esc_html( $body ); ?>
-			</p>
+			<?php echo iom_format_multiline_text( $body, 'm-0 max-w-md font-sans text-label leading-normal' ); ?>
 		<?php endif; ?>
 	</div>
 	<?php

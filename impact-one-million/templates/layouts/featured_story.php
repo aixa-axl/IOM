@@ -73,9 +73,7 @@ $iom_fs_embed = function_exists( 'iom_build_video_embed' )
 			</div>
 
 			<?php if ( $body ) : ?>
-				<p class="m-0 font-sans text-body leading-[1.2] text-blue">
-					<?php echo esc_html( $body ); ?>
-				</p>
+				<?php echo iom_format_multiline_text( $body, 'm-0 font-sans text-body leading-[1.2] text-blue' ); ?>
 			<?php endif; ?>
 
 			<?php if ( $cta_url ) : ?>

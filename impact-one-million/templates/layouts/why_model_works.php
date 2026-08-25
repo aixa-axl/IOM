@@ -28,9 +28,7 @@ if ( ! $body ) {
 		<?php endif; ?>
 
 		<?php if ( $body ) : ?>
-			<p class="m-0 font-sans text-label font-semibold leading-[1.2] lg:text-stat-label">
-				<?php echo esc_html( $body ); ?>
-			</p>
+			<?php echo iom_format_multiline_text( $body, 'm-0 font-sans text-label font-semibold leading-[1.2] lg:text-stat-label' ); ?>
 		<?php endif; ?>
 	</div>
 </section>

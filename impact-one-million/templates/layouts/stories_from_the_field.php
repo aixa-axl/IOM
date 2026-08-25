@@ -103,9 +103,7 @@ $img_attrs = array(
 				<?php endif; ?>
 
 				<?php if ( $body ) : ?>
-					<p class="m-0 font-sans text-body leading-[1.2] text-muted">
-						<?php echo esc_html( $body ); ?>
-					</p>
+					<?php echo iom_format_multiline_text( $body, 'm-0 font-sans text-body leading-[1.2] text-muted' ); ?>
 				<?php endif; ?>
 
 				<?php if ( $show_cta && ! empty( $cta['url'] ) ) : ?>

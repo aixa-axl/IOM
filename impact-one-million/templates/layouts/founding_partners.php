@@ -35,9 +35,7 @@ $link_class = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-displ
 				<?php endif; ?>
 
 				<?php if ( $intro ) : ?>
-					<p class="m-0 font-sans text-body leading-[1.2] text-muted">
-						<?php echo esc_html( $intro ); ?>
-					</p>
+					<?php echo iom_format_multiline_text( $intro, 'm-0 font-sans text-body leading-[1.2] text-muted' ); ?>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>
@@ -90,9 +88,7 @@ $link_class = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-displ
 										<?php endif; ?>
 
 										<?php if ( $body ) : ?>
-											<p class="m-0 font-sans text-sm leading-normal text-muted">
-												<?php echo esc_html( $body ); ?>
-											</p>
+											<?php echo iom_format_multiline_text( $body, 'm-0 font-sans text-sm leading-normal text-muted' ); ?>
 										<?php endif; ?>
 									</div>
 								<?php endif; ?>

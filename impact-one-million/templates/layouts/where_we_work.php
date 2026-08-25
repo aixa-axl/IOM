@@ -179,9 +179,7 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 				<?php endif; ?>
 
 				<?php if ( $intro ) : ?>
-					<p class="m-0 font-sans text-body leading-[1.2] text-muted">
-						<?php echo esc_html( $intro ); ?>
-					</p>
+					<?php echo iom_format_multiline_text( $intro, 'm-0 font-sans text-body leading-[1.2] text-muted' ); ?>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>

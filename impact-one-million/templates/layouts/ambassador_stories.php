@@ -127,9 +127,7 @@ $play_label = __( 'Play video', 'impact-one-million' );
 				<?php endif; ?>
 
 				<?php if ( $has_body ) : ?>
-					<p class="m-0 max-w-[41.5625rem] font-sans text-label leading-normal">
-						<?php echo esc_html( $body ); ?>
-					</p>
+					<?php echo iom_format_multiline_text( $body, 'm-0 max-w-[41.5625rem] font-sans text-label leading-normal' ); ?>
 				<?php endif; ?>
 
 				<?php if ( $featured || $campaign ) : ?>

@@ -149,9 +149,7 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 				<?php endif; ?>
 
 				<?php if ( $intro_body ) : ?>
-					<p class="m-0 max-w-[37.5rem] text-center font-sans text-label leading-[1.5] text-muted">
-						<?php echo esc_html( $intro_body ); ?>
-					</p>
+					<?php echo iom_format_multiline_text( $intro_body, 'm-0 max-w-[37.5rem] text-center font-sans text-label leading-[1.5] text-muted' ); ?>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>
@@ -172,9 +170,7 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 					<?php endif; ?>
 
 					<?php if ( $pillars_intro ) : ?>
-						<p class="m-0 font-sans text-body leading-[1.2] text-muted">
-							<?php echo esc_html( $pillars_intro ); ?>
-						</p>
+						<?php echo iom_format_multiline_text( $pillars_intro, 'm-0 font-sans text-body leading-[1.2] text-muted' ); ?>
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>
@@ -240,9 +236,7 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 								</div>
 
 								<?php if ( $body ) : ?>
-									<p class="m-0 line-clamp-2 font-sans text-body leading-[1.2] text-muted">
-										<?php echo esc_html( $body ); ?>
-									</p>
+									<?php echo iom_format_multiline_text( $body, 'm-0 line-clamp-2 font-sans text-body leading-[1.2] text-muted' ); ?>
 								<?php endif; ?>
 							</div>
 

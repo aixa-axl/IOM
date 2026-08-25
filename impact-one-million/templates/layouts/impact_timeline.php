@@ -144,9 +144,7 @@ $iom_timeline_arrow = static function ( $extra_class = '' ) {
 						<?php endif; ?>
 
 						<?php if ( $body ) : ?>
-							<p class="m-0 max-w-[18.075rem] font-sans text-body leading-[1.2] text-muted lg:max-w-[18.7rem]">
-								<?php echo esc_html( $body ); ?>
-							</p>
+							<?php echo iom_format_multiline_text( $body, 'm-0 max-w-[18.075rem] font-sans text-body leading-[1.2] text-muted lg:max-w-[18.7rem]' ); ?>
 						<?php endif; ?>
 					</li>
 				<?php endforeach; ?>

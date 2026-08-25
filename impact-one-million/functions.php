@@ -563,6 +563,45 @@ function iom_render_link( $link, $class = '', $fallback_title = '' ) {
 }
 
 /**
+ * Format plain multiline text as paragraphs (Enter in a textarea = new paragraph).
+ *
+ * @param string $text    Raw textarea value.
+ * @param string $p_class CSS classes applied to each paragraph.
+ * @return string Safe HTML (empty string when no content).
+ */
+function iom_format_multiline_text( $text, $p_class = 'm-0' ) {
+	$text = is_string( $text ) ? $text : '';
+	if ( '' === trim( $text ) ) {
+		return '';
+	}
+
+	$lines = preg_split( '/\r\n|\r|\n/', $text );
+	if ( ! is_array( $lines ) ) {
+		return '';
+	}
+
+	$parts = array();
+	foreach ( $lines as $line ) {
+		$line = trim( $line );
+		if ( '' !== $line ) {
+			$parts[] = $line;
+		}
+	}
+
+	if ( empty( $parts ) ) {
+		return '';
+	}
+
+	$html = '';
+	foreach ( $parts as $i => $line ) {
+		$class = trim( $p_class . ( $i > 0 ? ' mt-4' : '' ) );
+		$html .= '<p class="' . esc_attr( $class ) . '">' . esc_html( $line ) . '</p>';
+	}
+
+	return $html;
+}
+
+/**
  * Build an inline-playable video embed from ACF source fields.
  *
  * @param string          $video_source external|upload.

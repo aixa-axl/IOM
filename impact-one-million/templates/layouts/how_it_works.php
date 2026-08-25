@@ -114,9 +114,7 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 						?>
 						<li class="h-full rounded-btn border-[1.5px] border-solid border-transparent bg-white px-6 py-4">
 							<div class="flex h-full flex-col gap-2">
-								<p class="m-0 font-display text-[24px] leading-none text-blue lg:text-header">
-									<?php echo esc_html( $text ); ?>
-								</p>
+								<?php echo iom_format_multiline_text( $text, 'm-0 font-display text-[24px] leading-none text-blue lg:text-header' ); ?>
 								<?php if ( $subtext ) : ?>
 									<p class="m-0 font-sans text-body leading-[1.2] text-muted">
 										<?php echo wp_kses_post( $subtext ); ?>
@@ -194,9 +192,7 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 									</div>
 
 									<?php if ( $body ) : ?>
-										<p class="m-0 font-sans text-body text-muted">
-											<?php echo esc_html( $body ); ?>
-										</p>
+										<?php echo iom_format_multiline_text( $body, 'm-0 font-sans text-body text-muted' ); ?>
 									<?php endif; ?>
 								</div>
 

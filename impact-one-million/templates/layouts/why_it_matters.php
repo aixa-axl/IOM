@@ -99,9 +99,7 @@ $use_carousel = ( $slide_count > 1 );
 						<?php endif; ?>
 
 						<?php if ( $row_body ) : ?>
-							<p class="m-0 max-w-[56.25rem] font-display text-stat-label leading-[1.2]">
-								<?php echo esc_html( $row_body ); ?>
-							</p>
+							<?php echo iom_format_multiline_text( $row_body, 'm-0 max-w-[56.25rem] font-display text-stat-label leading-[1.2]' ); ?>
 						<?php endif; ?>
 					</div>
 				<?php endforeach; ?>

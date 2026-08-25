@@ -77,9 +77,7 @@ $img_attrs = array(
 				<?php endif; ?>
 
 				<?php if ( $body ) : ?>
-					<p class="m-0 font-sans text-label leading-[1.5] text-white">
-						<?php echo esc_html( $body ); ?>
-					</p>
+					<?php echo iom_format_multiline_text( $body, 'm-0 font-sans text-label leading-[1.5] text-white' ); ?>
 				<?php endif; ?>
 			</div>
 

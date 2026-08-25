@@ -1282,7 +1282,7 @@
 		return;
 	}
 
-	const INTERVAL_MS = 4000;
+	const INTERVAL_MS = 4500;
 	const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 	roots.forEach(function (root) {
@@ -1296,6 +1296,13 @@
 		let index = 0;
 		let timer = null;
 		let paused = false;
+
+		function syncHeight(activeSlide) {
+			if (!activeSlide) {
+				return;
+			}
+			slidesWrap.style.height = activeSlide.offsetHeight + 'px';
+		}
 
 		function setActive(next) {
 			index = (next + slides.length) % slides.length;
@@ -1312,6 +1319,8 @@
 				dot.setAttribute('data-active', active ? 'true' : 'false');
 				dot.setAttribute('aria-selected', active ? 'true' : 'false');
 			});
+
+			syncHeight(slides[index]);
 		}
 
 		function stop() {
@@ -1344,7 +1353,6 @@
 			});
 		});
 
-		// Pause only while interacting with slides/dots — not the whole orange band.
 		slidesWrap.addEventListener('mouseenter', stop);
 		slidesWrap.addEventListener('mouseleave', start);
 
@@ -1369,6 +1377,10 @@
 			} else if (!paused) {
 				start();
 			}
+		});
+
+		window.addEventListener('resize', function () {
+			syncHeight(slides[index]);
 		});
 
 		setActive(0);

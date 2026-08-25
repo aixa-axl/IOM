@@ -44,9 +44,7 @@ if ( ! is_array( $cards ) ) {
 				<?php endif; ?>
 
 				<?php if ( $intro ) : ?>
-					<p class="m-0 font-sans text-body leading-[1.2] text-muted">
-						<?php echo esc_html( $intro ); ?>
-					</p>
+					<?php echo iom_format_multiline_text( $intro, 'm-0 font-sans text-body leading-[1.2] text-muted' ); ?>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>
@@ -114,9 +112,7 @@ if ( ! is_array( $cards ) ) {
 		<?php endif; ?>
 
 		<?php if ( $footer ) : ?>
-			<p class="m-0 max-w-[50rem] font-sans text-body leading-[1.2] text-muted">
-				<?php echo esc_html( $footer ); ?>
-			</p>
+			<?php echo iom_format_multiline_text( $footer, 'm-0 max-w-[50rem] font-sans text-body leading-[1.2] text-muted' ); ?>
 		<?php endif; ?>
 	</div>
 </section>

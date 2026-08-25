@@ -144,9 +144,7 @@ $btn_cta = 'inline-flex items-center justify-center rounded-btn border-[1.5px] b
 							<?php endif; ?>
 
 							<?php if ( $body ) : ?>
-								<p class="<?php echo esc_attr( $body_class ); ?>">
-									<?php echo esc_html( $body ); ?>
-								</p>
+								<?php echo iom_format_multiline_text( $body, $body_class ); ?>
 							<?php endif; ?>
 
 							<?php

@@ -83,9 +83,7 @@ $iom_render_join_items = function ( $items, $icon_uri ) {
 					<?php endif; ?>
 
 					<?php if ( $text ) : ?>
-						<p class="m-0 font-sans text-body leading-[1.2] text-muted">
-							<?php echo esc_html( $text ); ?>
-						</p>
+						<?php echo iom_format_multiline_text( $text, 'm-0 font-sans text-body leading-[1.2] text-muted' ); ?>
 					<?php endif; ?>
 				</div>
 			</li>
@@ -110,9 +108,9 @@ $section_class = ! empty( $iom_tighten_join_reasons_bottom )
 			<?php endif; ?>
 
 			<div class="flex w-full flex-col items-start gap-10 lg:flex-row lg:gap-20">
-				<p class="m-0 min-w-0 flex-1 font-sans text-body leading-[1.2] text-muted">
-					<?php echo esc_html( $intro ); ?>
-				</p>
+				<div class="min-w-0 flex-1">
+					<?php echo iom_format_multiline_text( $intro, 'm-0 font-sans text-body leading-[1.2] text-muted' ); ?>
+				</div>
 
 				<?php if ( ! empty( $items ) ) : ?>
 					<?php $iom_render_join_items( $items, $icon_uri ); ?>
