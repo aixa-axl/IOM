@@ -14,7 +14,7 @@ $body    = get_sub_field( 'body' );
 ?>
 
 <section class="bg-accent-blue px-page py-10 text-white xl:px-section lg:py-gutter">
-	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-10 lg:gap-20">
+	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-4 lg:gap-6">
 		<?php if ( $heading ) : ?>
 			<h2 class="m-0 font-display text-headline leading-[1.2]">
 				<?php echo esc_html( $heading ); ?>
