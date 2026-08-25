@@ -11,6 +11,7 @@ $header_logo     = function_exists( 'get_field' ) ? get_field( 'header_logo', 'o
 $utility_links   = function_exists( 'get_field' ) ? get_field( 'header_utility_links', 'option' ) : null;
 $search_link     = function_exists( 'get_field' ) ? get_field( 'header_search_link', 'option' ) : null;
 $language_link   = function_exists( 'get_field' ) ? get_field( 'header_language_link', 'option' ) : null;
+$languages       = function_exists( 'get_field' ) ? get_field( 'header_languages', 'option' ) : null;
 $header_nav      = function_exists( 'get_field' ) ? get_field( 'header_nav_links', 'option' ) : null;
 $secondary_cta   = function_exists( 'get_field' ) ? get_field( 'header_secondary_cta', 'option' ) : null;
 $primary_cta     = function_exists( 'get_field' ) ? get_field( 'header_primary_cta', 'option' ) : null;
@@ -109,23 +110,11 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 
 						<?php require locate_template( 'templates/parts/inline-search.php' ); ?>
 
-						<?php if ( ! empty( $language_link['url'] ) ) : ?>
-							<a
-								href="<?php echo esc_url( $language_link['url'] ); ?>"
-								class="inline-flex shrink-0 items-center"
-								aria-label="<?php echo esc_attr( ! empty( $language_link['title'] ) ? $language_link['title'] : __( 'Language', 'impact-one-million' ) ); ?>"
-								<?php echo ! empty( $language_link['target'] ) ? 'target="' . esc_attr( $language_link['target'] ) . '" rel="noopener noreferrer"' : ''; ?>
-							>
-								<img
-									src="<?php echo esc_url( $icon_globe_uri ); ?>"
-									alt=""
-									width="18"
-									height="18"
-									class="size-[18px]"
-									aria-hidden="true"
-								/>
-							</a>
-						<?php endif; ?>
+						<?php
+						$iom_lang_variant = 'desktop';
+						require locate_template( 'templates/parts/language-switcher.php' );
+						unset( $iom_lang_variant );
+						?>
 					</div>
 				<?php endif; ?>
 
@@ -370,25 +359,11 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 					$search_icon_class = 'size-[18px]';
 					require locate_template( 'templates/parts/inline-search.php' );
 					unset( $search_icon_class );
-					?>
 
-					<?php if ( ! empty( $language_link['url'] ) ) : ?>
-						<a
-							href="<?php echo esc_url( $language_link['url'] ); ?>"
-							class="inline-flex items-center gap-2 <?php echo esc_attr( $mobile_util_class ); ?>"
-							<?php echo ! empty( $language_link['target'] ) ? 'target="' . esc_attr( $language_link['target'] ) . '" rel="noopener noreferrer"' : ''; ?>
-						>
-							<img
-								src="<?php echo esc_url( $icon_globe_uri ); ?>"
-								alt=""
-								width="18"
-								height="18"
-								class="size-[18px] shrink-0"
-								aria-hidden="true"
-							/>
-							<span><?php echo esc_html( ! empty( $language_link['title'] ) ? $language_link['title'] : __( 'Language', 'impact-one-million' ) ); ?></span>
-						</a>
-					<?php endif; ?>
+					$iom_lang_variant = 'mobile';
+					require locate_template( 'templates/parts/language-switcher.php' );
+					unset( $iom_lang_variant );
+					?>
 				</div>
 			<?php endif; ?>
 		</div>

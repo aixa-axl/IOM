@@ -1216,3 +1216,59 @@
 		observer.observe(marquee);
 	});
 })();
+
+/**
+ * Language switcher — click toggle, outside click + Escape to close.
+ */
+(function () {
+	const switchers = document.querySelectorAll('[data-language-switcher]');
+	if (!switchers.length) {
+		return;
+	}
+
+	function setOpen(root, open) {
+		const toggle = root.querySelector('[data-language-switcher-toggle]');
+		const menu = root.querySelector('[data-language-switcher-menu]');
+		if (!toggle || !menu) {
+			return;
+		}
+		toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+		menu.hidden = !open;
+		menu.classList.toggle('invisible', !open);
+		menu.classList.toggle('opacity-0', !open);
+		menu.classList.toggle('opacity-100', open);
+	}
+
+	function closeAll(except) {
+		switchers.forEach(function (root) {
+			if (root !== except) {
+				setOpen(root, false);
+			}
+		});
+	}
+
+	switchers.forEach(function (root) {
+		const toggle = root.querySelector('[data-language-switcher-toggle]');
+		if (!toggle) {
+			return;
+		}
+
+		toggle.addEventListener('click', function (event) {
+			event.preventDefault();
+			event.stopPropagation();
+			const willOpen = toggle.getAttribute('aria-expanded') !== 'true';
+			closeAll(root);
+			setOpen(root, willOpen);
+		});
+	});
+
+	document.addEventListener('click', function () {
+		closeAll();
+	});
+
+	document.addEventListener('keydown', function (event) {
+		if (event.key === 'Escape') {
+			closeAll();
+		}
+	});
+})();
