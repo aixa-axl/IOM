@@ -33,9 +33,14 @@ $img_attrs = array(
 	'loading' => 'lazy',
 	'alt'     => $eyebrow ? $eyebrow : '',
 );
+
+// Gender Equality page only: less bottom padding when Pillars follows (set in page.php).
+$section_class = ! empty( $iom_tighten_programme_in_action_bottom )
+	? 'iom-programme-in-action bg-white px-page pt-section pb-10 xl:px-gutter xl:pt-gutter xl:pb-10'
+	: 'iom-programme-in-action bg-white px-page py-section xl:px-gutter';
 ?>
 
-<section class="bg-white px-page py-section xl:px-gutter">
+<section class="<?php echo esc_attr( $section_class ); ?>">
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-20 lg:flex-row lg:items-center lg:gap-[6.25rem]">
 		<div class="relative aspect-[549/379] w-full shrink-0 overflow-hidden rounded-card lg:order-2 lg:h-[23.6875rem] lg:w-[34.3125rem] lg:aspect-auto">
 			<?php if ( $image_id ) : ?>

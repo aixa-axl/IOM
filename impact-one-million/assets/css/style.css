@@ -2045,6 +2045,10 @@ video {
   padding-top: 11px;
 }
 
+.pt-section {
+  padding-top: 120px;
+}
+
 .text-left {
   text-align: left;
 }
@@ -2909,6 +2913,22 @@ body {
 
   body.page-supply-chain .entry-content > section.iom-join-reasons + section.iom-other-pillars,
   body.page-supply_chain .entry-content > section.iom-join-reasons + section.iom-other-pillars {
+    padding-top: 2.5rem !important;
+  }
+
+  /*
+   * Gender Equality — Programme in Action → Pillars (backup for PHP class toggle).
+   */
+
+  body.page-gender-equality .entry-content > section.iom-programme-in-action:has(+ section.iom-other-pillars),
+  body.page-gender-and-equality .entry-content > section.iom-programme-in-action:has(+ section.iom-other-pillars),
+  body.page-gender .entry-content > section.iom-programme-in-action:has(+ section.iom-other-pillars) {
+    padding-bottom: 2.5rem !important;
+  }
+
+  body.page-gender-equality .entry-content > section.iom-programme-in-action + section.iom-other-pillars,
+  body.page-gender-and-equality .entry-content > section.iom-programme-in-action + section.iom-other-pillars,
+  body.page-gender .entry-content > section.iom-programme-in-action + section.iom-other-pillars {
     padding-top: 2.5rem !important;
   }
 

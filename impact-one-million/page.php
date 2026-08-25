@@ -23,6 +23,16 @@ get_header();
 						$iom_is_history      = function_exists( 'is_page' ) && is_page( 'history' );
 						$iom_is_partners     = function_exists( 'is_page' ) && is_page( 'partners' );
 						$iom_is_supply_chain = function_exists( 'is_page' ) && is_page( array( 'supply-chain', 'supply_chain' ) );
+						$iom_is_gender_equality = function_exists( 'is_page' ) && (
+							is_page(
+								array(
+									'gender-equality',
+									'gender-and-equality',
+									'gender',
+								)
+							)
+							|| ( is_singular( 'page' ) && false !== stripos( (string) get_the_title(), 'Gender Equality' ) )
+						);
 
 						while ( have_rows( 'page_sections' ) ) {
 							the_row();
@@ -74,9 +84,23 @@ get_header();
 								&& 'other_pillars' === $iom_next_layout
 							);
 							$iom_tighten_other_pillars_top = (
-								$iom_is_supply_chain
-								&& 'other_pillars' === $layout
-								&& 'join_reasons' === $iom_prev_layout
+								(
+									$iom_is_supply_chain
+									&& 'other_pillars' === $layout
+									&& 'join_reasons' === $iom_prev_layout
+								)
+								|| (
+									$iom_is_gender_equality
+									&& 'other_pillars' === $layout
+									&& 'programme_in_action' === $iom_prev_layout
+								)
+							);
+
+							// Gender Equality only: Programme in Action immediately followed by Pillars.
+							$iom_tighten_programme_in_action_bottom = (
+								$iom_is_gender_equality
+								&& 'programme_in_action' === $layout
+								&& 'other_pillars' === $iom_next_layout
 							);
 
 							$layout_path = locate_template(

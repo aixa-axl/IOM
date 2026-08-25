@@ -49,7 +49,7 @@ $section_pad = $has_intro
 	? 'iom-other-pillars overflow-x-hidden bg-white px-0 py-section xl:px-gutter lg:py-24'
 	: 'iom-other-pillars overflow-x-hidden bg-white px-0 py-10 xl:px-10 lg:py-[100px]';
 
-// Supply chain page only: less top padding when Join Reasons precedes (set in page.php).
+// Less top padding when Join Reasons (supply chain) or Programme in Action (gender equality) precedes.
 if ( ! empty( $iom_tighten_other_pillars_top ) ) {
 	$section_pad = $has_intro
 		? 'iom-other-pillars overflow-x-hidden bg-white px-0 pt-6 pb-section xl:px-gutter lg:pt-10 lg:pb-24'
