@@ -58,13 +58,19 @@ $img_attrs = array(
 				<?php endif; ?>
 
 				<?php if ( $name || $title ) : ?>
-					<?php
-					$attribution = array_filter( array( $name, $title ) );
-					$attribution = implode( ', ', $attribution );
-					?>
-					<p class="m-0 font-display text-card-title leading-none text-ink">
-						<?php echo esc_html( $attribution ); ?>
-					</p>
+					<footer class="flex flex-col gap-1">
+						<?php if ( $name ) : ?>
+							<p class="m-0 font-display text-card-title leading-none text-ink">
+								<?php echo esc_html( $name ); ?>
+							</p>
+						<?php endif; ?>
+
+						<?php if ( $title ) : ?>
+							<p class="m-0 font-sans text-label leading-[1.5] text-muted">
+								<?php echo esc_html( $title ); ?>
+							</p>
+						<?php endif; ?>
+					</footer>
 				<?php endif; ?>
 
 				<?php if ( $body ) : ?>
