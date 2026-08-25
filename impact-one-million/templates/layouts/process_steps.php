@@ -36,7 +36,7 @@ if ( ! is_array( $cta ) ) {
 $btn_class = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 
 $section_class = $is_vertical
-	? 'bg-blue px-page py-section xl:p-section'
+	? 'bg-blue px-page py-section lg:py-20 xl:px-section xl:py-20'
 	: 'bg-off-white px-page py-section xl:px-[7.5rem] lg:py-24';
 
 $heading_class = $is_vertical
