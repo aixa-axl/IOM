@@ -2924,6 +2924,16 @@
                             "required": 0
                         },
                         {
+                            "key": "field_iom_fp_intro",
+                            "label": "Intro",
+                            "name": "intro",
+                            "type": "textarea",
+                            "instructions": "Optional supporting text below the heading.",
+                            "required": 0,
+                            "rows": 3,
+                            "new_lines": ""
+                        },
+                        {
                             "key": "field_iom_fp_partners",
                             "label": "Partners",
                             "name": "partners",

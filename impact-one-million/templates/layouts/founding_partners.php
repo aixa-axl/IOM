@@ -9,6 +9,7 @@
  */
 
 $heading  = get_sub_field( 'heading' );
+$intro    = get_sub_field( 'intro' );
 $partners = get_sub_field( 'partners' );
 
 if ( ! $heading ) {
@@ -24,10 +25,20 @@ $link_class = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-displ
 
 <section class="border-b border-solid border-[#e5e7eb] bg-off-white px-page py-10 xl:px-section lg:py-24">
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-12">
-		<?php if ( $heading ) : ?>
-			<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">
-				<?php echo esc_html( $heading ); ?>
-			</h2>
+		<?php if ( $heading || $intro ) : ?>
+			<div class="flex w-full max-w-[50rem] flex-col items-start gap-4">
+				<?php if ( $heading ) : ?>
+					<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">
+						<?php echo esc_html( $heading ); ?>
+					</h2>
+				<?php endif; ?>
+
+				<?php if ( $intro ) : ?>
+					<p class="m-0 font-sans text-body leading-[1.2] text-muted">
+						<?php echo esc_html( $intro ); ?>
+					</p>
+				<?php endif; ?>
+			</div>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $partners ) ) : ?>
