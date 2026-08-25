@@ -10,6 +10,7 @@
 
 $eyebrow = get_sub_field( 'eyebrow' );
 $heading = get_sub_field( 'heading' );
+$intro   = get_sub_field( 'intro' );
 $cards   = get_sub_field( 'cards' );
 
 if ( ! $eyebrow ) {
@@ -32,8 +33,8 @@ $section_class = ! empty( $iom_tighten_evolution_bottom )
 
 <section class="<?php echo esc_attr( $section_class ); ?>">
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-16">
-		<?php if ( $eyebrow || $heading ) : ?>
-			<div class="flex w-full flex-col items-start gap-4">
+		<?php if ( $eyebrow || $heading || $intro ) : ?>
+			<div class="flex w-full max-w-[50rem] flex-col items-start gap-4">
 				<?php if ( $eyebrow ) : ?>
 					<p class="m-0 font-display text-body uppercase tracking-[1px] text-accent">
 						<?php echo esc_html( $eyebrow ); ?>
@@ -44,6 +45,12 @@ $section_class = ! empty( $iom_tighten_evolution_bottom )
 					<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">
 						<?php echo esc_html( $heading ); ?>
 					</h2>
+				<?php endif; ?>
+
+				<?php if ( $intro ) : ?>
+					<p class="m-0 font-sans text-body leading-[1.2] text-muted">
+						<?php echo esc_html( $intro ); ?>
+					</p>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>

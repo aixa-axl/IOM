@@ -3207,6 +3207,16 @@
                             "required": 0
                         },
                         {
+                            "key": "field_iom_te_intro",
+                            "label": "Intro",
+                            "name": "intro",
+                            "type": "textarea",
+                            "instructions": "Optional supporting text below the heading.",
+                            "required": 0,
+                            "rows": 3,
+                            "new_lines": ""
+                        },
+                        {
                             "key": "field_iom_te_cards",
                             "label": "Cards",
                             "name": "cards",
