@@ -849,8 +849,9 @@
 
 /**
  * Ambassadors grid pagination (client-side).
+ * Desktop only — mobile uses horizontal scroll and shows every card.
  * Page height follows visible cards; on change, jump to the top of this layout
- * (under sticky header) on mobile and desktop — no scroll-to-bottom.
+ * (under sticky header) — no scroll-to-bottom.
  */
 (function () {
 	document.querySelectorAll('[data-ambassadors-grid]').forEach(function (section) {
@@ -858,6 +859,7 @@
 		const cards = Array.prototype.slice.call(section.querySelectorAll('[data-ambassadors-card]'));
 		const buttons = Array.prototype.slice.call(section.querySelectorAll('[data-ambassadors-page]'));
 		const wrap = section.querySelector('[data-ambassadors-grid-wrap]');
+		const desktopMq = window.matchMedia('(min-width: 1024px)');
 
 		if (perPage < 1 || !cards.length || !buttons.length) {
 			return;
@@ -869,7 +871,19 @@
 			wrap.style.minHeight = '';
 		}
 
+		let currentPage = 1;
+
 		function setPage(page) {
+			currentPage = page;
+
+			// Mobile / tablet carousel: show every card so scroll can reach them all.
+			if (!desktopMq.matches) {
+				cards.forEach(function (card) {
+					card.classList.remove('hidden');
+				});
+				return;
+			}
+
 			const start = (page - 1) * perPage;
 			const end = start + perPage;
 
@@ -923,6 +937,18 @@
 				});
 			});
 		});
+
+		function onViewportChange() {
+			setPage(currentPage);
+		}
+
+		if (typeof desktopMq.addEventListener === 'function') {
+			desktopMq.addEventListener('change', onViewportChange);
+		} else if (typeof desktopMq.addListener === 'function') {
+			desktopMq.addListener(onViewportChange);
+		}
+
+		setPage(1);
 	});
 })();
 

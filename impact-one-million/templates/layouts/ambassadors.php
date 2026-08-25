@@ -73,10 +73,10 @@ $img_attrs = array(
 					}
 
 					$img_attrs['alt'] = $name ? $name : '';
-					$hidden           = ( $use_paging && $index >= $per_page );
+					// Desktop pagination hides extras via JS; mobile carousel shows all.
 					?>
 					<li
-						class="flex w-[min(85%,20rem)] shrink-0 snap-center flex-col gap-5 self-start rounded-card border border-solid border-[#dfe8ff] bg-white p-6 lg:w-auto lg:shrink lg:snap-align-none<?php echo $hidden ? ' hidden' : ''; ?>"
+						class="flex w-[min(85%,20rem)] shrink-0 snap-center flex-col gap-5 self-start rounded-card border border-solid border-[#dfe8ff] bg-white p-6 lg:w-auto lg:shrink lg:snap-align-none"
 						<?php echo $use_paging ? 'data-ambassadors-card' : ''; ?>
 					>
 						<div class="relative h-[15rem] w-full overflow-hidden rounded-card bg-off-white">
@@ -138,7 +138,7 @@ $img_attrs = array(
 			</div>
 
 			<?php if ( $use_paging ) : ?>
-				<nav class="flex flex-wrap items-center gap-2 px-page xl:px-0" data-ambassadors-pagination aria-label="<?php echo esc_attr__( 'Ambassadors pagination', 'impact-one-million' ); ?>">
+				<nav class="hidden flex-wrap items-center gap-2 px-page lg:flex xl:px-0" data-ambassadors-pagination aria-label="<?php echo esc_attr__( 'Ambassadors pagination', 'impact-one-million' ); ?>">
 					<?php for ( $i = 1; $i <= $page_count; $i++ ) : ?>
 						<button
 							type="button"
