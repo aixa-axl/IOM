@@ -30,7 +30,7 @@ if ( ! is_array( $cta ) ) {
 	$cta = array();
 }
 
-$btn_class = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+$btn_class = 'inline-flex items-center justify-center self-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-5 text-center font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 lg:py-3.5';
 
 if ( ! is_array( $countries ) || empty( $countries ) ) {
 	$countries = array(
@@ -319,13 +319,15 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 		</nav>
 
 		<?php if ( ! empty( $cta['url'] ) ) : ?>
-			<?php
-			iom_render_link(
-				$cta,
-				$btn_class,
-				__( 'Learn more', 'impact-one-million' )
-			);
-			?>
+			<div class="flex w-full justify-center">
+				<?php
+				iom_render_link(
+					$cta,
+					$btn_class,
+					__( 'Learn more', 'impact-one-million' )
+				);
+				?>
+			</div>
 		<?php endif; ?>
 	</div>
 </section>
