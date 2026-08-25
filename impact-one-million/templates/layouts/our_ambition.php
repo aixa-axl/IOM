@@ -46,15 +46,26 @@ if ( ! is_array( $items ) ) {
 				<?php foreach ( $items as $item ) : ?>
 					<?php
 					$label = isset( $item['label'] ) ? $item['label'] : '';
-					if ( ! $label ) {
+					$text  = isset( $item['text'] ) ? $item['text'] : '';
+					if ( ! $label && ! $text ) {
 						continue;
 					}
 					?>
 					<li class="flex w-full items-start gap-6">
 						<span class="mt-2 size-6 shrink-0 rounded-full bg-accent-blue" aria-hidden="true"></span>
-						<span class="min-w-0 font-sans text-label leading-normal text-blue">
-							<?php echo esc_html( $label ); ?>
-						</span>
+						<div class="flex min-w-0 flex-col gap-2">
+							<?php if ( $label ) : ?>
+								<span class="font-sans text-label leading-normal text-blue">
+									<?php echo esc_html( $label ); ?>
+								</span>
+							<?php endif; ?>
+
+							<?php if ( $text ) : ?>
+								<p class="m-0 font-sans text-body leading-[1.2] text-muted">
+									<?php echo esc_html( $text ); ?>
+								</p>
+							<?php endif; ?>
+						</div>
 					</li>
 				<?php endforeach; ?>
 			</ul>

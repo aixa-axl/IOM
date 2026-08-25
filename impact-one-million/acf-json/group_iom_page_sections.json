@@ -3050,9 +3050,9 @@
                             "label": "Items",
                             "name": "items",
                             "type": "repeater",
-                            "instructions": "Bullet list with accent-blue dots. Leave empty to hide.",
+                            "instructions": "Bullet list with accent-blue dots. Optional text under each label. Leave empty to hide.",
                             "required": 0,
-                            "layout": "table",
+                            "layout": "block",
                             "button_label": "Add Item",
                             "sub_fields": [
                                 {
@@ -3062,6 +3062,17 @@
                                     "type": "text",
                                     "instructions": "e.g. Positively impact one million people across global supply chains",
                                     "required": 0,
+                                    "parent_repeater": "field_iom_oa_items"
+                                },
+                                {
+                                    "key": "field_iom_oa_item_text",
+                                    "label": "Text",
+                                    "name": "text",
+                                    "type": "textarea",
+                                    "instructions": "Optional supporting text under this bullet.",
+                                    "required": 0,
+                                    "rows": 2,
+                                    "new_lines": "",
                                     "parent_repeater": "field_iom_oa_items"
                                 }
                             ]
