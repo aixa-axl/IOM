@@ -1528,6 +1528,16 @@
                             "required": 0
                         },
                         {
+                            "key": "field_iom_op_pillars_intro",
+                            "label": "Pillars Intro",
+                            "name": "pillars_intro",
+                            "type": "textarea",
+                            "instructions": "Optional supporting text below the pillars heading.",
+                            "required": 0,
+                            "rows": 3,
+                            "new_lines": ""
+                        },
+                        {
                             "key": "field_iom_op_cards",
                             "label": "Cards",
                             "name": "cards",

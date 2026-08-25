@@ -13,6 +13,7 @@ $intro_heading = get_sub_field( 'intro_heading' );
 $tags          = get_sub_field( 'tags' );
 $intro_body    = get_sub_field( 'intro_body' );
 $heading       = get_sub_field( 'heading' );
+$pillars_intro = get_sub_field( 'pillars_intro' );
 $cards         = get_sub_field( 'cards' );
 $cta           = get_sub_field( 'cta' );
 
@@ -106,8 +107,8 @@ $outer_gap = $has_intro
 	: 'gap-10 lg:gap-6';
 
 $heading_class = $has_intro
-	? 'm-0 px-page text-center font-display text-header leading-none text-navy xl:px-0'
-	: 'm-0 px-page text-center font-display text-headline leading-[1.2] text-blue xl:px-0';
+	? 'm-0 text-center font-display text-header leading-none text-navy'
+	: 'm-0 text-center font-display text-headline leading-[1.2] text-blue';
 
 $card_count = is_array( $cards ) ? count( $cards ) : 0;
 ?>
@@ -149,16 +150,26 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 		<?php endif; ?>
 
 		<div class="flex w-full flex-col items-center gap-10">
-			<?php if ( $heading ) : ?>
-				<?php if ( $has_intro ) : ?>
-					<h3 class="<?php echo esc_attr( $heading_class ); ?>">
-						<?php echo esc_html( $heading ); ?>
-					</h3>
-				<?php else : ?>
-					<h2 class="<?php echo esc_attr( $heading_class ); ?>">
-						<?php echo esc_html( $heading ); ?>
-					</h2>
-				<?php endif; ?>
+			<?php if ( $heading || $pillars_intro ) : ?>
+				<div class="flex w-full max-w-[50rem] flex-col items-center gap-4 px-page text-center xl:px-0">
+					<?php if ( $heading ) : ?>
+						<?php if ( $has_intro ) : ?>
+							<h3 class="<?php echo esc_attr( $heading_class ); ?>">
+								<?php echo esc_html( $heading ); ?>
+							</h3>
+						<?php else : ?>
+							<h2 class="<?php echo esc_attr( $heading_class ); ?>">
+								<?php echo esc_html( $heading ); ?>
+							</h2>
+						<?php endif; ?>
+					<?php endif; ?>
+
+					<?php if ( $pillars_intro ) : ?>
+						<p class="m-0 font-sans text-body leading-[1.2] text-muted">
+							<?php echo esc_html( $pillars_intro ); ?>
+						</p>
+					<?php endif; ?>
+				</div>
 			<?php endif; ?>
 
 			<?php if ( ! empty( $cards ) ) : ?>
