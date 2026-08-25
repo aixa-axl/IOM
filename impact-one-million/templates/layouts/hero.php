@@ -159,8 +159,8 @@ $iom_is_financial_wellbeing_page = function_exists( 'is_page' ) && (
 	|| ( is_singular( 'page' ) && false !== stripos( (string) get_the_title(), 'Financial Well-being' ) )
 );
 if ( $is_first_section && ! $is_accent && $iom_is_financial_wellbeing_page ) {
-	$btn_filled_base .= ' whitespace-nowrap text-[18px] tracking-[1px] md:text-card-title md:tracking-[2px]';
-	$btn_outline     .= ' whitespace-nowrap text-[18px] tracking-[1px] md:text-card-title md:tracking-[2px]';
+	$btn_filled_base .= ' whitespace-nowrap text-[16px] tracking-[1px] md:text-card-title md:tracking-[2px]';
+	$btn_outline     .= ' whitespace-nowrap text-[16px] tracking-[1px] md:text-card-title md:tracking-[2px]';
 }
 
 $btn_primary = $btn_filled_base . ' ' . $fill_bg[ $primary_cta_style ];
