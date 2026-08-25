@@ -2234,6 +2234,16 @@
                                     "parent_repeater": "field_iom_jr_items"
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_iom_jr_footer",
+                            "label": "Text Below Items",
+                            "name": "footer",
+                            "type": "textarea",
+                            "instructions": "Optional supporting text under the checklist.",
+                            "required": 0,
+                            "rows": 3,
+                            "new_lines": ""
                         }
                     ],
                     "min": "",
