@@ -1625,11 +1625,29 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_iom_roic_section_title",
+                            "label": "Section Title",
+                            "name": "section_title",
+                            "type": "text",
+                            "instructions": "Optional title above the calculator card.",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_iom_roic_section_intro",
+                            "label": "Section Intro",
+                            "name": "section_intro",
+                            "type": "textarea",
+                            "instructions": "Optional text below the section title.",
+                            "required": 0,
+                            "rows": 3,
+                            "new_lines": ""
+                        },
+                        {
                             "key": "field_iom_roic_heading",
                             "label": "Heading",
                             "name": "heading",
                             "type": "text",
-                            "instructions": "e.g. ROI Calculator",
+                            "instructions": "Title inside the calculator card. e.g. ROI Calculator",
                             "required": 0
                         },
                         {

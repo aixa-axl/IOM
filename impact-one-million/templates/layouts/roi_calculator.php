@@ -7,6 +7,8 @@
  * Figma desktop: 667:34002 — Figma mobile: 677:41520
  */
 
+$section_title   = get_sub_field( 'section_title' );
+$section_intro   = get_sub_field( 'section_intro' );
 $heading         = get_sub_field( 'heading' );
 $audiences       = get_sub_field( 'audiences' );
 $min_amount      = (int) get_sub_field( 'min_amount' );
@@ -133,11 +135,34 @@ $pct = ( ( $default_amount - $min_amount ) / max( 1, ( $max_amount - $min_amount
 >
 	<script type="application/json" data-roi-audiences><?php echo wp_json_encode( $audiences_json ); ?></script>
 
-	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-6 rounded-card border border-solid border-[#dfe8ff] bg-white p-4 lg:gap-6 lg:p-10">
+	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-10">
+		<?php if ( $section_title || $section_intro ) : ?>
+			<div class="flex w-full max-w-[50rem] flex-col items-center gap-4 text-center">
+				<?php if ( $section_title ) : ?>
+					<h2 class="m-0 font-display text-headline leading-[1.2] text-white">
+						<?php echo esc_html( $section_title ); ?>
+					</h2>
+				<?php endif; ?>
+
+				<?php if ( $section_intro ) : ?>
+					<p class="m-0 font-sans text-body leading-[1.2] text-white/90">
+						<?php echo esc_html( $section_intro ); ?>
+					</p>
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
+
+		<div class="flex w-full flex-col items-center gap-6 rounded-card border border-solid border-[#dfe8ff] bg-white p-4 lg:gap-6 lg:p-10">
 		<?php if ( $heading ) : ?>
-			<h2 class="m-0 text-center font-display text-headline leading-[1.2] text-blue">
-				<?php echo esc_html( $heading ); ?>
-			</h2>
+			<?php if ( $section_title ) : ?>
+				<h3 class="m-0 text-center font-display text-headline leading-[1.2] text-blue">
+					<?php echo esc_html( $heading ); ?>
+				</h3>
+			<?php else : ?>
+				<h2 class="m-0 text-center font-display text-headline leading-[1.2] text-blue">
+					<?php echo esc_html( $heading ); ?>
+				</h2>
+			<?php endif; ?>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $audiences ) ) : ?>
@@ -254,5 +279,6 @@ $pct = ( ( $default_amount - $min_amount ) / max( 1, ( $max_amount - $min_amount
 				?>
 			</div>
 		<?php endif; ?>
+		</div>
 	</div>
 </section>
