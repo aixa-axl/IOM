@@ -366,15 +366,15 @@ body {
   }
 
   /*
-   * History — tighten Evolution → Looking Ahead only (other pages unchanged).
-   * Default stack is ~100px + 80px; cut to ~48px each.
+   * History — Evolution → Looking Ahead (backup for PHP class toggle).
+   * Collapse stacked paddings hard so the gap is clearly tighter.
    */
   body.page-history .entry-content > section.iom-the-evolution:has(+ section.iom-looking-ahead) {
-    padding-bottom: 3rem;
+    padding-bottom: 2rem !important;
   }
 
   body.page-history .entry-content > section.iom-the-evolution + section.iom-looking-ahead {
-    padding-top: 3rem;
+    padding-top: 2rem !important;
   }
 
   .iom-challenge-cards,

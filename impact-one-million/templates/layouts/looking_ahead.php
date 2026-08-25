@@ -29,9 +29,14 @@ if ( ! is_array( $cta ) ) {
 }
 
 $btn_class = 'inline-flex w-full max-w-[21.75rem] items-center justify-center rounded-btn border-[1.5px] border-solid border-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-80 lg:w-auto lg:max-w-none';
+
+// History page only: less top padding when Evolution precedes (set in page.php).
+$section_class = ! empty( $iom_tighten_looking_ahead_top )
+	? 'iom-looking-ahead bg-white px-page pt-6 pb-10 xl:px-gutter xl:pt-8 xl:pb-gutter'
+	: 'iom-looking-ahead bg-white px-page py-10 xl:p-gutter';
 ?>
 
-<section class="iom-looking-ahead bg-white px-page py-10 xl:p-gutter">
+<section class="<?php echo esc_attr( $section_class ); ?>">
 	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-10">
 		<?php if ( $eyebrow || $heading ) : ?>
 			<div class="flex w-full flex-col items-center gap-4 text-center">

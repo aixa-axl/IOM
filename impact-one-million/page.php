@@ -20,6 +20,7 @@ get_header();
 						$page_sections_rows = get_field( 'page_sections' );
 						$iom_sections_total = is_array( $page_sections_rows ) ? count( $page_sections_rows ) : 0;
 						$iom_section_i      = 0;
+						$iom_is_history     = function_exists( 'is_page' ) && is_page( 'history' );
 
 						while ( have_rows( 'page_sections' ) ) {
 							the_row();
@@ -27,6 +28,30 @@ get_header();
 
 							$layout              = get_row_layout();
 							$iom_is_last_section = ( $iom_section_i === $iom_sections_total );
+
+							// Adjacent layout names (0-based indices around the current 1-based row).
+							$iom_prev_layout = '';
+							$iom_next_layout = '';
+							if ( is_array( $page_sections_rows ) ) {
+								if ( $iom_section_i > 1 && isset( $page_sections_rows[ $iom_section_i - 2 ]['acf_fc_layout'] ) ) {
+									$iom_prev_layout = (string) $page_sections_rows[ $iom_section_i - 2 ]['acf_fc_layout'];
+								}
+								if ( isset( $page_sections_rows[ $iom_section_i ]['acf_fc_layout'] ) ) {
+									$iom_next_layout = (string) $page_sections_rows[ $iom_section_i ]['acf_fc_layout'];
+								}
+							}
+
+							// History only: Evolution immediately followed by Looking Ahead.
+							$iom_tighten_evolution_bottom  = (
+								$iom_is_history
+								&& 'the_evolution' === $layout
+								&& 'looking_ahead' === $iom_next_layout
+							);
+							$iom_tighten_looking_ahead_top = (
+								$iom_is_history
+								&& 'looking_ahead' === $layout
+								&& 'the_evolution' === $iom_prev_layout
+							);
 
 							$layout_path = locate_template(
 								array(

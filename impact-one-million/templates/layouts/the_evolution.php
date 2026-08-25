@@ -23,9 +23,14 @@ if ( ! $heading ) {
 if ( ! is_array( $cards ) ) {
 	$cards = array();
 }
+
+// History page only: less bottom padding when Looking Ahead follows (set in page.php).
+$section_class = ! empty( $iom_tighten_evolution_bottom )
+	? 'iom-the-evolution bg-white px-page py-10 lg:pt-[100px] lg:pb-8 xl:px-[6.25rem]'
+	: 'iom-the-evolution bg-white px-page py-10 lg:py-[100px] xl:px-[6.25rem]';
 ?>
 
-<section class="iom-the-evolution bg-white px-page py-10 lg:py-[100px] xl:px-[6.25rem]">
+<section class="<?php echo esc_attr( $section_class ); ?>">
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-16">
 		<?php if ( $eyebrow || $heading ) : ?>
 			<div class="flex w-full flex-col items-start gap-4">

@@ -2787,16 +2787,16 @@ body {
   }
 
   /*
-   * History — tighten Evolution → Looking Ahead only (other pages unchanged).
-   * Default stack is ~100px + 80px; cut to ~48px each.
+   * History — Evolution → Looking Ahead (backup for PHP class toggle).
+   * Collapse stacked paddings hard so the gap is clearly tighter.
    */
 
   body.page-history .entry-content > section.iom-the-evolution:has(+ section.iom-looking-ahead) {
-    padding-bottom: 3rem;
+    padding-bottom: 2rem !important;
   }
 
   body.page-history .entry-content > section.iom-the-evolution + section.iom-looking-ahead {
-    padding-top: 3rem;
+    padding-top: 2rem !important;
   }
 
   .iom-challenge-cards,
@@ -4065,6 +4065,10 @@ body {
     padding-bottom: 0px;
   }
 
+  .lg\:pb-8 {
+    padding-bottom: 2rem;
+  }
+
   .lg\:pl-\[3\.75rem\] {
     padding-left: 3.75rem;
   }
@@ -4075,6 +4079,10 @@ body {
 
   .lg\:pt-10 {
     padding-top: 2.5rem;
+  }
+
+  .lg\:pt-\[100px\] {
+    padding-top: 100px;
   }
 
   .lg\:text-left {
@@ -4374,6 +4382,14 @@ body {
   .xl\:py-gutter {
     padding-top: 80px;
     padding-bottom: 80px;
+  }
+
+  .xl\:pb-gutter {
+    padding-bottom: 80px;
+  }
+
+  .xl\:pt-8 {
+    padding-top: 2rem;
   }
 
   .xl\:text-stat-label {
