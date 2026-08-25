@@ -29,7 +29,7 @@ if ( ! is_array( $items ) ) {
 
 		<div class="flex min-w-0 flex-1 flex-col items-start gap-8">
 			<?php if ( $body ) : ?>
-				<div class="m-0 font-sans text-body leading-[1.2] [&_a]:underline [&_b]:font-semibold [&_p]:m-0 [&_p+p]:mt-3 [&_strong]:font-semibold">
+				<div class="m-0 font-sans text-body leading-[1.2] [&_a]:underline [&_b]:font-semibold [&_p]:m-0 [&_p+p]:mt-2 [&_strong]:font-semibold">
 					<?php echo wp_kses_post( $body ); ?>
 				</div>
 			<?php endif; ?>

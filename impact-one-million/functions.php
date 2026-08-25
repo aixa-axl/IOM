@@ -594,7 +594,7 @@ function iom_format_multiline_text( $text, $p_class = 'm-0' ) {
 
 	$html = '';
 	foreach ( $parts as $i => $line ) {
-		$class = trim( $p_class . ( $i > 0 ? ' mt-3' : '' ) );
+		$class = trim( $p_class . ( $i > 0 ? ' mt-2' : '' ) );
 		$html .= '<p class="' . esc_attr( $class ) . '">' . esc_html( $line ) . '</p>';
 	}
 
