@@ -103,7 +103,7 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 			<?php endif; ?>
 
 			<?php if ( ! empty( $steps ) ) : ?>
-				<ul class="m-0 flex w-full list-none flex-col gap-3 p-0 lg:w-auto lg:max-w-xl lg:shrink-0">
+				<ul class="m-0 grid w-full list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2 lg:min-w-0 lg:flex-1 lg:max-w-3xl">
 					<?php foreach ( $steps as $step ) : ?>
 						<?php
 						$text    = isset( $step['text'] ) ? $step['text'] : '';
@@ -112,8 +112,8 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 							continue;
 						}
 						?>
-						<li class="rounded-btn border-[1.5px] border-solid border-transparent bg-white px-6 py-4">
-							<div class="flex flex-col gap-2">
+						<li class="h-full rounded-btn border-[1.5px] border-solid border-transparent bg-white px-6 py-4">
+							<div class="flex h-full flex-col gap-2">
 								<p class="m-0 font-display text-[24px] leading-none text-blue lg:text-header">
 									<?php echo esc_html( $text ); ?>
 								</p>

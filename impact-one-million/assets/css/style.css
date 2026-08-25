@@ -3755,6 +3755,10 @@ body {
     min-width: 7.5rem;
   }
 
+  .lg\:max-w-3xl {
+    max-width: 48rem;
+  }
+
   .lg\:max-w-\[18\.75rem\] {
     max-width: 18.75rem;
   }
@@ -3781,10 +3785,6 @@ body {
 
   .lg\:max-w-none {
     max-width: none;
-  }
-
-  .lg\:max-w-xl {
-    max-width: 36rem;
   }
 
   .lg\:flex-1 {
