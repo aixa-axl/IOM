@@ -48,6 +48,15 @@ if ( ! empty( $iom_tighten_process_steps_top ) && ! $is_vertical ) {
 	$section_class = 'iom-process-steps bg-off-white px-page pt-6 pb-section xl:px-[7.5rem] lg:pt-10 lg:pb-24';
 }
 
+// Partners page only: slightly less bottom padding on mobile.
+$iom_is_partners_page = ! empty( $iom_is_partners )
+	|| ( function_exists( 'is_page' ) && is_page( 'partners' ) );
+if ( $iom_is_partners_page && ! $is_vertical ) {
+	$section_class = ! empty( $iom_tighten_process_steps_top )
+		? 'iom-process-steps bg-off-white px-page pt-6 pb-10 xl:px-[7.5rem] lg:pt-10 lg:pb-24'
+		: 'iom-process-steps bg-off-white px-page pt-section pb-10 xl:px-[7.5rem] lg:py-24';
+}
+
 $heading_class = $is_vertical
 	? 'm-0 text-center font-display text-headline leading-[1.2] text-white'
 	: 'm-0 text-center font-display text-headline leading-[1.2] text-blue';
