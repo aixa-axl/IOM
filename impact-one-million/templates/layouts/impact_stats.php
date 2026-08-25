@@ -64,7 +64,7 @@ $fallback_orders = array(
 );
 ?>
 
-<section class="bg-white px-page py-section xl:px-gutter lg:py-gutter" data-impact-stats>
+<section class="bg-accent px-page py-section xl:px-gutter lg:py-gutter" data-impact-stats>
 	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-20 lg:gap-[3.75rem]">
 		<ul class="iom-stats-list m-0 flex w-full list-none flex-col items-center p-0 lg:flex-row lg:items-start lg:justify-between" data-impact-stats-list>
 			<?php foreach ( $stats as $index => $row ) : ?>
@@ -108,7 +108,7 @@ $fallback_orders = array(
 					</div>
 
 					<p
-						class="m-0 pb-2 font-display text-number text-blue"
+						class="m-0 pb-2 font-display text-number text-white"
 						data-count-up
 						data-count-to="<?php echo esc_attr( (string) $value ); ?>"
 						data-count-prefix="<?php echo esc_attr( $prefix ); ?>"
@@ -118,7 +118,7 @@ $fallback_orders = array(
 					</p>
 
 					<?php if ( $label ) : ?>
-						<p class="m-0 font-display text-[22px] leading-[1.2] tracking-[0.04em] text-accent-blue opacity-60 lg:text-stat-label">
+						<p class="m-0 font-display text-[22px] leading-[1.2] tracking-[0.04em] text-white/80 lg:text-stat-label">
 							<?php echo esc_html( $label ); ?>
 						</p>
 					<?php endif; ?>
@@ -127,7 +127,7 @@ $fallback_orders = array(
 		</ul>
 
 		<?php if ( $description ) : ?>
-			<p class="m-0 max-w-[56.25rem] text-center font-sans text-[22px] font-semibold leading-[1.2] text-blue lg:text-stat-label">
+			<p class="m-0 max-w-[56.25rem] text-center font-sans text-[22px] font-semibold leading-[1.2] text-white lg:text-stat-label">
 				<?php echo esc_html( $description ); ?>
 			</p>
 		<?php endif; ?>
