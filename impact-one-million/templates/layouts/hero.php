@@ -114,6 +114,22 @@ if ( $is_last_mid_cta && function_exists( 'is_page' ) && is_page( 'history' ) ) 
 	$btn_outline     .= ' md:px-5 md:text-[22px] md:tracking-[1.5px]';
 }
 
+// Family & ECD page top hero only: long primary CTA — smaller desktop type.
+$iom_is_family_ecd_page = function_exists( 'is_page' ) && (
+	is_page(
+		array(
+			'family-and-early-childhood-development',
+			'family-early-childhood-development',
+			'family-and-early-childhood',
+		)
+	)
+	|| ( is_singular( 'page' ) && false !== stripos( (string) get_the_title(), 'Family and Early Childhood' ) )
+);
+if ( $is_first_section && ! $is_accent && $iom_is_family_ecd_page ) {
+	$btn_filled_base .= ' lg:text-[20px] lg:tracking-[1.5px]';
+	$btn_outline     .= ' lg:text-[20px] lg:tracking-[1.5px]';
+}
+
 $btn_primary = $btn_filled_base . ' ' . $fill_bg[ $primary_cta_style ];
 
 if ( 'outline' === $secondary_cta_style ) {

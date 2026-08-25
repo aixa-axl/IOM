@@ -403,6 +403,17 @@ body {
   }
 
   /*
+   * Family & ECD — top hero CTA only: long label, slightly smaller desktop type
+   * (24px → 20px). Does not affect mobile or other pages/heroes.
+   */
+  body.page-family-and-early-childhood-development .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a,
+  body.page-family-early-childhood-development .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a,
+  body.page-family-and-early-childhood .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a {
+    font-size: 20px;
+    letter-spacing: 1.5px;
+  }
+
+  /*
    * History — Evolution → Looking Ahead (backup for PHP class toggle).
    * Collapse stacked paddings hard so the gap is clearly tighter.
    */

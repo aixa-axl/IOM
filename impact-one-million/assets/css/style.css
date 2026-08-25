@@ -1091,10 +1091,6 @@ video {
   width: 8.75rem;
 }
 
-.w-\[82\%\] {
-  width: 82%;
-}
-
 .w-\[calc\(\(200\%-1\.5rem\)\/3\)\] {
   width: calc((200% - 1.5rem) / 3);
 }
@@ -1637,10 +1633,6 @@ video {
 
 .border-solid {
   border-style: solid;
-}
-
-.border-dashed {
-  border-style: dashed;
 }
 
 .border-\[\#dfe8ff\] {
@@ -2322,10 +2314,6 @@ video {
   opacity: 0;
 }
 
-.opacity-100 {
-  opacity: 1;
-}
-
 .opacity-40 {
   opacity: 0.4;
 }
@@ -2867,6 +2855,18 @@ body {
     letter-spacing: 1.5px;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+  }
+
+  /*
+   * Family & ECD — top hero CTA only: long label, slightly smaller desktop type
+   * (24px → 20px). Does not affect mobile or other pages/heroes.
+   */
+
+  body.page-family-and-early-childhood-development .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a,
+  body.page-family-early-childhood-development .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a,
+  body.page-family-and-early-childhood .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a {
+    font-size: 20px;
+    letter-spacing: 1.5px;
   }
 
   /*
@@ -4191,6 +4191,11 @@ body {
     padding-bottom: 6rem;
   }
 
+  .lg\:py-3\.5 {
+    padding-top: 0.875rem;
+    padding-bottom: 0.875rem;
+  }
+
   .lg\:py-6 {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
@@ -4254,6 +4259,10 @@ body {
 
   .lg\:text-left {
     text-align: left;
+  }
+
+  .lg\:text-\[20px\] {
+    font-size: 20px;
   }
 
   .lg\:text-\[clamp\(3\.5rem\2c 8vw\2c 7\.5rem\)\] {
@@ -4328,6 +4337,10 @@ body {
 
   .lg\:tracking-\[0\.02em\] {
     letter-spacing: 0.02em;
+  }
+
+  .lg\:tracking-\[1\.5px\] {
+    letter-spacing: 1.5px;
   }
 
   .lg\:tracking-normal {
