@@ -70,6 +70,102 @@ function iom_content_type_slugs() {
 }
 
 /**
+ * Topic slugs that only appear in the News content filter grid.
+ *
+ * @return string[]
+ */
+function iom_news_only_topic_slugs() {
+	return array( 'events' );
+}
+
+/**
+ * Topics (post tags) for the content filter dropdown, scoped to a content type.
+ * News-only topics (e.g. Events) are excluded from Case Study / Press Release grids.
+ *
+ * @param string $content_type Category slug: case-study | news | press-release.
+ * @return WP_Term[]
+ */
+function iom_get_filter_topics_for_content_type( $content_type ) {
+	$content_type = sanitize_title( $content_type );
+	$allowed      = iom_content_type_slugs();
+	if ( ! in_array( $content_type, $allowed, true ) ) {
+		$content_type = 'case-study';
+	}
+
+	global $wpdb;
+
+	$term_ids = $wpdb->get_col(
+		$wpdb->prepare(
+			"SELECT DISTINCT t.term_id
+			FROM {$wpdb->terms} AS t
+			INNER JOIN {$wpdb->term_taxonomy} AS tt
+				ON t.term_id = tt.term_id AND tt.taxonomy = 'post_tag'
+			INNER JOIN {$wpdb->term_relationships} AS tr
+				ON tt.term_taxonomy_id = tr.term_taxonomy_id
+			INNER JOIN {$wpdb->posts} AS p
+				ON p.ID = tr.object_id AND p.post_type = 'post' AND p.post_status = 'publish'
+			INNER JOIN {$wpdb->term_relationships} AS tr_cat
+				ON p.ID = tr_cat.object_id
+			INNER JOIN {$wpdb->term_taxonomy} AS tt_cat
+				ON tr_cat.term_taxonomy_id = tt_cat.term_taxonomy_id AND tt_cat.taxonomy = 'category'
+			INNER JOIN {$wpdb->terms} AS t_cat
+				ON tt_cat.term_id = t_cat.term_id AND t_cat.slug = %s
+			ORDER BY t.name ASC",
+			$content_type
+		)
+	);
+
+	$topics = array();
+
+	if ( ! empty( $term_ids ) ) {
+		$found = get_terms(
+			array(
+				'taxonomy'   => 'post_tag',
+				'include'    => array_map( 'intval', $term_ids ),
+				'hide_empty' => false,
+				'orderby'    => 'name',
+				'order'      => 'ASC',
+			)
+		);
+		if ( ! empty( $found ) && ! is_wp_error( $found ) ) {
+			$topics = $found;
+		}
+	}
+
+	if ( 'news' !== $content_type ) {
+		$news_only = iom_news_only_topic_slugs();
+		$topics    = array_values(
+			array_filter(
+				$topics,
+				static function ( $term ) use ( $news_only ) {
+					return ! in_array( $term->slug, $news_only, true );
+				}
+			)
+		);
+	} else {
+		// Always offer news-only topics (e.g. Events) even before posts are tagged.
+		$existing_slugs = wp_list_pluck( $topics, 'slug' );
+		foreach ( iom_news_only_topic_slugs() as $slug ) {
+			if ( in_array( $slug, $existing_slugs, true ) ) {
+				continue;
+			}
+			$term = get_term_by( 'slug', $slug, 'post_tag' );
+			if ( $term && ! is_wp_error( $term ) ) {
+				$topics[] = $term;
+			}
+		}
+		usort(
+			$topics,
+			static function ( $a, $b ) {
+				return strcasecmp( $a->name, $b->name );
+			}
+		);
+	}
+
+	return $topics;
+}
+
+/**
  * Ensure the three content-type categories exist.
  */
 function iom_seed_content_type_categories() {
@@ -137,10 +233,10 @@ function iom_get_post_topic_label( $post_id ) {
 	}
 
 	$categories = get_the_category( $post_id );
-	$type_slugs = iom_content_type_slugs();
+	$type_slugs = array_merge( iom_content_type_slugs(), array( 'uncategorized', 'events' ) );
 	if ( ! empty( $categories ) && ! is_wp_error( $categories ) ) {
 		foreach ( $categories as $cat ) {
-			if ( in_array( $cat->slug, $type_slugs, true ) || 'uncategorized' === $cat->slug ) {
+			if ( in_array( $cat->slug, $type_slugs, true ) ) {
 				continue;
 			}
 			return $cat->name;
@@ -158,7 +254,7 @@ function iom_get_post_topic_label( $post_id ) {
  */
 function iom_get_post_topic_labels( $post_id ) {
 	$labels     = array();
-	$type_slugs = iom_content_type_slugs();
+	$type_slugs = array_merge( iom_content_type_slugs(), array( 'uncategorized', 'events' ) );
 
 	$topics = get_the_terms( $post_id, 'post_tag' );
 	if ( ! empty( $topics ) && ! is_wp_error( $topics ) ) {
@@ -523,11 +619,21 @@ function iom_case_studies_query( $args = array() ) {
 	}
 
 	if ( ! empty( $args['topic'] ) ) {
-		$tax_query[] = array(
-			'taxonomy' => 'post_tag',
-			'field'    => 'slug',
-			'terms'    => sanitize_title( $args['topic'] ),
-		);
+		$topic_slug = sanitize_title( $args['topic'] );
+		// Events (and other news-only topics) only apply on the News grid.
+		if (
+			in_array( $topic_slug, iom_news_only_topic_slugs(), true )
+			&& 'news' !== sanitize_title( $args['category'] )
+		) {
+			$topic_slug = '';
+		}
+		if ( $topic_slug ) {
+			$tax_query[] = array(
+				'taxonomy' => 'post_tag',
+				'field'    => 'slug',
+				'terms'    => $topic_slug,
+			);
+		}
 	}
 
 	if ( count( $tax_query ) > 1 ) {

@@ -74,11 +74,9 @@ $countries = get_terms(
 	)
 );
 
-$topics = get_tags(
-	array(
-		'hide_empty' => true,
-	)
-);
+$topics = function_exists( 'iom_get_filter_topics_for_content_type' )
+	? iom_get_filter_topics_for_content_type( $content_type )
+	: get_tags( array( 'hide_empty' => true ) );
 
 global $wpdb;
 $years = $wpdb->get_col(
