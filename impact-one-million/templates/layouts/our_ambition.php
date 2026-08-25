@@ -45,17 +45,21 @@ if ( ! is_array( $items ) ) {
 			<ul class="m-0 flex min-w-0 flex-1 list-none flex-col items-start gap-6 p-0 lg:gap-4">
 				<?php foreach ( $items as $item ) : ?>
 					<?php
-					$label = isset( $item['label'] ) ? $item['label'] : '';
-					$text  = isset( $item['text'] ) ? $item['text'] : '';
+					$label      = isset( $item['label'] ) ? $item['label'] : '';
+					$text       = isset( $item['text'] ) ? $item['text'] : '';
+					$bold_label = ! empty( $item['bold_label'] );
 					if ( ! $label && ! $text ) {
 						continue;
 					}
+					$label_class = $bold_label
+						? 'font-sans text-label font-semibold leading-normal text-blue'
+						: 'font-sans text-label leading-normal text-blue';
 					?>
 					<li class="flex w-full items-start gap-6">
 						<span class="mt-2 size-6 shrink-0 rounded-full bg-accent-blue" aria-hidden="true"></span>
 						<div class="flex min-w-0 flex-col gap-2">
 							<?php if ( $label ) : ?>
-								<span class="font-sans text-label leading-normal text-blue">
+								<span class="<?php echo esc_attr( $label_class ); ?>">
 									<?php echo esc_html( $label ); ?>
 								</span>
 							<?php endif; ?>
