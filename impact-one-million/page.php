@@ -21,6 +21,7 @@ get_header();
 						$iom_sections_total = is_array( $page_sections_rows ) ? count( $page_sections_rows ) : 0;
 						$iom_section_i      = 0;
 						$iom_is_history     = function_exists( 'is_page' ) && is_page( 'history' );
+						$iom_is_partners    = function_exists( 'is_page' ) && is_page( 'partners' );
 
 						while ( have_rows( 'page_sections' ) ) {
 							the_row();
@@ -51,6 +52,18 @@ get_header();
 								$iom_is_history
 								&& 'looking_ahead' === $layout
 								&& 'the_evolution' === $iom_prev_layout
+							);
+
+							// Partners only: Stories of Change immediately followed by How It Works.
+							$iom_tighten_stories_of_change_bottom = (
+								$iom_is_partners
+								&& 'stories_of_change' === $layout
+								&& 'process_steps' === $iom_next_layout
+							);
+							$iom_tighten_process_steps_top = (
+								$iom_is_partners
+								&& 'process_steps' === $layout
+								&& 'stories_of_change' === $iom_prev_layout
 							);
 
 							$layout_path = locate_template(

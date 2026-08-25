@@ -377,6 +377,17 @@ body {
     padding-top: 2rem !important;
   }
 
+  /*
+   * Partners — Stories of Change → How It Works (backup for PHP class toggle).
+   */
+  body.page-partners .entry-content > section.iom-stories-of-change:has(+ section.iom-process-steps) {
+    padding-bottom: 2.5rem !important;
+  }
+
+  body.page-partners .entry-content > section.iom-stories-of-change + section.iom-process-steps {
+    padding-top: 2.5rem !important;
+  }
+
   .iom-challenge-cards,
   [data-challenge-cards] {
     gap: 2.5rem !important; /* gap-10 */

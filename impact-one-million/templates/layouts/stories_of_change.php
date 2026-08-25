@@ -58,9 +58,14 @@ $img_attrs = array(
 	'loading' => 'lazy',
 	'alt'     => '',
 );
+
+// Partners page only: less bottom padding when How It Works follows (set in page.php).
+$section_class = ! empty( $iom_tighten_stories_of_change_bottom )
+	? 'iom-stories-of-change bg-off-white px-page py-10 lg:pt-[100px] lg:pb-10 xl:px-16'
+	: 'iom-stories-of-change bg-off-white px-page py-10 lg:py-[100px] xl:px-16';
 ?>
 
-<section class="bg-off-white px-page py-10 lg:py-[100px] xl:px-16">
+<section class="<?php echo esc_attr( $section_class ); ?>">
 	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-12">
 		<div class="flex w-full flex-col gap-11">
 			<?php if ( $heading ) : ?>

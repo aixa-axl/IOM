@@ -45,8 +45,13 @@ $btn_secondary = $is_vertical
 	: 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-blue bg-transparent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-80';
 
 $section_class = $is_vertical
-	? 'bg-blue px-page py-section lg:py-20 xl:px-section xl:py-20'
-	: 'bg-off-white px-page py-section xl:px-[7.5rem] lg:py-24';
+	? 'iom-process-steps bg-blue px-page py-section lg:py-20 xl:px-section xl:py-20'
+	: 'iom-process-steps bg-off-white px-page py-section xl:px-[7.5rem] lg:py-24';
+
+// Partners page only: less top padding when Stories of Change precedes (set in page.php).
+if ( ! empty( $iom_tighten_process_steps_top ) && ! $is_vertical ) {
+	$section_class = 'iom-process-steps bg-off-white px-page pt-6 pb-section xl:px-[7.5rem] lg:pt-10 lg:pb-24';
+}
 
 $heading_class = $is_vertical
 	? 'm-0 text-center font-display text-headline leading-[1.2] text-white'
