@@ -42,7 +42,7 @@ if ( ! is_array( $items ) ) {
 		</div>
 
 		<?php if ( ! empty( $items ) ) : ?>
-			<ul class="m-0 flex min-w-0 flex-1 list-none flex-col items-start gap-8 p-0">
+			<ul class="m-0 flex min-w-0 flex-1 list-none flex-col items-start gap-6 p-0 lg:gap-4">
 				<?php foreach ( $items as $item ) : ?>
 					<?php
 					$label = isset( $item['label'] ) ? $item['label'] : '';
