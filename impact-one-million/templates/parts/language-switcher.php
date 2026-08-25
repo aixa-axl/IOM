@@ -31,21 +31,38 @@ foreach ( $languages as $row ) {
 	$lang_options[] = $opt;
 }
 
-$current_label = ! empty( $language_link['title'] ) ? $language_link['title'] : '';
-if ( ! $current_label && ! empty( $lang_options ) ) {
-	$current_label = $lang_options[0]['title'];
+// Preview defaults until Language Options are filled in Theme Settings.
+if ( empty( $lang_options ) ) {
+	$lang_options = array(
+		array(
+			'url'    => '#',
+			'title'  => __( 'Deutsch', 'impact-one-million' ),
+			'target' => '',
+		),
+		array(
+			'url'    => '#',
+			'title'  => __( 'English', 'impact-one-million' ),
+			'target' => '',
+		),
+		array(
+			'url'    => '#',
+			'title'  => __( 'Español', 'impact-one-million' ),
+			'target' => '',
+		),
+		array(
+			'url'    => '#',
+			'title'  => __( 'Français', 'impact-one-million' ),
+			'target' => '',
+		),
+	);
 }
+
+$current_label = ! empty( $language_link['title'] ) ? $language_link['title'] : '';
 if ( ! $current_label ) {
 	$current_label = __( 'English', 'impact-one-million' );
 }
 
-$has_dropdown = count( $lang_options ) > 0;
-$is_mobile    = ( 'mobile' === $iom_lang_variant );
-
-// Nothing to show without a current label and either a link or dropdown options.
-if ( ! $has_dropdown && empty( $language_link['url'] ) && empty( $language_link['title'] ) ) {
-	return;
-}
+$is_mobile = ( 'mobile' === $iom_lang_variant );
 
 $trigger_class = $is_mobile
 	? 'inline-flex items-center gap-2 font-display text-body uppercase tracking-[1px] text-white'
@@ -60,59 +77,14 @@ $item_class = $is_mobile
 	: 'block whitespace-nowrap px-4 py-2.5 font-sans text-sm leading-[1.5] text-navy no-underline transition-colors hover:bg-off-white';
 ?>
 
-<?php if ( $has_dropdown ) : ?>
-	<div class="relative" data-language-switcher>
-		<button
-			type="button"
-			class="<?php echo esc_attr( $trigger_class ); ?> cursor-pointer border-0 bg-transparent p-0"
-			data-language-switcher-toggle
-			aria-expanded="false"
-			aria-haspopup="listbox"
-			aria-label="<?php echo esc_attr__( 'Select language', 'impact-one-million' ); ?>"
-		>
-			<img
-				src="<?php echo esc_url( $icon_globe_uri ); ?>"
-				alt=""
-				width="18"
-				height="18"
-				class="size-[18px] shrink-0"
-				aria-hidden="true"
-			/>
-			<span data-language-switcher-label><?php echo esc_html( $current_label ); ?></span>
-			<svg class="size-2.5 shrink-0" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-				<path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-			</svg>
-		</button>
-
-		<ul
-			class="<?php echo esc_attr( $menu_class ); ?> invisible opacity-0 transition-[opacity,visibility] duration-150"
-			data-language-switcher-menu
-			role="listbox"
-			hidden
-		>
-			<?php foreach ( $lang_options as $opt ) : ?>
-				<?php
-				$is_current = ( 0 === strcasecmp( (string) $opt['title'], (string) $current_label ) );
-				?>
-				<li class="m-0" role="none">
-					<a
-						href="<?php echo esc_url( $opt['url'] ); ?>"
-						class="<?php echo esc_attr( $item_class ); ?><?php echo $is_current ? ' font-semibold' : ''; ?>"
-						role="option"
-						<?php echo $is_current ? 'aria-selected="true"' : 'aria-selected="false"'; ?>
-						<?php echo ! empty( $opt['target'] ) ? 'target="' . esc_attr( $opt['target'] ) . '" rel="noopener noreferrer"' : ''; ?>
-					>
-						<?php echo esc_html( $opt['title'] ); ?>
-					</a>
-				</li>
-			<?php endforeach; ?>
-		</ul>
-	</div>
-<?php elseif ( ! empty( $language_link['url'] ) ) : ?>
-	<a
-		href="<?php echo esc_url( $language_link['url'] ); ?>"
-		class="<?php echo esc_attr( $trigger_class ); ?>"
-		<?php echo ! empty( $language_link['target'] ) ? 'target="' . esc_attr( $language_link['target'] ) . '" rel="noopener noreferrer"' : ''; ?>
+<div class="relative shrink-0" data-language-switcher>
+	<button
+		type="button"
+		class="<?php echo esc_attr( $trigger_class ); ?> cursor-pointer border-0 bg-transparent p-0"
+		data-language-switcher-toggle
+		aria-expanded="false"
+		aria-haspopup="listbox"
+		aria-label="<?php echo esc_attr__( 'Select language', 'impact-one-million' ); ?>"
 	>
 		<img
 			src="<?php echo esc_url( $icon_globe_uri ); ?>"
@@ -122,6 +94,33 @@ $item_class = $is_mobile
 			class="size-[18px] shrink-0"
 			aria-hidden="true"
 		/>
-		<span><?php echo esc_html( $current_label ); ?></span>
-	</a>
-<?php endif; ?>
+		<span data-language-switcher-label><?php echo esc_html( $current_label ); ?></span>
+		<svg class="size-2.5 shrink-0" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+			<path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		</svg>
+	</button>
+
+	<ul
+		class="<?php echo esc_attr( $menu_class ); ?> invisible opacity-0 transition-[opacity,visibility] duration-150"
+		data-language-switcher-menu
+		role="listbox"
+		hidden
+	>
+		<?php foreach ( $lang_options as $opt ) : ?>
+			<?php
+			$is_current = ( 0 === strcasecmp( (string) $opt['title'], (string) $current_label ) );
+			?>
+			<li class="m-0" role="none">
+				<a
+					href="<?php echo esc_url( $opt['url'] ); ?>"
+					class="<?php echo esc_attr( $item_class ); ?><?php echo $is_current ? ' font-semibold' : ''; ?>"
+					role="option"
+					<?php echo $is_current ? 'aria-selected="true"' : 'aria-selected="false"'; ?>
+					<?php echo ! empty( $opt['target'] ) ? 'target="' . esc_attr( $opt['target'] ) . '" rel="noopener noreferrer"' : ''; ?>
+				>
+					<?php echo esc_html( $opt['title'] ); ?>
+				</a>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+</div>

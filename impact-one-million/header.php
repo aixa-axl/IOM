@@ -95,7 +95,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 
 			<div class="hidden min-w-0 flex-1 flex-col items-end gap-3 xl:flex">
 				<?php if ( $has_util_bar ) : ?>
-					<div class="flex items-center justify-end gap-10 rounded-card bg-blue px-6 py-3">
+					<div class="relative z-20 flex items-center justify-end gap-10 overflow-visible rounded-card bg-blue px-6 py-3">
 						<?php if ( $has_utility ) : ?>
 							<?php foreach ( $utility_links as $row ) : ?>
 								<?php
