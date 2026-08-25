@@ -336,7 +336,24 @@ body {
   scroll-margin-top: 5.5rem;
 }
 
+/* Why It Matters — fade carousel slides */
+.iom-wim-slide {
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.iom-wim-slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .iom-wim-slide {
+    transition: none !important;
+  }
+
   .iom-marquee-track {
     animation: none;
     flex-wrap: wrap;

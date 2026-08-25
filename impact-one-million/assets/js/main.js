@@ -1272,3 +1272,80 @@
 		}
 	});
 })();
+
+/**
+ * Why It Matters — fade carousel for multiple stats.
+ */
+(function () {
+	const roots = document.querySelectorAll('[data-why-it-matters]');
+	if (!roots.length) {
+		return;
+	}
+
+	const INTERVAL_MS = 5000;
+	const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+	roots.forEach(function (root) {
+		const slides = root.querySelectorAll('[data-wim-slide]');
+		const dots = root.querySelectorAll('[data-wim-dot]');
+		if (slides.length < 2) {
+			return;
+		}
+
+		let index = 0;
+		let timer = null;
+
+		function setActive(next) {
+			index = (next + slides.length) % slides.length;
+
+			slides.forEach(function (slide, i) {
+				const active = i === index;
+				slide.classList.toggle('is-active', active);
+				slide.setAttribute('data-active', active ? 'true' : 'false');
+				slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+			});
+
+			dots.forEach(function (dot, i) {
+				const active = i === index;
+				dot.setAttribute('data-active', active ? 'true' : 'false');
+				dot.setAttribute('aria-selected', active ? 'true' : 'false');
+			});
+		}
+
+		function stop() {
+			if (timer) {
+				window.clearInterval(timer);
+				timer = null;
+			}
+		}
+
+		function start() {
+			if (reduceMotion) {
+				return;
+			}
+			stop();
+			timer = window.setInterval(function () {
+				setActive(index + 1);
+			}, INTERVAL_MS);
+		}
+
+		dots.forEach(function (dot, i) {
+			dot.addEventListener('click', function () {
+				setActive(i);
+				start();
+			});
+		});
+
+		root.addEventListener('mouseenter', stop);
+		root.addEventListener('mouseleave', start);
+		root.addEventListener('focusin', stop);
+		root.addEventListener('focusout', function (event) {
+			if (!root.contains(event.relatedTarget)) {
+				start();
+			}
+		});
+
+		setActive(0);
+		start();
+	});
+})();

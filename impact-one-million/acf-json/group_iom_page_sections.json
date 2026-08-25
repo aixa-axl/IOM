@@ -1237,19 +1237,51 @@
                             "required": 0
                         },
                         {
+                            "key": "field_iom_wim_stats",
+                            "label": "Stats",
+                            "name": "stats",
+                            "type": "repeater",
+                            "instructions": "One or more stats. Multiple stats fade between slides. Typically up to 4.",
+                            "required": 0,
+                            "layout": "block",
+                            "button_label": "Add Stat",
+                            "sub_fields": [
+                                {
+                                    "key": "field_iom_wim_stat_value",
+                                    "label": "Stat",
+                                    "name": "stat",
+                                    "type": "text",
+                                    "instructions": "Large display value, e.g. 1 in 5",
+                                    "required": 0,
+                                    "parent_repeater": "field_iom_wim_stats"
+                                },
+                                {
+                                    "key": "field_iom_wim_stat_body",
+                                    "label": "Body",
+                                    "name": "body",
+                                    "type": "textarea",
+                                    "instructions": "Supporting line under the stat.",
+                                    "required": 0,
+                                    "rows": 3,
+                                    "new_lines": "",
+                                    "parent_repeater": "field_iom_wim_stats"
+                                }
+                            ]
+                        },
+                        {
                             "key": "field_iom_wim_stat",
-                            "label": "Stat",
+                            "label": "Stat (legacy)",
                             "name": "stat",
                             "type": "text",
-                            "instructions": "Large display value, e.g. 1 in 5",
+                            "instructions": "Deprecated — use Stats repeater above. Kept so existing single-stat content still works.",
                             "required": 0
                         },
                         {
                             "key": "field_iom_wim_body",
-                            "label": "Body",
+                            "label": "Body (legacy)",
                             "name": "body",
                             "type": "textarea",
-                            "instructions": "Supporting line under the stat.",
+                            "instructions": "Deprecated — use Stats repeater above.",
                             "required": 0,
                             "rows": 3,
                             "new_lines": ""
