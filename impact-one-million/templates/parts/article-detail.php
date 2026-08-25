@@ -102,16 +102,16 @@ if ( empty( $email_id ) ) {
 
 	<!-- Gallery -->
 	<?php if ( ! empty( $gallery ) ) : ?>
-		<section class="bg-white px-page py-20 xl:px-section lg:py-gutter">
+		<section class="overflow-x-hidden bg-white px-0 py-20 xl:px-section lg:py-gutter">
 			<div class="mx-auto flex w-full max-w-site flex-col items-start gap-10">
 				<?php if ( $gal_head ) : ?>
-					<h2 class="m-0 font-display text-headline leading-[1.2] text-navy">
+					<h2 class="m-0 px-page font-display text-headline leading-[1.2] text-navy xl:px-0">
 						<?php echo esc_html( $gal_head ); ?>
 					</h2>
 				<?php endif; ?>
-				<ul class="m-0 grid w-full list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2 lg:grid-cols-3">
+				<ul class="m-0 flex w-full list-none gap-6 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory sm:grid sm:grid-cols-2 sm:gap-8 sm:overflow-visible sm:pb-0 sm:snap-none lg:grid-cols-3 xl:px-0 [&::-webkit-scrollbar]:hidden">
 					<?php foreach ( $gallery as $image_id ) : ?>
-						<li class="relative aspect-[378/297] overflow-hidden rounded-card">
+						<li class="relative aspect-[378/297] w-[min(85%,20rem)] shrink-0 snap-center overflow-hidden rounded-card sm:w-auto sm:shrink sm:snap-align-none">
 							<?php
 							echo wp_get_attachment_image(
 								(int) $image_id,
