@@ -2856,6 +2856,14 @@
                             "required": 0
                         },
                         {
+                            "key": "field_iom_wp_subtitle",
+                            "label": "Subtitle",
+                            "name": "subtitle",
+                            "type": "text",
+                            "instructions": "Optional bold line below the heading.",
+                            "required": 0
+                        },
+                        {
                             "key": "field_iom_wp_body",
                             "label": "Body",
                             "name": "body",

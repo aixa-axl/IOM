@@ -8,9 +8,10 @@
  * Figma desktop: 634:19369 (no mobile frame — stacked adaptation)
  */
 
-$heading = get_sub_field( 'heading' );
-$body    = get_sub_field( 'body' );
-$items   = get_sub_field( 'items' );
+$heading  = get_sub_field( 'heading' );
+$subtitle = get_sub_field( 'subtitle' );
+$body     = get_sub_field( 'body' );
+$items    = get_sub_field( 'items' );
 
 $theme_uri = get_stylesheet_directory_uri();
 $arrow_uri = $theme_uri . '/assets/images/icons/why-join-arrow.svg';
@@ -35,6 +36,12 @@ if ( ! is_array( $items ) ) {
 				<h2 class="m-0 font-display text-headline leading-[1.2]">
 					<?php echo esc_html( $heading ); ?>
 				</h2>
+			<?php endif; ?>
+
+			<?php if ( $subtitle ) : ?>
+				<p class="m-0 font-sans text-body font-semibold leading-[1.2]">
+					<?php echo esc_html( $subtitle ); ?>
+				</p>
 			<?php endif; ?>
 
 			<?php if ( $body ) : ?>
