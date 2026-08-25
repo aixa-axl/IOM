@@ -105,7 +105,7 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 
 <section class="<?php echo esc_attr( $section_class ); ?>">
 	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-10">
-		<div class="flex w-full max-w-[40rem] flex-col items-center gap-4 text-center">
+		<div class="flex w-full max-w-[40rem] flex-col items-center gap-4 text-center <?php echo $is_dark ? '' : 'px-page xl:px-0'; ?>">
 			<?php if ( $heading ) : ?>
 				<h2 class="<?php echo esc_attr( $heading_class ); ?>">
 					<?php echo esc_html( $heading ); ?>
