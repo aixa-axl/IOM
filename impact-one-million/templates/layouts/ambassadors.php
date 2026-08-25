@@ -3,7 +3,7 @@
  * Layout: ambassadors
  *
  * Profile card grid — photo, name, role, bio, optional LinkedIn.
- * Desktop: 3 columns. Mobile: stacked. Optional JS pagination.
+ * Desktop: 3 columns. Mobile: horizontal snap scroll. Optional JS pagination.
  *
  * Figma desktop: 663:31810 — Figma with LinkedIn + pagination: 668:36136
  */
@@ -47,19 +47,19 @@ $img_attrs = array(
 ?>
 
 <section
-	class="<?php echo esc_attr( $section_bg ); ?> px-page py-10 xl:p-gutter"
+	class="<?php echo esc_attr( $section_bg ); ?> overflow-x-hidden px-0 py-10 xl:p-gutter"
 	<?php echo $use_paging ? 'data-ambassadors-grid data-per-page="' . esc_attr( (string) $per_page ) . '"' : ''; ?>
 >
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-12">
 		<?php if ( $heading ) : ?>
-			<h2 class="m-0 font-display text-headline leading-[1.2] text-navy">
+			<h2 class="m-0 px-page font-display text-headline leading-[1.2] text-navy xl:px-0">
 				<?php echo esc_html( $heading ); ?>
 			</h2>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $ambassadors ) ) : ?>
 			<div class="w-full" <?php echo $use_paging ? 'data-ambassadors-grid-wrap' : ''; ?>>
-			<ul class="m-0 grid w-full list-none grid-cols-1 content-start gap-8 p-0 sm:grid-cols-2 lg:grid-cols-3">
+			<ul class="m-0 flex w-full list-none gap-6 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:pb-0 lg:snap-none xl:px-0 [&::-webkit-scrollbar]:hidden">
 				<?php foreach ( $ambassadors as $index => $person ) : ?>
 					<?php
 					$image_id     = isset( $person['image'] ) ? $person['image'] : null;
@@ -76,7 +76,7 @@ $img_attrs = array(
 					$hidden           = ( $use_paging && $index >= $per_page );
 					?>
 					<li
-						class="flex flex-col gap-5 self-start rounded-card border border-solid border-[#dfe8ff] bg-white p-6<?php echo $hidden ? ' hidden' : ''; ?>"
+						class="flex w-[min(85%,20rem)] shrink-0 snap-center flex-col gap-5 self-start rounded-card border border-solid border-[#dfe8ff] bg-white p-6 lg:w-auto lg:shrink lg:snap-align-none<?php echo $hidden ? ' hidden' : ''; ?>"
 						<?php echo $use_paging ? 'data-ambassadors-card' : ''; ?>
 					>
 						<div class="relative h-[15rem] w-full overflow-hidden rounded-card bg-off-white">
@@ -138,7 +138,7 @@ $img_attrs = array(
 			</div>
 
 			<?php if ( $use_paging ) : ?>
-				<nav class="flex flex-wrap items-center gap-2" data-ambassadors-pagination aria-label="<?php echo esc_attr__( 'Ambassadors pagination', 'impact-one-million' ); ?>">
+				<nav class="flex flex-wrap items-center gap-2 px-page xl:px-0" data-ambassadors-pagination aria-label="<?php echo esc_attr__( 'Ambassadors pagination', 'impact-one-million' ); ?>">
 					<?php for ( $i = 1; $i <= $page_count; $i++ ) : ?>
 						<button
 							type="button"
