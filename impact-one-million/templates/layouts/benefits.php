@@ -109,6 +109,7 @@ $btn_outline = 'inline-flex w-full items-center justify-center rounded-btn borde
 						$icon_id  = isset( $card['icon'] ) ? $card['icon'] : null;
 						$preset   = isset( $card['icon_preset'] ) ? $card['icon_preset'] : '';
 						$title    = isset( $card['title'] ) ? $card['title'] : '';
+						$body     = isset( $card['body'] ) ? $card['body'] : '';
 						$icon_uri = ( $preset && isset( $icon_map[ $preset ] ) ) ? $icon_map[ $preset ] : '';
 						?>
 						<li
@@ -141,10 +142,20 @@ $btn_outline = 'inline-flex w-full items-center justify-center rounded-btn borde
 								<?php endif; ?>
 							</div>
 
-							<?php if ( $title ) : ?>
-								<p class="m-0 font-display text-card-title leading-none text-blue">
-									<?php echo esc_html( $title ); ?>
-								</p>
+							<?php if ( $title || $body ) : ?>
+								<div class="flex w-full flex-col items-center gap-2">
+									<?php if ( $title ) : ?>
+										<p class="m-0 font-display text-card-title leading-none text-blue">
+											<?php echo esc_html( $title ); ?>
+										</p>
+									<?php endif; ?>
+
+									<?php if ( $body ) : ?>
+										<p class="m-0 font-sans text-body leading-[1.2] text-muted">
+											<?php echo esc_html( $body ); ?>
+										</p>
+									<?php endif; ?>
+								</div>
 							<?php endif; ?>
 						</li>
 					<?php endforeach; ?>

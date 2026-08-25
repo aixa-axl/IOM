@@ -1328,6 +1328,17 @@
                                     "rows": 3,
                                     "new_lines": "",
                                     "parent_repeater": "field_iom_benefits_cards"
+                                },
+                                {
+                                    "key": "field_iom_benefits_card_body",
+                                    "label": "Body",
+                                    "name": "body",
+                                    "type": "textarea",
+                                    "instructions": "Optional supporting text under the title.",
+                                    "required": 0,
+                                    "rows": 3,
+                                    "new_lines": "",
+                                    "parent_repeater": "field_iom_benefits_cards"
                                 }
                             ]
                         },
