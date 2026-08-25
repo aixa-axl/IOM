@@ -184,7 +184,7 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 			</div>
 		<?php endif; ?>
 
-		<div class="relative w-full max-w-[56rem]">
+		<div class="relative w-full max-w-[75rem]">
 			<div class="relative bg-white">
 				<?php
 				$iom_map_active_slug = $default_slug;
