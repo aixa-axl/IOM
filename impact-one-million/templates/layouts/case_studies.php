@@ -156,7 +156,13 @@ $select_class = 'appearance-none rounded-btn border border-solid border-[#e5e7eb
 
 			<label class="relative flex h-11 w-full items-center gap-3 rounded-btn border border-solid border-[#e5e7eb] bg-white px-4 lg:ml-auto lg:w-auto lg:min-w-[16rem]">
 				<span class="sr-only"><?php echo esc_html__( 'Search', 'impact-one-million' ); ?></span>
-				<img src="<?php echo esc_url( $search_uri ); ?>" alt="" width="16" height="16" class="size-4 shrink-0" aria-hidden="true">
+				<button
+					type="submit"
+					class="inline-flex size-4 shrink-0 items-center justify-center border-0 bg-transparent p-0"
+					aria-label="<?php echo esc_attr__( 'Search', 'impact-one-million' ); ?>"
+				>
+					<img src="<?php echo esc_url( $search_uri ); ?>" alt="" width="16" height="16" class="size-4" aria-hidden="true">
+				</button>
 				<input
 					type="search"
 					name="search"
@@ -165,6 +171,7 @@ $select_class = 'appearance-none rounded-btn border border-solid border-[#e5e7eb
 					class="w-full border-0 bg-transparent p-0 font-sans text-body leading-[1.2] text-blue outline-none placeholder:text-blue"
 					data-filter="search"
 					autocomplete="off"
+					enterkeyhint="search"
 				>
 			</label>
 		</form>

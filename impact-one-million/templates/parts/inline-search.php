@@ -40,14 +40,20 @@ $show_search_icon  = ! isset( $show_search_icon ) || $show_search_icon;
 		data-search-form
 	>
 		<?php if ( $show_search_icon ) : ?>
-			<img
-				src="<?php echo esc_url( $icon_search_uri ); ?>"
-				alt=""
-				width="18"
-				height="18"
-				class="<?php echo esc_attr( $search_icon_class ); ?> shrink-0"
-				aria-hidden="true"
-			/>
+			<button
+				type="submit"
+				class="inline-flex shrink-0 items-center justify-center border-0 bg-transparent p-0"
+				aria-label="<?php echo esc_attr__( 'Search', 'impact-one-million' ); ?>"
+			>
+				<img
+					src="<?php echo esc_url( $icon_search_uri ); ?>"
+					alt=""
+					width="18"
+					height="18"
+					class="<?php echo esc_attr( $search_icon_class ); ?> shrink-0"
+					aria-hidden="true"
+				/>
+			</button>
 		<?php endif; ?>
 		<label class="sr-only" for="<?php echo esc_attr( $iom_inline_id ); ?>-input">
 			<?php echo esc_html_x( 'Search for:', 'label', 'impact-one-million' ); ?>
