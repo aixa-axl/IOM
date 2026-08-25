@@ -99,8 +99,15 @@ $link_class = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-displ
 $btn_class  = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 
 $section_pad = $has_intro
-	? 'overflow-x-hidden bg-white px-0 py-section xl:px-gutter lg:py-24'
-	: 'overflow-x-hidden bg-white px-0 py-10 xl:px-10 lg:py-[100px]';
+	? 'iom-other-pillars overflow-x-hidden bg-white px-0 py-section xl:px-gutter lg:py-24'
+	: 'iom-other-pillars overflow-x-hidden bg-white px-0 py-10 xl:px-10 lg:py-[100px]';
+
+// Supply chain page only: less top padding when Join Reasons precedes (set in page.php).
+if ( ! empty( $iom_tighten_other_pillars_top ) ) {
+	$section_pad = $has_intro
+		? 'iom-other-pillars overflow-x-hidden bg-white px-0 pt-6 pb-section xl:px-gutter lg:pt-10 lg:pb-24'
+		: 'iom-other-pillars overflow-x-hidden bg-white px-0 pt-6 pb-10 xl:px-10 lg:pt-10 lg:pb-[100px]';
+}
 
 $outer_gap = $has_intro
 	? 'gap-section lg:gap-20'

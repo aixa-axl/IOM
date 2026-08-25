@@ -388,6 +388,19 @@ body {
     padding-top: 2.5rem !important;
   }
 
+  /*
+   * Supply chain — Join Reasons → Pillars (backup for PHP class toggle).
+   */
+  body.page-supply-chain .entry-content > section.iom-join-reasons:has(+ section.iom-other-pillars),
+  body.page-supply_chain .entry-content > section.iom-join-reasons:has(+ section.iom-other-pillars) {
+    padding-bottom: 2.5rem !important;
+  }
+
+  body.page-supply-chain .entry-content > section.iom-join-reasons + section.iom-other-pillars,
+  body.page-supply_chain .entry-content > section.iom-join-reasons + section.iom-other-pillars {
+    padding-top: 2.5rem !important;
+  }
+
   .iom-challenge-cards,
   [data-challenge-cards] {
     gap: 2.5rem !important; /* gap-10 */

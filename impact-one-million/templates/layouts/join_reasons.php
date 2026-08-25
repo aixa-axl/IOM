@@ -93,9 +93,14 @@ $iom_render_join_items = function ( $items, $icon_uri ) {
 	</ul>
 	<?php
 };
+
+// Supply chain page only: less bottom padding when Pillars follows (set in page.php).
+$section_class = ! empty( $iom_tighten_join_reasons_bottom )
+	? 'iom-join-reasons bg-white px-page py-10 xl:px-gutter xl:pt-gutter xl:pb-10'
+	: 'iom-join-reasons bg-white px-page py-10 xl:p-gutter';
 ?>
 
-<section class="bg-white px-page py-10 xl:p-gutter">
+<section class="<?php echo esc_attr( $section_class ); ?>">
 	<?php if ( $has_intro ) : ?>
 		<div class="mx-auto flex w-full max-w-site flex-col items-start gap-10">
 			<?php if ( $heading ) : ?>

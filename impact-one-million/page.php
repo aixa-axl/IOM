@@ -20,8 +20,9 @@ get_header();
 						$page_sections_rows = get_field( 'page_sections' );
 						$iom_sections_total = is_array( $page_sections_rows ) ? count( $page_sections_rows ) : 0;
 						$iom_section_i      = 0;
-						$iom_is_history     = function_exists( 'is_page' ) && is_page( 'history' );
-						$iom_is_partners    = function_exists( 'is_page' ) && is_page( 'partners' );
+						$iom_is_history      = function_exists( 'is_page' ) && is_page( 'history' );
+						$iom_is_partners     = function_exists( 'is_page' ) && is_page( 'partners' );
+						$iom_is_supply_chain = function_exists( 'is_page' ) && is_page( array( 'supply-chain', 'supply_chain' ) );
 
 						while ( have_rows( 'page_sections' ) ) {
 							the_row();
@@ -64,6 +65,18 @@ get_header();
 								$iom_is_partners
 								&& 'process_steps' === $layout
 								&& 'stories_of_change' === $iom_prev_layout
+							);
+
+							// Supply chain only: Join Reasons immediately followed by Pillars.
+							$iom_tighten_join_reasons_bottom = (
+								$iom_is_supply_chain
+								&& 'join_reasons' === $layout
+								&& 'other_pillars' === $iom_next_layout
+							);
+							$iom_tighten_other_pillars_top = (
+								$iom_is_supply_chain
+								&& 'other_pillars' === $layout
+								&& 'join_reasons' === $iom_prev_layout
 							);
 
 							$layout_path = locate_template(
