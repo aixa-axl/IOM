@@ -8,10 +8,11 @@
  * Figma desktop (vertical): 634:20396 (no mobile frame — stacked adaptation)
  */
 
-$variant = get_sub_field( 'variant' );
-$heading = get_sub_field( 'heading' );
-$steps   = get_sub_field( 'steps' );
-$cta     = get_sub_field( 'cta' );
+$variant       = get_sub_field( 'variant' );
+$heading       = get_sub_field( 'heading' );
+$steps         = get_sub_field( 'steps' );
+$cta           = get_sub_field( 'cta' );
+$secondary_cta = get_sub_field( 'secondary_cta' );
 
 if ( ! in_array( $variant, array( 'grid', 'vertical' ), true ) ) {
 	$variant = 'grid';
@@ -33,7 +34,15 @@ if ( ! is_array( $cta ) ) {
 	$cta = array();
 }
 
-$btn_class = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+if ( ! is_array( $secondary_cta ) ) {
+	$secondary_cta = array();
+}
+
+$btn_primary = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+
+$btn_secondary = $is_vertical
+	? 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-white bg-transparent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-80'
+	: 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-blue bg-transparent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-80';
 
 $section_class = $is_vertical
 	? 'bg-blue px-page py-section lg:py-20 xl:px-section xl:py-20'
@@ -161,14 +170,25 @@ $outer_gap = $is_vertical ? 'gap-20 lg:gap-10' : 'gap-10';
 			<?php endif; ?>
 		<?php endif; ?>
 
-		<?php if ( ! empty( $cta['url'] ) ) : ?>
-			<?php
-			iom_render_link(
-				$cta,
-				$btn_class,
-				__( 'Nominate a Supplier', 'impact-one-million' )
-			);
-			?>
+		<?php if ( ! empty( $cta['url'] ) || ! empty( $secondary_cta['url'] ) ) : ?>
+			<div class="flex w-full flex-col items-stretch gap-4 sm:w-auto sm:flex-row sm:items-center sm:justify-center">
+				<?php
+				if ( ! empty( $cta['url'] ) ) {
+					iom_render_link(
+						$cta,
+						$btn_primary,
+						__( 'Nominate a Supplier', 'impact-one-million' )
+					);
+				}
+				if ( ! empty( $secondary_cta['url'] ) ) {
+					iom_render_link(
+						$secondary_cta,
+						$btn_secondary,
+						__( 'Learn more', 'impact-one-million' )
+					);
+				}
+				?>
+			</div>
 		<?php endif; ?>
 	</div>
 </section>
