@@ -67,7 +67,6 @@ $use_impact_rows = ( $is_left && $card_count >= 5 );
 
 // Governance "Our Approach": 2×2 desktop grid so four cards square off with room for body copy.
 $is_governance_grid = function_exists( 'is_page' ) && is_page( 'governance' ) && ! $use_impact_rows;
-$desktop_grid_cols  = $is_governance_grid ? 'lg:grid-cols-2' : 'lg:grid-cols-3';
 $body_clamp_class   = $is_governance_grid ? '' : 'line-clamp-2 ';
 
 /**
@@ -193,10 +192,41 @@ $iom_render_why_join_card = function ( $card, $arrow_uri, $carousel = false ) us
 						</ul>
 					<?php endif; ?>
 				</div>
+			<?php elseif ( $is_governance_grid ) : ?>
+				<!-- Mobile carousel -->
+				<div class="w-full lg:hidden" data-why-join-carousel>
+					<ul
+						class="m-0 flex list-none gap-6 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory [&::-webkit-scrollbar]:hidden"
+						data-why-join-track
+					>
+						<?php foreach ( $cards as $card ) : ?>
+							<?php $iom_render_why_join_card( $card, $arrow_uri, true ); ?>
+						<?php endforeach; ?>
+					</ul>
+
+					<?php if ( $card_count > 1 ) : ?>
+						<div class="mt-6 flex items-center justify-center gap-2" data-why-join-dots aria-hidden="true">
+							<?php for ( $i = 0; $i < $card_count; $i++ ) : ?>
+								<span
+									class="size-1.5 rounded-full bg-accent-blue/25 transition-colors data-[active=true]:bg-accent-blue"
+									data-why-join-dot
+									<?php echo 0 === $i ? 'data-active="true"' : ''; ?>
+								></span>
+							<?php endfor; ?>
+						</div>
+					<?php endif; ?>
+				</div>
+
+				<!-- Desktop: full-width 2×2 -->
+				<ul class="m-0 hidden w-full list-none grid-cols-2 gap-6 p-0 lg:grid xl:gap-8">
+					<?php foreach ( $cards as $card ) : ?>
+						<?php $iom_render_why_join_card( $card, $arrow_uri, false ); ?>
+					<?php endforeach; ?>
+				</ul>
 			<?php else : ?>
 				<div class="w-full" data-why-join-carousel>
 					<ul
-						class="m-0 flex list-none gap-6 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid <?php echo esc_attr( $desktop_grid_cols ); ?> lg:gap-8 lg:overflow-visible xl:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
+						class="m-0 flex list-none gap-6 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible xl:px-0 lg:pb-0 lg:snap-none [&::-webkit-scrollbar]:hidden"
 						data-why-join-track
 					>
 						<?php foreach ( $cards as $card ) : ?>
