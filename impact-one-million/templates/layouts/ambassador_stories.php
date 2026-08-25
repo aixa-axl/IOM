@@ -2,10 +2,10 @@
 /**
  * Layout: ambassador_stories
  *
- * Featured quote + image. Optional inline stats + body (case-study style),
+ * Featured quote + image or video. Optional inline stats + body (case-study style),
  * and/or full-width highlight columns below.
  *
- * Desktop: quote | image. Mobile: stacked.
+ * Desktop: quote | media. Mobile: stacked.
  *
  * Figma desktop (blue): 663:31935 — Figma desktop (accent blue): 668:36104
  * Figma with stats + body: 669:38415
@@ -17,15 +17,24 @@ $featured         = get_sub_field( 'featured' );
 $campaign         = get_sub_field( 'campaign' );
 $body             = get_sub_field( 'body' );
 $image_id         = get_sub_field( 'image' );
+$media_type       = get_sub_field( 'media_type' );
+$video_source     = get_sub_field( 'video_source' );
+$video_url        = get_sub_field( 'video_url' );
+$video_file       = get_sub_field( 'video_file' );
 $stats            = get_sub_field( 'stats' );
 $highlights       = get_sub_field( 'highlights' );
 
 $theme_uri    = get_stylesheet_directory_uri();
+$play_uri     = $theme_uri . '/assets/images/icons/play.svg';
 $fallback     = $theme_uri . '/assets/images/ambassador-stories/story.jpg';
 $fallback_abs = get_stylesheet_directory() . '/assets/images/ambassador-stories/story.jpg';
 
 if ( ! in_array( $background_color, array( 'blue', 'accent_blue' ), true ) ) {
 	$background_color = 'blue';
+}
+
+if ( ! $media_type ) {
+	$media_type = 'image';
 }
 
 if ( ! $quote ) {
@@ -59,8 +68,15 @@ $img_attrs = array(
 	'alt'     => $featured ? $featured : ( $quote ? wp_trim_words( $quote, 8, '' ) : '' ),
 );
 
-$has_image = $image_id || file_exists( $fallback_abs );
-$bg_class  = ( 'accent_blue' === $background_color ) ? 'bg-accent-blue' : 'bg-blue';
+$iom_as_embed = null;
+if ( 'video' === $media_type && function_exists( 'iom_build_video_embed' ) ) {
+	$iom_as_embed = iom_build_video_embed( $video_source, $video_url, $video_file );
+}
+
+$has_poster = $image_id || file_exists( $fallback_abs );
+$has_media  = (bool) $iom_as_embed || $has_poster;
+$bg_class   = ( 'accent_blue' === $background_color ) ? 'bg-accent-blue' : 'bg-blue';
+$play_label = __( 'Play video', 'impact-one-million' );
 ?>
 
 <section class="<?php echo esc_attr( $bg_class ); ?> px-page py-section text-white xl:px-16">
@@ -126,9 +142,55 @@ $bg_class  = ( 'accent_blue' === $background_color ) ? 'bg-accent-blue' : 'bg-bl
 				<?php endif; ?>
 			</div>
 
-			<?php if ( $has_image ) : ?>
-				<div class="relative h-[16rem] w-full shrink-0 overflow-hidden rounded-card md:h-[22rem] xl:h-[26rem] xl:w-[39.0625rem]">
-					<?php if ( $image_id ) : ?>
+			<?php if ( $has_media ) : ?>
+				<div
+					class="relative h-[16rem] w-full shrink-0 overflow-hidden rounded-card bg-navy md:h-[22rem] xl:h-[26rem] xl:w-[39.0625rem]"
+					<?php if ( $iom_as_embed ) : ?>
+						data-featured-story-media
+						data-video-type="<?php echo esc_attr( $iom_as_embed['type'] ); ?>"
+						data-video-src="<?php echo esc_url( $iom_as_embed['src'] ); ?>"
+					<?php endif; ?>
+				>
+					<?php if ( $iom_as_embed ) : ?>
+						<div class="absolute inset-0" data-featured-story-poster>
+							<?php if ( $image_id ) : ?>
+								<?php echo wp_get_attachment_image( (int) $image_id, 'large', false, $img_attrs ); ?>
+							<?php elseif ( file_exists( $fallback_abs ) ) : ?>
+								<img
+									src="<?php echo esc_url( $fallback ); ?>"
+									alt="<?php echo esc_attr( $img_attrs['alt'] ); ?>"
+									class="<?php echo esc_attr( $img_attrs['class'] ); ?>"
+									loading="lazy"
+									decoding="async"
+								>
+							<?php else : ?>
+								<div class="absolute inset-0 bg-navy" aria-hidden="true"></div>
+							<?php endif; ?>
+							<div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-40" aria-hidden="true"></div>
+						</div>
+
+						<div class="absolute inset-0 z-10 hidden" data-featured-story-player></div>
+
+						<button
+							type="button"
+							class="absolute inset-0 z-20 flex cursor-pointer items-center justify-center border-0 bg-transparent p-0"
+							data-featured-story-play
+							aria-label="<?php echo esc_attr( $play_label ); ?>"
+						>
+							<span
+								class="flex size-[4.75rem] items-center justify-center rounded-full border-2 border-solid border-[#dfe8ff] bg-accent shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] md:size-[5.5rem]"
+								aria-hidden="true"
+							>
+								<img
+									src="<?php echo esc_url( $play_uri ); ?>"
+									alt=""
+									width="22"
+									height="28"
+									class="ml-0.5 h-7 w-[1.375rem]"
+								/>
+							</span>
+						</button>
+					<?php elseif ( $image_id ) : ?>
 						<?php echo wp_get_attachment_image( (int) $image_id, 'large', false, $img_attrs ); ?>
 					<?php else : ?>
 						<img

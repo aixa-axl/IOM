@@ -2464,14 +2464,102 @@
                         },
                         {
                             "key": "field_iom_as_image",
-                            "label": "Image",
+                            "label": "Image / Poster",
                             "name": "image",
                             "type": "image",
-                            "instructions": "Desktop: right of quote. Mobile: below content.",
+                            "instructions": "Still image, or poster thumbnail when Media Type is Video. Desktop: right of quote. Mobile: below content.",
                             "required": 0,
                             "return_format": "id",
                             "preview_size": "medium",
                             "library": "all"
+                        },
+                        {
+                            "key": "field_iom_as_media_type",
+                            "label": "Media Type",
+                            "name": "media_type",
+                            "type": "select",
+                            "instructions": "Image = static photo. Video = playable media (external or uploaded).",
+                            "required": 0,
+                            "choices": {
+                                "image": "Image",
+                                "video": "Video"
+                            },
+                            "default_value": "image",
+                            "allow_null": 0,
+                            "return_format": "value",
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_iom_as_video_source",
+                            "label": "Video Source",
+                            "name": "video_source",
+                            "type": "select",
+                            "instructions": "External = YouTube / Vimeo / remote URL. Upload = Media Library file (mp4, webm, ogg).",
+                            "required": 0,
+                            "choices": {
+                                "external": "External URL",
+                                "upload": "WordPress Upload"
+                            },
+                            "default_value": "external",
+                            "allow_null": 0,
+                            "return_format": "value",
+                            "ui": 1,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_iom_as_media_type",
+                                        "operator": "==",
+                                        "value": "video"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_iom_as_video_url",
+                            "label": "Video URL",
+                            "name": "video_url",
+                            "type": "url",
+                            "instructions": "YouTube, Vimeo, or a direct .mp4 / .webm link.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_iom_as_media_type",
+                                        "operator": "==",
+                                        "value": "video"
+                                    },
+                                    {
+                                        "field": "field_iom_as_video_source",
+                                        "operator": "==",
+                                        "value": "external"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_iom_as_video_file",
+                            "label": "Video File",
+                            "name": "video_file",
+                            "type": "file",
+                            "instructions": "Upload or pick from the Media Library. Prefer mp4 (H.264).",
+                            "required": 0,
+                            "return_format": "id",
+                            "library": "all",
+                            "mime_types": "mp4,webm,ogg,m4v",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_iom_as_media_type",
+                                        "operator": "==",
+                                        "value": "video"
+                                    },
+                                    {
+                                        "field": "field_iom_as_video_source",
+                                        "operator": "==",
+                                        "value": "upload"
+                                    }
+                                ]
+                            ]
                         },
                         {
                             "key": "field_iom_as_highlights",

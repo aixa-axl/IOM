@@ -563,6 +563,62 @@ function iom_render_link( $link, $class = '', $fallback_title = '' ) {
 }
 
 /**
+ * Build an inline-playable video embed from ACF source fields.
+ *
+ * @param string          $video_source external|upload.
+ * @param string|null     $video_url    External URL (YouTube / Vimeo / file).
+ * @param int|string|null $video_file   Attachment ID for Media Library upload.
+ * @return array{type:string,src:string}|null
+ */
+function iom_build_video_embed( $video_source = 'external', $video_url = '', $video_file = 0 ) {
+	if ( ! $video_source ) {
+		$video_source = 'external';
+	}
+
+	if ( 'upload' === $video_source && $video_file ) {
+		$file_url = wp_get_attachment_url( (int) $video_file );
+		if ( $file_url ) {
+			return array(
+				'type' => 'video',
+				'src'  => $file_url,
+			);
+		}
+		return null;
+	}
+
+	$video_url = is_string( $video_url ) ? trim( $video_url ) : '';
+	if ( ! $video_url ) {
+		return null;
+	}
+
+	if ( preg_match( '#(?:youtube\.com/(?:watch\?v=|embed/|shorts/)|youtu\.be/)([A-Za-z0-9_-]{6,})#', $video_url, $m ) ) {
+		return array(
+			'type' => 'iframe',
+			'src'  => 'https://www.youtube.com/embed/' . rawurlencode( $m[1] ) . '?autoplay=1&rel=0',
+		);
+	}
+
+	if ( preg_match( '#vimeo\.com/(?:video/)?(\d+)#', $video_url, $m ) ) {
+		return array(
+			'type' => 'iframe',
+			'src'  => 'https://player.vimeo.com/video/' . rawurlencode( $m[1] ) . '?autoplay=1',
+		);
+	}
+
+	if ( preg_match( '#\.(mp4|webm|ogg|m4v)(\?|$)#i', $video_url ) ) {
+		return array(
+			'type' => 'video',
+			'src'  => $video_url,
+		);
+	}
+
+	return array(
+		'type' => 'iframe',
+		'src'  => $video_url,
+	);
+}
+
+/**
  * Build a WP_Query for the case studies filter/grid.
  *
  * @param array $args Filters: category, year, region, topic, search, paged, posts_per_page.

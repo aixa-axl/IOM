@@ -49,50 +49,9 @@ $btn_class = 'inline-flex items-center justify-center rounded-btn border-[1.5px]
 
 $play_label = __( 'Play video', 'impact-one-million' );
 
-if ( ! $video_source ) {
-	$video_source = 'external';
-}
-
-/**
- * Build an inline-playable embed (YouTube / Vimeo iframe) or HTML5 video src.
- *
- * @return array{type:string,src:string}|null
- */
-$iom_fs_embed = null;
-
-if ( 'upload' === $video_source && $video_file ) {
-	$file_url = wp_get_attachment_url( (int) $video_file );
-	if ( $file_url ) {
-		$iom_fs_embed = array(
-			'type' => 'video',
-			'src'  => $file_url,
-		);
-	}
-} elseif ( $video_url ) {
-	$video_url = trim( (string) $video_url );
-	if ( preg_match( '#(?:youtube\.com/(?:watch\?v=|embed/|shorts/)|youtu\.be/)([A-Za-z0-9_-]{6,})#', $video_url, $m ) ) {
-		$iom_fs_embed = array(
-			'type' => 'iframe',
-			'src'  => 'https://www.youtube.com/embed/' . rawurlencode( $m[1] ) . '?autoplay=1&rel=0',
-		);
-	} elseif ( preg_match( '#vimeo\.com/(?:video/)?(\d+)#', $video_url, $m ) ) {
-		$iom_fs_embed = array(
-			'type' => 'iframe',
-			'src'  => 'https://player.vimeo.com/video/' . rawurlencode( $m[1] ) . '?autoplay=1',
-		);
-	} elseif ( preg_match( '#\.(mp4|webm|ogg|m4v)(\?|$)#i', $video_url ) ) {
-		$iom_fs_embed = array(
-			'type' => 'video',
-			'src'  => $video_url,
-		);
-	} else {
-		// Unknown host — still try iframe embed of the given URL.
-		$iom_fs_embed = array(
-			'type' => 'iframe',
-			'src'  => $video_url,
-		);
-	}
-}
+$iom_fs_embed = function_exists( 'iom_build_video_embed' )
+	? iom_build_video_embed( $video_source, $video_url, $video_file )
+	: null;
 ?>
 
 <section class="bg-blue px-[11px] py-[26px] md:px-[30px] md:py-10 xl:px-gutter xl:py-gutter">

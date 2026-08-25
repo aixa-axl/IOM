@@ -681,7 +681,8 @@
 })();
 
 /**
- * Featured story — play video inline in the media square.
+ * Inline video — play YouTube / Vimeo / HTML5 in media frames
+ * (Featured Story, Ambassador Stories, etc.).
  */
 (function () {
 	const blocks = document.querySelectorAll('[data-featured-story-media]');
@@ -716,7 +717,7 @@
 				const iframe = document.createElement('iframe');
 				iframe.className = 'absolute inset-0 h-full w-full border-0';
 				iframe.src = src;
-				iframe.title = 'Featured story video';
+				iframe.title = 'Video';
 				iframe.allow =
 					'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
 				iframe.allowFullscreen = true;
