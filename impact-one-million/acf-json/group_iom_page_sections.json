@@ -2934,6 +2934,14 @@
                             "new_lines": ""
                         },
                         {
+                            "key": "field_iom_fp_cards_title",
+                            "label": "Cards Title",
+                            "name": "cards_title",
+                            "type": "text",
+                            "instructions": "Optional small title above the partner cards.",
+                            "required": 0
+                        },
+                        {
                             "key": "field_iom_fp_partners",
                             "label": "Partners",
                             "name": "partners",
