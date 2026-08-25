@@ -779,10 +779,6 @@ video {
   margin-top: 0.875rem;
 }
 
-.mt-4 {
-  margin-top: 1rem;
-}
-
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -4812,8 +4808,8 @@ body {
   padding-left: 1.5rem;
 }
 
-.\[\&_p\+p\]\:mt-4 p+p {
-  margin-top: 1rem;
+.\[\&_p\+p\]\:mt-3 p+p {
+  margin-top: 0.75rem;
 }
 
 .\[\&_p\+p\]\:mt-6 p+p {
