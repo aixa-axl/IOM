@@ -7,11 +7,13 @@
  * Figma desktop: 606:11593 — Figma mobile: 671:40731
  */
 
-$heading  = get_sub_field( 'heading' );
-$quote    = get_sub_field( 'quote' );
-$name     = get_sub_field( 'name' );
-$role     = get_sub_field( 'role' );
-$image_id = get_sub_field( 'image' );
+$heading   = get_sub_field( 'heading' );
+$quote     = get_sub_field( 'quote' );
+$name      = get_sub_field( 'name' );
+$role      = get_sub_field( 'role' );
+$image_id  = get_sub_field( 'image' );
+$show_cta  = (bool) get_sub_field( 'show_cta' );
+$cta       = get_sub_field( 'cta' );
 
 $theme_uri    = get_stylesheet_directory_uri();
 $fallback     = $theme_uri . '/assets/images/stories-from-the-field/story.jpg';
@@ -32,6 +34,12 @@ if ( ! $name ) {
 if ( ! $role ) {
 	$role = __( '[Role/Location Placeholder]', 'impact-one-million' );
 }
+
+if ( ! is_array( $cta ) ) {
+	$cta = array();
+}
+
+$btn_class = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 
 $img_attrs = array(
 	'class'    => 'absolute inset-0 size-full object-cover',
@@ -91,6 +99,16 @@ $img_attrs = array(
 							</p>
 						<?php endif; ?>
 					</footer>
+				<?php endif; ?>
+
+				<?php if ( $show_cta && ! empty( $cta['url'] ) ) : ?>
+					<?php
+					iom_render_link(
+						$cta,
+						$btn_class,
+						__( 'Learn more', 'impact-one-million' )
+					);
+					?>
 				<?php endif; ?>
 			</div>
 		</article>

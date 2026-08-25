@@ -1115,6 +1115,34 @@
                             "return_format": "id",
                             "preview_size": "medium",
                             "library": "all"
+                        },
+                        {
+                            "key": "field_iom_sff_show_cta",
+                            "label": "Show CTA",
+                            "name": "show_cta",
+                            "type": "true_false",
+                            "instructions": "Off by default. Turn on to add a button below the name / role.",
+                            "required": 0,
+                            "default_value": 0,
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_iom_sff_cta",
+                            "label": "CTA",
+                            "name": "cta",
+                            "type": "link",
+                            "instructions": "Accent button below the quote attribution.",
+                            "required": 0,
+                            "return_format": "array",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_iom_sff_show_cta",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ]
                         }
                     ],
                     "min": "",
