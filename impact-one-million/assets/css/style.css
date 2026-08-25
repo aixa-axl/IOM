@@ -779,6 +779,10 @@ video {
   margin-top: 0.875rem;
 }
 
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -2792,12 +2796,11 @@ body {
   scroll-margin-top: 5.5rem;
 }
 
-/* Why It Matters — fade carousel; height set by JS to active slide */
+/* Why It Matters — fade carousel; height locked to tallest slide via JS */
 
 .iom-wim-slides {
   position: relative;
   width: 100%;
-  transition: height 0.85s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .iom-wim-slide {
@@ -2828,7 +2831,6 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .iom-wim-slides,
   .iom-wim-slide {
     transition: none !important;
   }
