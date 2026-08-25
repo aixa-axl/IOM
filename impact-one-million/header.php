@@ -30,8 +30,8 @@ $icon_globe_uri    = $theme_uri . '/assets/images/icons/globe.svg';
 
 $util_link_class = 'font-display text-label uppercase tracking-[1px] text-white no-underline transition-opacity hover:opacity-80';
 $nav_link_class  = 'font-display text-label uppercase tracking-[1px] text-navy no-underline transition-opacity hover:opacity-70';
-$btn_outline     = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-80';
-$btn_primary     = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
+$btn_outline     = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-blue px-4 py-2.5 font-display text-label uppercase tracking-[1px] text-navy no-underline transition-opacity hover:opacity-80';
+$btn_primary     = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-4 py-2.5 font-display text-label uppercase tracking-[1px] text-white no-underline transition-opacity hover:opacity-90';
 
 $mobile_nav_class     = 'font-display text-label uppercase tracking-[1px] text-white no-underline text-left';
 $mobile_child_class   = 'block px-page py-3 font-sans text-body leading-[1.2] text-white no-underline transition-colors hover:bg-[#dfe8ff] hover:text-blue focus:bg-[#dfe8ff] focus:text-blue focus:outline-none';
@@ -129,10 +129,10 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 					</div>
 				<?php endif; ?>
 
-				<div class="flex flex-nowrap items-center justify-end gap-8">
+				<div class="flex flex-nowrap items-center justify-end gap-6">
 					<nav class="min-w-0" aria-label="<?php echo esc_attr__( 'Primary', 'impact-one-million' ); ?>">
 						<?php if ( $has_acf_nav ) : ?>
-							<ul class="m-0 flex list-none flex-nowrap items-center gap-8 p-0">
+							<ul class="m-0 flex list-none flex-nowrap items-center gap-6 p-0">
 								<?php foreach ( $header_nav as $row ) : ?>
 									<?php
 									$link     = isset( $row['link'] ) ? $row['link'] : null;
@@ -189,7 +189,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 								array(
 									'theme_location' => 'primary',
 									'container'      => false,
-									'menu_class'     => 'm-0 flex list-none flex-nowrap items-center gap-8 p-0',
+									'menu_class'     => 'm-0 flex list-none flex-nowrap items-center gap-6 p-0',
 									'fallback_cb'    => false,
 								)
 							);
@@ -198,7 +198,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 					</nav>
 
 					<?php if ( ! empty( $secondary_cta['url'] ) || ! empty( $primary_cta['url'] ) ) : ?>
-						<div class="flex shrink-0 flex-nowrap items-center gap-3">
+						<div class="flex shrink-0 flex-nowrap items-center gap-2">
 							<?php
 							if ( ! empty( $secondary_cta['url'] ) ) {
 								iom_render_link(
