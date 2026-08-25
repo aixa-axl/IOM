@@ -7,6 +7,7 @@
  * Figma desktop: 606:11593 — Figma mobile: 671:40731
  */
 
+$subtitle  = get_sub_field( 'subtitle' );
 $heading   = get_sub_field( 'heading' );
 $quote     = get_sub_field( 'quote' );
 $name      = get_sub_field( 'name' );
@@ -19,10 +20,6 @@ $cta       = get_sub_field( 'cta' );
 $theme_uri    = get_stylesheet_directory_uri();
 $fallback     = $theme_uri . '/assets/images/stories-from-the-field/story.jpg';
 $fallback_abs = get_stylesheet_directory() . '/assets/images/stories-from-the-field/story.jpg';
-
-if ( ! $heading ) {
-	$heading = __( 'Stories from the field', 'impact-one-million' );
-}
 
 if ( ! $quote ) {
 	$quote = __( '"[Quote text placeholder. A impactful statement about how the programme changed a life or a business operation.]"', 'impact-one-million' );
@@ -51,10 +48,20 @@ $img_attrs = array(
 
 <section class="bg-[#f9fcff] px-page py-section xl:px-gutter lg:py-[100px]">
 	<div class="mx-auto flex w-full max-w-site flex-col gap-12">
-		<?php if ( $heading ) : ?>
-			<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">
-				<?php echo esc_html( $heading ); ?>
-			</h2>
+		<?php if ( $subtitle || $heading ) : ?>
+			<div class="flex w-full flex-col items-start gap-4">
+				<?php if ( $subtitle ) : ?>
+					<p class="m-0 font-display text-body uppercase tracking-[1px] text-accent">
+						<?php echo esc_html( $subtitle ); ?>
+					</p>
+				<?php endif; ?>
+
+				<?php if ( $heading ) : ?>
+					<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">
+						<?php echo esc_html( $heading ); ?>
+					</h2>
+				<?php endif; ?>
+			</div>
 		<?php endif; ?>
 
 		<article class="flex w-full flex-col overflow-hidden rounded-2xl bg-white lg:flex-row">

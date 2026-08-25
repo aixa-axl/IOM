@@ -1138,11 +1138,19 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_iom_sff_subtitle",
+                            "label": "Subtitle",
+                            "name": "subtitle",
+                            "type": "text",
+                            "instructions": "Optional accent/red line above the heading. e.g. Stories from the field",
+                            "required": 0
+                        },
+                        {
                             "key": "field_iom_sff_heading",
                             "label": "Heading",
                             "name": "heading",
                             "type": "text",
-                            "instructions": "e.g. Stories from the field",
+                            "instructions": "Optional. Leave empty to hide.",
                             "required": 0
                         },
                         {
