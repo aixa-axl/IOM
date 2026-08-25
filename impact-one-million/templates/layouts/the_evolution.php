@@ -25,7 +25,7 @@ if ( ! is_array( $cards ) ) {
 }
 ?>
 
-<section class="bg-white px-page py-10 lg:py-[100px] xl:px-[6.25rem]">
+<section class="iom-the-evolution bg-white px-page py-10 lg:py-[100px] xl:px-[6.25rem]">
 	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-16">
 		<?php if ( $eyebrow || $heading ) : ?>
 			<div class="flex w-full flex-col items-start gap-4">

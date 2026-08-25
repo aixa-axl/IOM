@@ -365,6 +365,18 @@ body {
     padding-right: 1.25rem;
   }
 
+  /*
+   * History — tighten Evolution → Looking Ahead only (other pages unchanged).
+   * Default stack is ~100px + 80px; cut to ~48px each.
+   */
+  body.page-history .entry-content > section.iom-the-evolution:has(+ section.iom-looking-ahead) {
+    padding-bottom: 3rem;
+  }
+
+  body.page-history .entry-content > section.iom-the-evolution + section.iom-looking-ahead {
+    padding-top: 3rem;
+  }
+
   .iom-challenge-cards,
   [data-challenge-cards] {
     gap: 2.5rem !important; /* gap-10 */

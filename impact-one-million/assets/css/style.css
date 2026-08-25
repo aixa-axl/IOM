@@ -1925,6 +1925,11 @@ video {
   padding-bottom: 3px;
 }
 
+.py-\[60px\] {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
 .py-gutter {
   padding-top: 80px;
   padding-bottom: 80px;
@@ -2779,6 +2784,19 @@ body {
     letter-spacing: 1.5px;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+  }
+
+  /*
+   * History — tighten Evolution → Looking Ahead only (other pages unchanged).
+   * Default stack is ~100px + 80px; cut to ~48px each.
+   */
+
+  body.page-history .entry-content > section.iom-the-evolution:has(+ section.iom-looking-ahead) {
+    padding-bottom: 3rem;
+  }
+
+  body.page-history .entry-content > section.iom-the-evolution + section.iom-looking-ahead {
+    padding-top: 3rem;
   }
 
   .iom-challenge-cards,
@@ -3755,10 +3773,6 @@ body {
     min-width: 7.5rem;
   }
 
-  .lg\:max-w-3xl {
-    max-width: 48rem;
-  }
-
   .lg\:max-w-\[18\.75rem\] {
     max-width: 18.75rem;
   }
@@ -3913,10 +3927,6 @@ body {
 
   .lg\:gap-\[6\.25rem\] {
     gap: 6.25rem;
-  }
-
-  .lg\:gap-gutter {
-    gap: 80px;
   }
 
   .lg\:gap-x-10 {
@@ -4344,6 +4354,11 @@ body {
   .xl\:px-section {
     padding-left: 120px;
     padding-right: 120px;
+  }
+
+  .xl\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 
   .xl\:py-3 {
