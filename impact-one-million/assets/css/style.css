@@ -1334,6 +1334,10 @@ video {
           appearance: none;
 }
 
+.auto-cols-\[min\(85\%\2c 20rem\)\] {
+  grid-auto-columns: min(85%, 20rem);
+}
+
 .grid-flow-col {
   grid-auto-flow: column;
 }
@@ -4085,10 +4089,6 @@ body {
     flex: none;
   }
 
-  .lg\:shrink {
-    flex-shrink: 1;
-  }
-
   .lg\:shrink-0 {
     flex-shrink: 0;
   }
@@ -4099,6 +4099,10 @@ body {
 
   .lg\:snap-align-none {
     scroll-snap-align: none;
+  }
+
+  .lg\:auto-cols-auto {
+    grid-auto-columns: auto;
   }
 
   .lg\:grid-flow-row {

@@ -72,7 +72,7 @@ $img_attrs = array(
 
 		<?php if ( ! empty( $ambassadors ) ) : ?>
 			<div class="w-full" <?php echo $use_paging ? 'data-ambassadors-grid-wrap' : ''; ?>>
-			<ul class="m-0 flex w-full list-none gap-6 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:pb-0 lg:snap-none xl:px-0 [&::-webkit-scrollbar]:hidden">
+			<ul class="m-0 grid w-full list-none auto-cols-[min(85%,20rem)] grid-flow-col gap-6 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:auto-cols-auto lg:grid-flow-row lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:pb-0 lg:snap-none xl:px-0 [&::-webkit-scrollbar]:hidden">
 				<?php foreach ( $ambassadors as $index => $person ) : ?>
 					<?php
 					$image_id     = isset( $person['image'] ) ? $person['image'] : null;
@@ -89,10 +89,10 @@ $img_attrs = array(
 					// Desktop pagination hides extras via JS; mobile carousel shows all.
 					?>
 					<li
-						class="flex w-[min(85%,20rem)] shrink-0 snap-center flex-col gap-5 self-start rounded-card border border-solid border-[#dfe8ff] bg-white p-6 lg:w-auto lg:shrink lg:snap-align-none"
+						class="flex h-full w-full snap-center flex-col gap-5 rounded-card border border-solid border-[#dfe8ff] bg-white p-6 lg:snap-align-none"
 						<?php echo $use_paging ? 'data-ambassadors-card' : ''; ?>
 					>
-						<div class="relative h-[15rem] w-full overflow-hidden rounded-card bg-off-white">
+						<div class="relative h-[15rem] w-full shrink-0 overflow-hidden rounded-card bg-off-white">
 							<?php if ( $image_id ) : ?>
 								<?php
 								echo wp_get_attachment_image(
@@ -105,7 +105,7 @@ $img_attrs = array(
 							<?php endif; ?>
 						</div>
 
-						<div class="flex flex-col gap-2">
+						<div class="flex min-h-0 flex-1 flex-col gap-2">
 							<?php if ( $name ) : ?>
 								<h3 class="m-0 font-display text-card-title leading-none text-blue">
 									<?php echo esc_html( $name ); ?>
@@ -119,7 +119,7 @@ $img_attrs = array(
 							<?php endif; ?>
 
 							<?php if ( $bio ) : ?>
-								<p class="m-0 font-sans text-sm leading-[1.5] text-navy">
+								<p class="m-0 flex-1 font-sans text-sm leading-[1.5] text-navy">
 									<?php echo esc_html( $bio ); ?>
 								</p>
 							<?php endif; ?>
@@ -127,7 +127,7 @@ $img_attrs = array(
 							<?php if ( $linkedin_url ) : ?>
 								<a
 									href="<?php echo esc_url( $linkedin_url ); ?>"
-									class="mt-0 inline-flex items-start gap-2 font-sans text-sm leading-[1.5] text-navy no-underline transition-opacity hover:opacity-70"
+									class="mt-auto inline-flex items-start gap-2 font-sans text-sm leading-[1.5] text-navy no-underline transition-opacity hover:opacity-70"
 									target="_blank"
 									rel="noopener noreferrer"
 								>
