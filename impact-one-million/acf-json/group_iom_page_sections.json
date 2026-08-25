@@ -2434,6 +2434,14 @@
                             "return_format": "value"
                         },
                         {
+                            "key": "field_iom_as_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "Optional title above the quote. Leave empty to hide.",
+                            "required": 0
+                        },
+                        {
                             "key": "field_iom_as_quote",
                             "label": "Quote",
                             "name": "quote",

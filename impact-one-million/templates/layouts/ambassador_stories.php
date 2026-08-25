@@ -12,6 +12,7 @@
  */
 
 $background_color = get_sub_field( 'background_color' );
+$heading          = get_sub_field( 'heading' );
 $quote            = get_sub_field( 'quote' );
 $featured         = get_sub_field( 'featured' );
 $campaign         = get_sub_field( 'campaign' );
@@ -83,6 +84,12 @@ $play_label = __( 'Play video', 'impact-one-million' );
 	<div class="mx-auto flex w-full max-w-site flex-col gap-16">
 		<div class="flex w-full flex-col items-stretch gap-8 xl:flex-row xl:items-center xl:gap-8">
 			<div class="flex min-w-0 flex-1 flex-col items-start gap-10">
+				<?php if ( $heading ) : ?>
+					<h2 class="m-0 font-display text-headline leading-[1.2] text-white">
+						<?php echo esc_html( $heading ); ?>
+					</h2>
+				<?php endif; ?>
+
 				<div class="flex w-full flex-col items-start gap-4">
 					<span class="font-display text-headline leading-[1.2] text-[#dfe8ff]" aria-hidden="true">&ldquo;</span>
 
