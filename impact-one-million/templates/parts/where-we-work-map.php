@@ -17,8 +17,9 @@ $map_active = isset( $iom_map_active_slug ) ? (string) $iom_map_active_slug : 'c
 <div class="relative w-full cursor-pointer" data-work-map>
 	<img
 		class="pointer-events-none block h-auto w-full max-w-full"
-		src="<?php echo esc_url( $map_2x ); ?>"
-		srcset="<?php echo esc_attr( $map_base . ' 1x, ' . $map_2x . ' 2x, ' . $map_3x . ' 3x' ); ?>"
+		src="<?php echo esc_url( $map_3x ); ?>"
+		srcset="<?php echo esc_attr( $map_base . ' 1024w, ' . $map_2x . ' 2048w, ' . $map_3x . ' 3072w' ); ?>"
+		sizes="(min-width: 1200px) 1200px, 100vw"
 		alt="<?php echo esc_attr__( 'Map of countries where we work', 'impact-one-million' ); ?>"
 		width="1024"
 		height="546"
@@ -37,8 +38,9 @@ $map_active = isset( $iom_map_active_slug ) ? (string) $iom_map_active_slug : 'c
 		?>
 		<img
 			class="iom-map-highlight pointer-events-none absolute inset-0 h-full w-full object-fill transition-opacity duration-200 <?php echo esc_attr( $hl_opacity ); ?>"
-			src="<?php echo esc_url( $hl_2x ); ?>"
-			srcset="<?php echo esc_attr( $hl . ' 1x, ' . $hl_2x . ' 2x, ' . $hl_3x . ' 3x' ); ?>"
+			src="<?php echo esc_url( $hl_3x ); ?>"
+			srcset="<?php echo esc_attr( $hl . ' 1024w, ' . $hl_2x . ' 2048w, ' . $hl_3x . ' 3072w' ); ?>"
+			sizes="(min-width: 1200px) 1200px, 100vw"
 			alt=""
 			width="1024"
 			height="546"
