@@ -5,7 +5,7 @@
  * Split checklist — heading + check items.
  * Optional intro: heading full-width, then intro | checklist.
  * Without intro: heading left, checklist right (classic Why factories join).
- * Optional footer text under the checklist.
+ * Optional text under each checklist label.
  *
  * Figma desktop (classic): 670:40519
  * Figma desktop (with intro): 634:19936
@@ -15,7 +15,6 @@
 $heading = get_sub_field( 'heading' );
 $intro   = get_sub_field( 'intro' );
 $items   = get_sub_field( 'items' );
-$footer  = get_sub_field( 'footer' );
 
 $theme_uri = get_stylesheet_directory_uri();
 $icon_uri  = $theme_uri . '/assets/images/icons/check-circle.svg';
@@ -56,15 +55,16 @@ if ( ! is_array( $items ) || empty( $items ) ) {
  */
 $iom_render_join_items = function ( $items, $icon_uri ) {
 	?>
-	<ul class="m-0 flex w-full list-none flex-col items-start gap-4 p-0">
+	<ul class="m-0 flex min-w-0 flex-1 list-none flex-col items-start gap-4 p-0">
 		<?php foreach ( $items as $item ) : ?>
 			<?php
 			$label = isset( $item['label'] ) ? $item['label'] : '';
-			if ( ! $label ) {
+			$text  = isset( $item['text'] ) ? $item['text'] : '';
+			if ( ! $label && ! $text ) {
 				continue;
 			}
 			?>
-			<li class="flex w-full items-center gap-3">
+			<li class="flex w-full items-start gap-3">
 				<img
 					src="<?php echo esc_url( $icon_uri ); ?>"
 					alt=""
@@ -75,9 +75,19 @@ $iom_render_join_items = function ( $items, $icon_uri ) {
 					decoding="async"
 					aria-hidden="true"
 				>
-				<span class="min-w-0 font-display text-card-title leading-none text-blue">
-					<?php echo esc_html( $label ); ?>
-				</span>
+				<div class="flex min-w-0 flex-col gap-2">
+					<?php if ( $label ) : ?>
+						<span class="font-display text-card-title leading-none text-blue">
+							<?php echo esc_html( $label ); ?>
+						</span>
+					<?php endif; ?>
+
+					<?php if ( $text ) : ?>
+						<p class="m-0 font-sans text-body leading-[1.2] text-muted">
+							<?php echo esc_html( $text ); ?>
+						</p>
+					<?php endif; ?>
+				</div>
 			</li>
 		<?php endforeach; ?>
 	</ul>
@@ -99,18 +109,8 @@ $iom_render_join_items = function ( $items, $icon_uri ) {
 					<?php echo esc_html( $intro ); ?>
 				</p>
 
-				<?php if ( ! empty( $items ) || $footer ) : ?>
-					<div class="flex min-w-0 flex-1 flex-col items-start gap-6">
-						<?php if ( ! empty( $items ) ) : ?>
-							<?php $iom_render_join_items( $items, $icon_uri ); ?>
-						<?php endif; ?>
-
-						<?php if ( $footer ) : ?>
-							<p class="m-0 font-sans text-body leading-[1.2] text-muted">
-								<?php echo esc_html( $footer ); ?>
-							</p>
-						<?php endif; ?>
-					</div>
+				<?php if ( ! empty( $items ) ) : ?>
+					<?php $iom_render_join_items( $items, $icon_uri ); ?>
 				<?php endif; ?>
 			</div>
 		</div>
@@ -122,18 +122,8 @@ $iom_render_join_items = function ( $items, $icon_uri ) {
 				</h2>
 			<?php endif; ?>
 
-			<?php if ( ! empty( $items ) || $footer ) : ?>
-				<div class="flex min-w-0 flex-1 flex-col items-start gap-6">
-					<?php if ( ! empty( $items ) ) : ?>
-						<?php $iom_render_join_items( $items, $icon_uri ); ?>
-					<?php endif; ?>
-
-					<?php if ( $footer ) : ?>
-						<p class="m-0 font-sans text-body leading-[1.2] text-muted">
-							<?php echo esc_html( $footer ); ?>
-						</p>
-					<?php endif; ?>
-				</div>
+			<?php if ( ! empty( $items ) ) : ?>
+				<?php $iom_render_join_items( $items, $icon_uri ); ?>
 			<?php endif; ?>
 		</div>
 	<?php endif; ?>

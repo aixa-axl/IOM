@@ -2220,9 +2220,9 @@
                             "label": "Items",
                             "name": "items",
                             "type": "repeater",
-                            "instructions": "Checklist rows with accent check icons.",
+                            "instructions": "Checklist rows with accent check icons. Optional text under each label.",
                             "required": 0,
-                            "layout": "table",
+                            "layout": "block",
                             "button_label": "Add Item",
                             "sub_fields": [
                                 {
@@ -2232,18 +2232,19 @@
                                     "type": "text",
                                     "required": 0,
                                     "parent_repeater": "field_iom_jr_items"
+                                },
+                                {
+                                    "key": "field_iom_jr_item_text",
+                                    "label": "Text",
+                                    "name": "text",
+                                    "type": "textarea",
+                                    "instructions": "Optional supporting text under this bullet.",
+                                    "required": 0,
+                                    "rows": 2,
+                                    "new_lines": "",
+                                    "parent_repeater": "field_iom_jr_items"
                                 }
                             ]
-                        },
-                        {
-                            "key": "field_iom_jr_footer",
-                            "label": "Text Below Items",
-                            "name": "footer",
-                            "type": "textarea",
-                            "instructions": "Optional supporting text under the checklist.",
-                            "required": 0,
-                            "rows": 3,
-                            "new_lines": ""
                         }
                     ],
                     "min": "",
