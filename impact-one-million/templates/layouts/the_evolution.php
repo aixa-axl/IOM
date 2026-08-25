@@ -75,13 +75,13 @@ $list_class = $use_grid
 					}
 
 					if ( $use_grid ) {
-						$card_class = 'flex min-w-0 flex-col items-start gap-6 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-8 lg:gap-8';
+						$card_class = 'flex min-w-0 flex-col items-start gap-3 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-8';
 					} else {
 						// Middle card (2nd) is slightly larger on desktop, matching Figma hierarchy.
 						$is_middle  = ( 1 === (int) $index );
 						$card_class = $is_middle
-							? 'flex min-w-0 flex-1 flex-col items-start gap-8 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-10 lg:flex-[1.15] lg:gap-8 lg:p-12 lg:shadow-sm'
-							: 'flex min-w-0 flex-1 flex-col items-start gap-6 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-8 lg:gap-8 lg:p-8';
+							? 'flex min-w-0 flex-1 flex-col items-start gap-3 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-10 lg:flex-[1.15] lg:p-12 lg:shadow-sm'
+							: 'flex min-w-0 flex-1 flex-col items-start gap-3 rounded-card border border-solid border-[#dfe8ff] bg-off-white p-8';
 					}
 					?>
 					<li class="<?php echo esc_attr( $card_class ); ?>">
