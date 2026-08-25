@@ -2796,11 +2796,14 @@
                             "key": "field_iom_gs_body",
                             "label": "Body",
                             "name": "body",
-                            "type": "textarea",
-                            "instructions": "Intro paragraph beside / below the heading.",
+                            "type": "wysiwyg",
+                            "instructions": "Intro beside / below the heading. Use Bold to emphasise phrases.",
                             "required": 0,
-                            "rows": 4,
-                            "new_lines": ""
+                            "tabs": "visual",
+                            "toolbar": "basic",
+                            "media_upload": 0,
+                            "delay": 0,
+                            "default_value": ""
                         },
                         {
                             "key": "field_iom_gs_items",

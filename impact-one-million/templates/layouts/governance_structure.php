@@ -35,9 +35,9 @@ if ( ! is_array( $items ) ) {
 
 		<div class="flex min-w-0 flex-1 flex-col items-start gap-8">
 			<?php if ( $body ) : ?>
-				<p class="m-0 font-sans text-body leading-[1.2]">
-					<?php echo esc_html( $body ); ?>
-				</p>
+				<div class="m-0 font-sans text-body leading-[1.2] [&_a]:underline [&_b]:font-semibold [&_p]:m-0 [&_p+p]:mt-4 [&_strong]:font-semibold">
+					<?php echo wp_kses_post( $body ); ?>
+				</div>
 			<?php endif; ?>
 
 			<?php if ( ! empty( $items ) ) : ?>
