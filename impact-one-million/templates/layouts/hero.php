@@ -146,7 +146,7 @@ if ( $is_first_section && ! $is_accent && $iom_is_gender_equality_page ) {
 	$btn_outline     .= ' whitespace-nowrap px-4 text-[18px] tracking-[1px] md:px-6 md:text-card-title md:tracking-[2px]';
 }
 
-// Financial Wellbeing page top hero only: smaller CTA on mobile.
+// Financial Wellbeing page top hero only: slightly smaller CTA text so it fits one line on mobile.
 $iom_is_financial_wellbeing_page = function_exists( 'is_page' ) && (
 	is_page(
 		array(
@@ -159,8 +159,8 @@ $iom_is_financial_wellbeing_page = function_exists( 'is_page' ) && (
 	|| ( is_singular( 'page' ) && false !== stripos( (string) get_the_title(), 'Financial Well-being' ) )
 );
 if ( $is_first_section && ! $is_accent && $iom_is_financial_wellbeing_page ) {
-	$btn_filled_base .= ' px-4 py-3 text-[18px] tracking-[1px] md:px-6 md:py-3.5 md:text-card-title md:tracking-[2px]';
-	$btn_outline     .= ' px-4 py-3 text-[18px] tracking-[1px] md:px-6 md:py-3.5 md:text-card-title md:tracking-[2px]';
+	$btn_filled_base .= ' whitespace-nowrap text-[18px] tracking-[1px] md:text-card-title md:tracking-[2px]';
+	$btn_outline     .= ' whitespace-nowrap text-[18px] tracking-[1px] md:text-card-title md:tracking-[2px]';
 }
 
 $btn_primary = $btn_filled_base . ' ' . $fill_bg[ $primary_cta_style ];

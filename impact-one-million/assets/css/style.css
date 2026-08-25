@@ -2969,16 +2969,16 @@ body {
   }
 
   /*
-   * Financial Wellbeing — top hero CTA only: smaller on mobile.
-   * Does not affect desktop or other pages/heroes.
+   * Financial Wellbeing — top hero CTA only: slightly smaller text on mobile
+   * so the label stays on one line. Button padding unchanged.
    */
 
   body.page-financial-wellbeing .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a,
   body.page-financial-well-being .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a,
   body.page-financial-wellbeing-development .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a {
+    white-space: nowrap;
     font-size: 18px;
     letter-spacing: 1px;
-    padding: 0.75rem 1rem;
   }
 }
 
@@ -3758,11 +3758,6 @@ body {
   .md\:py-20 {
     padding-top: 5rem;
     padding-bottom: 5rem;
-  }
-
-  .md\:py-3\.5 {
-    padding-top: 0.875rem;
-    padding-bottom: 0.875rem;
   }
 
   .md\:py-6 {
