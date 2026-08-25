@@ -43,7 +43,7 @@ $heading_class = $is_vertical
 	? 'm-0 text-center font-display text-headline leading-[1.2] text-white'
 	: 'm-0 text-center font-display text-headline leading-[1.2] text-blue';
 
-$outer_gap = $is_vertical ? 'gap-20' : 'gap-10';
+$outer_gap = $is_vertical ? 'gap-20 lg:gap-10' : 'gap-10';
 ?>
 
 <section class="<?php echo esc_attr( $section_class ); ?>">
@@ -56,7 +56,7 @@ $outer_gap = $is_vertical ? 'gap-20' : 'gap-10';
 
 		<?php if ( ! empty( $steps ) ) : ?>
 			<?php if ( $is_vertical ) : ?>
-				<ol class="m-0 flex w-full max-w-[25rem] list-none flex-col items-center gap-10 p-0">
+				<ol class="m-0 flex w-full max-w-[25rem] list-none flex-col items-center gap-10 p-0 lg:gap-6">
 					<?php
 					$step_count = 0;
 					foreach ( $steps as $step ) {
@@ -83,7 +83,7 @@ $outer_gap = $is_vertical ? 'gap-20' : 'gap-10';
 							$step_label = sprintf( __( 'Step %d', 'impact-one-million' ), $rendered );
 						}
 						?>
-						<li class="flex w-full flex-col items-center gap-10">
+						<li class="flex w-full flex-col items-center gap-10 lg:gap-4">
 							<div class="flex w-full flex-col items-center justify-center gap-4 rounded-card bg-off-white p-3 text-center">
 								<div class="flex w-full flex-col items-center justify-center gap-4 uppercase">
 									<p class="m-0 font-display text-body tracking-[1px] text-accent">
