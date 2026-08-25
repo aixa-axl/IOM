@@ -30,7 +30,7 @@ if ( ! is_array( $cta ) ) {
 	$cta = array();
 }
 
-$btn_class = 'inline-flex items-center justify-center self-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-5 text-center font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 lg:py-3.5';
+$btn_class = 'inline-flex items-center justify-center self-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-4 text-center font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 lg:py-3.5';
 
 if ( ! is_array( $countries ) || empty( $countries ) ) {
 	$countries = array(
