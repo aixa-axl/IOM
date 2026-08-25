@@ -159,8 +159,24 @@ $iom_is_financial_wellbeing_page = function_exists( 'is_page' ) && (
 	|| ( is_singular( 'page' ) && false !== stripos( (string) get_the_title(), 'Financial Well-being' ) )
 );
 if ( $is_first_section && ! $is_accent && $iom_is_financial_wellbeing_page ) {
-	$btn_filled_base .= ' whitespace-nowrap text-[16px] tracking-[1px] md:text-card-title md:tracking-[2px]';
-	$btn_outline     .= ' whitespace-nowrap text-[16px] tracking-[1px] md:text-card-title md:tracking-[2px]';
+	$btn_filled_base .= ' whitespace-nowrap text-[15px] tracking-[1px] md:text-card-title md:tracking-[2px]';
+	$btn_outline     .= ' whitespace-nowrap text-[15px] tracking-[1px] md:text-card-title md:tracking-[2px]';
+}
+
+// Respect & Remedy page top hero only: keep CTA label on one line on mobile.
+$iom_is_respect_remedy_page = function_exists( 'is_page' ) && (
+	is_page(
+		array(
+			'respect-and-remedy',
+			'respect-remedy',
+			'respect-&-remedy',
+		)
+	)
+	|| ( is_singular( 'page' ) && false !== stripos( (string) get_the_title(), 'Respect' ) && false !== stripos( (string) get_the_title(), 'Remedy' ) )
+);
+if ( $is_first_section && ! $is_accent && $iom_is_respect_remedy_page ) {
+	$btn_filled_base .= ' whitespace-nowrap text-[18px] tracking-[1px] md:text-card-title md:tracking-[2px]';
+	$btn_outline     .= ' whitespace-nowrap text-[18px] tracking-[1px] md:text-card-title md:tracking-[2px]';
 }
 
 $btn_primary = $btn_filled_base . ' ' . $fill_bg[ $primary_cta_style ];

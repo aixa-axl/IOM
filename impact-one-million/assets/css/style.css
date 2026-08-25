@@ -2086,10 +2086,6 @@ video {
   font-size: 15px;
 }
 
-.text-\[16px\] {
-  font-size: 16px;
-}
-
 .text-\[17px\] {
   font-size: 17px;
 }
@@ -2981,7 +2977,18 @@ body {
   body.page-financial-well-being .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a,
   body.page-financial-wellbeing-development .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a {
     white-space: nowrap;
-    font-size: 16px;
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+
+  /*
+   * Respect & Remedy — top hero CTA only: keep label on one line on mobile.
+   */
+
+  body.page-respect-and-remedy .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a,
+  body.page-respect-remedy .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a {
+    white-space: nowrap;
+    font-size: 18px;
     letter-spacing: 1px;
   }
 }
