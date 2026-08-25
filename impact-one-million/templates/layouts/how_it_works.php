@@ -95,15 +95,15 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 
 <section class="bg-blue px-page py-section text-white lg:overflow-x-visible xl:px-gutter">
 	<div class="mx-auto flex w-full max-w-site flex-col gap-20">
-		<div class="flex flex-col gap-20 lg:flex-row lg:items-start lg:gap-gutter">
+		<div class="flex flex-col gap-10 lg:gap-12">
 			<?php if ( $heading ) : ?>
-				<h2 class="m-0 flex-1 font-display text-[32px] leading-[1.2] text-white lg:text-headline lg:max-w-none">
+				<h2 class="m-0 w-full font-display text-[32px] leading-[1.2] text-white lg:text-headline">
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 			<?php endif; ?>
 
 			<?php if ( ! empty( $steps ) ) : ?>
-				<ul class="m-0 grid w-full list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2 lg:min-w-0 lg:flex-1 lg:max-w-3xl">
+				<ul class="m-0 grid w-full list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2">
 					<?php foreach ( $steps as $step ) : ?>
 						<?php
 						$text    = isset( $step['text'] ) ? $step['text'] : '';
