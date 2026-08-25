@@ -50,8 +50,8 @@ if ( ! is_array( $items ) ) {
 						continue;
 					}
 					?>
-					<li class="flex w-full items-center gap-6">
-						<span class="size-6 shrink-0 rounded-full bg-accent-blue" aria-hidden="true"></span>
+					<li class="flex w-full items-start gap-6">
+						<span class="mt-1 size-6 shrink-0 rounded-full bg-accent-blue" aria-hidden="true"></span>
 						<span class="min-w-0 font-sans text-label leading-normal text-blue">
 							<?php echo esc_html( $label ); ?>
 						</span>
