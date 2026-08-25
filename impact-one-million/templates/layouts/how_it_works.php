@@ -3,7 +3,7 @@
  * Layout: how_it_works
  *
  * ACF layout name: how_it_works
- * Fields: heading, steps (repeater text), pillars_heading, pillars (repeater)
+ * Fields: heading, steps (repeater text + subtext), pillars_heading, pillars (repeater)
  *
  * Figma desktop: 606:11511 — Figma mobile: 671:40616
  */
@@ -32,9 +32,18 @@ if ( ! $pillars_heading ) {
 
 if ( ! is_array( $steps ) || empty( $steps ) ) {
 	$steps = array(
-		array( 'text' => __( 'Investment received', 'impact-one-million' ) ),
-		array( 'text' => __( 'We deliver through local teams & proven programmes', 'impact-one-million' ) ),
-		array( 'text' => __( 'Impact is measured & reported back', 'impact-one-million' ) ),
+		array(
+			'text'    => __( 'Investment received', 'impact-one-million' ),
+			'subtext' => '',
+		),
+		array(
+			'text'    => __( 'We deliver through local teams & proven programmes', 'impact-one-million' ),
+			'subtext' => '',
+		),
+		array(
+			'text'    => __( 'Impact is measured & reported back', 'impact-one-million' ),
+			'subtext' => '',
+		),
 	);
 }
 
@@ -97,15 +106,23 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 				<ul class="m-0 flex w-full list-none flex-col gap-3 p-0 lg:w-auto lg:max-w-xl lg:shrink-0">
 					<?php foreach ( $steps as $step ) : ?>
 						<?php
-						$text = isset( $step['text'] ) ? $step['text'] : '';
+						$text    = isset( $step['text'] ) ? $step['text'] : '';
+						$subtext = isset( $step['subtext'] ) ? $step['subtext'] : '';
 						if ( ! $text ) {
 							continue;
 						}
 						?>
 						<li class="rounded-btn border-[1.5px] border-solid border-transparent bg-white px-6 py-4">
-							<p class="m-0 font-display text-[24px] leading-none text-blue lg:text-header">
-								<?php echo esc_html( $text ); ?>
-							</p>
+							<div class="flex flex-col gap-2">
+								<p class="m-0 font-display text-[24px] leading-none text-blue lg:text-header">
+									<?php echo esc_html( $text ); ?>
+								</p>
+								<?php if ( $subtext ) : ?>
+									<p class="m-0 font-sans text-body leading-[1.2] text-muted">
+										<?php echo wp_kses_post( $subtext ); ?>
+									</p>
+								<?php endif; ?>
+							</div>
 						</li>
 					<?php endforeach; ?>
 				</ul>

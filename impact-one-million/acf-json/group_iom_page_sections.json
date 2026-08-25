@@ -421,6 +421,17 @@
                                     "type": "text",
                                     "required": 1,
                                     "parent_repeater": "field_iom_hiw_steps"
+                                },
+                                {
+                                    "key": "field_iom_hiw_step_subtext",
+                                    "label": "Subtext",
+                                    "name": "subtext",
+                                    "type": "textarea",
+                                    "instructions": "Supporting line under the step title.",
+                                    "required": 0,
+                                    "rows": 2,
+                                    "new_lines": "br",
+                                    "parent_repeater": "field_iom_hiw_steps"
                                 }
                             ]
                         },
