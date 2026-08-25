@@ -7,12 +7,14 @@
  * Figma desktop: 606:14449 — Figma mobile: 671:40667
  */
 
-$heading   = get_sub_field( 'heading' );
-$role      = get_sub_field( 'role' );
-$body      = get_sub_field( 'body' );
-$cta       = get_sub_field( 'cta' );
-$image_id  = get_sub_field( 'image' );
-$video_url = get_sub_field( 'video_url' );
+$heading      = get_sub_field( 'heading' );
+$role         = get_sub_field( 'role' );
+$body         = get_sub_field( 'body' );
+$cta          = get_sub_field( 'cta' );
+$image_id     = get_sub_field( 'image' );
+$video_source = get_sub_field( 'video_source' );
+$video_url    = get_sub_field( 'video_url' );
+$video_file   = get_sub_field( 'video_file' );
 
 $theme_uri = get_stylesheet_directory_uri();
 $play_uri  = $theme_uri . '/assets/images/icons/play.svg';
@@ -47,15 +49,27 @@ $btn_class = 'inline-flex items-center justify-center rounded-btn border-[1.5px]
 
 $play_label = __( 'Play video', 'impact-one-million' );
 
+if ( ! $video_source ) {
+	$video_source = 'external';
+}
+
 /**
- * Build an inline-playable embed URL (YouTube / Vimeo) or return a file URL.
+ * Build an inline-playable embed (YouTube / Vimeo iframe) or HTML5 video src.
  *
- * @param string $url Raw video URL from ACF.
  * @return array{type:string,src:string}|null
  */
 $iom_fs_embed = null;
-if ( $video_url ) {
-	$video_url = trim( $video_url );
+
+if ( 'upload' === $video_source && $video_file ) {
+	$file_url = wp_get_attachment_url( (int) $video_file );
+	if ( $file_url ) {
+		$iom_fs_embed = array(
+			'type' => 'video',
+			'src'  => $file_url,
+		);
+	}
+} elseif ( $video_url ) {
+	$video_url = trim( (string) $video_url );
 	if ( preg_match( '#(?:youtube\.com/(?:watch\?v=|embed/|shorts/)|youtu\.be/)([A-Za-z0-9_-]{6,})#', $video_url, $m ) ) {
 		$iom_fs_embed = array(
 			'type' => 'iframe',
@@ -66,7 +80,7 @@ if ( $video_url ) {
 			'type' => 'iframe',
 			'src'  => 'https://player.vimeo.com/video/' . rawurlencode( $m[1] ) . '?autoplay=1',
 		);
-	} elseif ( preg_match( '#\.(mp4|webm|ogg)(\?|$)#i', $video_url ) ) {
+	} elseif ( preg_match( '#\.(mp4|webm|ogg|m4v)(\?|$)#i', $video_url ) ) {
 		$iom_fs_embed = array(
 			'type' => 'video',
 			'src'  => $video_url,
