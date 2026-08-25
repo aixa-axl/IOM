@@ -545,6 +545,16 @@
                             "required": 0
                         },
                         {
+                            "key": "field_iom_www_intro",
+                            "label": "Intro",
+                            "name": "intro",
+                            "type": "textarea",
+                            "instructions": "Optional supporting text below the heading.",
+                            "required": 0,
+                            "rows": 3,
+                            "new_lines": ""
+                        },
+                        {
                             "key": "field_iom_www_helper_text",
                             "label": "Helper Text",
                             "name": "helper_text",
@@ -617,6 +627,15 @@
                                     "parent_repeater": "field_iom_www_countries"
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_iom_www_cta",
+                            "label": "CTA",
+                            "name": "cta",
+                            "type": "link",
+                            "instructions": "Optional button below the country list.",
+                            "required": 0,
+                            "return_format": "array"
                         }
                     ],
                     "min": "",

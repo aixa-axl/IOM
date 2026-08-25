@@ -10,9 +10,11 @@
  */
 
 $heading     = get_sub_field( 'heading' );
+$intro       = get_sub_field( 'intro' );
 $helper_text = get_sub_field( 'helper_text' );
 $background  = get_sub_field( 'background' );
 $countries   = get_sub_field( 'countries' );
+$cta         = get_sub_field( 'cta' );
 
 if ( ! in_array( $background, array( 'white', 'off_white' ), true ) ) {
 	$background = 'white';
@@ -23,6 +25,12 @@ $section_bg = ( 'off_white' === $background ) ? 'bg-off-white' : 'bg-white';
 if ( ! $helper_text ) {
 	$helper_text = __( 'Select a country to explore our programmes there.', 'impact-one-million' );
 }
+
+if ( ! is_array( $cta ) ) {
+	$cta = array();
+}
+
+$btn_class = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 
 if ( ! is_array( $countries ) || empty( $countries ) ) {
 	$countries = array(
@@ -162,10 +170,20 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 	</script>
 
 	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-10 lg:gap-10">
-		<?php if ( $heading ) : ?>
-			<h2 class="m-0 text-center font-display text-[32px] leading-none text-navy lg:text-number">
-				<?php echo esc_html( $heading ); ?>
-			</h2>
+		<?php if ( $heading || $intro ) : ?>
+			<div class="flex w-full max-w-[50rem] flex-col items-center gap-4 text-center">
+				<?php if ( $heading ) : ?>
+					<h2 class="m-0 font-display text-[32px] leading-none text-navy lg:text-number">
+						<?php echo esc_html( $heading ); ?>
+					</h2>
+				<?php endif; ?>
+
+				<?php if ( $intro ) : ?>
+					<p class="m-0 font-sans text-body leading-[1.2] text-muted">
+						<?php echo esc_html( $intro ); ?>
+					</p>
+				<?php endif; ?>
+			</div>
 		<?php endif; ?>
 
 		<div class="relative w-full max-w-[75rem]">
@@ -301,5 +319,15 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 				<?php endif; ?>
 			</ul>
 		</nav>
+
+		<?php if ( ! empty( $cta['url'] ) ) : ?>
+			<?php
+			iom_render_link(
+				$cta,
+				$btn_class,
+				__( 'Learn more', 'impact-one-million' )
+			);
+			?>
+		<?php endif; ?>
 	</div>
 </section>
