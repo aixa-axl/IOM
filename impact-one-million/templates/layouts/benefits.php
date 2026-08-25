@@ -8,10 +8,11 @@
  * Figma desktop: 606:11698 — Figma mobile: 677:41476
  */
 
-$eyebrow      = get_sub_field( 'eyebrow' );
-$heading      = get_sub_field( 'heading' );
-$cards        = get_sub_field( 'cards' );
-$primary_cta  = get_sub_field( 'primary_cta' );
+$eyebrow       = get_sub_field( 'eyebrow' );
+$heading       = get_sub_field( 'heading' );
+$intro         = get_sub_field( 'intro' );
+$cards         = get_sub_field( 'cards' );
+$primary_cta   = get_sub_field( 'primary_cta' );
 $secondary_cta = get_sub_field( 'secondary_cta' );
 
 $theme_uri = get_stylesheet_directory_uri();
@@ -95,6 +96,10 @@ $btn_outline = 'inline-flex w-full items-center justify-center rounded-btn borde
 				<h2 class="m-0 font-display text-headline leading-[1.2] text-blue">
 					<?php echo esc_html( $heading ); ?>
 				</h2>
+			<?php endif; ?>
+
+			<?php if ( $intro ) : ?>
+				<?php echo iom_format_multiline_text( $intro, 'm-0 max-w-[40rem] font-sans text-body leading-[1.2] text-navy' ); ?>
 			<?php endif; ?>
 		</div>
 
