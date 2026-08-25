@@ -2176,6 +2176,17 @@
                                     "parent_repeater": "field_iom_soc_stories"
                                 },
                                 {
+                                    "key": "field_iom_soc_story_body",
+                                    "label": "Body",
+                                    "name": "body",
+                                    "type": "textarea",
+                                    "instructions": "Optional text below the quote.",
+                                    "required": 0,
+                                    "rows": 3,
+                                    "new_lines": "",
+                                    "parent_repeater": "field_iom_soc_stories"
+                                },
+                                {
                                     "key": "field_iom_soc_story_quote_first",
                                     "label": "Quote first",
                                     "name": "quote_first",

@@ -79,6 +79,7 @@ $img_attrs = array(
 						<?php
 						$image_id    = isset( $story['image'] ) ? $story['image'] : null;
 						$quote       = isset( $story['quote'] ) ? $story['quote'] : '';
+						$body        = isset( $story['body'] ) ? $story['body'] : '';
 						$quote_first = ! empty( $story['quote_first'] );
 						// Fall back to alternating layout when the field is unset on older rows.
 						if ( ! array_key_exists( 'quote_first', $story ) ) {
@@ -110,11 +111,19 @@ $img_attrs = array(
 								<?php endif; ?>
 							</div>
 
-							<?php if ( $quote ) : ?>
-								<div class="flex w-full flex-col items-start gap-8 px-3 py-6">
-									<blockquote class="m-0 font-display text-card-title leading-[1.2] text-blue">
-										<?php echo esc_html( $quote ); ?>
-									</blockquote>
+							<?php if ( $quote || $body ) : ?>
+								<div class="flex w-full flex-col items-start gap-4 px-3 py-6">
+									<?php if ( $quote ) : ?>
+										<blockquote class="m-0 font-display text-card-title leading-[1.2] text-blue">
+											<?php echo esc_html( $quote ); ?>
+										</blockquote>
+									<?php endif; ?>
+
+									<?php if ( $body ) : ?>
+										<p class="m-0 font-sans text-body leading-[1.2] text-muted">
+											<?php echo esc_html( $body ); ?>
+										</p>
+									<?php endif; ?>
 								</div>
 							<?php endif; ?>
 						</li>
