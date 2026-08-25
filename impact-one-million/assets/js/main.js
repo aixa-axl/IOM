@@ -408,7 +408,7 @@
 	const baseImg = section.querySelector('[data-map-base]');
 	const mapHighlights = section.querySelectorAll('.iom-map-highlight');
 	const tabs = section.querySelectorAll('[data-country-tab]');
-	const panels = section.querySelectorAll('[data-country-panel]');
+	const panels = section.querySelectorAll('[data-country-panel], [data-country-panel-mobile]');
 
 	// Smaller / nested regions first so Bangladesh wins over India, etc.
 	const hitOrder = [
@@ -484,7 +484,7 @@
 		return null;
 	}
 
-	function setCountry(slug, options) {
+	function setCountry(slug) {
 		if (!countries[slug]) {
 			return;
 		}
@@ -543,15 +543,6 @@
 					data.link_title || 'See programmes in ' + (data.name || '');
 			}
 		});
-
-		// Keep map + country list in view when selecting from the tabs.
-		if (options && options.scrollMap && map) {
-			const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-			map.scrollIntoView({
-				behavior: reduceMotion ? 'auto' : 'smooth',
-				block: 'nearest',
-			});
-		}
 	}
 
 	if (map) {
@@ -575,7 +566,7 @@
 
 	tabs.forEach(function (tab) {
 		tab.addEventListener('click', function () {
-			setCountry(tab.getAttribute('data-country'), { scrollMap: true });
+			setCountry(tab.getAttribute('data-country'));
 		});
 	});
 
