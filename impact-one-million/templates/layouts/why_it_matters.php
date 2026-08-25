@@ -70,7 +70,7 @@ $use_carousel = ( $slide_count > 1 );
 
 		<?php if ( ! empty( $stats ) ) : ?>
 			<div
-				class="iom-wim-slides relative grid w-full max-w-[56.25rem]"
+				class="iom-wim-slides relative w-full max-w-[56.25rem]"
 				<?php echo $use_carousel ? 'data-wim-slides' : ''; ?>
 				aria-live="polite"
 			>
@@ -80,7 +80,7 @@ $use_carousel = ( $slide_count > 1 );
 					$row_body = isset( $row['body'] ) ? $row['body'] : '';
 					$is_first = ( 0 === (int) $index );
 					$slide_class = $use_carousel
-						? 'iom-wim-slide col-start-1 row-start-1 flex w-full flex-col items-center gap-10 transition-opacity duration-500 ease-in-out ' . ( $is_first ? 'is-active' : '' )
+						? 'iom-wim-slide flex w-full flex-col items-center gap-10 ' . ( $is_first ? 'is-active' : '' )
 						: 'flex w-full flex-col items-center gap-10';
 					?>
 					<div
@@ -90,7 +90,10 @@ $use_carousel = ( $slide_count > 1 );
 						<?php echo $use_carousel ? 'aria-hidden="' . ( $is_first ? 'false' : 'true' ) . '"' : ''; ?>
 					>
 						<?php if ( $row_stat ) : ?>
-							<p class="m-0 font-display text-title leading-[1.1] tracking-[0.02em] lg:text-[7.5rem] lg:leading-none lg:tracking-normal">
+							<p
+								class="m-0 font-display text-title leading-[1.1] tracking-[0.02em] lg:text-[clamp(3.5rem,8vw,7.5rem)] lg:leading-none lg:tracking-normal"
+								data-wim-stat
+							>
 								<?php echo esc_html( $row_stat ); ?>
 							</p>
 						<?php endif; ?>

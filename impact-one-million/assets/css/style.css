@@ -721,14 +721,6 @@ video {
   order: 4;
 }
 
-.col-start-1 {
-  grid-column-start: 1;
-}
-
-.row-start-1 {
-  grid-row-start: 1;
-}
-
 .m-0 {
   margin: 0px;
 }
@@ -2413,14 +2405,6 @@ video {
   transition-duration: 300ms;
 }
 
-.duration-500 {
-  transition-duration: 500ms;
-}
-
-.ease-in-out {
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 .\[-ms-overflow-style\:none\] {
   -ms-overflow-style: none;
 }
@@ -2808,18 +2792,37 @@ body {
   scroll-margin-top: 5.5rem;
 }
 
-/* Why It Matters — fade carousel slides */
+/* Why It Matters — fade carousel; active slide sets height */
+
+.iom-wim-slides {
+  position: relative;
+  width: 100%;
+}
 
 .iom-wim-slide {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  width: 100%;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
   z-index: 0;
+  transition: opacity 0.5s ease;
 }
 
 .iom-wim-slide.is-active {
+  position: relative;
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
   z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .iom-wim-slide [data-wim-stat] {
+    white-space: nowrap;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -4244,8 +4247,8 @@ body {
     text-align: left;
   }
 
-  .lg\:text-\[7\.5rem\] {
-    font-size: 7.5rem;
+  .lg\:text-\[clamp\(3\.5rem\2c 8vw\2c 7\.5rem\)\] {
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
   }
 
   .lg\:text-body {

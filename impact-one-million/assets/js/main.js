@@ -1282,18 +1282,20 @@
 		return;
 	}
 
-	const INTERVAL_MS = 5000;
+	const INTERVAL_MS = 4000;
 	const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 	roots.forEach(function (root) {
+		const slidesWrap = root.querySelector('[data-wim-slides]');
 		const slides = root.querySelectorAll('[data-wim-slide]');
 		const dots = root.querySelectorAll('[data-wim-dot]');
-		if (slides.length < 2) {
+		if (!slidesWrap || slides.length < 2) {
 			return;
 		}
 
 		let index = 0;
 		let timer = null;
+		let paused = false;
 
 		function setActive(next) {
 			index = (next + slides.length) % slides.length;
@@ -1313,6 +1315,7 @@
 		}
 
 		function stop() {
+			paused = true;
 			if (timer) {
 				window.clearInterval(timer);
 				timer = null;
@@ -1320,12 +1323,17 @@
 		}
 
 		function start() {
-			if (reduceMotion) {
+			paused = false;
+			if (reduceMotion || document.hidden) {
 				return;
 			}
-			stop();
+			if (timer) {
+				window.clearInterval(timer);
+			}
 			timer = window.setInterval(function () {
-				setActive(index + 1);
+				if (!paused && !document.hidden) {
+					setActive(index + 1);
+				}
 			}, INTERVAL_MS);
 		}
 
@@ -1336,11 +1344,29 @@
 			});
 		});
 
-		root.addEventListener('mouseenter', stop);
-		root.addEventListener('mouseleave', start);
-		root.addEventListener('focusin', stop);
-		root.addEventListener('focusout', function (event) {
-			if (!root.contains(event.relatedTarget)) {
+		// Pause only while interacting with slides/dots — not the whole orange band.
+		slidesWrap.addEventListener('mouseenter', stop);
+		slidesWrap.addEventListener('mouseleave', start);
+
+		const dotsWrap = root.querySelector('[data-wim-dots]');
+		if (dotsWrap) {
+			dotsWrap.addEventListener('mouseenter', stop);
+			dotsWrap.addEventListener('mouseleave', start);
+			dotsWrap.addEventListener('focusin', stop);
+			dotsWrap.addEventListener('focusout', function (event) {
+				if (!dotsWrap.contains(event.relatedTarget)) {
+					start();
+				}
+			});
+		}
+
+		document.addEventListener('visibilitychange', function () {
+			if (document.hidden) {
+				if (timer) {
+					window.clearInterval(timer);
+					timer = null;
+				}
+			} else if (!paused) {
 				start();
 			}
 		});
