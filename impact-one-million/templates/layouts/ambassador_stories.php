@@ -25,10 +25,8 @@ $video_file       = get_sub_field( 'video_file' );
 $stats            = get_sub_field( 'stats' );
 $highlights       = get_sub_field( 'highlights' );
 
-$theme_uri    = get_stylesheet_directory_uri();
-$play_uri     = $theme_uri . '/assets/images/icons/play.svg';
-$fallback     = $theme_uri . '/assets/images/ambassador-stories/story.jpg';
-$fallback_abs = get_stylesheet_directory() . '/assets/images/ambassador-stories/story.jpg';
+$theme_uri = get_stylesheet_directory_uri();
+$play_uri  = $theme_uri . '/assets/images/icons/play.svg';
 
 if ( ! in_array( $background_color, array( 'blue', 'accent_blue' ), true ) ) {
 	$background_color = 'blue';
@@ -36,10 +34,6 @@ if ( ! in_array( $background_color, array( 'blue', 'accent_blue' ), true ) ) {
 
 if ( ! $media_type ) {
 	$media_type = 'image';
-}
-
-if ( ! $quote ) {
-	$quote = __( "Seeing the impact of IOM's work first-hand has been a life-changing experience. Every migrant has a story of resilience, and it's our honor to tell it.", 'impact-one-million' );
 }
 
 if ( ! is_array( $stats ) ) {
@@ -53,16 +47,6 @@ if ( ! is_array( $highlights ) ) {
 $has_stats = ! empty( $stats );
 $has_body  = (bool) $body;
 
-// Classic attribution defaults only when not using the stats/body case-study variant.
-if ( ! $has_stats && ! $has_body ) {
-	if ( ! $featured ) {
-		$featured = __( 'Featured: Ambassador Three', 'impact-one-million' );
-	}
-	if ( ! $campaign ) {
-		$campaign = __( 'Campaign: Voices of Migration', 'impact-one-million' );
-	}
-}
-
 $img_attrs = array(
 	'class'   => 'absolute inset-0 size-full rounded-card object-cover',
 	'loading' => 'lazy',
@@ -74,7 +58,7 @@ if ( 'video' === $media_type && function_exists( 'iom_build_video_embed' ) ) {
 	$iom_as_embed = iom_build_video_embed( $video_source, $video_url, $video_file );
 }
 
-$has_poster = $image_id || file_exists( $fallback_abs );
+$has_poster = (bool) $image_id;
 $has_media  = (bool) $iom_as_embed || $has_poster;
 $bg_class   = ( 'accent_blue' === $background_color ) ? 'bg-accent-blue' : 'bg-blue';
 $play_label = __( 'Play video', 'impact-one-million' );
@@ -160,14 +144,6 @@ $play_label = __( 'Play video', 'impact-one-million' );
 						<div class="absolute inset-0" data-featured-story-poster>
 							<?php if ( $image_id ) : ?>
 								<?php echo wp_get_attachment_image( (int) $image_id, 'large', false, $img_attrs ); ?>
-							<?php elseif ( file_exists( $fallback_abs ) ) : ?>
-								<img
-									src="<?php echo esc_url( $fallback ); ?>"
-									alt="<?php echo esc_attr( $img_attrs['alt'] ); ?>"
-									class="<?php echo esc_attr( $img_attrs['class'] ); ?>"
-									loading="lazy"
-									decoding="async"
-								>
 							<?php else : ?>
 								<div class="absolute inset-0 bg-navy" aria-hidden="true"></div>
 							<?php endif; ?>
@@ -197,14 +173,6 @@ $play_label = __( 'Play video', 'impact-one-million' );
 						</button>
 					<?php elseif ( $image_id ) : ?>
 						<?php echo wp_get_attachment_image( (int) $image_id, 'large', false, $img_attrs ); ?>
-					<?php else : ?>
-						<img
-							src="<?php echo esc_url( $fallback ); ?>"
-							alt="<?php echo esc_attr( $img_attrs['alt'] ); ?>"
-							class="<?php echo esc_attr( $img_attrs['class'] ); ?>"
-							loading="lazy"
-							decoding="async"
-						>
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>

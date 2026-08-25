@@ -14,9 +14,6 @@ $stats   = get_sub_field( 'stats' );
 $stat    = get_sub_field( 'stat' );
 $body    = get_sub_field( 'body' );
 
-if ( ! $eyebrow ) {
-	$eyebrow = __( 'Why it matters', 'impact-one-million' );
-}
 
 if ( ! is_array( $stats ) ) {
 	$stats = array();
@@ -32,14 +29,6 @@ if ( empty( $stats ) && ( $stat || $body ) ) {
 	);
 }
 
-if ( empty( $stats ) ) {
-	$stats = array(
-		array(
-			'stat' => __( '1 in 5', 'impact-one-million' ),
-			'body' => __( 'children in low- and middle-income countries face severe deprivation in essential areas like nutrition, healthcare and education. (UNICEF)', 'impact-one-million' ),
-		),
-	);
-}
 
 // Drop empty rows.
 $stats = array_values(

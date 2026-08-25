@@ -29,28 +29,9 @@ if ( ! in_array( $heading_align, array( 'center', 'left' ), true ) ) {
 
 $is_left = ( 'left' === $heading_align );
 
-if ( ! $heading ) {
-	$heading = __( 'Why Buyers Join', 'impact-one-million' );
-}
 
-if ( ! is_array( $cards ) || empty( $cards ) ) {
-	$cards = array(
-		array(
-			'icon'  => null,
-			'title' => __( 'Better Outcomes for Workers', 'impact-one-million' ),
-			'body'  => __( 'Support fair wages, safe conditions, and dignified work across your supply chain.', 'impact-one-million' ),
-		),
-		array(
-			'icon'  => null,
-			'title' => __( 'Stronger Suppliers', 'impact-one-million' ),
-			'body'  => __( 'Help suppliers build the resilience and compliance capacity you need from them.', 'impact-one-million' ),
-		),
-		array(
-			'icon'  => null,
-			'title' => __( 'Greater Impact for You', 'impact-one-million' ),
-			'body'  => __( 'Turn supply chain investment into verifiable ESG progress you can report with confidence.', 'impact-one-million' ),
-		),
-	);
+if ( ! is_array( $cards ) ) {
+	$cards = array();
 }
 
 if ( ! is_array( $cta ) ) {
@@ -260,7 +241,7 @@ $iom_render_why_join_card = function ( $card, $arrow_uri, $carousel = false ) us
 				iom_render_link(
 					$cta,
 					$btn_class,
-					__( 'Nominate a Supplier', 'impact-one-million' )
+					''
 				);
 				?>
 			</div>

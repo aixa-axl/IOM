@@ -14,13 +14,6 @@ $case_study     = get_sub_field( 'case_study' );
 $featured_label = get_sub_field( 'featured_label' );
 $cta_label      = get_sub_field( 'cta_label' );
 
-if ( null === $featured_label ) {
-	$featured_label = __( 'Featured', 'impact-one-million' );
-}
-
-if ( ! $cta_label ) {
-	$cta_label = __( 'Read case study', 'impact-one-million' );
-}
 
 $post_id = 0;
 if ( $case_study instanceof WP_Post ) {
@@ -101,9 +94,11 @@ $img_attrs = array(
 				<?php endif; ?>
 			</div>
 
-			<a href="<?php echo esc_url( $permalink ); ?>" class="<?php echo esc_attr( $btn_class ); ?>">
-				<?php echo esc_html( $cta_label ); ?>
-			</a>
+			<?php if ( $cta_label ) : ?>
+				<a href="<?php echo esc_url( $permalink ); ?>" class="<?php echo esc_attr( $btn_class ); ?>">
+					<?php echo esc_html( $cta_label ); ?>
+				</a>
+			<?php endif; ?>
 		</div>
 	</article>
 </section>

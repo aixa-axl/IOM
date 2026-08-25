@@ -13,37 +13,12 @@ $stories       = get_sub_field( 'stories' );
 $primary_cta   = get_sub_field( 'primary_cta' );
 $secondary_cta = get_sub_field( 'secondary_cta' );
 
-$theme_uri    = get_stylesheet_directory_uri();
-$fallback     = $theme_uri . '/assets/images/stories-of-change/story.jpg';
-$fallback_abs = get_stylesheet_directory() . '/assets/images/stories-of-change/story.jpg';
-
-if ( ! $heading ) {
-	$heading = __( 'Stories of change', 'impact-one-million' );
+if ( ! is_array( $stories ) ) {
+	$stories = array();
 }
 
-$default_quote = __( '"Partnering with Impact One Million let us reach families we could never have reached alone." — [Foundation partner, fictional placeholder]', 'impact-one-million' );
-
-if ( ! is_array( $stories ) || empty( $stories ) ) {
-	$stories = array(
-		array(
-			'image'       => null,
-			'quote'       => $default_quote,
-			'quote_first' => 0,
-		),
-		array(
-			'image'       => null,
-			'quote'       => $default_quote,
-			'quote_first' => 1,
-		),
-	);
-}
-
-if ( ! is_array( $primary_cta ) || empty( $primary_cta['url'] ) ) {
-	$primary_cta = array(
-		'url'    => '#',
-		'title'  => __( 'Conversion CTA', 'impact-one-million' ),
-		'target' => '',
-	);
+if ( ! is_array( $primary_cta ) ) {
+	$primary_cta = array();
 }
 
 if ( ! is_array( $secondary_cta ) ) {
@@ -101,14 +76,6 @@ $section_class = ! empty( $iom_tighten_stories_of_change_bottom )
 										$img_attrs
 									);
 									?>
-								<?php elseif ( file_exists( $fallback_abs ) ) : ?>
-									<img
-										src="<?php echo esc_url( $fallback ); ?>"
-										alt=""
-										class="<?php echo esc_attr( $img_attrs['class'] ); ?>"
-										loading="lazy"
-										decoding="async"
-									>
 								<?php endif; ?>
 							</div>
 
@@ -138,14 +105,14 @@ $section_class = ! empty( $iom_tighten_stories_of_change_bottom )
 					iom_render_link(
 						$primary_cta,
 						$btn_primary,
-						__( 'Conversion CTA', 'impact-one-million' )
+						''
 					);
 				}
 				if ( ! empty( $secondary_cta['url'] ) ) {
 					iom_render_link(
 						$secondary_cta,
 						$btn_secondary,
-						__( 'Secondary - view more casestudies', 'impact-one-million' )
+						''
 					);
 				}
 				?>

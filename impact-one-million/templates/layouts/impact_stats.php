@@ -18,35 +18,10 @@ $icon_map   = array(
 	'globe'  => $theme_uri . '/assets/images/icons/stat-globe.svg',
 );
 
-if ( ! is_array( $stats ) || empty( $stats ) ) {
-	$stats = array(
-		array(
-			'icon'        => null,
-			'icon_preset' => 'people',
-			'value'       => 999999,
-			'prefix'      => '',
-			'label'       => __( 'people impacted', 'impact-one-million' ),
-		),
-		array(
-			'icon'        => null,
-			'icon_preset' => 'coins',
-			'value'       => 1050200,
-			'prefix'      => '$',
-			'label'       => __( 'funds deployed', 'impact-one-million' ),
-		),
-		array(
-			'icon'        => null,
-			'icon_preset' => 'globe',
-			'value'       => 154,
-			'prefix'      => '',
-			'label'       => __( 'countries reached', 'impact-one-million' ),
-		),
-	);
+if ( ! is_array( $stats ) ) {
+	$stats = array();
 }
 
-if ( ! $description ) {
-	$description = __( 'Impact One Million is a global movement improving the lives of supply chain workers and their families, powered by ESCP and delivered by worker Well-Being Foundation.', 'impact-one-million' );
-}
 
 /**
  * Mobile order differs from desktop: people, countries, funds.

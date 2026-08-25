@@ -30,69 +30,16 @@ $has_intro = (bool) $intro_heading
 	|| ( is_array( $tags ) && ! empty( $tags ) )
 	|| (bool) $intro_body;
 
-if ( ! $heading ) {
-	$heading = $has_intro
-		? __( 'Our core pillars', 'impact-one-million' )
-		: __( 'Explore Our Other Pillars', 'impact-one-million' );
+if ( ! is_array( $cards ) ) {
+	$cards = array();
 }
 
-$default_body = __( 'We help workers and their families build literacy, vocational skills and leadership — breaking cycles of poverty through learning.', 'impact-one-million' );
-
-if ( ! is_array( $cards ) || empty( $cards ) ) {
-	$cards = array(
-		array(
-			'icon'        => null,
-			'icon_preset' => 'family',
-			'title'       => __( 'Family & Early Childhood Development', 'impact-one-million' ),
-			'body'        => $default_body,
-			'link'        => array( 'url' => '#', 'title' => __( 'Learn more >', 'impact-one-million' ), 'target' => '' ),
-		),
-		array(
-			'icon'        => null,
-			'icon_preset' => 'gender',
-			'title'       => __( 'Gender Equality', 'impact-one-million' ),
-			'body'        => $default_body,
-			'link'        => array( 'url' => '#', 'title' => __( 'Learn more >', 'impact-one-million' ), 'target' => '' ),
-		),
-		array(
-			'icon'        => null,
-			'icon_preset' => 'education',
-			'title'       => __( 'Education & Skills', 'impact-one-million' ),
-			'body'        => $default_body,
-			'link'        => array( 'url' => '#', 'title' => __( 'Learn more >', 'impact-one-million' ), 'target' => '' ),
-		),
-		array(
-			'icon'        => null,
-			'icon_preset' => 'financial',
-			'title'       => __( 'Financial Well-Being', 'impact-one-million' ),
-			'body'        => $default_body,
-			'link'        => array( 'url' => '#', 'title' => __( 'Learn more >', 'impact-one-million' ), 'target' => '' ),
-		),
-		array(
-			'icon'        => null,
-			'icon_preset' => 'healthcare',
-			'title'       => __( 'Healthcare', 'impact-one-million' ),
-			'body'        => $default_body,
-			'link'        => array( 'url' => '#', 'title' => __( 'Learn more >', 'impact-one-million' ), 'target' => '' ),
-		),
-	);
+if ( ! is_array( $tags ) ) {
+	$tags = array();
 }
 
-if ( $has_intro && ( ! is_array( $tags ) || empty( $tags ) ) ) {
-	$tags = array(
-		array( 'label' => __( 'Human Rights', 'impact-one-million' ) ),
-		array( 'label' => __( 'Due Diligence', 'impact-one-million' ) ),
-		array( 'label' => __( 'Social Impact', 'impact-one-million' ) ),
-		array( 'label' => __( 'Worker Wellbeing', 'impact-one-million' ) ),
-	);
-}
-
-if ( $has_intro && ! $intro_heading ) {
-	$intro_heading = __( 'What This Programme Supports', 'impact-one-million' );
-}
-
-if ( $has_intro && ! $intro_body ) {
-	$intro_body = __( 'Designed to align with leading international standards and corporate sustainability frameworks.', 'impact-one-million' );
+if ( ! is_array( $cta ) ) {
+	$cta = array();
 }
 
 $link_class = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-70';
@@ -245,7 +192,7 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 								iom_render_link(
 									$link,
 									$link_class . ' self-start',
-									__( 'Learn more >', 'impact-one-million' )
+									''
 								);
 							}
 							?>
@@ -276,7 +223,7 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 				iom_render_link(
 					$cta,
 					$btn_class,
-					__( 'Join the Movement', 'impact-one-million' )
+					''
 				);
 				?>
 			<?php endif; ?>

@@ -12,13 +12,7 @@ $heading = get_sub_field( 'heading' );
 $body    = get_sub_field( 'body' );
 $items   = get_sub_field( 'items' );
 
-if ( ! $heading ) {
-	$heading = __( 'Our Ambition', 'impact-one-million' );
-}
 
-if ( ! $body ) {
-	$body = __( "Our vision is long-term. We don't just fix symptoms; we address the root causes of worker vulnerability by transforming the ecosystem of the workplace and the home.", 'impact-one-million' );
-}
 
 if ( ! is_array( $items ) ) {
 	$items = array();

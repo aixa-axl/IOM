@@ -22,53 +22,8 @@ if ( ! in_array( $variant, array( 'light', 'dark' ), true ) ) {
 
 $is_dark = ( 'dark' === $variant );
 
-if ( ! $heading ) {
-	$heading = $is_dark
-		? __( 'Become a Partner', 'impact-one-million' )
-		: __( 'Get involved', 'impact-one-million' );
-}
-
-if ( ! $intro ) {
-	$intro = __( 'Join our network of organizations committed to safer migration.', 'impact-one-million' );
-}
-
-if ( ! is_array( $cards ) || empty( $cards ) ) {
-	$cards = array(
-		array(
-			'title'        => __( 'For Buyers', 'impact-one-million' ),
-			'body'         => $is_dark
-				? __( 'Describe the specific benefits and engagement model for this partner category.', 'impact-one-million' )
-				: __( 'Build stronger, more resilient supply chains by investing in the people behind them.', 'impact-one-million' ),
-			'button_style' => $is_dark ? 'navy' : 'accent',
-			'link'         => array(
-				'url'    => '#',
-				'title'  => __( 'Partner With Us', 'impact-one-million' ),
-				'target' => '',
-			),
-		),
-		array(
-			'title'        => __( 'For Foundations', 'impact-one-million' ),
-			'body'         => $is_dark
-				? __( 'Describe the specific benefits and engagement model for this partner category.', 'impact-one-million' )
-				: __( 'Practical programmes that support your workforce and strengthen your business.', 'impact-one-million' ),
-			'button_style' => $is_dark ? 'navy' : 'blue',
-			'link'         => array(
-				'url'    => '#',
-				'title'  => __( 'Partner With Us', 'impact-one-million' ),
-				'target' => '',
-			),
-		),
-		array(
-			'title'        => __( 'For Factories', 'impact-one-million' ),
-			'body'         => __( 'Describe the specific benefits and engagement model for this partner category.', 'impact-one-million' ),
-			'button_style' => $is_dark ? 'navy' : 'accent_blue',
-			'link'         => array(
-				'url'    => '#',
-				'title'  => __( 'Partner With Us', 'impact-one-million' ),
-				'target' => '',
-			),
-		),
-	);
+if ( ! is_array( $cards ) ) {
+	$cards = array();
 }
 
 $btn_base = 'inline-flex items-center justify-center whitespace-nowrap rounded-btn border-[1.5px] border-solid border-transparent px-4 py-3.5 font-display text-card-title uppercase tracking-[1.5px] text-white no-underline transition-opacity hover:opacity-90 xl:px-6 xl:tracking-[2px]';
@@ -131,7 +86,7 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 						}
 
 						$link_url    = ! empty( $link['url'] ) ? $link['url'] : '';
-						$link_title  = ! empty( $link['title'] ) ? $link['title'] : __( 'Partner With Us', 'impact-one-million' );
+						$link_title  = ! empty( $link['title'] ) ? $link['title'] : '';
 						$link_target = ! empty( $link['target'] ) ? $link['target'] : '';
 						$btn_class   = $btn_base . ' ' . $btn_styles[ $style ];
 						?>
@@ -177,7 +132,7 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 							}
 
 							$link_url    = ! empty( $link['url'] ) ? $link['url'] : '';
-							$link_title  = ! empty( $link['title'] ) ? $link['title'] : __( 'Partner With Us', 'impact-one-million' );
+							$link_title  = ! empty( $link['title'] ) ? $link['title'] : '';
 							$link_target = ! empty( $link['target'] ) ? $link['target'] : '';
 							$btn_class   = $btn_base . ' ' . $btn_styles[ $style ];
 							?>

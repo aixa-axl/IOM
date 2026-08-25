@@ -22,71 +22,12 @@ $icon_map  = array(
 	'healthcare' => $theme_uri . '/assets/images/icons/pillar-healthcare.svg',
 );
 
-if ( ! $heading ) {
-	$heading = __( 'How Impact On Million works', 'impact-one-million' );
+if ( ! is_array( $steps ) ) {
+	$steps = array();
 }
 
-if ( ! $pillars_heading ) {
-	$pillars_heading = __( 'Our Programme Pillars', 'impact-one-million' );
-}
-
-if ( ! is_array( $steps ) || empty( $steps ) ) {
-	$steps = array(
-		array(
-			'text'    => __( 'Investment received', 'impact-one-million' ),
-			'subtext' => '',
-		),
-		array(
-			'text'    => __( 'We deliver through local teams & proven programmes', 'impact-one-million' ),
-			'subtext' => '',
-		),
-		array(
-			'text'    => __( 'Impact is measured & reported back', 'impact-one-million' ),
-			'subtext' => '',
-		),
-	);
-}
-
-$default_body = __( 'We help workers and their families build literacy, vocational skills and leadership — breaking cycles of poverty through learning.', 'impact-one-million' );
-
-if ( ! is_array( $pillars ) || empty( $pillars ) ) {
-	$pillars = array(
-		array(
-			'icon'        => null,
-			'icon_preset' => 'family',
-			'title'       => __( 'Family & Early Childhood Development', 'impact-one-million' ),
-			'body'        => $default_body,
-			'link'        => array( 'url' => '#', 'title' => __( 'Learn more >', 'impact-one-million' ), 'target' => '' ),
-		),
-		array(
-			'icon'        => null,
-			'icon_preset' => 'gender',
-			'title'       => __( 'Gender Equality', 'impact-one-million' ),
-			'body'        => $default_body,
-			'link'        => array( 'url' => '#', 'title' => __( 'Learn more >', 'impact-one-million' ), 'target' => '' ),
-		),
-		array(
-			'icon'        => null,
-			'icon_preset' => 'education',
-			'title'       => __( 'Education & Skills', 'impact-one-million' ),
-			'body'        => $default_body,
-			'link'        => array( 'url' => '#', 'title' => __( 'Learn more >', 'impact-one-million' ), 'target' => '' ),
-		),
-		array(
-			'icon'        => null,
-			'icon_preset' => 'financial',
-			'title'       => __( 'Financial Well-Being', 'impact-one-million' ),
-			'body'        => $default_body,
-			'link'        => array( 'url' => '#', 'title' => __( 'Learn more >', 'impact-one-million' ), 'target' => '' ),
-		),
-		array(
-			'icon'        => null,
-			'icon_preset' => 'healthcare',
-			'title'       => __( 'Healthcare', 'impact-one-million' ),
-			'body'        => $default_body,
-			'link'        => array( 'url' => '#', 'title' => __( 'Learn more >', 'impact-one-million' ), 'target' => '' ),
-		),
-	);
+if ( ! is_array( $pillars ) ) {
+	$pillars = array();
 }
 
 $pillar_count = count( $pillars );
@@ -202,7 +143,7 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 									iom_render_link(
 										$link,
 										$link_class,
-										__( 'Learn more >', 'impact-one-million' )
+										''
 									);
 									echo '</div>';
 								}

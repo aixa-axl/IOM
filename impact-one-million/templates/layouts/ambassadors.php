@@ -27,9 +27,6 @@ if ( ! is_array( $ambassadors ) ) {
 	$ambassadors = array();
 }
 
-if ( ! $linkedin_lbl ) {
-	$linkedin_lbl = __( 'View LinkedIn', 'impact-one-million' );
-}
 
 // 0 = show all (no pagination).
 if ( $per_page < 0 ) {

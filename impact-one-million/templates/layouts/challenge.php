@@ -19,49 +19,8 @@ $icon_map  = array(
 	'arrows'       => $theme_uri . '/assets/images/icons/challenge-arrows.svg',
 );
 
-if ( ! $heading ) {
-	$heading = __( 'The challenge we are solving', 'impact-one-million' );
-}
-
-if ( ! is_array( $cards ) || empty( $cards ) ) {
-	$cards = array(
-		array(
-			'style'       => 'fact',
-			'icon'        => null,
-			'icon_preset' => 'people',
-			'title'       => __( '650 million women', 'impact-one-million' ),
-			'body'        => __( 'Millions of women globally lack access to adequate maternity protection at work.', 'impact-one-million' ),
-			'link'        => null,
-		),
-		array(
-			'style'       => 'fact',
-			'icon'        => null,
-			'icon_preset' => 'coins',
-			'title'       => __( '$2.15 daily wage', 'impact-one-million' ),
-			'body'        => __( '241 million workers earn no more than $2 a day - defined as extreme working poverty.', 'impact-one-million' ),
-			'link'        => null,
-		),
-		array(
-			'style'       => 'fact',
-			'icon'        => null,
-			'icon_preset' => 'people_group',
-			'title'       => __( '8% working poor', 'impact-one-million' ),
-			'body'        => __( 'Nearly a tenth of the world’s workers are classified as ‘working poor’ by the ILO', 'impact-one-million' ),
-			'link'        => null,
-		),
-		array(
-			'style'       => 'cta',
-			'icon'        => null,
-			'icon_preset' => 'arrows',
-			'title'       => __( 'Find out more', 'impact-one-million' ),
-			'body'        => __( 'Learn more about the needs identified and support programs available', 'impact-one-million' ),
-			'link'        => array(
-				'url'    => '#',
-				'title'  => __( 'the need', 'impact-one-million' ),
-				'target' => '',
-			),
-		),
-	);
+if ( ! is_array( $cards ) ) {
+	$cards = array();
 }
 
 $btn_cta = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-white px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-90';
@@ -152,7 +111,7 @@ $btn_cta = 'inline-flex items-center justify-center rounded-btn border-[1.5px] b
 								iom_render_link(
 									$link,
 									$btn_cta,
-									__( 'the need', 'impact-one-million' )
+									''
 								);
 							}
 							?>

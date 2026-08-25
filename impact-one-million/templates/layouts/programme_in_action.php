@@ -17,36 +17,12 @@ $image_id      = get_sub_field( 'image' );
 $primary_cta   = get_sub_field( 'primary_cta' );
 $secondary_cta = get_sub_field( 'secondary_cta' );
 
-$theme_uri    = get_stylesheet_directory_uri();
-$fallback     = $theme_uri . '/assets/images/programme-in-action/story.jpg';
-$fallback_abs = get_stylesheet_directory() . '/assets/images/programme-in-action/story.jpg';
-
-if ( ! $eyebrow ) {
-	$eyebrow = __( 'Story: Mai & Linh', 'impact-one-million' );
+if ( ! is_array( $primary_cta ) ) {
+	$primary_cta = array();
 }
 
-if ( ! $heading ) {
-	$heading = __( '“I finally felt like I knew what I was doing.”', 'impact-one-million' );
-}
-
-if ( ! $body ) {
-	$body = __( 'Mai, a factory worker, struggled to balance her long shifts with caring for her daughter, Linh. Through our early development programme, she gained the tools to support Linh\'s learning at home.', 'impact-one-million' );
-}
-
-if ( ! is_array( $primary_cta ) || empty( $primary_cta['url'] ) ) {
-	$primary_cta = array(
-		'url'    => '#',
-		'title'  => __( 'get involved', 'impact-one-million' ),
-		'target' => '',
-	);
-}
-
-if ( ! is_array( $secondary_cta ) || empty( $secondary_cta['url'] ) ) {
-	$secondary_cta = array(
-		'url'    => '#',
-		'title'  => __( 'read more', 'impact-one-million' ),
-		'target' => '',
-	);
+if ( ! is_array( $secondary_cta ) ) {
+	$secondary_cta = array();
 }
 
 $btn_primary = 'inline-flex flex-1 items-center justify-center whitespace-nowrap rounded-btn border-[1.5px] border-solid border-transparent bg-accent-blue px-4 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 lg:flex-none lg:px-6';
@@ -64,14 +40,6 @@ $img_attrs = array(
 		<div class="relative aspect-[549/379] w-full shrink-0 overflow-hidden rounded-card lg:order-2 lg:h-[23.6875rem] lg:w-[34.3125rem] lg:aspect-auto">
 			<?php if ( $image_id ) : ?>
 				<?php echo wp_get_attachment_image( (int) $image_id, 'large', false, $img_attrs ); ?>
-			<?php elseif ( file_exists( $fallback_abs ) ) : ?>
-				<img
-					src="<?php echo esc_url( $fallback ); ?>"
-					alt="<?php echo esc_attr( $eyebrow ); ?>"
-					class="<?php echo esc_attr( $img_attrs['class'] ); ?>"
-					loading="lazy"
-					decoding="async"
-				>
 			<?php endif; ?>
 		</div>
 
@@ -111,14 +79,14 @@ $img_attrs = array(
 						iom_render_link(
 							$primary_cta,
 							$btn_primary,
-							__( 'get involved', 'impact-one-million' )
+							''
 						);
 					}
 					if ( ! empty( $secondary_cta['url'] ) ) {
 						iom_render_link(
 							$secondary_cta,
 							$btn_outline,
-							__( 'read more', 'impact-one-million' )
+							''
 						);
 					}
 					?>

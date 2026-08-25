@@ -14,13 +14,7 @@ $heading = get_sub_field( 'heading' );
 $intro   = get_sub_field( 'intro' );
 $cards   = get_sub_field( 'cards' );
 
-if ( ! $eyebrow ) {
-	$eyebrow = __( 'The Evolution', 'impact-one-million' );
-}
 
-if ( ! $heading ) {
-	$heading = __( 'Growth through learning', 'impact-one-million' );
-}
 
 if ( ! is_array( $cards ) ) {
 	$cards = array();

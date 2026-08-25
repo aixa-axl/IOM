@@ -42,6 +42,18 @@ if ( ! in_array( $secondary_cta_style, array_merge( array( 'outline' ), $filled_
 	$secondary_cta_style = 'outline';
 }
 
+if ( ! is_array( $primary_cta ) ) {
+	$primary_cta = array();
+}
+
+if ( ! is_array( $secondary_cta ) ) {
+	$secondary_cta = array();
+}
+
+if ( ! is_array( $tertiary_cta ) ) {
+	$tertiary_cta = array();
+}
+
 // Existing rows may not have show_logo yet — default on.
 if ( null === $show_logo ) {
 	$show_logo = true;
@@ -281,21 +293,21 @@ if ( $is_home_hero ) {
 						iom_render_link(
 							$primary_cta,
 							$btn_primary,
-							__( 'Join the Movement', 'impact-one-million' )
+							''
 						);
 					}
 					if ( ! empty( $secondary_cta['url'] ) ) {
 						iom_render_link(
 							$secondary_cta,
 							$btn_secondary,
-							__( 'Track your impact', 'impact-one-million' )
+							''
 						);
 					}
 					if ( ! empty( $tertiary_cta['url'] ) ) {
 						iom_render_link(
 							$tertiary_cta,
 							$btn_tertiary,
-							__( 'Foundations', 'impact-one-million' )
+							''
 						);
 					}
 					?>

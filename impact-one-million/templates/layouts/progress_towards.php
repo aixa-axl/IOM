@@ -12,13 +12,7 @@ $heading  = get_sub_field( 'heading' );
 $subtitle = get_sub_field( 'subtitle' );
 $stats    = get_sub_field( 'stats' );
 
-if ( ! $heading ) {
-	$heading = __( 'Progress Towards One Million', 'impact-one-million' );
-}
 
-if ( ! $subtitle ) {
-	$subtitle = __( 'Real-time data from our partner network.', 'impact-one-million' );
-}
 
 if ( ! is_array( $stats ) ) {
 	$stats = array();

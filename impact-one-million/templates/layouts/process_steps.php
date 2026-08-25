@@ -20,11 +20,6 @@ if ( ! in_array( $variant, array( 'grid', 'vertical' ), true ) ) {
 
 $is_vertical = ( 'vertical' === $variant );
 
-if ( ! $heading ) {
-	$heading = $is_vertical
-		? __( "How We'll Get There", 'impact-one-million' )
-		: __( 'How It Works', 'impact-one-million' );
-}
 
 if ( ! is_array( $steps ) ) {
 	$steps = array();
@@ -92,17 +87,15 @@ $outer_gap = $is_vertical ? 'gap-20 lg:gap-10' : 'gap-10';
 
 						++$rendered;
 
-						if ( ! $step_label ) {
-							/* translators: %d: step number */
-							$step_label = sprintf( __( 'Step %d', 'impact-one-million' ), $rendered );
-						}
 						?>
 						<li class="flex w-full flex-col items-center gap-10 lg:gap-4">
 							<div class="flex w-full flex-col items-center justify-center gap-4 rounded-card bg-off-white p-3 text-center">
 								<div class="flex w-full flex-col items-center justify-center gap-4 uppercase">
-									<p class="m-0 font-display text-body tracking-[1px] text-accent">
-										<?php echo esc_html( $step_label ); ?>
-									</p>
+									<?php if ( $step_label ) : ?>
+										<p class="m-0 font-display text-body tracking-[1px] text-accent">
+											<?php echo esc_html( $step_label ); ?>
+										</p>
+									<?php endif; ?>
 									<?php if ( $title ) : ?>
 										<h3 class="m-0 font-display text-card-title leading-none tracking-[2px] text-blue">
 											<?php echo esc_html( $title ); ?>
@@ -141,10 +134,6 @@ $outer_gap = $is_vertical ? 'gap-20 lg:gap-10' : 'gap-10';
 						$title      = isset( $step['title'] ) ? $step['title'] : '';
 						$body       = isset( $step['body'] ) ? $step['body'] : '';
 
-						if ( ! $step_label ) {
-							/* translators: %d: step number */
-							$step_label = sprintf( __( 'Step %d', 'impact-one-million' ), $index + 1 );
-						}
 
 						if ( ! $title && ! $body ) {
 							continue;
@@ -152,9 +141,11 @@ $outer_gap = $is_vertical ? 'gap-20 lg:gap-10' : 'gap-10';
 						?>
 						<li class="flex flex-col gap-4 rounded-card bg-white p-3">
 							<div class="flex flex-col gap-4 uppercase">
-								<p class="m-0 font-display text-body tracking-[1px] text-accent">
-									<?php echo esc_html( $step_label ); ?>
-								</p>
+								<?php if ( $step_label ) : ?>
+									<p class="m-0 font-display text-body tracking-[1px] text-accent">
+										<?php echo esc_html( $step_label ); ?>
+									</p>
+								<?php endif; ?>
 								<?php if ( $title ) : ?>
 									<h3 class="m-0 font-display text-card-title leading-none tracking-[2px] text-blue">
 										<?php echo esc_html( $title ); ?>
@@ -178,14 +169,14 @@ $outer_gap = $is_vertical ? 'gap-20 lg:gap-10' : 'gap-10';
 					iom_render_link(
 						$cta,
 						$btn_primary,
-						__( 'Nominate a Supplier', 'impact-one-million' )
+						''
 					);
 				}
 				if ( ! empty( $secondary_cta['url'] ) ) {
 					iom_render_link(
 						$secondary_cta,
 						$btn_secondary,
-						__( 'Learn more', 'impact-one-million' )
+						''
 					);
 				}
 				?>

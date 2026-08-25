@@ -51,17 +51,8 @@ $initial_per_page      = function_exists( 'wp_is_mobile' ) && wp_is_mobile()
 	? $posts_per_page_mobile
 	: $posts_per_page;
 
-if ( ! $link_label ) {
-	$link_label = $defaults['link'];
-}
 
-if ( ! $load_more_label ) {
-	$load_more_label = __( 'Load more', 'impact-one-million' );
-}
 
-if ( ! $search_placeholder ) {
-	$search_placeholder = $defaults['search'];
-}
 
 $theme_uri   = get_stylesheet_directory_uri();
 $chevron_uri = $theme_uri . '/assets/images/icons/chevron-down.svg';

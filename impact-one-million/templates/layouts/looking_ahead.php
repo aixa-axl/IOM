@@ -12,13 +12,7 @@ $heading = get_sub_field( 'heading' );
 $goals   = get_sub_field( 'goals' );
 $cta     = get_sub_field( 'cta' );
 
-if ( ! $eyebrow ) {
-	$eyebrow = __( 'Looking Ahead', 'impact-one-million' );
-}
 
-if ( ! $heading ) {
-	$heading = __( 'Future impact goals', 'impact-one-million' );
-}
 
 if ( ! is_array( $goals ) ) {
 	$goals = array();
@@ -77,7 +71,7 @@ $section_class = ! empty( $iom_tighten_looking_ahead_top )
 			iom_render_link(
 				$cta,
 				$btn_class,
-				__( 'View our ambition', 'impact-one-million' )
+				''
 			);
 			?>
 		<?php endif; ?>

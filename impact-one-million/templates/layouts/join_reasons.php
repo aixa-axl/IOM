@@ -21,30 +21,9 @@ $icon_uri  = $theme_uri . '/assets/images/icons/check-circle.svg';
 
 $has_intro = (bool) $intro;
 
-if ( ! $heading ) {
-	$heading = $has_intro
-		? __( 'Built on decades of experience', 'impact-one-million' )
-		: __( 'Why factories join', 'impact-one-million' );
-}
 
-if ( ! is_array( $items ) || empty( $items ) ) {
-	$items = $has_intro
-		? array(
-			array( 'label' => __( 'Built from ESCP experience', 'impact-one-million' ) ),
-			array( 'label' => __( 'Proven methodologies', 'impact-one-million' ) ),
-			array( 'label' => __( 'Local delivery teams', 'impact-one-million' ) ),
-			array( 'label' => __( 'Trusted partnerships', 'impact-one-million' ) ),
-			array( 'label' => __( 'Measurable outcomes', 'impact-one-million' ) ),
-			array( 'label' => __( 'Continuous learning', 'impact-one-million' ) ),
-		)
-		: array(
-			array( 'label' => __( 'Healthier, more engaged workforce', 'impact-one-million' ) ),
-			array( 'label' => __( 'Improved retention and reduced turnover', 'impact-one-million' ) ),
-			array( 'label' => __( 'Stronger leadership at every level', 'impact-one-million' ) ),
-			array( 'label' => __( 'Greater resilience during periods of change', 'impact-one-million' ) ),
-			array( 'label' => __( 'A more positive workplace culture', 'impact-one-million' ) ),
-			array( 'label' => __( 'Improved standing with buyers who value invested suppliers', 'impact-one-million' ) ),
-		);
+if ( ! is_array( $items ) ) {
+	$items = array();
 }
 
 /**

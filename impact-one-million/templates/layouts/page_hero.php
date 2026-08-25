@@ -13,21 +13,9 @@ $subtitle        = get_sub_field( 'subtitle' );
 $heading         = get_sub_field( 'heading' );
 $body            = get_sub_field( 'body' );
 
-if ( ! $subtitle_parent ) {
-	$subtitle_parent = __( 'About us', 'impact-one-million' );
-}
 
-if ( ! $subtitle ) {
-	$subtitle = __( 'Ambassadors', 'impact-one-million' );
-}
 
-if ( ! $heading ) {
-	$heading = __( 'Our Ambassadors', 'impact-one-million' );
-}
 
-if ( ! $body ) {
-	$body = __( "IOM Ambassadors are champions for safe, orderly, and dignified migration. They use their voices and platforms to highlight the stories of migrants and advocate for their rights.\n\nJoin us in welcoming the individuals committed to shaping the future of global migration management.", 'impact-one-million' );
-}
 ?>
 
 <section class="bg-navy px-page py-10 xl:px-section lg:py-gutter">

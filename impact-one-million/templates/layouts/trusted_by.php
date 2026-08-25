@@ -183,11 +183,7 @@ if ( $has_groups ) {
 		);
 	}
 } else {
-	// Legacy single-group mode — keep primary default when logos empty.
-	if ( ! $heading_primary && ! $section_heading ) {
-		$heading_primary = __( '20 years of delivery.', 'impact-one-million' );
-	}
-
+	// Legacy single-group mode.
 	$single_logos = $iom_resolve_logos( $logos, true );
 	if ( empty( $single_logos ) && ! $heading_primary && ! $heading_secondary && ! $intro && ! $section_heading ) {
 		return;

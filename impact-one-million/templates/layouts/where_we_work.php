@@ -22,94 +22,17 @@ if ( ! in_array( $background, array( 'white', 'off_white' ), true ) ) {
 
 $section_bg = ( 'off_white' === $background ) ? 'bg-off-white' : 'bg-white';
 
-if ( ! $helper_text ) {
-	$helper_text = __( 'Select a country to explore our programmes there.', 'impact-one-million' );
-}
-
 if ( ! is_array( $cta ) ) {
 	$cta = array();
 }
 
 $btn_class = 'inline-flex items-center justify-center self-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-4 text-center font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 lg:py-3.5';
 
-if ( ! is_array( $countries ) || empty( $countries ) ) {
-	$countries = array(
-		array(
-			'name'            => __( 'China', 'impact-one-million' ),
-			'slug'            => 'china',
-			'workers_reached' => __( '[X,XXX] workers reached', 'impact-one-million' ),
-			'factories'       => __( 'across [X] factories', 'impact-one-million' ),
-			'description'     => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Our programmes focus on worker safety and financial literacy across garment and footwear sectors.', 'impact-one-million' ),
-			'link'            => array(
-				'url'    => '#',
-				'title'  => __( 'See programmes in China', 'impact-one-million' ),
-				'target' => '',
-			),
-		),
-		array(
-			'name'            => __( 'Vietnam', 'impact-one-million' ),
-			'slug'            => 'vietnam',
-			'workers_reached' => __( '[X,XXX] workers reached', 'impact-one-million' ),
-			'factories'       => __( 'across [X] factories', 'impact-one-million' ),
-			'description'     => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Our programmes focus on worker safety and financial literacy across garment and footwear sectors.', 'impact-one-million' ),
-			'link'            => array(
-				'url'    => '#',
-				'title'  => __( 'See programmes in Vietnam', 'impact-one-million' ),
-				'target' => '',
-			),
-		),
-		array(
-			'name'            => __( 'Indonesia', 'impact-one-million' ),
-			'slug'            => 'indonesia',
-			'workers_reached' => __( '[X,XXX] workers reached', 'impact-one-million' ),
-			'factories'       => __( 'across [X] factories', 'impact-one-million' ),
-			'description'     => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Our programmes focus on worker safety and financial literacy across garment and footwear sectors.', 'impact-one-million' ),
-			'link'            => array(
-				'url'    => '#',
-				'title'  => __( 'See programmes in Indonesia', 'impact-one-million' ),
-				'target' => '',
-			),
-		),
-		array(
-			'name'            => __( 'India', 'impact-one-million' ),
-			'slug'            => 'india',
-			'workers_reached' => __( '[X,XXX] workers reached', 'impact-one-million' ),
-			'factories'       => __( 'across [X] factories', 'impact-one-million' ),
-			'description'     => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Our programmes focus on worker safety and financial literacy across garment and footwear sectors.', 'impact-one-million' ),
-			'link'            => array(
-				'url'    => '#',
-				'title'  => __( 'See programmes in India', 'impact-one-million' ),
-				'target' => '',
-			),
-		),
-		array(
-			'name'            => __( 'Bangladesh', 'impact-one-million' ),
-			'slug'            => 'bangladesh',
-			'workers_reached' => __( '[X,XXX] workers reached', 'impact-one-million' ),
-			'factories'       => __( 'across [X] factories', 'impact-one-million' ),
-			'description'     => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Our programmes focus on worker safety and financial literacy across garment and footwear sectors.', 'impact-one-million' ),
-			'link'            => array(
-				'url'    => '#',
-				'title'  => __( 'See programmes in Bangladesh', 'impact-one-million' ),
-				'target' => '',
-			),
-		),
-		array(
-			'name'            => __( 'Sri Lanka', 'impact-one-million' ),
-			'slug'            => 'sri-lanka',
-			'workers_reached' => __( '[X,XXX] workers reached', 'impact-one-million' ),
-			'factories'       => __( 'across [X] factories', 'impact-one-million' ),
-			'description'     => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Our programmes focus on worker safety and financial literacy across garment and footwear sectors.', 'impact-one-million' ),
-			'link'            => array(
-				'url'    => '#',
-				'title'  => __( 'See programmes in Sri Lanka', 'impact-one-million' ),
-				'target' => '',
-			),
-		),
-	);
+if ( ! is_array( $countries ) ) {
+	$countries = array();
 }
 
-$default_slug = 'china';
+$default_slug = '';
 $has_china    = false;
 foreach ( $countries as $c ) {
 	$slug = ! empty( $c['slug'] ) ? sanitize_title( $c['slug'] ) : sanitize_title( isset( $c['name'] ) ? $c['name'] : '' );
@@ -122,7 +45,7 @@ foreach ( $countries as $c ) {
 if ( ! $has_china && ! empty( $countries[0] ) ) {
 	$default_slug = ! empty( $countries[0]['slug'] )
 		? sanitize_title( $countries[0]['slug'] )
-		: sanitize_title( isset( $countries[0]['name'] ) ? $countries[0]['name'] : 'china' );
+		: sanitize_title( isset( $countries[0]['name'] ) ? $countries[0]['name'] : '' );
 }
 
 $countries_json = array();
@@ -143,20 +66,27 @@ foreach ( $countries as $c ) {
 	);
 }
 
-$initial = isset( $countries_json[ $default_slug ] )
-	? $countries_json[ $default_slug ]
-	: ( ! empty( $countries_json ) ? reset( $countries_json ) : array(
-		'name'            => '',
-		'workers_reached' => '',
-		'factories'       => '',
-		'description'     => '',
-		'link_url'        => '',
-		'link_title'      => '',
-		'link_target'     => '',
-	) );
+$empty_initial = array(
+	'name'            => '',
+	'workers_reached' => '',
+	'factories'       => '',
+	'description'     => '',
+	'link_url'        => '',
+	'link_title'      => '',
+	'link_target'     => '',
+);
 
-if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) ) {
-	$default_slug = (string) array_key_first( $countries_json );
+if ( empty( $countries_json ) ) {
+	$default_slug = '';
+	$initial      = $empty_initial;
+} else {
+	$initial = isset( $countries_json[ $default_slug ] )
+		? $countries_json[ $default_slug ]
+		: reset( $countries_json );
+
+	if ( ! isset( $countries_json[ $default_slug ] ) ) {
+		$default_slug = (string) array_key_first( $countries_json );
+	}
 }
 ?>
 
@@ -209,12 +139,12 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 						<?php echo esc_html( $initial['description'] ); ?>
 					</p>
 					<a
-						class="inline-flex items-center gap-2 font-display text-body uppercase tracking-[1px] text-blue no-underline transition-opacity hover:opacity-70"
+						class="inline-flex items-center gap-2 font-display text-body uppercase tracking-[1px] text-blue no-underline transition-opacity hover:opacity-70<?php echo empty( $initial['link_url'] ) ? ' hidden' : ''; ?>"
 						data-panel-link
-						href="<?php echo esc_url( $initial['link_url'] ? $initial['link_url'] : '#' ); ?>"
+						href="<?php echo esc_url( $initial['link_url'] ); ?>"
 						<?php echo ! empty( $initial['link_target'] ) ? 'target="' . esc_attr( $initial['link_target'] ) . '" rel="noopener noreferrer"' : ''; ?>
 					>
-						<span data-panel-link-label><?php echo esc_html( $initial['link_title'] ? $initial['link_title'] : __( 'See programmes', 'impact-one-million' ) ); ?></span>
+						<span data-panel-link-label><?php echo esc_html( $initial['link_title'] ); ?></span>
 						<span aria-hidden="true">→</span>
 					</a>
 				</aside>
@@ -237,12 +167,12 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 					<?php echo esc_html( $initial['description'] ); ?>
 				</p>
 				<a
-					class="inline-flex items-center gap-2 font-display text-body uppercase tracking-[1px] text-blue no-underline transition-opacity hover:opacity-70"
+					class="inline-flex items-center gap-2 font-display text-body uppercase tracking-[1px] text-blue no-underline transition-opacity hover:opacity-70<?php echo empty( $initial['link_url'] ) ? ' hidden' : ''; ?>"
 					data-panel-link
-					href="<?php echo esc_url( $initial['link_url'] ? $initial['link_url'] : '#' ); ?>"
+					href="<?php echo esc_url( $initial['link_url'] ); ?>"
 					<?php echo ! empty( $initial['link_target'] ) ? 'target="' . esc_attr( $initial['link_target'] ) . '" rel="noopener noreferrer"' : ''; ?>
 				>
-					<span data-panel-link-label><?php echo esc_html( $initial['link_title'] ? $initial['link_title'] : __( 'See programmes', 'impact-one-million' ) ); ?></span>
+					<span data-panel-link-label><?php echo esc_html( $initial['link_title'] ); ?></span>
 					<span aria-hidden="true">→</span>
 				</a>
 			</aside>
@@ -324,7 +254,7 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 				iom_render_link(
 					$cta,
 					$btn_class,
-					__( 'Learn more', 'impact-one-million' )
+					''
 				);
 				?>
 			</div>

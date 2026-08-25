@@ -12,33 +12,12 @@ $heading = get_sub_field( 'heading' );
 $stats   = get_sub_field( 'stats' );
 $cta     = get_sub_field( 'cta' );
 
-if ( ! $eyebrow ) {
-	$eyebrow = __( 'Stats', 'impact-one-million' );
+if ( ! is_array( $stats ) ) {
+	$stats = array();
 }
 
-if ( ! $heading ) {
-	$heading = __( 'Evidence you can measure', 'impact-one-million' );
-}
-
-if ( ! is_array( $stats ) || empty( $stats ) ) {
-	$stats = array(
-		array(
-			'value' => '20',
-			'label' => __( 'years of family and early childhood programmes, delivered across [X] communities', 'impact-one-million' ),
-		),
-		array(
-			'value' => '[X,XXX]',
-			'label' => __( 'parents supported through early years programmes to date.', 'impact-one-million' ),
-		),
-	);
-}
-
-if ( ! is_array( $cta ) || empty( $cta['url'] ) ) {
-	$cta = array(
-		'url'    => '#',
-		'title'  => __( 'How can i make an impact?', 'impact-one-million' ),
-		'target' => '',
-	);
+if ( ! is_array( $cta ) ) {
+	$cta = array();
 }
 
 $btn_class = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
@@ -92,7 +71,7 @@ $btn_class = 'inline-flex items-center justify-center rounded-btn border-[1.5px]
 			iom_render_link(
 				$cta,
 				$btn_class,
-				__( 'How can i make an impact?', 'impact-one-million' )
+				''
 			);
 			?>
 		<?php endif; ?>

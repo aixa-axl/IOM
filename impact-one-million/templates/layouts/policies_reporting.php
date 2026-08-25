@@ -83,7 +83,7 @@ if ( ! is_array( $cards ) ) {
 							iom_render_link(
 								$download,
 								$link_class . ' self-start',
-								__( 'Download PDF', 'impact-one-million' )
+								''
 							);
 						}
 						?>

@@ -16,17 +16,8 @@ $footer  = get_sub_field( 'footer' );
 $theme_uri = get_stylesheet_directory_uri();
 $arrow_uri = $theme_uri . '/assets/images/icons/why-join-arrow.svg';
 
-if ( ! $heading ) {
-	$heading = __( 'Why This Matters', 'impact-one-million' );
-}
 
-if ( ! $intro ) {
-	$intro = __( 'Supply chains are the backbone of global commerce, yet millions of workers remain trapped in cycles of poverty and instability.', 'impact-one-million' );
-}
 
-if ( ! $footer ) {
-	$footer = __( 'These challenges are interconnected. Financial exclusion drives health risks; lack of early childhood support limits gender equality. We tackle these barriers simultaneously through collaborative, supply-chain-wide action.', 'impact-one-million' );
-}
 
 if ( ! is_array( $cards ) ) {
 	$cards = array();

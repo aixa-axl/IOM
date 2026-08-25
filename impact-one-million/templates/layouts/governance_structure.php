@@ -12,13 +12,7 @@ $heading = get_sub_field( 'heading' );
 $body    = get_sub_field( 'body' );
 $items   = get_sub_field( 'items' );
 
-if ( ! $heading ) {
-	$heading = __( 'Governance Structure', 'impact-one-million' );
-}
 
-if ( ! $body ) {
-	$body = __( 'The organization is overseen by an independent Board of Trustees and an Executive Leadership Team. Our board brings together experts from international labor law, human rights, and global finance.', 'impact-one-million' );
-}
 
 if ( ! is_array( $items ) ) {
 	$items = array();

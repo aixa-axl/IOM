@@ -15,32 +15,8 @@ $body            = get_sub_field( 'body' );
 $image_id        = get_sub_field( 'image' );
 $cta             = get_sub_field( 'cta' );
 
-$theme_uri    = get_stylesheet_directory_uri();
-$fallback     = $theme_uri . '/assets/images/audience-hero/buyers.jpg';
-$fallback_abs = get_stylesheet_directory() . '/assets/images/audience-hero/buyers.jpg';
-
-if ( ! $subtitle_parent ) {
-	$subtitle_parent = __( 'Join the movement', 'impact-one-million' );
-}
-
-if ( ! $subtitle ) {
-	$subtitle = __( 'Buyers', 'impact-one-million' );
-}
-
-if ( ! $heading ) {
-	$heading = __( 'Strengthen your supply chain', 'impact-one-million' );
-}
-
-if ( ! $body ) {
-	$body = __( 'Meet your ESG and due diligence obligations. Make a measurable difference for workers.', 'impact-one-million' );
-}
-
-if ( ! is_array( $cta ) || empty( $cta['url'] ) ) {
-	$cta = array(
-		'url'    => '#',
-		'title'  => __( 'Nominate a Supplier', 'impact-one-million' ),
-		'target' => '',
-	);
+if ( ! is_array( $cta ) ) {
+	$cta = array();
 }
 
 $btn_class = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
@@ -86,7 +62,7 @@ $img_attrs = array(
 				iom_render_link(
 					$cta,
 					$btn_class,
-					__( 'Nominate a Supplier', 'impact-one-million' )
+					''
 				);
 				?>
 			<?php endif; ?>
@@ -95,14 +71,6 @@ $img_attrs = array(
 		<div class="relative h-[18.625rem] w-full overflow-hidden rounded-card lg:h-[31.3125rem] lg:min-w-0 lg:flex-1">
 			<?php if ( $image_id ) : ?>
 				<?php echo wp_get_attachment_image( (int) $image_id, 'large', false, $img_attrs ); ?>
-			<?php elseif ( file_exists( $fallback_abs ) ) : ?>
-				<img
-					src="<?php echo esc_url( $fallback ); ?>"
-					alt="<?php echo esc_attr( $heading ); ?>"
-					class="<?php echo esc_attr( $img_attrs['class'] ); ?>"
-					fetchpriority="high"
-					decoding="async"
-				>
 			<?php endif; ?>
 		</div>
 	</div>

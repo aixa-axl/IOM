@@ -18,31 +18,13 @@ $video_file   = get_sub_field( 'video_file' );
 
 $theme_uri = get_stylesheet_directory_uri();
 $play_uri  = $theme_uri . '/assets/images/icons/play.svg';
-$fallback  = $theme_uri . '/assets/images/featured-story/ida-hyllested.jpg';
-$fallback_abs = get_stylesheet_directory() . '/assets/images/featured-story/ida-hyllested.jpg';
 
-if ( ! $heading ) {
-	$heading = __( 'A message from Ida Hyllested,', 'impact-one-million' );
+if ( ! is_array( $cta ) ) {
+	$cta = array();
 }
 
-if ( ! $role ) {
-	$role = __( 'Senior Adviser - UNICEF', 'impact-one-million' );
-}
-
-if ( ! $body ) {
-	$body = __( 'Ida is part of Impact One Million’s steering committee, responsible for shaping strategy and ensuring programs are developed and implemented appropriately.', 'impact-one-million' );
-}
-
-if ( ! is_array( $cta ) || empty( $cta['url'] ) ) {
-	$cta = array(
-		'url'    => '#',
-		'title'  => __( 'Learn more', 'impact-one-million' ),
-		'target' => '',
-	);
-}
-
-$cta_label  = ! empty( $cta['title'] ) ? $cta['title'] : __( 'Learn more', 'impact-one-million' );
-$cta_url    = ! empty( $cta['url'] ) ? $cta['url'] : '#';
+$cta_label  = ! empty( $cta['title'] ) ? $cta['title'] : '';
+$cta_url    = ! empty( $cta['url'] ) ? $cta['url'] : '';
 $cta_target = ! empty( $cta['target'] ) ? $cta['target'] : '';
 
 $btn_class = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
@@ -110,16 +92,6 @@ $iom_fs_embed = function_exists( 'iom_build_video_embed' )
 						)
 					);
 					?>
-				<?php elseif ( file_exists( $fallback_abs ) ) : ?>
-					<img
-						class="absolute inset-0 h-full w-full object-cover"
-						src="<?php echo esc_url( $fallback ); ?>"
-						alt=""
-						width="560"
-						height="550"
-						loading="lazy"
-						decoding="async"
-					/>
 				<?php else : ?>
 					<div class="absolute inset-0 bg-navy" aria-hidden="true"></div>
 				<?php endif; ?>

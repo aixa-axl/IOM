@@ -13,41 +13,12 @@ $image_id = get_sub_field( 'image' );
 $stats    = get_sub_field( 'stats' );
 $cta      = get_sub_field( 'cta' );
 
-$theme_uri    = get_stylesheet_directory_uri();
-$fallback     = $theme_uri . '/assets/images/programme-impact/impact.jpg';
-$fallback_abs = get_stylesheet_directory() . '/assets/images/programme-impact/impact.jpg';
-
-if ( ! $heading ) {
-	$heading = __( 'Programme Impact', 'impact-one-million' );
+if ( ! is_array( $stats ) ) {
+	$stats = array();
 }
 
-if ( ! is_array( $stats ) || empty( $stats ) ) {
-	$stats = array(
-		array(
-			'value' => '12,000+',
-			'label' => __( 'Workers Reached', 'impact-one-million' ),
-		),
-		array(
-			'value' => '85',
-			'label' => __( 'Suppliers Enrolled', 'impact-one-million' ),
-		),
-		array(
-			'value' => '40%',
-			'label' => __( 'Average Wage Increase', 'impact-one-million' ),
-		),
-		array(
-			'value' => '23',
-			'label' => __( 'Countries', 'impact-one-million' ),
-		),
-	);
-}
-
-if ( ! is_array( $cta ) || empty( $cta['url'] ) ) {
-	$cta = array(
-		'url'    => '#',
-		'title'  => __( 'Join the Movement', 'impact-one-million' ),
-		'target' => '',
-	);
+if ( ! is_array( $cta ) ) {
+	$cta = array();
 }
 
 // Mobile: white outline. Desktop: solid white / navy text (per Figma).
@@ -65,14 +36,6 @@ $img_attrs = array(
 		<div class="relative h-[12.625rem] w-full shrink-0 overflow-hidden rounded-card lg:h-[37.5rem] lg:min-w-0 lg:flex-1">
 			<?php if ( $image_id ) : ?>
 				<?php echo wp_get_attachment_image( (int) $image_id, 'large', false, $img_attrs ); ?>
-			<?php elseif ( file_exists( $fallback_abs ) ) : ?>
-				<img
-					src="<?php echo esc_url( $fallback ); ?>"
-					alt="<?php echo esc_attr( $heading ); ?>"
-					class="<?php echo esc_attr( $img_attrs['class'] ); ?>"
-					loading="lazy"
-					decoding="async"
-				>
 			<?php endif; ?>
 		</div>
 
@@ -114,7 +77,7 @@ $img_attrs = array(
 				iom_render_link(
 					$cta,
 					$btn_class,
-					__( 'Join the Movement', 'impact-one-million' )
+					''
 				);
 				?>
 			<?php endif; ?>

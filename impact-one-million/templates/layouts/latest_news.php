@@ -25,17 +25,11 @@ if ( null === $show_images || '' === $show_images ) {
 	$show_images = (bool) $show_images;
 }
 
-if ( ! $heading ) {
-	$heading = __( 'Latest News', 'impact-one-million' );
-}
 
 if ( $posts_count < 1 ) {
 	$posts_count = 3;
 }
 
-if ( ! $link_label ) {
-	$link_label = __( 'Read more', 'impact-one-million' );
-}
 
 $query_args = array(
 	'post_type'           => 'post',
@@ -80,7 +74,7 @@ $link_class = 'inline-flex border-b-2 border-solid border-blue py-3.5 font-displ
 				iom_render_link(
 					$see_all,
 					$btn_class,
-					__( 'See all news', 'impact-one-million' )
+					''
 				);
 				?>
 			<?php endif; ?>

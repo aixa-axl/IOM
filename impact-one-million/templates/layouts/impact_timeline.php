@@ -12,49 +12,16 @@ $heading_mobile = get_sub_field( 'heading_mobile' );
 $cta            = get_sub_field( 'cta' );
 $items          = get_sub_field( 'items' );
 
-if ( ! $heading ) {
-	$heading = __( 'Our Impact - Timeline to One Million', 'impact-one-million' );
+if ( ! is_array( $cta ) ) {
+	$cta = array();
 }
 
-if ( ! $heading_mobile ) {
-	$heading_mobile = __( 'Timeline to One Million', 'impact-one-million' );
+if ( ! is_array( $items ) ) {
+	$items = array();
 }
 
-if ( ! is_array( $cta ) || empty( $cta['url'] ) ) {
-	$cta = array(
-		'url'    => '#',
-		'title'  => __( 'Good for business', 'impact-one-million' ),
-		'target' => '',
-	);
-}
-
-if ( ! is_array( $items ) || empty( $items ) ) {
-	$items = array(
-		array(
-			'year'  => '2024',
-			'title' => __( 'Lorem ipsum audit', 'impact-one-million' ),
-			'body'  => __( 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'impact-one-million' ),
-		),
-		array(
-			'year'  => '2024',
-			'title' => __( 'Legal recognition', 'impact-one-million' ),
-			'body'  => __( 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.', 'impact-one-million' ),
-		),
-		array(
-			'year'  => '2024',
-			'title' => __( 'Global summit', 'impact-one-million' ),
-			'body'  => __( 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.', 'impact-one-million' ),
-		),
-		array(
-			'year'  => '2025',
-			'title' => __( 'The 2025 vision', 'impact-one-million' ),
-			'body'  => __( 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.', 'impact-one-million' ),
-		),
-	);
-}
-
-$cta_url    = ! empty( $cta['url'] ) ? $cta['url'] : '#';
-$cta_title  = ! empty( $cta['title'] ) ? $cta['title'] : __( 'Good for business', 'impact-one-million' );
+$cta_url    = ! empty( $cta['url'] ) ? $cta['url'] : '';
+$cta_title  = ! empty( $cta['title'] ) ? $cta['title'] : '';
 $cta_target = ! empty( $cta['target'] ) ? $cta['target'] : '';
 
 $btn_class = 'inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-btn border-[1.5px] border-solid border-transparent bg-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
@@ -89,10 +56,18 @@ $iom_timeline_arrow = static function ( $extra_class = '' ) {
 >
 	<div class="mx-auto flex w-full max-w-site flex-col gap-10 lg:gap-20">
 		<div class="flex items-start justify-between gap-6 lg:items-center">
-			<h2 class="m-0 font-display text-[32px] leading-[1.2] text-blue lg:text-headline">
-				<span class="lg:hidden"><?php echo esc_html( $heading_mobile ); ?></span>
-				<span class="hidden lg:inline"><?php echo esc_html( $heading ); ?></span>
-			</h2>
+			<?php if ( $heading || $heading_mobile ) : ?>
+				<h2 class="m-0 font-display text-[32px] leading-[1.2] text-blue lg:text-headline">
+					<?php if ( $heading_mobile ) : ?>
+						<span class="lg:hidden"><?php echo esc_html( $heading_mobile ); ?></span>
+					<?php endif; ?>
+					<?php if ( $heading ) : ?>
+						<span class="hidden lg:inline"><?php echo esc_html( $heading ); ?></span>
+					<?php elseif ( $heading_mobile ) : ?>
+						<span class="hidden lg:inline"><?php echo esc_html( $heading_mobile ); ?></span>
+					<?php endif; ?>
+				</h2>
+			<?php endif; ?>
 
 			<div class="hidden shrink-0 items-center gap-2 lg:flex">
 				<button

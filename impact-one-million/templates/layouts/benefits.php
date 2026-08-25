@@ -24,58 +24,16 @@ $icon_map  = array(
 	'education'  => $theme_uri . '/assets/images/icons/benefit-education.svg',
 );
 
-if ( ! $eyebrow ) {
-	$eyebrow = __( 'Benefits', 'impact-one-million' );
+if ( ! is_array( $cards ) ) {
+	$cards = array();
 }
 
-if ( ! $heading ) {
-	$heading = __( 'What your investment delivers', 'impact-one-million' );
+if ( ! is_array( $primary_cta ) ) {
+	$primary_cta = array();
 }
 
-if ( ! is_array( $cards ) || empty( $cards ) ) {
-	$cards = array(
-		array(
-			'icon'        => null,
-			'icon_preset' => 'health',
-			'title'       => __( 'Better maternal and child health', 'impact-one-million' ),
-		),
-		array(
-			'icon'        => null,
-			'icon_preset' => 'nutrition',
-			'title'       => __( 'Improved nutrition and early learning in the critical first years', 'impact-one-million' ),
-		),
-		array(
-			'icon'        => null,
-			'icon_preset' => 'parents',
-			'title'       => __( 'Greater confidence and knowledge for parents', 'impact-one-million' ),
-		),
-		array(
-			'icon'        => null,
-			'icon_preset' => 'stress',
-			'title'       => __( 'Reduced stress for working parents — supporting wellbeing and productivity', 'impact-one-million' ),
-		),
-		array(
-			'icon'        => null,
-			'icon_preset' => 'education',
-			'title'       => __( 'Higher school readiness and improved educational outcomes', 'impact-one-million' ),
-		),
-	);
-}
-
-if ( ! is_array( $primary_cta ) || empty( $primary_cta['url'] ) ) {
-	$primary_cta = array(
-		'url'    => '#',
-		'title'  => __( 'Join the Movement', 'impact-one-million' ),
-		'target' => '',
-	);
-}
-
-if ( ! is_array( $secondary_cta ) || empty( $secondary_cta['url'] ) ) {
-	$secondary_cta = array(
-		'url'    => '#',
-		'title'  => __( 'Track your impact', 'impact-one-million' ),
-		'target' => '',
-	);
+if ( ! is_array( $secondary_cta ) ) {
+	$secondary_cta = array();
 }
 
 $card_count  = count( $cards );
@@ -189,14 +147,14 @@ $btn_outline = 'inline-flex w-full items-center justify-center rounded-btn borde
 					iom_render_link(
 						$primary_cta,
 						$btn_primary,
-						__( 'Join the Movement', 'impact-one-million' )
+						''
 					);
 				}
 				if ( ! empty( $secondary_cta['url'] ) ) {
 					iom_render_link(
 						$secondary_cta,
 						$btn_outline,
-						__( 'Track your impact', 'impact-one-million' )
+						''
 					);
 				}
 				?>

@@ -22,22 +22,6 @@ $metric_factories = get_sub_field( 'metric_factories_label' );
 $primary_cta     = get_sub_field( 'primary_cta' );
 $secondary_cta   = get_sub_field( 'secondary_cta' );
 
-if ( ! $heading ) {
-	$heading = __( 'ROI Calculator', 'impact-one-million' );
-}
-
-if ( ! $metric_workers ) {
-	$metric_workers = __( 'Workers reached', 'impact-one-million' );
-}
-
-if ( ! $metric_families ) {
-	$metric_families = __( 'Families supported', 'impact-one-million' );
-}
-
-if ( ! $metric_factories ) {
-	$metric_factories = __( 'Factories covered', 'impact-one-million' );
-}
-
 if ( $min_amount <= 0 ) {
 	$min_amount = 25000;
 }
@@ -58,43 +42,16 @@ if ( $baseline_amount <= 0 ) {
 	$baseline_amount = 100000;
 }
 
-if ( ! is_array( $audiences ) || empty( $audiences ) ) {
-	$audiences = array(
-		array(
-			'label'     => __( 'Buyers', 'impact-one-million' ),
-			'workers'   => 440,
-			'families'  => 242,
-			'factories' => 2,
-		),
-		array(
-			'label'     => __( 'Factories', 'impact-one-million' ),
-			'workers'   => 400,
-			'families'  => 220,
-			'factories' => 3,
-		),
-		array(
-			'label'     => __( 'Foundations', 'impact-one-million' ),
-			'workers'   => 500,
-			'families'  => 275,
-			'factories' => 2,
-		),
-	);
+if ( ! is_array( $audiences ) ) {
+	$audiences = array();
 }
 
-if ( ! is_array( $primary_cta ) || empty( $primary_cta['url'] ) ) {
-	$primary_cta = array(
-		'url'    => '#',
-		'title'  => __( 'Join the Movement', 'impact-one-million' ),
-		'target' => '',
-	);
+if ( ! is_array( $primary_cta ) ) {
+	$primary_cta = array();
 }
 
-if ( ! is_array( $secondary_cta ) || empty( $secondary_cta['url'] ) ) {
-	$secondary_cta = array(
-		'url'    => '#',
-		'title'  => __( 'Track your impact', 'impact-one-million' ),
-		'target' => '',
-	);
+if ( ! is_array( $secondary_cta ) ) {
+	$secondary_cta = array();
 }
 
 $btn_primary = 'inline-flex w-full items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90 lg:w-auto';
@@ -104,7 +61,7 @@ $tab_base    = 'flex flex-1 cursor-pointer items-center justify-center rounded-c
 $tab_active  = 'border-blue bg-blue text-white';
 $tab_idle    = 'border-[#dfe8ff] bg-white text-navy hover:border-blue/40';
 
-$first = $audiences[0];
+$first = ! empty( $audiences[0] ) && is_array( $audiences[0] ) ? $audiences[0] : array();
 $scale = $baseline_amount > 0 ? ( $default_amount / $baseline_amount ) : 1;
 $init_workers   = (int) round( ( isset( $first['workers'] ) ? (int) $first['workers'] : 0 ) * $scale );
 $init_families  = (int) round( ( isset( $first['families'] ) ? (int) $first['families'] : 0 ) * $scale );
@@ -264,14 +221,14 @@ $pct = ( ( $default_amount - $min_amount ) / max( 1, ( $max_amount - $min_amount
 					iom_render_link(
 						$primary_cta,
 						$btn_primary,
-						__( 'Join the Movement', 'impact-one-million' )
+						''
 					);
 				}
 				if ( ! empty( $secondary_cta['url'] ) ) {
 					iom_render_link(
 						$secondary_cta,
 						$btn_outline,
-						__( 'Track your impact', 'impact-one-million' )
+						''
 					);
 				}
 				?>

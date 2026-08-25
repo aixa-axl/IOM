@@ -13,9 +13,6 @@ $intro       = get_sub_field( 'intro' );
 $cards_title = get_sub_field( 'cards_title' );
 $partners    = get_sub_field( 'partners' );
 
-if ( ! $heading ) {
-	$heading = __( 'Founding Partners', 'impact-one-million' );
-}
 
 if ( ! is_array( $partners ) ) {
 	$partners = array();
@@ -99,7 +96,7 @@ $link_class = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-displ
 										iom_render_link(
 											$link,
 											$link_class,
-											__( 'Visit website', 'impact-one-million' )
+											''
 										);
 										?>
 									</div>

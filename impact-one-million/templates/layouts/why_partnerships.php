@@ -16,13 +16,7 @@ $items    = get_sub_field( 'items' );
 $theme_uri = get_stylesheet_directory_uri();
 $arrow_uri = $theme_uri . '/assets/images/icons/why-join-arrow.svg';
 
-if ( ! $heading ) {
-	$heading = __( 'Why Partnerships Matter', 'impact-one-million' );
-}
 
-if ( ! $body ) {
-	$body = __( 'IOM works through collaboration to ensure that we are not just delivering aid, but creating sustainable systems for migration management. Our partners bring the local knowledge and technical expertise required to solve complex global challenges.', 'impact-one-million' );
-}
 
 if ( ! is_array( $items ) ) {
 	$items = array();

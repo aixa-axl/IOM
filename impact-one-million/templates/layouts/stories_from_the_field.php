@@ -17,22 +17,6 @@ $image_id  = get_sub_field( 'image' );
 $show_cta  = (bool) get_sub_field( 'show_cta' );
 $cta       = get_sub_field( 'cta' );
 
-$theme_uri    = get_stylesheet_directory_uri();
-$fallback     = $theme_uri . '/assets/images/stories-from-the-field/story.jpg';
-$fallback_abs = get_stylesheet_directory() . '/assets/images/stories-from-the-field/story.jpg';
-
-if ( ! $quote ) {
-	$quote = __( '"[Quote text placeholder. A impactful statement about how the programme changed a life or a business operation.]"', 'impact-one-million' );
-}
-
-if ( ! $name ) {
-	$name = __( '[Name Placeholder]', 'impact-one-million' );
-}
-
-if ( ! $role ) {
-	$role = __( '[Role/Location Placeholder]', 'impact-one-million' );
-}
-
 if ( ! is_array( $cta ) ) {
 	$cta = array();
 }
@@ -75,14 +59,6 @@ $img_attrs = array(
 						$img_attrs
 					);
 					?>
-				<?php elseif ( file_exists( $fallback_abs ) ) : ?>
-					<img
-						src="<?php echo esc_url( $fallback ); ?>"
-						alt="<?php echo esc_attr( $name ); ?>"
-						class="<?php echo esc_attr( $img_attrs['class'] ); ?>"
-						loading="lazy"
-						decoding="async"
-					>
 				<?php endif; ?>
 			</div>
 
@@ -118,7 +94,7 @@ $img_attrs = array(
 					iom_render_link(
 						$cta,
 						$btn_class,
-						__( 'Learn more', 'impact-one-million' )
+						''
 					);
 					?>
 				<?php endif; ?>

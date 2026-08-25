@@ -11,13 +11,7 @@ $eyebrow    = get_sub_field( 'eyebrow' );
 $heading    = get_sub_field( 'heading' );
 $milestones = get_sub_field( 'milestones' );
 
-if ( ! $eyebrow ) {
-	$eyebrow = __( 'Our Journey', 'impact-one-million' );
-}
 
-if ( ! $heading ) {
-	$heading = __( 'Milestones of Change', 'impact-one-million' );
-}
 
 if ( ! is_array( $milestones ) ) {
 	$milestones = array();
