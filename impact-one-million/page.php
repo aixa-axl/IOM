@@ -46,6 +46,17 @@ get_header();
 								&& false !== stripos( (string) get_the_title(), 'Remedy' )
 							)
 						);
+						$iom_is_healthcare = function_exists( 'is_page' ) && (
+							is_page(
+								array(
+									'healthcare',
+									'health-care',
+									'health',
+								)
+							)
+							|| ( is_singular( 'page' ) && false !== stripos( (string) get_the_title(), 'Healthcare' ) )
+							|| ( is_singular( 'page' ) && false !== stripos( (string) get_the_title(), 'Health Care' ) )
+						);
 
 						while ( have_rows( 'page_sections' ) ) {
 							the_row();
@@ -103,15 +114,15 @@ get_header();
 									&& 'join_reasons' === $iom_prev_layout
 								)
 								|| (
-									( $iom_is_gender_equality || $iom_is_respect_remedy )
+									( $iom_is_gender_equality || $iom_is_respect_remedy || $iom_is_healthcare )
 									&& 'other_pillars' === $layout
 									&& 'programme_in_action' === $iom_prev_layout
 								)
 							);
 
-							// Gender Equality / Respect & Remedy: Programme in Action → Pillars.
+							// Gender Equality / Respect & Remedy / Healthcare: Programme in Action → Pillars.
 							$iom_tighten_programme_in_action_bottom = (
-								( $iom_is_gender_equality || $iom_is_respect_remedy )
+								( $iom_is_gender_equality || $iom_is_respect_remedy || $iom_is_healthcare )
 								&& 'programme_in_action' === $layout
 								&& 'other_pillars' === $iom_next_layout
 							);

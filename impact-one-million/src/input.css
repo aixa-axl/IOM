@@ -450,14 +450,17 @@ body {
   }
 
   /*
-   * Gender Equality / Respect & Remedy — Programme in Action → Pillars
+   * Gender Equality / Respect & Remedy / Healthcare — Programme in Action → Pillars
    * (backup for PHP class toggle).
    */
   body.page-gender-equality .entry-content > section.iom-programme-in-action:has(+ section.iom-other-pillars),
   body.page-gender-and-equality .entry-content > section.iom-programme-in-action:has(+ section.iom-other-pillars),
   body.page-gender .entry-content > section.iom-programme-in-action:has(+ section.iom-other-pillars),
   body.page-respect-and-remedy .entry-content > section.iom-programme-in-action:has(+ section.iom-other-pillars),
-  body.page-respect-remedy .entry-content > section.iom-programme-in-action:has(+ section.iom-other-pillars) {
+  body.page-respect-remedy .entry-content > section.iom-programme-in-action:has(+ section.iom-other-pillars),
+  body.page-healthcare .entry-content > section.iom-programme-in-action:has(+ section.iom-other-pillars),
+  body.page-health-care .entry-content > section.iom-programme-in-action:has(+ section.iom-other-pillars),
+  body.page-health .entry-content > section.iom-programme-in-action:has(+ section.iom-other-pillars) {
     padding-bottom: 2.5rem !important;
   }
 
@@ -465,7 +468,10 @@ body {
   body.page-gender-and-equality .entry-content > section.iom-programme-in-action + section.iom-other-pillars,
   body.page-gender .entry-content > section.iom-programme-in-action + section.iom-other-pillars,
   body.page-respect-and-remedy .entry-content > section.iom-programme-in-action + section.iom-other-pillars,
-  body.page-respect-remedy .entry-content > section.iom-programme-in-action + section.iom-other-pillars {
+  body.page-respect-remedy .entry-content > section.iom-programme-in-action + section.iom-other-pillars,
+  body.page-healthcare .entry-content > section.iom-programme-in-action + section.iom-other-pillars,
+  body.page-health-care .entry-content > section.iom-programme-in-action + section.iom-other-pillars,
+  body.page-health .entry-content > section.iom-programme-in-action + section.iom-other-pillars {
     padding-top: 2.5rem !important;
   }
 
