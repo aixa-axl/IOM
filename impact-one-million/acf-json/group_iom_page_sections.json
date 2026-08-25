@@ -1170,6 +1170,16 @@
                             "required": 0
                         },
                         {
+                            "key": "field_iom_sff_body",
+                            "label": "Body",
+                            "name": "body",
+                            "type": "textarea",
+                            "instructions": "Optional text between the attribution and the CTA.",
+                            "required": 0,
+                            "rows": 3,
+                            "new_lines": ""
+                        },
+                        {
                             "key": "field_iom_sff_image",
                             "label": "Image",
                             "name": "image",

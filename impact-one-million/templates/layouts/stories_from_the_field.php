@@ -11,6 +11,7 @@ $heading   = get_sub_field( 'heading' );
 $quote     = get_sub_field( 'quote' );
 $name      = get_sub_field( 'name' );
 $role      = get_sub_field( 'role' );
+$body      = get_sub_field( 'body' );
 $image_id  = get_sub_field( 'image' );
 $show_cta  = (bool) get_sub_field( 'show_cta' );
 $cta       = get_sub_field( 'cta' );
@@ -99,6 +100,12 @@ $img_attrs = array(
 							</p>
 						<?php endif; ?>
 					</footer>
+				<?php endif; ?>
+
+				<?php if ( $body ) : ?>
+					<p class="m-0 font-sans text-body leading-[1.2] text-muted">
+						<?php echo esc_html( $body ); ?>
+					</p>
 				<?php endif; ?>
 
 				<?php if ( $show_cta && ! empty( $cta['url'] ) ) : ?>
