@@ -130,6 +130,22 @@ if ( $is_first_section && ! $is_accent && $iom_is_family_ecd_page ) {
 	$btn_outline     .= ' lg:text-[20px] lg:tracking-[1.5px]';
 }
 
+// Gender Equality page top hero only: keep CTA label on one line on mobile.
+$iom_is_gender_equality_page = function_exists( 'is_page' ) && (
+	is_page(
+		array(
+			'gender-equality',
+			'gender-and-equality',
+			'gender',
+		)
+	)
+	|| ( is_singular( 'page' ) && false !== stripos( (string) get_the_title(), 'Gender Equality' ) )
+);
+if ( $is_first_section && ! $is_accent && $iom_is_gender_equality_page ) {
+	$btn_filled_base .= ' whitespace-nowrap px-4 text-[18px] tracking-[1px] md:px-6 md:text-card-title md:tracking-[2px]';
+	$btn_outline     .= ' whitespace-nowrap px-4 text-[18px] tracking-[1px] md:px-6 md:text-card-title md:tracking-[2px]';
+}
+
 $btn_primary = $btn_filled_base . ' ' . $fill_bg[ $primary_cta_style ];
 
 if ( 'outline' === $secondary_cta_style ) {

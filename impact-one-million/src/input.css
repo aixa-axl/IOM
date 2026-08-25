@@ -471,6 +471,19 @@ body {
   }
 }
 
+/* Gender Equality — top hero CTA: one line on mobile */
+@media (max-width: 767px) {
+  body.page-gender-equality .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a,
+  body.page-gender-and-equality .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a,
+  body.page-gender .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a {
+    white-space: nowrap;
+    font-size: 18px;
+    letter-spacing: 1px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
 /* ROI Calculator — range slider */
 .iom-roi-slider {
   -webkit-appearance: none;

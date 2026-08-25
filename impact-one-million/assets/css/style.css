@@ -2086,6 +2086,10 @@ video {
   font-size: 17px;
 }
 
+.text-\[18px\] {
+  font-size: 18px;
+}
+
 .text-\[20px\] {
   font-size: 20px;
 }
@@ -2931,6 +2935,20 @@ body {
   }
 }
 
+/* Gender Equality — top hero CTA: one line on mobile */
+
+@media (max-width: 767px) {
+  body.page-gender-equality .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a,
+  body.page-gender-and-equality .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a,
+  body.page-gender .entry-content > section.iom-hero:first-of-type .iom-hero__ctas > a {
+    white-space: nowrap;
+    font-size: 18px;
+    letter-spacing: 1px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
 /* ROI Calculator — range slider */
 
 .iom-roi-slider {
@@ -3684,6 +3702,11 @@ body {
     padding-right: 1.25rem;
   }
 
+  .md\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
   .md\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -3725,8 +3748,17 @@ body {
     font-size: 22px;
   }
 
+  .md\:text-card-title {
+    font-size: 24px;
+    line-height: 1;
+  }
+
   .md\:tracking-\[1\.5px\] {
     letter-spacing: 1.5px;
+  }
+
+  .md\:tracking-\[2px\] {
+    letter-spacing: 2px;
   }
 }
 
