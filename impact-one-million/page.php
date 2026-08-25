@@ -68,6 +68,24 @@ get_header();
 							|| ( is_singular( 'page' ) && false !== stripos( (string) get_the_title(), 'Financial Wellbeing' ) )
 							|| ( is_singular( 'page' ) && false !== stripos( (string) get_the_title(), 'Financial Well-being' ) )
 						);
+						$iom_is_education_skills = function_exists( 'is_page' ) && (
+							is_page(
+								array(
+									'education-skills-and-development',
+									'education-skills-development',
+									'education-and-skills',
+									'education',
+								)
+							)
+							|| (
+								is_singular( 'page' )
+								&& false !== stripos( (string) get_the_title(), 'Education' )
+								&& (
+									false !== stripos( (string) get_the_title(), 'Skills' )
+									|| false !== stripos( (string) get_the_title(), 'Development' )
+								)
+							)
+						);
 
 						while ( have_rows( 'page_sections' ) ) {
 							the_row();
@@ -125,7 +143,7 @@ get_header();
 									&& 'join_reasons' === $iom_prev_layout
 								)
 								|| (
-									( $iom_is_gender_equality || $iom_is_respect_remedy || $iom_is_healthcare || $iom_is_financial_wellbeing )
+									( $iom_is_gender_equality || $iom_is_respect_remedy || $iom_is_healthcare || $iom_is_financial_wellbeing || $iom_is_education_skills )
 									&& 'other_pillars' === $layout
 									&& 'programme_in_action' === $iom_prev_layout
 								)
@@ -133,7 +151,7 @@ get_header();
 
 							// Pillar pages: Programme in Action → Pillars.
 							$iom_tighten_programme_in_action_bottom = (
-								( $iom_is_gender_equality || $iom_is_respect_remedy || $iom_is_healthcare || $iom_is_financial_wellbeing )
+								( $iom_is_gender_equality || $iom_is_respect_remedy || $iom_is_healthcare || $iom_is_financial_wellbeing || $iom_is_education_skills )
 								&& 'programme_in_action' === $layout
 								&& 'other_pillars' === $iom_next_layout
 							);
