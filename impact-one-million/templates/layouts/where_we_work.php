@@ -169,7 +169,7 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 		<?php echo wp_json_encode( $countries_json ); ?>
 	</script>
 
-	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-10 lg:gap-10">
+	<div class="mx-auto flex w-full max-w-site flex-col items-center gap-8 lg:gap-8">
 		<?php if ( $heading || $intro ) : ?>
 			<div class="flex w-full max-w-[50rem] flex-col items-center gap-4 text-center">
 				<?php if ( $heading ) : ?>
@@ -184,17 +184,18 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 			</div>
 		<?php endif; ?>
 
-		<div class="relative w-full max-w-[75rem]">
-			<div class="relative bg-white">
-				<?php
-				$iom_map_active_slug = $default_slug;
-				require locate_template( 'templates/parts/where-we-work-map.php' );
-				unset( $iom_map_active_slug );
-				?>
+		<div class="relative mx-auto w-full max-w-[62rem]">
+			<div class="flex w-full flex-col items-stretch gap-6 lg:flex-row lg:items-center lg:gap-8">
+				<div class="flex min-w-0 flex-1 justify-center">
+					<?php
+					$iom_map_active_slug = $default_slug;
+					require locate_template( 'templates/parts/where-we-work-map.php' );
+					unset( $iom_map_active_slug );
+					?>
+				</div>
 
-				<!-- Desktop overlay panel — lower-left over the map -->
 				<aside
-					class="absolute bottom-8 left-8 z-10 hidden w-[21.25rem] flex-col gap-6 rounded-xl border border-solid border-[#dfe8ff] bg-white p-8 lg:flex"
+					class="flex w-full shrink-0 flex-col gap-6 rounded-xl border border-solid border-[#dfe8ff] bg-white p-6 lg:w-[19rem] lg:p-8 xl:w-[21.25rem]"
 					data-country-panel
 					aria-live="polite"
 				>
@@ -219,33 +220,6 @@ if ( ! isset( $countries_json[ $default_slug ] ) && ! empty( $countries_json ) )
 					</a>
 				</aside>
 			</div>
-
-			<!-- Mobile panel below map -->
-			<aside
-				class="mt-6 flex w-full flex-col gap-6 rounded-xl border border-solid border-[#dfe8ff] bg-off-white p-8 lg:hidden"
-				data-country-panel-mobile
-				aria-live="polite"
-			>
-				<h3 class="m-0 font-display text-[24px] leading-none text-blue lg:text-header" data-panel-name>
-					<?php echo esc_html( $initial['name'] ); ?>
-				</h3>
-				<div class="flex flex-col gap-2 border-b border-solid border-blue pb-3 font-sans text-body text-ink">
-					<p class="m-0" data-panel-workers><?php echo esc_html( $initial['workers_reached'] ); ?></p>
-					<p class="m-0" data-panel-factories><?php echo esc_html( $initial['factories'] ); ?></p>
-				</div>
-				<p class="m-0 font-sans text-sm leading-[1.2] text-muted" data-panel-description>
-					<?php echo esc_html( $initial['description'] ); ?>
-				</p>
-				<a
-					class="inline-flex items-center gap-2 font-display text-body uppercase tracking-[1px] text-blue no-underline transition-opacity hover:opacity-70"
-					data-panel-link
-					href="<?php echo esc_url( $initial['link_url'] ? $initial['link_url'] : '#' ); ?>"
-					<?php echo ! empty( $initial['link_target'] ) ? 'target="' . esc_attr( $initial['link_target'] ) . '" rel="noopener noreferrer"' : ''; ?>
-				>
-					<span data-panel-link-label><?php echo esc_html( $initial['link_title'] ? $initial['link_title'] : __( 'See programmes', 'impact-one-million' ) ); ?></span>
-					<span aria-hidden="true">→</span>
-				</a>
-			</aside>
 		</div>
 
 		<?php if ( $helper_text ) : ?>
