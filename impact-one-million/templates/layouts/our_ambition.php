@@ -54,7 +54,7 @@ $section_class = ! empty( $iom_tighten_our_ambition_top )
 					?>
 					<li class="flex w-full items-start gap-6">
 						<span class="mt-2 size-6 shrink-0 rounded-full bg-accent-blue" aria-hidden="true"></span>
-						<div class="flex min-w-0 flex-col gap-2">
+						<div class="flex min-w-0 flex-col gap-1">
 							<?php if ( $label ) : ?>
 								<span class="<?php echo esc_attr( $label_class ); ?>">
 									<?php echo esc_html( $label ); ?>
