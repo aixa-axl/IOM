@@ -21,6 +21,15 @@ $metric_families = get_sub_field( 'metric_families_label' );
 $metric_factories = get_sub_field( 'metric_factories_label' );
 $primary_cta     = get_sub_field( 'primary_cta' );
 $secondary_cta   = get_sub_field( 'secondary_cta' );
+$show_section    = get_sub_field( 'show_section' );
+
+// Default: show. Only hide when explicitly turned off in ACF.
+if ( null === $show_section || '' === $show_section ) {
+	$show_section = true;
+}
+if ( ! $show_section ) {
+	return;
+}
 
 if ( $min_amount <= 0 ) {
 	$min_amount = 25000;

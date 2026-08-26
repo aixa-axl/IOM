@@ -43,7 +43,7 @@
                             "label": "Center Content",
                             "name": "center_content",
                             "type": "true_false",
-                            "instructions": "Center heading, body and CTAs on mobile. Use for navy mid-page CTAs (Ambassadors, History, Team, Governance, Ambition). Auto-on when logo is off and there is no subtitle\/body. Desktop stays left-aligned.",
+                            "instructions": "Center heading, body and CTAs on mobile. Use for navy mid-page CTAs (Ambassadors, History, Team, Governance, Ambition). Auto-on when logo is off and there is no subtitle/body. Desktop stays left-aligned.",
                             "required": 0,
                             "default_value": 0,
                             "ui": 1
@@ -200,7 +200,7 @@
                             "label": "Stats",
                             "name": "stats",
                             "type": "repeater",
-                            "instructions": "Desktop order is left-to-right. Mobile reorders people → countries → funds when presets are used.",
+                            "instructions": "Desktop order is left-to-right. Mobile reorders people \u2192 countries \u2192 funds when presets are used.",
                             "required": 0,
                             "layout": "block",
                             "button_label": "Add Stat",
@@ -803,7 +803,7 @@
                             "label": "Intro",
                             "name": "intro",
                             "type": "textarea",
-                            "instructions": "Classic Trusted By only — body under the headings. Leave empty to hide.",
+                            "instructions": "Classic Trusted By only \u2014 body under the headings. Leave empty to hide.",
                             "required": 0,
                             "rows": 3,
                             "new_lines": ""
@@ -836,10 +836,10 @@
                                     "type": "select",
                                     "required": 0,
                                     "choices": {
-                                        "": "—",
+                                        "": "\u2014",
                                         "mcdonalds": "McDonald's",
                                         "fisher-price": "Fisher-Price",
-                                        "pokemon": "Pokémon",
+                                        "pokemon": "Pok\u00e9mon",
                                         "lego": "LEGO",
                                         "scholastic": "Scholastic",
                                         "target": "Target",
@@ -937,10 +937,10 @@
                                             "type": "select",
                                             "required": 0,
                                             "choices": {
-                                                "": "—",
+                                                "": "\u2014",
                                                 "mcdonalds": "McDonald's",
                                                 "fisher-price": "Fisher-Price",
-                                                "pokemon": "Pokémon",
+                                                "pokemon": "Pok\u00e9mon",
                                                 "lego": "LEGO",
                                                 "scholastic": "Scholastic",
                                                 "target": "Target",
@@ -1285,7 +1285,7 @@
                             "label": "Stat (legacy)",
                             "name": "stat",
                             "type": "text",
-                            "instructions": "Deprecated — use Stats repeater above. Kept so existing single-stat content still works.",
+                            "instructions": "Deprecated \u2014 use Stats repeater above. Kept so existing single-stat content still works.",
                             "required": 0
                         },
                         {
@@ -1293,7 +1293,7 @@
                             "label": "Body (legacy)",
                             "name": "body",
                             "type": "textarea",
-                            "instructions": "Deprecated — use Stats repeater above.",
+                            "instructions": "Deprecated \u2014 use Stats repeater above.",
                             "required": 0,
                             "rows": 3,
                             "new_lines": ""
@@ -1615,7 +1615,7 @@
                             "label": "Pillars Heading",
                             "name": "heading",
                             "type": "text",
-                            "instructions": "e.g. Our core pillars — or Explore Our Other Pillars when intro is empty.",
+                            "instructions": "e.g. Our core pillars \u2014 or Explore Our Other Pillars when intro is empty.",
                             "required": 0
                         },
                         {
@@ -1715,6 +1715,18 @@
                     "label": "ROI Calculator",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_iom_roic_show_section",
+                            "label": "Show Section",
+                            "name": "show_section",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this calculator on the front end without removing it.",
+                            "required": 0,
+                            "default_value": 1,
+                            "ui": 1,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_iom_roic_section_title",
                             "label": "Section Title",
@@ -1966,7 +1978,7 @@
                             "label": "Heading",
                             "name": "heading",
                             "type": "text",
-                            "instructions": "e.g. Why Buyers Join — or The Impact We Want to Create",
+                            "instructions": "e.g. Why Buyers Join \u2014 or The Impact We Want to Create",
                             "required": 0
                         },
                         {
@@ -2172,7 +2184,7 @@
                             "label": "Stats",
                             "name": "stats",
                             "type": "repeater",
-                            "instructions": "Typically 4 items in a 2×2 grid.",
+                            "instructions": "Typically 4 items in a 2\u00d72 grid.",
                             "required": 0,
                             "layout": "block",
                             "button_label": "Add Stat",
@@ -2341,7 +2353,7 @@
                             "label": "Heading",
                             "name": "heading",
                             "type": "text",
-                            "instructions": "e.g. Why factories join — or Built on decades of experience",
+                            "instructions": "e.g. Why factories join \u2014 or Built on decades of experience",
                             "required": 0
                         },
                         {
@@ -2843,7 +2855,7 @@
                             "label": "Posts to display",
                             "name": "posts",
                             "type": "relationship",
-                            "instructions": "Choose any posts (Case Study, News, or Press Release) for the cards — up to 3, in the order you pick. Leave empty to auto-pull the latest posts.",
+                            "instructions": "Choose any posts (Case Study, News, or Press Release) for the cards \u2014 up to 3, in the order you pick. Leave empty to auto-pull the latest posts.",
                             "required": 0,
                             "post_type": [
                                 "post"
@@ -3741,7 +3753,7 @@
                             "required": 0,
                             "rows": 3,
                             "new_lines": "",
-                            "default_value": "Get the latest news, campaign updates, and press releases delivered directly to your inbox. No spam — just the stories that matter."
+                            "default_value": "Get the latest news, campaign updates, and press releases delivered directly to your inbox. No spam \u2014 just the stories that matter."
                         },
                         {
                             "key": "field_iom_ns_placeholder",
@@ -3772,7 +3784,7 @@
                             "label": "Form Action URL",
                             "name": "form_action",
                             "type": "url",
-                            "instructions": "Optional override. Leave empty to use Theme Settings → Mailchimp Form Action URL.",
+                            "instructions": "Optional override. Leave empty to use Theme Settings \u2192 Mailchimp Form Action URL.",
                             "required": 0
                         },
                         {
@@ -3846,7 +3858,7 @@
                             "required": 0,
                             "rows": 3,
                             "new_lines": "",
-                            "default_value": "We’d love to hear from you! Please complete this short form and a member of the team will be in touch shortly."
+                            "default_value": "We\u2019d love to hear from you! Please complete this short form and a member of the team will be in touch shortly."
                         },
                         {
                             "key": "field_iom_contact_form_shortcode",
@@ -3886,5 +3898,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1787750543
+    "modified": 1787767780
 }

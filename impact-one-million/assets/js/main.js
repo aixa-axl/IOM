@@ -869,117 +869,149 @@
 
 /**
  * ROI Calculator — audience tabs + investment slider → live metrics.
+ * Supports multiple calculators on one page.
  */
 (function () {
-	const root = document.querySelector('[data-roi-calculator]');
-	if (!root) {
+	const roots = document.querySelectorAll('[data-roi-calculator]');
+	if (!roots.length) {
 		return;
 	}
 
-	const jsonEl = root.querySelector('[data-roi-audiences]');
-	let audiences = [];
-	try {
-		audiences = JSON.parse(jsonEl ? jsonEl.textContent : '[]');
-	} catch (e) {
-		audiences = [];
-	}
+	roots.forEach(function (root, rootIndex) {
+		const jsonEl = root.querySelector('[data-roi-audiences]');
+		let audiences = [];
+		try {
+			audiences = JSON.parse(jsonEl ? jsonEl.textContent : '[]');
+		} catch (e) {
+			audiences = [];
+		}
+		if (!Array.isArray(audiences)) {
+			audiences = [];
+		}
 
-	if (!audiences.length) {
-		return;
-	}
+		audiences = audiences.map(function (row) {
+			return {
+				id: row && row.id != null ? String(row.id) : '',
+				label: row && row.label ? String(row.label) : '',
+				workers: Number(row && row.workers) || 0,
+				families: Number(row && row.families) || 0,
+				factories: Number(row && row.factories) || 0,
+			};
+		});
 
-	const slider = root.querySelector('[data-roi-slider]');
-	const amountMobile = root.querySelector('[data-roi-amount-mobile]');
-	const amountDesktop = root.querySelector('[data-roi-amount-desktop]');
-	const workersEl = root.querySelector('[data-roi-workers]');
-	const familiesEl = root.querySelector('[data-roi-families]');
-	const factoriesEl = root.querySelector('[data-roi-factories]');
-	const tabs = root.querySelectorAll('[data-roi-tab]');
+		const slider = root.querySelector('[data-roi-slider]');
+		const amountMobile = root.querySelector('[data-roi-amount-mobile]');
+		const amountDesktop = root.querySelector('[data-roi-amount-desktop]');
+		const workersEl = root.querySelector('[data-roi-workers]');
+		const familiesEl = root.querySelector('[data-roi-families]');
+		const factoriesEl = root.querySelector('[data-roi-factories]');
+		const tabs = root.querySelectorAll('[data-roi-tab]');
 
-	const baseline = Number(root.getAttribute('data-baseline')) || 100000;
-	const min = Number(root.getAttribute('data-min')) || 0;
-	const max = Number(root.getAttribute('data-max')) || 1;
+		// Unique id so multiple calculators / labels do not collide.
+		if (slider) {
+			const sid = 'roi-investment-slider-' + rootIndex;
+			slider.id = sid;
+			const label = root.querySelector('label[for="roi-investment-slider"]');
+			if (label) {
+				label.setAttribute('for', sid);
+			}
+		}
 
-	const tabActive =
-		'flex flex-1 cursor-pointer items-center justify-center rounded-card border border-solid px-3 py-4 font-display text-[14px] uppercase tracking-[1px] transition-colors lg:px-8 lg:text-label border-blue bg-blue text-white';
-	const tabIdle =
-		'flex flex-1 cursor-pointer items-center justify-center rounded-card border border-solid px-3 py-4 font-display text-[14px] uppercase tracking-[1px] transition-colors lg:px-8 lg:text-label border-[#dfe8ff] bg-white text-navy hover:border-blue/40';
+		const baseline = Number(root.getAttribute('data-baseline')) || 100000;
+		const min = Number(root.getAttribute('data-min')) || 0;
+		const max = Number(root.getAttribute('data-max')) || 1;
 
-	let activeIndex = 0;
+		const tabActive =
+			'flex flex-1 cursor-pointer items-center justify-center rounded-card border border-solid px-3 py-4 font-display text-[14px] uppercase tracking-[1px] transition-colors lg:px-8 lg:text-label border-blue bg-blue text-white';
+		const tabIdle =
+			'flex flex-1 cursor-pointer items-center justify-center rounded-card border border-solid px-3 py-4 font-display text-[14px] uppercase tracking-[1px] transition-colors lg:px-8 lg:text-label border-[#dfe8ff] bg-white text-navy hover:border-blue/40';
 
-	function formatMoney(value) {
-		return (
-			'$' +
-			Math.round(value).toLocaleString(undefined, {
+		let activeIndex = 0;
+		if (tabs.length) {
+			const firstTab = Number(tabs[0].getAttribute('data-roi-tab'));
+			if (!Number.isNaN(firstTab)) {
+				activeIndex = firstTab;
+			}
+		}
+
+		function formatMoney(value) {
+			return (
+				'$' +
+				Math.round(value).toLocaleString(undefined, {
+					maximumFractionDigits: 0,
+				})
+			);
+		}
+
+		function formatCount(value) {
+			return Math.max(0, Math.round(value)).toLocaleString(undefined, {
 				maximumFractionDigits: 0,
-			})
-		);
-	}
-
-	function formatCount(value) {
-		return Math.max(0, Math.round(value)).toLocaleString(undefined, {
-			maximumFractionDigits: 0,
-		});
-	}
-
-	function setSliderFill(value) {
-		if (!slider) {
-			return;
-		}
-		const pct = ((value - min) / Math.max(1, max - min)) * 100;
-		slider.style.setProperty('--roi-pct', pct + '%');
-	}
-
-	function update() {
-		const amount = slider ? Number(slider.value) : baseline;
-		const audience = audiences[activeIndex] || audiences[0];
-		const scale = baseline > 0 ? amount / baseline : 0;
-
-		const money = formatMoney(amount);
-		if (amountMobile) {
-			amountMobile.textContent = money;
-		}
-		if (amountDesktop) {
-			amountDesktop.textContent = money;
+			});
 		}
 
-		if (workersEl) {
-			workersEl.textContent = formatCount(audience.workers * scale);
-		}
-		if (familiesEl) {
-			familiesEl.textContent = formatCount(audience.families * scale);
-		}
-		if (factoriesEl) {
-			factoriesEl.textContent = formatCount(audience.factories * scale);
+		function setSliderFill(value) {
+			if (!slider) {
+				return;
+			}
+			const pct = ((value - min) / Math.max(1, max - min)) * 100;
+			slider.style.setProperty('--roi-pct', pct + '%');
 		}
 
-		setSliderFill(amount);
-	}
+		function update() {
+			const amount = slider ? Number(slider.value) : baseline;
+			const scale = baseline > 0 ? amount / baseline : 0;
+			const audience = audiences[activeIndex] || audiences[0] || {
+				workers: 0,
+				families: 0,
+				factories: 0,
+			};
 
-	function setActiveTab(index) {
-		activeIndex = index;
+			const money = formatMoney(amount);
+			if (amountMobile) {
+				amountMobile.textContent = money;
+			}
+			if (amountDesktop) {
+				amountDesktop.textContent = money;
+			}
+
+			if (workersEl) {
+				workersEl.textContent = formatCount(audience.workers * scale);
+			}
+			if (familiesEl) {
+				familiesEl.textContent = formatCount(audience.families * scale);
+			}
+			if (factoriesEl) {
+				factoriesEl.textContent = formatCount(audience.factories * scale);
+			}
+
+			setSliderFill(amount);
+		}
+
+		function setActiveTab(tabIndex) {
+			activeIndex = tabIndex;
+			tabs.forEach(function (tab) {
+				const i = Number(tab.getAttribute('data-roi-tab'));
+				const selected = i === activeIndex;
+				tab.setAttribute('aria-selected', selected ? 'true' : 'false');
+				tab.setAttribute('data-active', selected ? 'true' : 'false');
+				tab.className = selected ? tabActive : tabIdle;
+			});
+			update();
+		}
+
 		tabs.forEach(function (tab) {
-			const i = Number(tab.getAttribute('data-roi-tab'));
-			const selected = i === activeIndex;
-			tab.setAttribute('aria-selected', selected ? 'true' : 'false');
-			tab.setAttribute('data-active', selected ? 'true' : 'false');
-			tab.className = selected ? tabActive : tabIdle;
+			tab.addEventListener('click', function () {
+				setActiveTab(Number(tab.getAttribute('data-roi-tab')));
+			});
 		});
+
+		if (slider) {
+			slider.addEventListener('input', update);
+			slider.addEventListener('change', update);
+		}
+
 		update();
-	}
-
-	tabs.forEach(function (tab) {
-		tab.addEventListener('click', function () {
-			setActiveTab(Number(tab.getAttribute('data-roi-tab')));
-		});
 	});
-
-	if (slider) {
-		slider.addEventListener('input', update);
-		slider.addEventListener('change', update);
-	}
-
-	update();
 })();
 
 /**
