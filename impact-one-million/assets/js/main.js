@@ -369,6 +369,14 @@
 		});
 	});
 
+	document.querySelectorAll('[data-why-this-matters-carousel]').forEach(function (carousel) {
+		bindSnapCarousel(carousel, {
+			track: '[data-why-this-matters-track]',
+			slide: '[data-why-this-matters-slide]',
+			dot: '[data-why-this-matters-dot]',
+		});
+	});
+
 	document.querySelectorAll('[data-get-involved-carousel]').forEach(function (carousel) {
 		bindSnapCarousel(carousel, {
 			track: '[data-get-involved-track]',

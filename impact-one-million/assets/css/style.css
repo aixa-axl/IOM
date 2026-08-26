@@ -4052,10 +4052,6 @@ body {
     width: 62.333%;
   }
 
-  .lg\:w-\[calc\(\(200\%-2rem\)\/3\)\] {
-    width: calc((200% - 2rem) / 3);
-  }
-
   .lg\:w-\[min\(100\%\2c 67\.5rem\)\] {
     width: min(100%, 67.5rem);
   }
