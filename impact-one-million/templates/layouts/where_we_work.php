@@ -131,10 +131,10 @@ if ( empty( $countries_json ) ) {
 					<h3 class="m-0 font-display text-[24px] leading-none text-blue lg:text-header" data-panel-name>
 						<?php echo esc_html( $initial['name'] ); ?>
 					</h3>
-					<div class="flex flex-col gap-2 border-b border-t border-solid border-gray-300 py-3 font-sans text-sm font-semibold text-ink">
-						<p class="m-0" data-panel-workers><?php echo esc_html( $initial['workers_reached'] ); ?></p>
-						<p class="m-0" data-panel-factories><?php echo esc_html( $initial['factories'] ); ?></p>
-					</div>
+					<ul class="m-0 flex list-disc flex-col gap-2 border-b border-t border-solid border-gray-300 py-3 pl-5 font-sans text-sm font-semibold text-ink">
+						<li class="m-0 pl-1" data-panel-workers><?php echo esc_html( $initial['workers_reached'] ); ?></li>
+						<li class="m-0 pl-1" data-panel-factories><?php echo esc_html( $initial['factories'] ); ?></li>
+					</ul>
 					<p class="m-0 font-sans text-sm leading-[1.2] text-muted" data-panel-description>
 						<?php echo esc_html( $initial['description'] ); ?>
 					</p>
@@ -159,10 +159,10 @@ if ( empty( $countries_json ) ) {
 				<h3 class="m-0 font-display text-[24px] leading-none text-blue lg:text-header" data-panel-name>
 					<?php echo esc_html( $initial['name'] ); ?>
 				</h3>
-				<div class="flex flex-col gap-2 border-b border-solid border-blue pb-3 font-sans text-body text-ink">
-					<p class="m-0" data-panel-workers><?php echo esc_html( $initial['workers_reached'] ); ?></p>
-					<p class="m-0" data-panel-factories><?php echo esc_html( $initial['factories'] ); ?></p>
-				</div>
+				<ul class="m-0 flex list-disc flex-col gap-2 border-b border-solid border-blue pb-3 pl-5 font-sans text-body text-ink">
+					<li class="m-0 pl-1" data-panel-workers><?php echo esc_html( $initial['workers_reached'] ); ?></li>
+					<li class="m-0 pl-1" data-panel-factories><?php echo esc_html( $initial['factories'] ); ?></li>
+				</ul>
 				<p class="m-0 font-sans text-sm leading-[1.2] text-muted" data-panel-description>
 					<?php echo esc_html( $initial['description'] ); ?>
 				</p>
