@@ -166,7 +166,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 											<?php else : ?>
 												<button
 													type="button"
-													class="<?php echo esc_attr( $nav_link_class . ' inline-flex cursor-default items-center gap-1.5 whitespace-nowrap border-0 bg-transparent p-0' ); ?>"
+													class="<?php echo esc_attr( $nav_link_class . ' inline-flex cursor-pointer items-center gap-1.5 whitespace-nowrap border-0 bg-transparent p-0' ); ?>"
 													aria-haspopup="true"
 												>
 													<?php echo esc_html( $title ); ?>
