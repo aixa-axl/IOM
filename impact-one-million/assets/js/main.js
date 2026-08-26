@@ -583,8 +583,8 @@
 
 /**
  * Impact timeline — horizontal card carousel with prev/next controls.
- * Trailing track padding lets every card (including the last) scroll to the
- * leading edge and off; next after the last card scrolls it off, then loops.
+ * End spacer lets every card scroll to the leading edge and off; next after
+ * the last card scrolls it away, then loops to the start.
  */
 (function () {
 	const sections = document.querySelectorAll('[data-impact-timeline]');
@@ -609,26 +609,48 @@
 		let scrolling = false;
 		let scrollTimer = null;
 
-		function slideStep() {
-			const first = slides[0];
-			if (!first) {
-				return track.clientWidth;
-			}
+		let spacer = track.querySelector('[data-timeline-spacer]');
+		if (!spacer) {
+			spacer = document.createElement('li');
+			spacer.setAttribute('data-timeline-spacer', '');
+			spacer.setAttribute('aria-hidden', 'true');
+			spacer.className = 'm-0 w-0 shrink-0 list-none overflow-hidden border-0 p-0';
+			track.appendChild(spacer);
+		}
+
+		function cardWidth() {
+			return slides[0] ? slides[0].getBoundingClientRect().width : track.clientWidth;
+		}
+
+		function gapSize() {
 			const styles = window.getComputedStyle(track);
-			const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
-			return first.getBoundingClientRect().width + gap;
+			return parseFloat(styles.columnGap || styles.gap || '0') || 0;
+		}
+
+		function slideStep() {
+			return cardWidth() + gapSize();
 		}
 
 		function maxScrollLeft() {
 			return Math.max(0, track.scrollWidth - track.clientWidth);
 		}
 
+		function slideScrollLeft(slide) {
+			return (
+				slide.getBoundingClientRect().left -
+				track.getBoundingClientRect().left +
+				track.scrollLeft
+			);
+		}
+
 		/**
-		 * Enough end space so the last card can sit at the leading edge and
-		 * then scroll fully off before we loop.
+		 * Space after the last card: enough to pin it to the leading edge,
+		 * plus one step so it can scroll fully off before looping.
 		 */
-		function syncEndPadding() {
-			track.style.paddingRight = track.clientWidth + 'px';
+		function syncSpacer() {
+			track.style.paddingRight = '';
+			const lead = Math.max(0, track.clientWidth - cardWidth());
+			spacer.style.width = lead + slideStep() + 'px';
 		}
 
 		function scrollLeftForIndex(i) {
@@ -636,16 +658,21 @@
 			if (!slide) {
 				return 0;
 			}
-			return Math.max(0, Math.min(slide.offsetLeft, maxScrollLeft()));
+			return Math.max(0, Math.min(slideScrollLeft(slide), maxScrollLeft()));
 		}
 
 		function indexFromScroll() {
-			const step = slideStep();
-			if (step <= 0) {
-				return 0;
-			}
-			const fromScroll = Math.round(track.scrollLeft / step);
-			return Math.max(0, Math.min(slides.length - 1, fromScroll));
+			const x = track.scrollLeft;
+			let best = 0;
+			let bestDist = Infinity;
+			slides.forEach(function (slide, i) {
+				const dist = Math.abs(slideScrollLeft(slide) - x);
+				if (dist < bestDist) {
+					bestDist = dist;
+					best = i;
+				}
+			});
+			return best;
 		}
 
 		function updateUI() {
@@ -675,10 +702,6 @@
 			});
 		}
 
-		function setSnapEnabled(enabled) {
-			track.style.scrollSnapType = enabled ? '' : 'none';
-		}
-
 		function afterScroll(fn, delay) {
 			if (scrollTimer) {
 				window.clearTimeout(scrollTimer);
@@ -686,7 +709,7 @@
 			scrollTimer = window.setTimeout(function () {
 				scrollTimer = null;
 				scrolling = false;
-				setSnapEnabled(true);
+				track.style.scrollSnapType = '';
 				if (typeof fn === 'function') {
 					fn();
 				}
@@ -701,7 +724,7 @@
 			const len = slides.length;
 			index = ((nextIndex % len) + len) % len;
 			scrolling = true;
-			setSnapEnabled(false);
+			// Keep snap on for normal moves so cards land flush, not mid-cut.
 			track.scrollTo({
 				left: scrollLeftForIndex(index),
 				behavior: behavior || 'smooth',
@@ -713,7 +736,7 @@
 		/** Scroll the last card off-screen, then jump to the start. */
 		function scrollLastOffThenLoop() {
 			scrolling = true;
-			setSnapEnabled(false);
+			track.style.scrollSnapType = 'none';
 			slides.forEach(function (slide) {
 				slide.setAttribute('data-active', 'false');
 			});
@@ -749,7 +772,6 @@
 				return;
 			}
 			if (index <= 0) {
-				// Jump to last card (already past the “scroll off” step going forward).
 				goTo(slides.length - 1);
 				return;
 			}
@@ -784,11 +806,11 @@
 		);
 
 		window.addEventListener('resize', function () {
-			syncEndPadding();
+			syncSpacer();
 			goTo(index, 'auto');
 		});
 
-		syncEndPadding();
+		syncSpacer();
 		updateUI();
 	});
 })();
