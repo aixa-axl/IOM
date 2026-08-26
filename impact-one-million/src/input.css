@@ -336,10 +336,11 @@ body {
   scroll-margin-top: 5.5rem;
 }
 
-/* Why It Matters — fade carousel; height locked to tallest slide via JS */
+/* Why It Matters — fade carousel; height set in JS (tallest on desktop, active slide on mobile) */
 .iom-wim-slides {
   position: relative;
   width: 100%;
+  transition: height 0.35s ease;
 }
 
 .iom-wim-slide {

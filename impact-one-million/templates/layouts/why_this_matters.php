@@ -92,7 +92,7 @@ $iom_render_wtm_card = static function ( $label, $arrow_uri, $carousel = false )
 			<?php if ( ! empty( $valid_cards ) ) : ?>
 				<div class="w-full lg:hidden" data-why-this-matters-carousel>
 					<ul
-						class="m-0 flex list-none items-start gap-6 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory [&::-webkit-scrollbar]:hidden"
+						class="m-0 flex list-none gap-6 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory [&::-webkit-scrollbar]:hidden"
 						data-why-this-matters-track
 					>
 						<?php foreach ( $valid_cards as $label ) : ?>

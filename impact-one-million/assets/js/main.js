@@ -1475,17 +1475,33 @@
 		let pointerId = null;
 		let startX = 0;
 		let startY = 0;
+		const desktopMq = window.matchMedia('(min-width: 1024px)');
 
 		function lockHeight() {
-			let max = 0;
-			slides.forEach(function (slide) {
-				const h = slide.offsetHeight;
-				if (h > max) {
-					max = h;
+			if (!slides.length) {
+				return;
+			}
+
+			// Desktop: keep a stable height (tallest slide) so fades don’t jump.
+			// Mobile: size to the active slide so short copy doesn’t leave a tall empty band.
+			if (desktopMq.matches) {
+				let max = 0;
+				slides.forEach(function (slide) {
+					const h = slide.offsetHeight;
+					if (h > max) {
+						max = h;
+					}
+				});
+				if (max > 0) {
+					slidesWrap.style.height = max + 'px';
 				}
-			});
-			if (max > 0) {
-				slidesWrap.style.height = max + 'px';
+				return;
+			}
+
+			const active = slides[index] || slides[0];
+			const h = active ? active.offsetHeight : 0;
+			if (h > 0) {
+				slidesWrap.style.height = h + 'px';
 			}
 		}
 
@@ -1504,6 +1520,8 @@
 				dot.setAttribute('data-active', active ? 'true' : 'false');
 				dot.setAttribute('aria-selected', active ? 'true' : 'false');
 			});
+
+			lockHeight();
 		}
 
 		function go(delta) {
