@@ -266,12 +266,21 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 										<div class="flex flex-col gap-3">
 											<button
 												type="button"
-												class="flex w-full items-center justify-between border-0 bg-transparent p-0 text-left <?php echo esc_attr( $mobile_nav_class ); ?>"
+												class="group flex w-full items-center justify-between gap-3 border-0 bg-transparent p-0 text-left <?php echo esc_attr( $mobile_nav_class ); ?>"
 												data-mobile-nav-accordion
 												aria-expanded="false"
 												aria-controls="<?php echo esc_attr( $panel_id ); ?>"
 											>
 												<span><?php echo esc_html( $title ); ?></span>
+												<svg
+													class="size-3 shrink-0 transition-transform duration-150 group-aria-expanded:rotate-180"
+													viewBox="0 0 12 12"
+													fill="none"
+													aria-hidden="true"
+													data-mobile-nav-chevron
+												>
+													<path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+												</svg>
 												<span class="sr-only"><?php esc_html_e( 'Toggle submenu', 'impact-one-million' ); ?></span>
 											</button>
 											<ul

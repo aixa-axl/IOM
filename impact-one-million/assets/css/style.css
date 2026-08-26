@@ -2409,6 +2409,12 @@ video {
   transition-duration: 150ms;
 }
 
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .duration-150 {
   transition-duration: 150ms;
 }
@@ -3142,6 +3148,10 @@ body {
   display: flex !important;
 }
 
+[data-mobile-nav-accordion][aria-expanded='true'] [data-mobile-nav-chevron] {
+  transform: rotate(180deg);
+}
+
 @media (min-width: 1280px) {
   [data-mobile-nav-panel] {
     display: none !important;
@@ -3523,6 +3533,11 @@ body {
 
 .group:hover .group-hover\:opacity-100 {
   opacity: 1;
+}
+
+.group[aria-expanded="true"] .group-aria-expanded\:rotate-180 {
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .data-\[active\=false\]\:border-blue[data-active="false"] {

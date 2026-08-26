@@ -654,6 +654,10 @@ body {
   display: flex !important;
 }
 
+[data-mobile-nav-accordion][aria-expanded='true'] [data-mobile-nav-chevron] {
+  transform: rotate(180deg);
+}
+
 @media (min-width: 1280px) {
   [data-mobile-nav-panel] {
     display: none !important;
