@@ -39,7 +39,7 @@ $section_class = ! empty( $iom_tighten_our_ambition_top )
 		</div>
 
 		<?php if ( ! empty( $items ) ) : ?>
-			<ul class="m-0 flex min-w-0 flex-1 list-none flex-col items-start gap-6 p-0 lg:gap-4">
+			<ul class="m-0 flex min-w-0 flex-1 list-none flex-col items-start gap-4 p-0">
 				<?php foreach ( $items as $item ) : ?>
 					<?php
 					$label      = isset( $item['label'] ) ? $item['label'] : '';
@@ -49,8 +49,8 @@ $section_class = ! empty( $iom_tighten_our_ambition_top )
 						continue;
 					}
 					$label_class = $bold_label
-						? 'font-sans text-label font-semibold leading-normal text-blue'
-						: 'font-sans text-label leading-normal text-blue';
+						? 'font-display text-label font-semibold leading-normal text-blue'
+						: 'font-display text-label leading-normal text-blue';
 					?>
 					<li class="flex w-full items-start gap-6">
 						<span class="mt-2 size-6 shrink-0 rounded-full bg-accent-blue" aria-hidden="true"></span>
