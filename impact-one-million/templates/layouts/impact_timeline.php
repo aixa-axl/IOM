@@ -113,7 +113,7 @@ $iom_timeline_arrow = static function ( $extra_class = '' ) {
 						<?php endif; ?>
 
 						<?php if ( $title ) : ?>
-							<h3 class="m-0 font-display text-card-title text-navy">
+							<h3 class="m-0 font-display text-card-title text-accent">
 								<?php echo esc_html( $title ); ?>
 							</h3>
 						<?php endif; ?>
