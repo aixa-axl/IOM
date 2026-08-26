@@ -583,6 +583,8 @@
 
 /**
  * Impact timeline — horizontal card carousel with prev/next controls.
+ * Desktop may show several cards at once; active index can advance through
+ * every slide (and wrap) even when scrollLeft cannot move further.
  */
 (function () {
 	const sections = document.querySelectorAll('[data-impact-timeline]');
@@ -592,7 +594,9 @@
 
 	sections.forEach(function (section) {
 		const track = section.querySelector('[data-timeline-track]');
-		const slides = section.querySelectorAll('[data-timeline-slide]');
+		const slides = Array.prototype.slice.call(
+			section.querySelectorAll('[data-timeline-slide]')
+		);
 		const prevBtns = section.querySelectorAll('[data-timeline-prev]');
 		const nextBtns = section.querySelectorAll('[data-timeline-next]');
 		const dots = section.querySelectorAll('[data-timeline-dot]');
@@ -600,6 +604,9 @@
 		if (!track || !slides.length) {
 			return;
 		}
+
+		let index = 0;
+		let scrolling = false;
 
 		function slideWidth() {
 			const first = slides[0];
@@ -611,18 +618,31 @@
 			return first.getBoundingClientRect().width + gap;
 		}
 
-		function currentIndex() {
+		function maxScrollLeft() {
+			return Math.max(0, track.scrollWidth - track.clientWidth);
+		}
+
+		function scrollLeftForIndex(i) {
+			const slide = slides[i];
+			if (!slide) {
+				return 0;
+			}
+			// Prefer layout offset so later cards can become "active" even when
+			// they cannot fully reach the leading edge of the track.
+			const raw = slide.offsetLeft;
+			return Math.max(0, Math.min(raw, maxScrollLeft()));
+		}
+
+		function indexFromScroll() {
 			const w = slideWidth();
 			if (w <= 0) {
 				return 0;
 			}
-			return Math.round(track.scrollLeft / w);
+			const fromScroll = Math.round(track.scrollLeft / w);
+			return Math.max(0, Math.min(slides.length - 1, fromScroll));
 		}
 
 		function updateUI() {
-			const index = currentIndex();
-			const max = slides.length - 1;
-
 			slides.forEach(function (slide, i) {
 				slide.setAttribute('data-active', i === index ? 'true' : 'false');
 			});
@@ -635,36 +655,48 @@
 				}
 			});
 
+			const canNav = slides.length > 1;
 			prevBtns.forEach(function (btn) {
-				btn.disabled = index <= 0;
-				btn.classList.toggle('text-blue', index > 0);
-				btn.classList.toggle('text-accent-blue', index <= 0);
+				btn.disabled = !canNav;
+				btn.classList.toggle('text-blue', canNav);
+				btn.classList.toggle('text-accent-blue', !canNav);
 			});
 
 			nextBtns.forEach(function (btn) {
-				btn.disabled = index >= max;
-				btn.classList.toggle('text-blue', index < max);
-				btn.classList.toggle('text-accent-blue', index >= max);
+				btn.disabled = !canNav;
+				btn.classList.toggle('text-blue', canNav);
+				btn.classList.toggle('text-accent-blue', !canNav);
 			});
 		}
 
-		function goTo(index) {
-			const clamped = Math.max(0, Math.min(slides.length - 1, index));
+		function goTo(nextIndex, behavior) {
+			if (!slides.length) {
+				return;
+			}
+
+			const len = slides.length;
+			index = ((nextIndex % len) + len) % len;
+			scrolling = true;
 			track.scrollTo({
-				left: clamped * slideWidth(),
-				behavior: 'smooth',
+				left: scrollLeftForIndex(index),
+				behavior: behavior || 'smooth',
 			});
+			updateUI();
+
+			window.setTimeout(function () {
+				scrolling = false;
+			}, 450);
 		}
 
 		prevBtns.forEach(function (btn) {
 			btn.addEventListener('click', function () {
-				goTo(currentIndex() - 1);
+				goTo(index - 1);
 			});
 		});
 
 		nextBtns.forEach(function (btn) {
 			btn.addEventListener('click', function () {
-				goTo(currentIndex() + 1);
+				goTo(index + 1);
 			});
 		});
 
@@ -672,18 +704,25 @@
 		track.addEventListener(
 			'scroll',
 			function () {
+				if (scrolling) {
+					return;
+				}
 				if (scrollTick) {
 					return;
 				}
 				scrollTick = window.requestAnimationFrame(function () {
 					scrollTick = null;
+					index = indexFromScroll();
 					updateUI();
 				});
 			},
 			{ passive: true }
 		);
 
-		window.addEventListener('resize', updateUI);
+		window.addEventListener('resize', function () {
+			goTo(index, 'auto');
+		});
+
 		updateUI();
 	});
 })();
