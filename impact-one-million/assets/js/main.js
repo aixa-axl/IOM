@@ -583,8 +583,8 @@
 
 /**
  * Impact timeline — horizontal card carousel with prev/next controls.
- * Desktop may show several cards at once; active index can advance through
- * every slide (and wrap) even when scrollLeft cannot move further.
+ * Trailing track padding lets every card (including the last) scroll to the
+ * leading edge and off; next after the last card scrolls it off, then loops.
  */
 (function () {
 	const sections = document.querySelectorAll('[data-impact-timeline]');
@@ -607,8 +607,9 @@
 
 		let index = 0;
 		let scrolling = false;
+		let scrollTimer = null;
 
-		function slideWidth() {
+		function slideStep() {
 			const first = slides[0];
 			if (!first) {
 				return track.clientWidth;
@@ -622,23 +623,28 @@
 			return Math.max(0, track.scrollWidth - track.clientWidth);
 		}
 
+		/**
+		 * Enough end space so the last card can sit at the leading edge and
+		 * then scroll fully off before we loop.
+		 */
+		function syncEndPadding() {
+			track.style.paddingRight = track.clientWidth + 'px';
+		}
+
 		function scrollLeftForIndex(i) {
 			const slide = slides[i];
 			if (!slide) {
 				return 0;
 			}
-			// Prefer layout offset so later cards can become "active" even when
-			// they cannot fully reach the leading edge of the track.
-			const raw = slide.offsetLeft;
-			return Math.max(0, Math.min(raw, maxScrollLeft()));
+			return Math.max(0, Math.min(slide.offsetLeft, maxScrollLeft()));
 		}
 
 		function indexFromScroll() {
-			const w = slideWidth();
-			if (w <= 0) {
+			const step = slideStep();
+			if (step <= 0) {
 				return 0;
 			}
-			const fromScroll = Math.round(track.scrollLeft / w);
+			const fromScroll = Math.round(track.scrollLeft / step);
 			return Math.max(0, Math.min(slides.length - 1, fromScroll));
 		}
 
@@ -669,6 +675,24 @@
 			});
 		}
 
+		function setSnapEnabled(enabled) {
+			track.style.scrollSnapType = enabled ? '' : 'none';
+		}
+
+		function afterScroll(fn, delay) {
+			if (scrollTimer) {
+				window.clearTimeout(scrollTimer);
+			}
+			scrollTimer = window.setTimeout(function () {
+				scrollTimer = null;
+				scrolling = false;
+				setSnapEnabled(true);
+				if (typeof fn === 'function') {
+					fn();
+				}
+			}, delay || 450);
+		}
+
 		function goTo(nextIndex, behavior) {
 			if (!slides.length) {
 				return;
@@ -677,27 +701,67 @@
 			const len = slides.length;
 			index = ((nextIndex % len) + len) % len;
 			scrolling = true;
+			setSnapEnabled(false);
 			track.scrollTo({
 				left: scrollLeftForIndex(index),
 				behavior: behavior || 'smooth',
 			});
 			updateUI();
+			afterScroll(null, behavior === 'auto' ? 50 : 450);
+		}
 
-			window.setTimeout(function () {
-				scrolling = false;
-			}, 450);
+		/** Scroll the last card off-screen, then jump to the start. */
+		function scrollLastOffThenLoop() {
+			scrolling = true;
+			setSnapEnabled(false);
+			slides.forEach(function (slide) {
+				slide.setAttribute('data-active', 'false');
+			});
+			dots.forEach(function (dot) {
+				dot.removeAttribute('data-active');
+			});
+
+			track.scrollTo({
+				left: maxScrollLeft(),
+				behavior: 'smooth',
+			});
+
+			afterScroll(function () {
+				index = 0;
+				track.scrollTo({ left: 0, behavior: 'auto' });
+				updateUI();
+			}, 480);
+		}
+
+		function goNext() {
+			if (slides.length <= 1) {
+				return;
+			}
+			if (index >= slides.length - 1) {
+				scrollLastOffThenLoop();
+				return;
+			}
+			goTo(index + 1);
+		}
+
+		function goPrev() {
+			if (slides.length <= 1) {
+				return;
+			}
+			if (index <= 0) {
+				// Jump to last card (already past the “scroll off” step going forward).
+				goTo(slides.length - 1);
+				return;
+			}
+			goTo(index - 1);
 		}
 
 		prevBtns.forEach(function (btn) {
-			btn.addEventListener('click', function () {
-				goTo(index - 1);
-			});
+			btn.addEventListener('click', goPrev);
 		});
 
 		nextBtns.forEach(function (btn) {
-			btn.addEventListener('click', function () {
-				goTo(index + 1);
-			});
+			btn.addEventListener('click', goNext);
 		});
 
 		let scrollTick = null;
@@ -720,9 +784,11 @@
 		);
 
 		window.addEventListener('resize', function () {
+			syncEndPadding();
 			goTo(index, 'auto');
 		});
 
+		syncEndPadding();
 		updateUI();
 	});
 })();
