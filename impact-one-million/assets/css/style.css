@@ -2106,6 +2106,10 @@ video {
   line-height: 2.25rem;
 }
 
+.text-\[1\.5rem\] {
+  font-size: 1.5rem;
+}
+
 .text-\[10px\] {
   font-size: 10px;
 }
@@ -2136,10 +2140,6 @@ video {
 
 .text-\[24px\] {
   font-size: 24px;
-}
-
-.text-\[2rem\] {
-  font-size: 2rem;
 }
 
 .text-\[32px\] {
@@ -4420,6 +4420,10 @@ body {
 
   .lg\:text-\[20px\] {
     font-size: 20px;
+  }
+
+  .lg\:text-\[2rem\] {
+    font-size: 2rem;
   }
 
   .lg\:text-\[clamp\(3\.5rem\2c 8vw\2c 7\.5rem\)\] {
