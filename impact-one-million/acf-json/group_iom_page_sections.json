@@ -590,22 +590,26 @@
                                     "parent_repeater": "field_iom_www_countries"
                                 },
                                 {
-                                    "key": "field_iom_www_country_workers",
-                                    "label": "Workers Reached",
-                                    "name": "workers_reached",
-                                    "type": "text",
-                                    "instructions": "e.g. 12,450 workers reached",
+                                    "key": "field_iom_www_country_bullets",
+                                    "label": "Bullet Points",
+                                    "name": "bullets",
+                                    "type": "repeater",
+                                    "instructions": "Stats shown under the country name (e.g. workers reached, factories). Add as many as needed.",
                                     "required": 0,
-                                    "parent_repeater": "field_iom_www_countries"
-                                },
-                                {
-                                    "key": "field_iom_www_country_factories",
-                                    "label": "Factories Line",
-                                    "name": "factories",
-                                    "type": "text",
-                                    "instructions": "e.g. across 24 factories",
-                                    "required": 0,
-                                    "parent_repeater": "field_iom_www_countries"
+                                    "layout": "table",
+                                    "button_label": "Add Bullet",
+                                    "parent_repeater": "field_iom_www_countries",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_iom_www_country_bullet_text",
+                                            "label": "Text",
+                                            "name": "text",
+                                            "type": "text",
+                                            "instructions": "e.g. 12,450 workers reached",
+                                            "required": 0,
+                                            "parent_repeater": "field_iom_www_country_bullets"
+                                        }
+                                    ]
                                 },
                                 {
                                     "key": "field_iom_www_country_description",
@@ -3882,5 +3886,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1787248294
+    "modified": 1787750543
 }

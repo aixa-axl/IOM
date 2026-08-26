@@ -510,8 +510,7 @@
 
 		panels.forEach(function (panel) {
 			const name = panel.querySelector('[data-panel-name]');
-			const workers = panel.querySelector('[data-panel-workers]');
-			const factories = panel.querySelector('[data-panel-factories]');
+			const bulletsEl = panel.querySelector('[data-panel-bullets]');
 			const description = panel.querySelector('[data-panel-description]');
 			const link = panel.querySelector('[data-panel-link]');
 			const linkLabel = panel.querySelector('[data-panel-link-label]');
@@ -519,11 +518,19 @@
 			if (name) {
 				name.textContent = data.name || '';
 			}
-			if (workers) {
-				workers.textContent = data.workers_reached || '';
-			}
-			if (factories) {
-				factories.textContent = data.factories || '';
+			if (bulletsEl) {
+				const bullets = Array.isArray(data.bullets) ? data.bullets : [];
+				bulletsEl.innerHTML = '';
+				bullets.forEach(function (text) {
+					if (!text) {
+						return;
+					}
+					const li = document.createElement('li');
+					li.className = 'm-0 pl-1';
+					li.textContent = text;
+					bulletsEl.appendChild(li);
+				});
+				bulletsEl.classList.toggle('hidden', bullets.length === 0);
 			}
 			if (description) {
 				description.textContent = data.description || '';
@@ -537,6 +544,7 @@
 					link.removeAttribute('target');
 					link.removeAttribute('rel');
 				}
+				link.classList.toggle('hidden', !data.link_url);
 			}
 			if (linkLabel) {
 				linkLabel.textContent =

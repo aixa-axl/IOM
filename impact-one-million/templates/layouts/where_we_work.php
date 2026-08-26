@@ -54,26 +54,42 @@ foreach ( $countries as $c ) {
 	if ( ! $slug ) {
 		continue;
 	}
-	$link = isset( $c['link'] ) && is_array( $c['link'] ) ? $c['link'] : array();
+	$link    = isset( $c['link'] ) && is_array( $c['link'] ) ? $c['link'] : array();
+	$bullets = array();
+	if ( ! empty( $c['bullets'] ) && is_array( $c['bullets'] ) ) {
+		foreach ( $c['bullets'] as $bullet ) {
+			$text = isset( $bullet['text'] ) ? trim( (string) $bullet['text'] ) : '';
+			if ( '' !== $text ) {
+				$bullets[] = $text;
+			}
+		}
+	}
+	// Legacy fallback: old fixed Workers / Factories fields.
+	if ( empty( $bullets ) ) {
+		if ( ! empty( $c['workers_reached'] ) ) {
+			$bullets[] = (string) $c['workers_reached'];
+		}
+		if ( ! empty( $c['factories'] ) ) {
+			$bullets[] = (string) $c['factories'];
+		}
+	}
 	$countries_json[ $slug ] = array(
-		'name'            => isset( $c['name'] ) ? $c['name'] : '',
-		'workers_reached' => isset( $c['workers_reached'] ) ? $c['workers_reached'] : '',
-		'factories'       => isset( $c['factories'] ) ? $c['factories'] : '',
-		'description'     => isset( $c['description'] ) ? $c['description'] : '',
-		'link_url'        => ! empty( $link['url'] ) ? $link['url'] : '',
-		'link_title'      => ! empty( $link['title'] ) ? $link['title'] : '',
-		'link_target'     => ! empty( $link['target'] ) ? $link['target'] : '',
+		'name'        => isset( $c['name'] ) ? $c['name'] : '',
+		'bullets'     => $bullets,
+		'description' => isset( $c['description'] ) ? $c['description'] : '',
+		'link_url'    => ! empty( $link['url'] ) ? $link['url'] : '',
+		'link_title'  => ! empty( $link['title'] ) ? $link['title'] : '',
+		'link_target' => ! empty( $link['target'] ) ? $link['target'] : '',
 	);
 }
 
 $empty_initial = array(
-	'name'            => '',
-	'workers_reached' => '',
-	'factories'       => '',
-	'description'     => '',
-	'link_url'        => '',
-	'link_title'      => '',
-	'link_target'     => '',
+	'name'        => '',
+	'bullets'     => array(),
+	'description' => '',
+	'link_url'    => '',
+	'link_title'  => '',
+	'link_target' => '',
 );
 
 if ( empty( $countries_json ) ) {
@@ -131,9 +147,13 @@ if ( empty( $countries_json ) ) {
 					<h3 class="m-0 font-display text-[24px] leading-none text-blue lg:text-header" data-panel-name>
 						<?php echo esc_html( $initial['name'] ); ?>
 					</h3>
-					<ul class="m-0 flex list-disc flex-col gap-2 border-b border-t border-solid border-gray-300 py-3 pl-5 font-sans text-sm font-semibold text-ink">
-						<li class="m-0 pl-1" data-panel-workers><?php echo esc_html( $initial['workers_reached'] ); ?></li>
-						<li class="m-0 pl-1" data-panel-factories><?php echo esc_html( $initial['factories'] ); ?></li>
+					<ul
+						class="m-0 flex list-disc flex-col gap-2 border-b border-t border-solid border-gray-300 py-3 pl-5 font-sans text-sm font-semibold text-ink<?php echo empty( $initial['bullets'] ) ? ' hidden' : ''; ?>"
+						data-panel-bullets
+					>
+						<?php foreach ( $initial['bullets'] as $bullet ) : ?>
+							<li class="m-0 pl-1"><?php echo esc_html( $bullet ); ?></li>
+						<?php endforeach; ?>
 					</ul>
 					<p class="m-0 font-sans text-sm leading-[1.2] text-muted" data-panel-description>
 						<?php echo esc_html( $initial['description'] ); ?>
@@ -159,9 +179,13 @@ if ( empty( $countries_json ) ) {
 				<h3 class="m-0 font-display text-[24px] leading-none text-blue lg:text-header" data-panel-name>
 					<?php echo esc_html( $initial['name'] ); ?>
 				</h3>
-				<ul class="m-0 flex list-disc flex-col gap-2 border-b border-solid border-blue pb-3 pl-5 font-sans text-body text-ink">
-					<li class="m-0 pl-1" data-panel-workers><?php echo esc_html( $initial['workers_reached'] ); ?></li>
-					<li class="m-0 pl-1" data-panel-factories><?php echo esc_html( $initial['factories'] ); ?></li>
+				<ul
+					class="m-0 flex list-disc flex-col gap-2 border-b border-solid border-blue pb-3 pl-5 font-sans text-body text-ink<?php echo empty( $initial['bullets'] ) ? ' hidden' : ''; ?>"
+					data-panel-bullets
+				>
+					<?php foreach ( $initial['bullets'] as $bullet ) : ?>
+						<li class="m-0 pl-1"><?php echo esc_html( $bullet ); ?></li>
+					<?php endforeach; ?>
 				</ul>
 				<p class="m-0 font-sans text-sm leading-[1.2] text-muted" data-panel-description>
 					<?php echo esc_html( $initial['description'] ); ?>
