@@ -1418,6 +1418,10 @@ video {
   gap: 0.25rem;
 }
 
+.gap-1\.5 {
+  gap: 0.375rem;
+}
+
 .gap-10 {
   gap: 2.5rem;
 }
@@ -4808,8 +4812,8 @@ body {
   padding-left: 1.5rem;
 }
 
-.\[\&_p\+p\]\:mt-3 p+p {
-  margin-top: 0.75rem;
+.\[\&_p\+p\]\:mt-2 p+p {
+  margin-top: 0.5rem;
 }
 
 .\[\&_p\+p\]\:mt-6 p+p {

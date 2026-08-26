@@ -143,11 +143,14 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 										<?php if ( $has_children ) : ?>
 											<a
 												href="<?php echo esc_url( $link['url'] ); ?>"
-												class="<?php echo esc_attr( $nav_link_class . ' whitespace-nowrap' ); ?>"
+												class="<?php echo esc_attr( $nav_link_class . ' inline-flex items-center gap-1.5 whitespace-nowrap' ); ?>"
 												aria-haspopup="true"
 												<?php echo ! empty( $link['target'] ) ? 'target="' . esc_attr( $link['target'] ) . '" rel="noopener noreferrer"' : ''; ?>
 											>
 												<?php echo esc_html( ! empty( $link['title'] ) ? $link['title'] : '' ); ?>
+												<svg class="size-2.5 shrink-0" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+													<path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+												</svg>
 											</a>
 											<ul
 												class="invisible absolute left-0 top-full z-[60] m-0 mt-3 min-w-[16.5rem] list-none overflow-hidden rounded-btn border-[1.5px] border-solid border-transparent bg-blue p-0 opacity-0 shadow-lg transition-[opacity,visibility] duration-150 before:absolute before:inset-x-0 before:-top-3 before:h-3 before:content-[''] group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
