@@ -124,34 +124,57 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 							<ul class="m-0 flex list-none flex-nowrap items-center gap-6 p-0">
 								<?php foreach ( $header_nav as $row ) : ?>
 									<?php
-									$link     = isset( $row['link'] ) ? $row['link'] : null;
+									$link     = isset( $row['link'] ) && is_array( $row['link'] ) ? $row['link'] : array();
 									$children = isset( $row['children'] ) && is_array( $row['children'] ) ? $row['children'] : array();
 									$children = array_values(
 										array_filter(
 											$children,
 											static function ( $child ) {
-												return ! empty( $child['link']['url'] );
+												return ! empty( $child['link']['url'] ) && '#' !== $child['link']['url'];
 											}
 										)
 									);
-									if ( empty( $link['url'] ) ) {
+									$title = ! empty( $row['label'] )
+										? $row['label']
+										: ( ! empty( $link['title'] ) ? $link['title'] : '' );
+									$url   = ! empty( $link['url'] ) ? $link['url'] : '';
+									// Treat empty / # as “heading only” (no destination).
+									$has_url      = ( $url && '#' !== $url );
+									$has_children = ! empty( $children );
+
+									if ( ! $title ) {
 										continue;
 									}
-									$has_children = ! empty( $children );
+									if ( ! $has_children && ! $has_url ) {
+										continue;
+									}
 									?>
 									<li class="<?php echo $has_children ? 'group relative shrink-0' : 'shrink-0'; ?>">
 										<?php if ( $has_children ) : ?>
-											<a
-												href="<?php echo esc_url( $link['url'] ); ?>"
-												class="<?php echo esc_attr( $nav_link_class . ' inline-flex items-center gap-1.5 whitespace-nowrap' ); ?>"
-												aria-haspopup="true"
-												<?php echo ! empty( $link['target'] ) ? 'target="' . esc_attr( $link['target'] ) . '" rel="noopener noreferrer"' : ''; ?>
-											>
-												<?php echo esc_html( ! empty( $link['title'] ) ? $link['title'] : '' ); ?>
-												<svg class="size-2.5 shrink-0" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-													<path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-												</svg>
-											</a>
+											<?php if ( $has_url ) : ?>
+												<a
+													href="<?php echo esc_url( $url ); ?>"
+													class="<?php echo esc_attr( $nav_link_class . ' inline-flex items-center gap-1.5 whitespace-nowrap' ); ?>"
+													aria-haspopup="true"
+													<?php echo ! empty( $link['target'] ) ? 'target="' . esc_attr( $link['target'] ) . '" rel="noopener noreferrer"' : ''; ?>
+												>
+													<?php echo esc_html( $title ); ?>
+													<svg class="size-2.5 shrink-0" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+														<path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+													</svg>
+												</a>
+											<?php else : ?>
+												<button
+													type="button"
+													class="<?php echo esc_attr( $nav_link_class . ' inline-flex cursor-default items-center gap-1.5 whitespace-nowrap border-0 bg-transparent p-0' ); ?>"
+													aria-haspopup="true"
+												>
+													<?php echo esc_html( $title ); ?>
+													<svg class="size-2.5 shrink-0" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+														<path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+													</svg>
+												</button>
+											<?php endif; ?>
 											<ul
 												class="invisible absolute left-0 top-full z-[60] m-0 mt-3 min-w-[16.5rem] list-none overflow-hidden rounded-btn border-[1.5px] border-solid border-transparent bg-blue p-0 opacity-0 shadow-lg transition-[opacity,visibility] duration-150 before:absolute before:inset-x-0 before:-top-3 before:h-3 before:content-[''] group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
 												role="list"
@@ -244,22 +267,30 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 						<ul class="m-0 flex list-none flex-col items-start gap-8 p-0">
 							<?php foreach ( $header_nav as $index => $row ) : ?>
 								<?php
-								$link     = isset( $row['link'] ) ? $row['link'] : null;
+								$link     = isset( $row['link'] ) && is_array( $row['link'] ) ? $row['link'] : array();
 								$children = isset( $row['children'] ) && is_array( $row['children'] ) ? $row['children'] : array();
 								$children = array_values(
 									array_filter(
 										$children,
 										static function ( $child ) {
-											return ! empty( $child['link']['url'] );
+											return ! empty( $child['link']['url'] ) && '#' !== $child['link']['url'];
 										}
 									)
 								);
-								if ( empty( $link['url'] ) && empty( $children ) ) {
+								$title   = ! empty( $row['label'] )
+									? $row['label']
+									: ( ! empty( $link['title'] ) ? $link['title'] : '' );
+								$url     = ! empty( $link['url'] ) ? $link['url'] : '';
+								$has_url = ( $url && '#' !== $url );
+								$has_children = ! empty( $children );
+
+								if ( ! $title ) {
 									continue;
 								}
-								$has_children = ! empty( $children );
-								$panel_id     = 'mobile-nav-sub-' . (int) $index;
-								$title        = ! empty( $link['title'] ) ? $link['title'] : '';
+								if ( ! $has_children && ! $has_url ) {
+									continue;
+								}
+								$panel_id = 'mobile-nav-sub-' . (int) $index;
 								?>
 								<li class="m-0">
 									<?php if ( $has_children ) : ?>
@@ -310,7 +341,7 @@ $mobile_util_class    = 'font-display text-body uppercase tracking-[1px] text-wh
 												<?php endforeach; ?>
 											</ul>
 										</div>
-									<?php elseif ( ! empty( $link['url'] ) ) : ?>
+									<?php elseif ( $has_url ) : ?>
 										<?php iom_render_link( $link, $mobile_nav_class ); ?>
 									<?php endif; ?>
 								</li>
