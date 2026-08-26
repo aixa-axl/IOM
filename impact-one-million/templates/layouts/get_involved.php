@@ -52,7 +52,7 @@ $list_class = $is_dark
 	: 'm-0 flex w-full list-none gap-8 overflow-x-auto scroll-smooth px-page pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible xl:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden';
 
 $card_class = $is_dark
-	? 'flex w-full flex-col items-center gap-6 rounded-card bg-white p-[14px] text-center lg:p-10'
+	? 'flex h-full w-full flex-col items-center justify-between gap-6 rounded-card bg-white p-[14px] text-center lg:p-10'
 	: 'flex w-[min(100%,20.3125rem)] shrink-0 snap-center flex-col justify-between gap-10 rounded-card bg-off-white p-[14px] lg:h-[26.25rem] lg:w-auto lg:snap-align-none lg:gap-0 lg:p-10';
 
 $card_count = is_array( $cards ) ? count( $cards ) : 0;
@@ -91,7 +91,7 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 						$btn_class   = $btn_base . ' ' . $btn_styles[ $style ];
 						?>
 						<li class="<?php echo esc_attr( $card_class ); ?>">
-							<div class="flex flex-col items-center gap-3">
+							<div class="flex w-full flex-col items-center gap-3">
 								<?php if ( $title ) : ?>
 									<h3 class="m-0 font-display text-card-title text-blue">
 										<?php echo esc_html( $title ); ?>
@@ -105,7 +105,7 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 
 							<?php if ( $link_url ) : ?>
 								<a
-									class="<?php echo esc_attr( $btn_class ); ?>"
+									class="<?php echo esc_attr( $btn_class ); ?> mt-auto"
 									href="<?php echo esc_url( $link_url ); ?>"
 									<?php echo $link_target ? 'target="' . esc_attr( $link_target ) . '" rel="noopener noreferrer"' : ''; ?>
 								>
