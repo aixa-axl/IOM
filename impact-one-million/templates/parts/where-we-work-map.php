@@ -14,7 +14,6 @@ $map_3x    = $map_dir . '/where-we-work-map-base@3x.png';
 $map_slugs = array( 'china', 'vietnam', 'indonesia', 'india', 'bangladesh', 'sri-lanka' );
 ?>
 <div class="relative w-full cursor-pointer overflow-hidden rounded-lg border border-solid border-[#dfe8ff] bg-white" data-work-map>
-	<div class="relative mx-auto w-[88%] py-3 lg:w-full lg:py-0">
 	<img
 		class="pointer-events-none block h-auto w-full max-w-full"
 		src="<?php echo esc_url( $map_base ); ?>"
@@ -47,5 +46,4 @@ $map_slugs = array( 'china', 'vietnam', 'indonesia', 'india', 'bangladesh', 'sri
 			aria-hidden="true"
 		/>
 	<?php endforeach; ?>
-	</div>
 </div>
