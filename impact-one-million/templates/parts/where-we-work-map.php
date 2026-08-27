@@ -13,7 +13,7 @@ $map_2x    = $map_dir . '/where-we-work-map-base@2x.png';
 $map_3x    = $map_dir . '/where-we-work-map-base@3x.png';
 $map_slugs = array( 'china', 'vietnam', 'indonesia', 'india', 'bangladesh', 'sri-lanka' );
 ?>
-<div class="relative w-full cursor-pointer" data-work-map>
+<div class="relative w-full cursor-pointer overflow-hidden rounded-lg border border-solid border-[#dfe8ff]" data-work-map>
 	<img
 		class="pointer-events-none block h-auto w-full max-w-full"
 		src="<?php echo esc_url( $map_base ); ?>"
