@@ -428,7 +428,7 @@
 		'china',
 	];
 	const MAP_W = 1024;
-	const MAP_H = 546;
+	const MAP_H = 848;
 	const masks = {};
 
 	function loadMask(img) {

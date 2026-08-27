@@ -21,7 +21,7 @@ $map_slugs = array( 'china', 'vietnam', 'indonesia', 'india', 'bangladesh', 'sri
 		sizes="(min-width: 1280px) 1200px, 100vw"
 		alt="<?php echo esc_attr__( 'Map of countries where we work', 'impact-one-million' ); ?>"
 		width="1024"
-		height="546"
+		height="848"
 		decoding="async"
 		loading="lazy"
 		data-map-base
@@ -40,7 +40,7 @@ $map_slugs = array( 'china', 'vietnam', 'indonesia', 'india', 'bangladesh', 'sri
 			sizes="(min-width: 1280px) 1200px, 100vw"
 			alt=""
 			width="1024"
-			height="546"
+			height="848"
 			data-country="<?php echo esc_attr( $slug ); ?>"
 			decoding="async"
 			aria-hidden="true"
