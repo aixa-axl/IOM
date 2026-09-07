@@ -4000,6 +4000,46 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_iom_newsletter_form": {
+                    "key": "layout_iom_newsletter_form",
+                    "name": "newsletter_form",
+                    "label": "Newsletter Form",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_iom_nf_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "Page title, e.g. Subscribe to our newsletter.",
+                            "required": 0,
+                            "default_value": "Subscribe to our newsletter"
+                        },
+                        {
+                            "key": "field_iom_nf_intro",
+                            "label": "Intro",
+                            "name": "intro",
+                            "type": "textarea",
+                            "instructions": "Short supporting copy shown beside the form on desktop.",
+                            "required": 0,
+                            "rows": 3,
+                            "new_lines": "",
+                            "default_value": "Get the latest news, campaign updates, and press releases delivered directly to your inbox."
+                        },
+                        {
+                            "key": "field_iom_nf_form_shortcode",
+                            "label": "Fluent Forms Shortcode",
+                            "name": "form_shortcode",
+                            "type": "text",
+                            "instructions": "Paste the Fluent Forms shortcode, e.g. [fluentform id=\"2\"]. Temporary until the Mailchimp embed URL is ready.",
+                            "required": 0,
+                            "placeholder": "[fluentform id=\"2\"]",
+                            "default_value": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -4025,5 +4065,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1788775280
+    "modified": 1788797442
 }

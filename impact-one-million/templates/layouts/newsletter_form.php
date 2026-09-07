@@ -1,12 +1,11 @@
 <?php
 /**
- * Layout: contact
+ * Layout: newsletter_form
  *
- * Get in touch — heading + intro (left) + Fluent Forms shortcode (right).
+ * Subscribe / newsletter page — same two-column shell as Contact,
+ * with a Fluent Forms shortcode embed (temporary until Mailchimp URL is ready).
  *
  * Fields: heading, intro, form_shortcode
- *
- * Figma desktop: 776:8680
  */
 
 $heading        = get_sub_field( 'heading' );
