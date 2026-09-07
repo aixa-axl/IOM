@@ -556,7 +556,7 @@
 			}
 			if (linkLabel) {
 				linkLabel.textContent =
-					data.link_title || 'See programmes in ' + (data.name || '');
+					data.link_title || 'What we do';
 			}
 		});
 	}

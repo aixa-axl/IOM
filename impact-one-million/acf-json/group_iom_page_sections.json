@@ -626,6 +626,7 @@
                                     "label": "Programmes Link",
                                     "name": "link",
                                     "type": "link",
+                                    "instructions": "Link title only (e.g. What we do). URL is ignored — the button always jumps to #programme-pillars on this page.",
                                     "required": 0,
                                     "return_format": "array",
                                     "parent_repeater": "field_iom_www_countries"
@@ -4024,5 +4025,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1788768934
+    "modified": 1788775280
 }

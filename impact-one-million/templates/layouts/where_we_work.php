@@ -73,13 +73,14 @@ foreach ( $countries as $c ) {
 			$bullets[] = (string) $c['factories'];
 		}
 	}
+	// Panel CTA jumps to programme pillars on the same page (homepage / where we work).
 	$countries_json[ $slug ] = array(
 		'name'        => isset( $c['name'] ) ? $c['name'] : '',
 		'bullets'     => $bullets,
 		'description' => isset( $c['description'] ) ? $c['description'] : '',
-		'link_url'    => ! empty( $link['url'] ) ? $link['url'] : '',
-		'link_title'  => ! empty( $link['title'] ) ? $link['title'] : '',
-		'link_target' => ! empty( $link['target'] ) ? $link['target'] : '',
+		'link_url'    => '#programme-pillars',
+		'link_title'  => ! empty( $link['title'] ) ? $link['title'] : __( 'What we do', 'impact-one-million' ),
+		'link_target' => '',
 	);
 }
 
@@ -87,8 +88,8 @@ $empty_initial = array(
 	'name'        => '',
 	'bullets'     => array(),
 	'description' => '',
-	'link_url'    => '',
-	'link_title'  => '',
+	'link_url'    => '#programme-pillars',
+	'link_title'  => __( 'What we do', 'impact-one-million' ),
 	'link_target' => '',
 );
 

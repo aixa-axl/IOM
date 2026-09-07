@@ -68,7 +68,7 @@ $link_class   = 'inline-flex border-b-2 border-solid border-navy py-3.5 font-dis
 			<?php endif; ?>
 		</div>
 
-		<div class="flex flex-col items-center gap-8">
+		<div id="programme-pillars" class="flex scroll-mt-[5.5rem] flex-col items-center gap-8">
 			<?php if ( $pillars_heading ) : ?>
 				<h3 class="m-0 text-center font-display text-header text-white">
 					<?php echo esc_html( $pillars_heading ); ?>

@@ -101,7 +101,7 @@ $card_count = is_array( $cards ) ? count( $cards ) : 0;
 			</div>
 		<?php endif; ?>
 
-		<div class="flex w-full flex-col items-center gap-10">
+		<div id="programme-pillars" class="flex w-full scroll-mt-[5.5rem] flex-col items-center gap-10">
 			<?php if ( $heading || $pillars_intro ) : ?>
 				<div class="flex w-full max-w-[50rem] flex-col items-center gap-4 px-page text-center xl:px-0">
 					<?php if ( $heading ) : ?>
