@@ -2,8 +2,8 @@
 /**
  * Layout: newsletter_form
  *
- * Subscribe / newsletter page — same two-column shell as Contact,
- * with a Fluent Forms shortcode embed (temporary until Mailchimp URL is ready).
+ * Subscribe / newsletter page — same shell as Contact (heading full width,
+ * intro left + Fluent Forms right). Temporary until Mailchimp URL is ready.
  *
  * Fields: heading, intro, form_shortcode
  */
@@ -41,23 +41,23 @@ if ( $form_shortcode ) {
 ?>
 
 <section class="bg-white px-page py-10 xl:px-gutter lg:py-gutter">
-	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-10 xl:flex-row xl:gap-[7.5rem]">
-		<div class="flex w-full max-w-[32.5rem] shrink-0 flex-col items-start gap-10">
-			<?php if ( $heading ) : ?>
-				<h1 class="m-0 w-full font-display text-headline leading-[1.2] text-blue lg:text-title lg:leading-[1.1] lg:tracking-[0.02em]">
-					<?php echo esc_html( $heading ); ?>
-				</h1>
-			<?php endif; ?>
+	<div class="mx-auto flex w-full max-w-site flex-col items-start gap-10">
+		<?php if ( $heading ) : ?>
+			<h1 class="m-0 w-full font-display text-headline leading-[1.2] text-blue lg:text-title lg:leading-[1.1] lg:tracking-[0.02em]">
+				<?php echo esc_html( $heading ); ?>
+			</h1>
+		<?php endif; ?>
 
+		<div class="flex w-full flex-col items-start gap-10 xl:flex-row xl:gap-[7.5rem]">
 			<?php if ( $intro ) : ?>
-				<?php echo iom_format_multiline_text( $intro, 'm-0 w-full font-sans text-body leading-[1.2] text-muted' ); ?>
+				<?php echo iom_format_multiline_text( $intro, 'm-0 w-full max-w-[32.5rem] shrink-0 font-sans text-body leading-[1.2] text-muted' ); ?>
 			<?php endif; ?>
-		</div>
 
-		<div class="iom-contact-form min-w-0 w-full flex-1">
-			<?php if ( $form_html ) : ?>
-				<?php echo $form_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Fluent Forms markup ?>
-			<?php endif; ?>
+			<div class="iom-contact-form min-w-0 w-full flex-1">
+				<?php if ( $form_html ) : ?>
+					<?php echo $form_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Fluent Forms markup ?>
+				<?php endif; ?>
+			</div>
 		</div>
 	</div>
 </section>
