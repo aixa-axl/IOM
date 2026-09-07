@@ -1754,29 +1754,56 @@
                             "required": 0
                         },
                         {
+                            "key": "field_iom_roic_calculator_mode",
+                            "label": "Calculator Mode",
+                            "name": "calculator_mode",
+                            "type": "select",
+                            "instructions": "Impact metrics: linear outputs (centers, workers, etc.) for pillar pages. Return range: fixed 2.5x–5x dollar return for Support Us / audience pages.",
+                            "required": 0,
+                            "choices": {
+                                "impact": "Impact metrics",
+                                "return_range": "Return range (2.5x–5x)"
+                            },
+                            "default_value": "impact",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 1
+                        },
+                        {
                             "key": "field_iom_roic_audiences",
-                            "label": "Audiences",
+                            "label": "Audiences / Baseline Metrics",
                             "name": "audiences",
                             "type": "repeater",
-                            "instructions": "Metric values are at the Baseline Amount (default $100,000) and scale with the slider.",
+                            "instructions": "Values are at the Baseline Amount and scale with the slider. Use one row (no tabs) for pillar impact. Use multiple rows for Buyers / Funders / Factories tabs.",
                             "required": 0,
                             "layout": "block",
                             "button_label": "Add Audience",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_iom_roic_calculator_mode",
+                                        "operator": "==",
+                                        "value": "impact"
+                                    }
+                                ]
+                            ],
                             "sub_fields": [
                                 {
                                     "key": "field_iom_roic_audience_label",
                                     "label": "Label",
                                     "name": "label",
                                     "type": "text",
-                                    "instructions": "e.g. Buyers",
+                                    "instructions": "Tab label (e.g. Buyers). Leave blank if using a single impact row without tabs.",
                                     "required": 0,
                                     "parent_repeater": "field_iom_roic_audiences"
                                 },
                                 {
                                     "key": "field_iom_roic_audience_workers",
-                                    "label": "Workers (at baseline)",
+                                    "label": "Metric 1 value (at baseline)",
                                     "name": "workers",
                                     "type": "number",
+                                    "instructions": "e.g. centers, training sessions, or workers",
                                     "required": 0,
                                     "min": 0,
                                     "step": 1,
@@ -1784,9 +1811,10 @@
                                 },
                                 {
                                     "key": "field_iom_roic_audience_families",
-                                    "label": "Families (at baseline)",
+                                    "label": "Metric 2 value (at baseline)",
                                     "name": "families",
                                     "type": "number",
+                                    "instructions": "e.g. children supported or workers reached",
                                     "required": 0,
                                     "min": 0,
                                     "step": 1,
@@ -1794,9 +1822,10 @@
                                 },
                                 {
                                     "key": "field_iom_roic_audience_factories",
-                                    "label": "Factories (at baseline)",
+                                    "label": "Metric 3 value (at baseline)",
                                     "name": "factories",
                                     "type": "number",
+                                    "instructions": "e.g. workplaces or factories",
                                     "required": 0,
                                     "min": 0,
                                     "step": 1,
@@ -1853,35 +1882,132 @@
                             "label": "Baseline Amount",
                             "name": "baseline_amount",
                             "type": "number",
-                            "instructions": "Amount the audience metric values are defined at (default 100000).",
+                            "instructions": "Amount the metric values are defined at (default 100000). Impact mode only.",
                             "required": 0,
                             "default_value": 100000,
                             "min": 1,
-                            "step": 1000
+                            "step": 1000,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_iom_roic_calculator_mode",
+                                        "operator": "==",
+                                        "value": "impact"
+                                    }
+                                ]
+                            ]
                         },
                         {
                             "key": "field_iom_roic_metric_workers_label",
-                            "label": "Workers Metric Label",
+                            "label": "Metric 1 Label",
                             "name": "metric_workers_label",
                             "type": "text",
+                            "instructions": "e.g. Centers created, Training sessions, Workers reached",
                             "required": 0,
-                            "default_value": "Workers reached"
+                            "default_value": "Workers reached",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_iom_roic_calculator_mode",
+                                        "operator": "==",
+                                        "value": "impact"
+                                    }
+                                ]
+                            ]
                         },
                         {
                             "key": "field_iom_roic_metric_families_label",
-                            "label": "Families Metric Label",
+                            "label": "Metric 2 Label",
                             "name": "metric_families_label",
                             "type": "text",
+                            "instructions": "e.g. Children supported, Workers supported",
                             "required": 0,
-                            "default_value": "Families supported"
+                            "default_value": "Families supported",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_iom_roic_calculator_mode",
+                                        "operator": "==",
+                                        "value": "impact"
+                                    }
+                                ]
+                            ]
                         },
                         {
                             "key": "field_iom_roic_metric_factories_label",
-                            "label": "Factories Metric Label",
+                            "label": "Metric 3 Label",
                             "name": "metric_factories_label",
                             "type": "text",
+                            "instructions": "e.g. Workplaces, Factories covered",
                             "required": 0,
-                            "default_value": "Factories covered"
+                            "default_value": "Factories covered",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_iom_roic_calculator_mode",
+                                        "operator": "==",
+                                        "value": "impact"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_iom_roic_return_min_multiplier",
+                            "label": "Return Min Multiplier",
+                            "name": "return_min_multiplier",
+                            "type": "number",
+                            "instructions": "Lower end of ROI range. Default 2.5 ($10k → $25k).",
+                            "required": 0,
+                            "default_value": 2.5,
+                            "min": 0,
+                            "step": 0.1,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_iom_roic_calculator_mode",
+                                        "operator": "==",
+                                        "value": "return_range"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_iom_roic_return_max_multiplier",
+                            "label": "Return Max Multiplier",
+                            "name": "return_max_multiplier",
+                            "type": "number",
+                            "instructions": "Upper end of ROI range. Default 5 ($10k → $50k).",
+                            "required": 0,
+                            "default_value": 5,
+                            "min": 0,
+                            "step": 0.1,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_iom_roic_calculator_mode",
+                                        "operator": "==",
+                                        "value": "return_range"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_iom_roic_return_label",
+                            "label": "Return Range Label",
+                            "name": "return_label",
+                            "type": "text",
+                            "instructions": "Shown above the dollar range output.",
+                            "required": 0,
+                            "default_value": "Potential return",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_iom_roic_calculator_mode",
+                                        "operator": "==",
+                                        "value": "return_range"
+                                    }
+                                ]
+                            ]
                         },
                         {
                             "key": "field_iom_roic_primary_cta",
@@ -3898,5 +4024,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1787767780
+    "modified": 1788768934
 }

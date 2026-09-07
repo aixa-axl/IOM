@@ -2,26 +2,32 @@
 /**
  * Layout: roi_calculator
  *
- * Interactive ROI calculator — audience tabs, investment slider, live metrics.
+ * Interactive calculator — investment slider with either:
+ * - Impact metrics (linear scale; optional audience tabs)
+ * - Return range (fixed min/max multipliers, e.g. 2.5x–5x)
  *
  * Figma desktop: 667:34002 — Figma mobile: 677:41520
  */
 
-$section_title   = get_sub_field( 'section_title' );
-$section_intro   = get_sub_field( 'section_intro' );
-$heading         = get_sub_field( 'heading' );
-$audiences       = get_sub_field( 'audiences' );
-$min_amount      = (int) get_sub_field( 'min_amount' );
-$max_amount      = (int) get_sub_field( 'max_amount' );
-$default_amount  = (int) get_sub_field( 'default_amount' );
-$step_amount     = (int) get_sub_field( 'step_amount' );
-$baseline_amount = (int) get_sub_field( 'baseline_amount' );
-$metric_workers  = get_sub_field( 'metric_workers_label' );
-$metric_families = get_sub_field( 'metric_families_label' );
-$metric_factories = get_sub_field( 'metric_factories_label' );
-$primary_cta     = get_sub_field( 'primary_cta' );
-$secondary_cta   = get_sub_field( 'secondary_cta' );
-$show_section    = get_sub_field( 'show_section' );
+$section_title          = get_sub_field( 'section_title' );
+$section_intro          = get_sub_field( 'section_intro' );
+$heading                = get_sub_field( 'heading' );
+$calculator_mode        = get_sub_field( 'calculator_mode' );
+$audiences              = get_sub_field( 'audiences' );
+$min_amount             = (int) get_sub_field( 'min_amount' );
+$max_amount             = (int) get_sub_field( 'max_amount' );
+$default_amount         = (int) get_sub_field( 'default_amount' );
+$step_amount            = (int) get_sub_field( 'step_amount' );
+$baseline_amount        = (int) get_sub_field( 'baseline_amount' );
+$metric_workers         = get_sub_field( 'metric_workers_label' );
+$metric_families        = get_sub_field( 'metric_families_label' );
+$metric_factories       = get_sub_field( 'metric_factories_label' );
+$return_min_multiplier  = get_sub_field( 'return_min_multiplier' );
+$return_max_multiplier  = get_sub_field( 'return_max_multiplier' );
+$return_label           = get_sub_field( 'return_label' );
+$primary_cta            = get_sub_field( 'primary_cta' );
+$secondary_cta          = get_sub_field( 'secondary_cta' );
+$show_section           = get_sub_field( 'show_section' );
 
 // Default: show. Only hide when explicitly turned off in ACF.
 if ( null === $show_section || '' === $show_section ) {
@@ -29,6 +35,10 @@ if ( null === $show_section || '' === $show_section ) {
 }
 if ( ! $show_section ) {
 	return;
+}
+
+if ( 'return_range' !== $calculator_mode ) {
+	$calculator_mode = 'impact';
 }
 
 if ( $min_amount <= 0 ) {
@@ -51,6 +61,18 @@ if ( $baseline_amount <= 0 ) {
 	$baseline_amount = 100000;
 }
 
+$return_min_multiplier = is_numeric( $return_min_multiplier ) ? (float) $return_min_multiplier : 2.5;
+$return_max_multiplier = is_numeric( $return_max_multiplier ) ? (float) $return_max_multiplier : 5.0;
+if ( $return_min_multiplier < 0 ) {
+	$return_min_multiplier = 0;
+}
+if ( $return_max_multiplier < $return_min_multiplier ) {
+	$return_max_multiplier = $return_min_multiplier;
+}
+if ( ! $return_label ) {
+	$return_label = __( 'Potential return', 'impact-one-million' );
+}
+
 if ( ! is_array( $audiences ) ) {
 	$audiences = array();
 }
@@ -70,11 +92,35 @@ $tab_base    = 'flex flex-1 cursor-pointer items-center justify-center rounded-c
 $tab_active  = 'border-blue bg-blue text-white';
 $tab_idle    = 'border-[#dfe8ff] bg-white text-navy hover:border-blue/40';
 
+$is_return_range = ( 'return_range' === $calculator_mode );
+
+// Audience tabs only when 2+ labelled rows (pillar impact = single row, no tabs).
+$tab_audiences = array();
+if ( ! $is_return_range ) {
+	foreach ( $audiences as $index => $audience ) {
+		if ( ! is_array( $audience ) ) {
+			continue;
+		}
+		$label = isset( $audience['label'] ) ? trim( (string) $audience['label'] ) : '';
+		if ( '' === $label ) {
+			continue;
+		}
+		$tab_audiences[] = array(
+			'index' => $index,
+			'label' => $label,
+		);
+	}
+}
+$show_tabs = count( $tab_audiences ) >= 2;
+
 $first = ! empty( $audiences[0] ) && is_array( $audiences[0] ) ? $audiences[0] : array();
 $scale = $baseline_amount > 0 ? ( $default_amount / $baseline_amount ) : 1;
 $init_workers   = (int) round( ( isset( $first['workers'] ) ? (int) $first['workers'] : 0 ) * $scale );
 $init_families  = (int) round( ( isset( $first['families'] ) ? (int) $first['families'] : 0 ) * $scale );
 $init_factories = (int) round( ( isset( $first['factories'] ) ? (int) $first['factories'] : 0 ) * $scale );
+
+$init_return_min = (int) round( $default_amount * $return_min_multiplier );
+$init_return_max = (int) round( $default_amount * $return_max_multiplier );
 
 $audiences_json = array();
 foreach ( $audiences as $index => $audience ) {
@@ -93,11 +139,14 @@ $pct = ( ( $default_amount - $min_amount ) / max( 1, ( $max_amount - $min_amount
 <section
 	class="bg-blue px-page py-10 xl:px-20 lg:py-20"
 	data-roi-calculator
+	data-roi-mode="<?php echo esc_attr( $calculator_mode ); ?>"
 	data-min="<?php echo esc_attr( (string) $min_amount ); ?>"
 	data-max="<?php echo esc_attr( (string) $max_amount ); ?>"
 	data-step="<?php echo esc_attr( (string) $step_amount ); ?>"
 	data-baseline="<?php echo esc_attr( (string) $baseline_amount ); ?>"
 	data-default="<?php echo esc_attr( (string) $default_amount ); ?>"
+	data-return-min="<?php echo esc_attr( (string) $return_min_multiplier ); ?>"
+	data-return-max="<?php echo esc_attr( (string) $return_max_multiplier ); ?>"
 >
 	<script type="application/json" data-roi-audiences><?php echo wp_json_encode( $audiences_json ); ?></script>
 
@@ -129,31 +178,27 @@ $pct = ( ( $default_amount - $min_amount ) / max( 1, ( $max_amount - $min_amount
 			<?php endif; ?>
 		<?php endif; ?>
 
-		<?php if ( ! empty( $audiences ) ) : ?>
+		<?php if ( $show_tabs ) : ?>
 			<div
 				class="flex w-full gap-3 lg:gap-8"
 				role="tablist"
 				aria-label="<?php echo esc_attr__( 'Audience type', 'impact-one-million' ); ?>"
 				data-roi-tabs
 			>
-				<?php foreach ( $audiences as $index => $audience ) : ?>
+				<?php foreach ( $tab_audiences as $ti => $tab ) : ?>
 					<?php
-					$label = isset( $audience['label'] ) ? $audience['label'] : '';
-					if ( ! $label ) {
-						continue;
-					}
-					$is_active = ( 0 === $index );
+					$is_active = ( 0 === $ti );
 					?>
 					<button
 						type="button"
 						role="tab"
-						id="roi-tab-<?php echo esc_attr( (string) $index ); ?>"
+						id="roi-tab-<?php echo esc_attr( (string) $tab['index'] ); ?>"
 						class="<?php echo esc_attr( $tab_base . ' ' . ( $is_active ? $tab_active : $tab_idle ) ); ?>"
 						aria-selected="<?php echo $is_active ? 'true' : 'false'; ?>"
-						data-roi-tab="<?php echo esc_attr( (string) $index ); ?>"
+						data-roi-tab="<?php echo esc_attr( (string) $tab['index'] ); ?>"
 						data-active="<?php echo $is_active ? 'true' : 'false'; ?>"
 					>
-						<?php echo esc_html( $label ); ?>
+						<?php echo esc_html( $tab['label'] ); ?>
 					</button>
 				<?php endforeach; ?>
 			</div>
@@ -196,32 +241,48 @@ $pct = ( ( $default_amount - $min_amount ) / max( 1, ( $max_amount - $min_amount
 			</div>
 		</div>
 
-		<div class="flex w-full flex-col gap-3 lg:flex-row lg:gap-8">
-			<div class="flex flex-1 flex-col items-center gap-2 rounded-card bg-white px-3 py-2 lg:px-8 lg:py-6">
+		<?php if ( $is_return_range ) : ?>
+			<div class="flex w-full flex-col items-center gap-2 rounded-card bg-white px-3 py-2 lg:px-8 lg:py-6">
 				<p class="m-0 text-center font-display text-stat-label leading-[1.2] text-accent-blue">
-					<?php echo esc_html( $metric_workers ); ?>
+					<?php echo esc_html( $return_label ); ?>
 				</p>
-				<p class="m-0 font-display text-number leading-none text-blue" data-roi-workers>
-					<?php echo esc_html( number_format_i18n( $init_workers ) ); ?>
+				<p
+					class="m-0 text-center font-display text-number leading-none text-blue"
+					data-roi-return-range
+				>
+					$<?php echo esc_html( number_format_i18n( $init_return_min ) ); ?>
+					–
+					$<?php echo esc_html( number_format_i18n( $init_return_max ) ); ?>
 				</p>
 			</div>
-			<div class="flex flex-1 flex-col items-center gap-2 rounded-card bg-white px-3 py-2 lg:px-8 lg:py-6">
-				<p class="m-0 text-center font-display text-stat-label leading-[1.2] text-accent-blue">
-					<?php echo esc_html( $metric_families ); ?>
-				</p>
-				<p class="m-0 font-display text-number leading-none text-blue" data-roi-families>
-					<?php echo esc_html( number_format_i18n( $init_families ) ); ?>
-				</p>
+		<?php else : ?>
+			<div class="flex w-full flex-col gap-3 lg:flex-row lg:gap-8">
+				<div class="flex flex-1 flex-col items-center gap-2 rounded-card bg-white px-3 py-2 lg:px-8 lg:py-6">
+					<p class="m-0 text-center font-display text-stat-label leading-[1.2] text-accent-blue">
+						<?php echo esc_html( $metric_workers ); ?>
+					</p>
+					<p class="m-0 font-display text-number leading-none text-blue" data-roi-workers>
+						<?php echo esc_html( number_format_i18n( $init_workers ) ); ?>
+					</p>
+				</div>
+				<div class="flex flex-1 flex-col items-center gap-2 rounded-card bg-white px-3 py-2 lg:px-8 lg:py-6">
+					<p class="m-0 text-center font-display text-stat-label leading-[1.2] text-accent-blue">
+						<?php echo esc_html( $metric_families ); ?>
+					</p>
+					<p class="m-0 font-display text-number leading-none text-blue" data-roi-families>
+						<?php echo esc_html( number_format_i18n( $init_families ) ); ?>
+					</p>
+				</div>
+				<div class="flex flex-1 flex-col items-center gap-2 rounded-card bg-white px-3 py-2 lg:px-8 lg:py-6">
+					<p class="m-0 text-center font-display text-stat-label leading-[1.2] text-accent-blue">
+						<?php echo esc_html( $metric_factories ); ?>
+					</p>
+					<p class="m-0 font-display text-number leading-none text-blue" data-roi-factories>
+						<?php echo esc_html( number_format_i18n( $init_factories ) ); ?>
+					</p>
+				</div>
 			</div>
-			<div class="flex flex-1 flex-col items-center gap-2 rounded-card bg-white px-3 py-2 lg:px-8 lg:py-6">
-				<p class="m-0 text-center font-display text-stat-label leading-[1.2] text-accent-blue">
-					<?php echo esc_html( $metric_factories ); ?>
-				</p>
-				<p class="m-0 font-display text-number leading-none text-blue" data-roi-factories>
-					<?php echo esc_html( number_format_i18n( $init_factories ) ); ?>
-				</p>
-			</div>
-		</div>
+		<?php endif; ?>
 
 		<?php if ( ! empty( $primary_cta['url'] ) || ! empty( $secondary_cta['url'] ) ) : ?>
 			<div class="flex w-full flex-col items-stretch gap-4 lg:w-auto lg:flex-row lg:items-start lg:whitespace-nowrap">

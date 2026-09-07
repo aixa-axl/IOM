@@ -876,7 +876,8 @@
 })();
 
 /**
- * ROI Calculator — audience tabs + investment slider → live metrics.
+ * ROI Calculator — investment slider → live metrics or return range.
+ * Modes: impact (linear audience metrics) | return_range (min–max multipliers).
  * Supports multiple calculators on one page.
  */
 (function () {
@@ -886,6 +887,9 @@
 	}
 
 	roots.forEach(function (root, rootIndex) {
+		const mode = root.getAttribute('data-roi-mode') || 'impact';
+		const isReturnRange = mode === 'return_range';
+
 		const jsonEl = root.querySelector('[data-roi-audiences]');
 		let audiences = [];
 		try {
@@ -913,6 +917,7 @@
 		const workersEl = root.querySelector('[data-roi-workers]');
 		const familiesEl = root.querySelector('[data-roi-families]');
 		const factoriesEl = root.querySelector('[data-roi-factories]');
+		const returnRangeEl = root.querySelector('[data-roi-return-range]');
 		const tabs = root.querySelectorAll('[data-roi-tab]');
 
 		// Unique id so multiple calculators / labels do not collide.
@@ -928,6 +933,10 @@
 		const baseline = Number(root.getAttribute('data-baseline')) || 100000;
 		const min = Number(root.getAttribute('data-min')) || 0;
 		const max = Number(root.getAttribute('data-max')) || 1;
+		const returnMinMult = Number(root.getAttribute('data-return-min'));
+		const returnMaxMult = Number(root.getAttribute('data-return-max'));
+		const minMult = Number.isFinite(returnMinMult) ? returnMinMult : 2.5;
+		const maxMult = Number.isFinite(returnMaxMult) ? returnMaxMult : 5;
 
 		const tabActive =
 			'flex flex-1 cursor-pointer items-center justify-center rounded-card border border-solid px-3 py-4 font-display text-[14px] uppercase tracking-[1px] transition-colors lg:px-8 lg:text-label border-blue bg-blue text-white';
@@ -967,13 +976,6 @@
 
 		function update() {
 			const amount = slider ? Number(slider.value) : baseline;
-			const scale = baseline > 0 ? amount / baseline : 0;
-			const audience = audiences[activeIndex] || audiences[0] || {
-				workers: 0,
-				families: 0,
-				factories: 0,
-			};
-
 			const money = formatMoney(amount);
 			if (amountMobile) {
 				amountMobile.textContent = money;
@@ -982,14 +984,29 @@
 				amountDesktop.textContent = money;
 			}
 
-			if (workersEl) {
-				workersEl.textContent = formatCount(audience.workers * scale);
-			}
-			if (familiesEl) {
-				familiesEl.textContent = formatCount(audience.families * scale);
-			}
-			if (factoriesEl) {
-				factoriesEl.textContent = formatCount(audience.factories * scale);
+			if (isReturnRange) {
+				if (returnRangeEl) {
+					const low = formatMoney(amount * minMult);
+					const high = formatMoney(amount * maxMult);
+					returnRangeEl.textContent = low + ' – ' + high;
+				}
+			} else {
+				const scale = baseline > 0 ? amount / baseline : 0;
+				const audience = audiences[activeIndex] || audiences[0] || {
+					workers: 0,
+					families: 0,
+					factories: 0,
+				};
+
+				if (workersEl) {
+					workersEl.textContent = formatCount(audience.workers * scale);
+				}
+				if (familiesEl) {
+					familiesEl.textContent = formatCount(audience.families * scale);
+				}
+				if (factoriesEl) {
+					factoriesEl.textContent = formatCount(audience.factories * scale);
+				}
 			}
 
 			setSliderFill(amount);
