@@ -1,6 +1,6 @@
 # Impact One Million
 
-Custom WordPress theme ? ACF Flexible Content, Tailwind CSS, GitHub Actions ? WP Engine (`iomstg`).
+Custom WordPress theme ? ACF Flexible Content, Tailwind CSS, GitHub Actions ? WP Engine (`impact1million` + `impact1mzh`).
 
 ## Quick start
 
@@ -29,7 +29,10 @@ impact-one-million/          ? WordPress theme (deployed)
 
 ## Deploy
 
-Push to `main` ? builds CSS ? deploys theme to WP Engine environment **`iomstg`**.
+Push to `main` ? builds CSS ? deploys theme to both WP Engine productions:
+
+- **`impact1million`** (Europe / EN)
+- **`impact1mzh`** (Singapore / ZH)
 
 Secret required: `WPE_SSHG_KEY_PRIVATE`
 
