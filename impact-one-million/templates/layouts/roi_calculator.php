@@ -12,6 +12,7 @@
 $section_title          = get_sub_field( 'section_title' );
 $section_intro          = get_sub_field( 'section_intro' );
 $heading                = get_sub_field( 'heading' );
+$investment_label       = get_sub_field( 'investment_label' );
 $calculator_mode        = get_sub_field( 'calculator_mode' );
 $audiences              = get_sub_field( 'audiences' );
 $min_amount             = (int) get_sub_field( 'min_amount' );
@@ -71,6 +72,10 @@ if ( $return_max_multiplier < $return_min_multiplier ) {
 }
 if ( ! $return_label ) {
 	$return_label = __( 'Potential return', 'impact-one-million' );
+}
+
+if ( ! $investment_label ) {
+	$investment_label = __( 'Investment amount', 'impact-one-million' );
 }
 
 if ( ! is_array( $audiences ) ) {
@@ -207,7 +212,7 @@ $pct = ( ( $default_amount - $min_amount ) / max( 1, ( $max_amount - $min_amount
 		<div class="flex w-full flex-col gap-2 lg:gap-6">
 			<div class="flex items-center justify-between gap-4 lg:block">
 				<p class="m-0 font-display text-[14px] uppercase tracking-[1px] text-navy lg:text-label">
-					<?php echo esc_html__( 'Investment amount', 'impact-one-million' ); ?>
+					<?php echo esc_html( $investment_label ); ?>
 				</p>
 				<p
 					class="m-0 font-display text-label leading-[1.2] text-navy lg:hidden"
@@ -219,7 +224,7 @@ $pct = ( ( $default_amount - $min_amount ) / max( 1, ( $max_amount - $min_amount
 
 			<div class="flex w-full items-center gap-0 lg:gap-10">
 				<label class="sr-only" for="roi-investment-slider">
-					<?php echo esc_html__( 'Investment amount', 'impact-one-million' ); ?>
+					<?php echo esc_html( $investment_label ); ?>
 				</label>
 				<input
 					id="roi-investment-slider"

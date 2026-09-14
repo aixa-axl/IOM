@@ -1755,6 +1755,15 @@
                             "required": 0
                         },
                         {
+                            "key": "field_iom_roic_investment_label",
+                            "label": "Investment Label",
+                            "name": "investment_label",
+                            "type": "text",
+                            "instructions": "Label above the slider. Translate per site (e.g. Chinese on the Singapore install).",
+                            "required": 0,
+                            "default_value": "Investment amount"
+                        },
+                        {
                             "key": "field_iom_roic_calculator_mode",
                             "label": "Calculator Mode",
                             "name": "calculator_mode",
@@ -4065,5 +4074,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1788797442
+    "modified": 1789403532
 }
