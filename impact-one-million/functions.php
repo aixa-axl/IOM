@@ -536,6 +536,27 @@ function iom_get_newsletter_form_action() {
 }
 
 /**
+ * Case study UI label from Theme Settings (site-wide), with English fallback.
+ *
+ * @param string $key     Option field suffix after cs_label_ (e.g. download_pdf).
+ * @param string $default English default.
+ * @return string
+ */
+function iom_get_case_study_label( $key, $default ) {
+	$default = (string) $default;
+	if ( ! function_exists( 'get_field' ) ) {
+		return $default;
+	}
+
+	$value = get_field( 'cs_label_' . $key, 'option' );
+	if ( is_string( $value ) && '' !== trim( $value ) ) {
+		return trim( $value );
+	}
+
+	return $default;
+}
+
+/**
  * Render an ACF link array as an <a>, or nothing if URL is empty.
  *
  * @param array|false $link    ACF link field value.

@@ -129,11 +129,36 @@ if ( ! $display_title ) {
 $pdf_url = ! empty( $pdf['url'] ) ? $pdf['url'] : '';
 
 $meta_rows = array(
-	array( 'label' => __( 'Programme Area', 'impact-one-million' ), 'value' => $meta_prog ),
-	array( 'label' => __( 'Country', 'impact-one-million' ), 'value' => $meta_country ),
-	array( 'label' => __( 'Duration', 'impact-one-million' ), 'value' => $meta_dur ),
-	array( 'label' => __( 'Partner Organisations', 'impact-one-million' ), 'value' => $meta_part ),
-	array( 'label' => __( 'Funding Source', 'impact-one-million' ), 'value' => $meta_fund ),
+	array(
+		'label' => function_exists( 'iom_get_case_study_label' )
+			? iom_get_case_study_label( 'programme_area', __( 'Programme Area', 'impact-one-million' ) )
+			: __( 'Programme Area', 'impact-one-million' ),
+		'value' => $meta_prog,
+	),
+	array(
+		'label' => function_exists( 'iom_get_case_study_label' )
+			? iom_get_case_study_label( 'country', __( 'Country', 'impact-one-million' ) )
+			: __( 'Country', 'impact-one-million' ),
+		'value' => $meta_country,
+	),
+	array(
+		'label' => function_exists( 'iom_get_case_study_label' )
+			? iom_get_case_study_label( 'duration', __( 'Duration', 'impact-one-million' ) )
+			: __( 'Duration', 'impact-one-million' ),
+		'value' => $meta_dur,
+	),
+	array(
+		'label' => function_exists( 'iom_get_case_study_label' )
+			? iom_get_case_study_label( 'partners', __( 'Partner Organisations', 'impact-one-million' ) )
+			: __( 'Partner Organisations', 'impact-one-million' ),
+		'value' => $meta_part,
+	),
+	array(
+		'label' => function_exists( 'iom_get_case_study_label' )
+			? iom_get_case_study_label( 'funding', __( 'Funding Source', 'impact-one-million' ) )
+			: __( 'Funding Source', 'impact-one-million' ),
+		'value' => $meta_fund,
+	),
 );
 $has_meta = false;
 foreach ( $meta_rows as $row ) {
@@ -162,6 +187,19 @@ $btn_outline_w = 'inline-flex items-center justify-center rounded-btn border-[1.
 $btn_blue    = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 $btn_outline_n = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-navy no-underline transition-opacity hover:opacity-80';
 $link_label  = __( 'Read case study', 'impact-one-million' );
+
+$label_download_pdf = function_exists( 'iom_get_case_study_label' )
+	? iom_get_case_study_label( 'download_pdf', __( 'Download PDF', 'impact-one-million' ) )
+	: __( 'Download PDF', 'impact-one-million' );
+$label_share = function_exists( 'iom_get_case_study_label' )
+	? iom_get_case_study_label( 'share', __( 'Share', 'impact-one-million' ) )
+	: __( 'Share', 'impact-one-million' );
+$label_project_overview = function_exists( 'iom_get_case_study_label' )
+	? iom_get_case_study_label( 'project_overview', __( 'Project Overview', 'impact-one-million' ) )
+	: __( 'Project Overview', 'impact-one-million' );
+$label_the_challenge = function_exists( 'iom_get_case_study_label' )
+	? iom_get_case_study_label( 'the_challenge', __( 'The Challenge', 'impact-one-million' ) )
+	: __( 'The Challenge', 'impact-one-million' );
 
 $has_join = $join_eye || $join_head || $join_body || $join_image || ! empty( $join_pri['url'] ) || ! empty( $join_sec['url'] );
 ?>
@@ -219,7 +257,7 @@ $has_join = $join_eye || $join_head || $join_body || $join_image || ! empty( $jo
 						<div class="flex flex-wrap items-center gap-4">
 							<?php if ( $pdf_url ) : ?>
 								<a href="<?php echo esc_url( $pdf_url ); ?>" class="<?php echo esc_attr( $btn_accent ); ?>" target="_blank" rel="noopener noreferrer">
-									<?php echo esc_html__( 'Download PDF', 'impact-one-million' ); ?>
+									<?php echo esc_html( $label_download_pdf ); ?>
 								</a>
 							<?php endif; ?>
 
@@ -230,7 +268,7 @@ $has_join = $join_eye || $join_head || $join_body || $join_image || ! empty( $jo
 									data-share-url="<?php echo esc_url( $permalink ); ?>"
 									data-share-title="<?php echo esc_attr( $display_title ); ?>"
 								>
-									<?php echo esc_html__( 'Share', 'impact-one-million' ); ?>
+									<?php echo esc_html( $label_share ); ?>
 								</button>
 							<?php endif; ?>
 						</div>
@@ -247,7 +285,7 @@ $has_join = $join_eye || $join_head || $join_body || $join_image || ! empty( $jo
 				<?php if ( $overview ) : ?>
 					<div class="flex w-full max-w-[43.75rem] flex-col gap-4">
 						<p class="m-0 font-display text-body uppercase tracking-[1px] text-navy">
-							<?php echo esc_html__( 'Project Overview', 'impact-one-million' ); ?>
+							<?php echo esc_html( $label_project_overview ); ?>
 						</p>
 						<div class="font-sans text-body leading-[1.2] text-muted [&_p]:m-0 [&_p+p]:mt-6">
 							<?php echo wp_kses_post( $overview ); ?>
@@ -281,7 +319,7 @@ $has_join = $join_eye || $join_head || $join_body || $join_image || ! empty( $jo
 				<?php if ( $chal_quote ) : ?>
 					<div class="flex w-full max-w-[43.75rem] flex-col gap-4">
 						<p class="m-0 font-display text-body uppercase tracking-[1px] text-[#dfe8ff]">
-							<?php echo esc_html__( 'The Challenge', 'impact-one-million' ); ?>
+							<?php echo esc_html( $label_the_challenge ); ?>
 						</p>
 						<blockquote class="m-0 font-sans text-quote font-extrabold text-white">
 							<?php echo esc_html( $chal_quote ); ?>

@@ -1,0 +1,106 @@
+{
+    "key": "group_iom_theme_case_study_labels",
+    "title": "Theme Case Study Labels",
+    "fields": [
+        {
+            "key": "field_iom_csl_message",
+            "label": "Case Study UI Labels",
+            "name": "",
+            "type": "message",
+            "message": "Site-wide labels for case study single pages. Translate these on the Chinese site once — they apply to every case study.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_iom_csl_download_pdf",
+            "label": "Download PDF",
+            "name": "cs_label_download_pdf",
+            "type": "text",
+            "required": 0,
+            "default_value": "Download PDF"
+        },
+        {
+            "key": "field_iom_csl_share",
+            "label": "Share",
+            "name": "cs_label_share",
+            "type": "text",
+            "required": 0,
+            "default_value": "Share"
+        },
+        {
+            "key": "field_iom_csl_project_overview",
+            "label": "Project Overview",
+            "name": "cs_label_project_overview",
+            "type": "text",
+            "required": 0,
+            "default_value": "Project Overview"
+        },
+        {
+            "key": "field_iom_csl_programme_area",
+            "label": "Programme Area",
+            "name": "cs_label_programme_area",
+            "type": "text",
+            "required": 0,
+            "default_value": "Programme Area"
+        },
+        {
+            "key": "field_iom_csl_country",
+            "label": "Country",
+            "name": "cs_label_country",
+            "type": "text",
+            "required": 0,
+            "default_value": "Country"
+        },
+        {
+            "key": "field_iom_csl_duration",
+            "label": "Duration",
+            "name": "cs_label_duration",
+            "type": "text",
+            "required": 0,
+            "default_value": "Duration"
+        },
+        {
+            "key": "field_iom_csl_partners",
+            "label": "Partner Organisations",
+            "name": "cs_label_partners",
+            "type": "text",
+            "required": 0,
+            "default_value": "Partner Organisations"
+        },
+        {
+            "key": "field_iom_csl_funding",
+            "label": "Funding Source",
+            "name": "cs_label_funding",
+            "type": "text",
+            "required": 0,
+            "default_value": "Funding Source"
+        },
+        {
+            "key": "field_iom_csl_the_challenge",
+            "label": "The Challenge",
+            "name": "cs_label_the_challenge",
+            "type": "text",
+            "required": 0,
+            "default_value": "The Challenge"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "iom-theme-settings"
+            }
+        ]
+    ],
+    "menu_order": 25,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Translatable UI labels for case study single templates.",
+    "show_in_rest": 0,
+    "modified": 1789935096
+}
