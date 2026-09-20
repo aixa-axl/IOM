@@ -404,6 +404,94 @@
             "type": "link",
             "required": 0,
             "return_format": "array"
+        },
+        {
+            "key": "field_iom_csd_tab_ui_labels",
+            "label": "UI Labels",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_iom_csd_ui_message",
+            "label": "",
+            "name": "",
+            "type": "message",
+            "message": "Translate frontend button/section labels for this case study (Download PDF, Share, Project Overview, sidebar headings, The Challenge).",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_iom_csd_ui_download_pdf",
+            "label": "Download PDF Label",
+            "name": "cs_ui_download_pdf",
+            "type": "text",
+            "required": 0,
+            "placeholder": "Download PDF"
+        },
+        {
+            "key": "field_iom_csd_ui_share",
+            "label": "Share Label",
+            "name": "cs_ui_share",
+            "type": "text",
+            "required": 0,
+            "placeholder": "Share"
+        },
+        {
+            "key": "field_iom_csd_ui_project_overview",
+            "label": "Project Overview Label",
+            "name": "cs_ui_project_overview",
+            "type": "text",
+            "required": 0,
+            "placeholder": "Project Overview"
+        },
+        {
+            "key": "field_iom_csd_ui_programme_area",
+            "label": "Programme Area Label",
+            "name": "cs_ui_programme_area",
+            "type": "text",
+            "required": 0,
+            "placeholder": "Programme Area"
+        },
+        {
+            "key": "field_iom_csd_ui_country",
+            "label": "Country Label",
+            "name": "cs_ui_country",
+            "type": "text",
+            "required": 0,
+            "placeholder": "Country"
+        },
+        {
+            "key": "field_iom_csd_ui_duration",
+            "label": "Duration Label",
+            "name": "cs_ui_duration",
+            "type": "text",
+            "required": 0,
+            "placeholder": "Duration"
+        },
+        {
+            "key": "field_iom_csd_ui_partners",
+            "label": "Partner Organisations Label",
+            "name": "cs_ui_partners",
+            "type": "text",
+            "required": 0,
+            "placeholder": "Partner Organisations"
+        },
+        {
+            "key": "field_iom_csd_ui_funding",
+            "label": "Funding Source Label",
+            "name": "cs_ui_funding",
+            "type": "text",
+            "required": 0,
+            "placeholder": "Funding Source"
+        },
+        {
+            "key": "field_iom_csd_ui_the_challenge",
+            "label": "The Challenge Label",
+            "name": "cs_ui_the_challenge",
+            "type": "text",
+            "required": 0,
+            "placeholder": "The Challenge"
         }
     ],
     "location": [
@@ -424,5 +512,5 @@
     "active": true,
     "description": "Fields for the case study single template. Shows when the post is in the Case Study category.",
     "show_in_rest": 0,
-    "modified": 1755519600
+    "modified": 1789935826
 }

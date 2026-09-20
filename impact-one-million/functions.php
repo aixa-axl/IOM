@@ -536,21 +536,33 @@ function iom_get_newsletter_form_action() {
 }
 
 /**
- * Case study UI label from Theme Settings (site-wide), with English fallback.
+ * Case study UI label: post field → Theme Settings → English default.
  *
- * @param string $key     Option field suffix after cs_label_ (e.g. download_pdf).
- * @param string $default English default.
+ * @param string     $key     Key suffix (e.g. download_pdf, programme_area).
+ * @param string     $default English default.
+ * @param int|string $post_id Optional post ID (defaults to current).
  * @return string
  */
-function iom_get_case_study_label( $key, $default ) {
+function iom_get_case_study_label( $key, $default, $post_id = 0 ) {
 	$default = (string) $default;
-	if ( ! function_exists( 'get_field' ) ) {
-		return $default;
+	$key     = sanitize_key( $key );
+
+	if ( ! $post_id ) {
+		$post_id = get_the_ID();
 	}
 
-	$value = get_field( 'cs_label_' . $key, 'option' );
-	if ( is_string( $value ) && '' !== trim( $value ) ) {
-		return trim( $value );
+	if ( function_exists( 'get_field' ) && $post_id ) {
+		$from_post = get_field( 'cs_ui_' . $key, $post_id );
+		if ( is_string( $from_post ) && '' !== trim( $from_post ) ) {
+			return trim( $from_post );
+		}
+	}
+
+	if ( function_exists( 'get_field' ) ) {
+		$from_option = get_field( 'cs_label_' . $key, 'option' );
+		if ( is_string( $from_option ) && '' !== trim( $from_option ) ) {
+			return trim( $from_option );
+		}
 	}
 
 	return $default;

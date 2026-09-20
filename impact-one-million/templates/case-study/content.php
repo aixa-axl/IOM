@@ -131,31 +131,31 @@ $pdf_url = ! empty( $pdf['url'] ) ? $pdf['url'] : '';
 $meta_rows = array(
 	array(
 		'label' => function_exists( 'iom_get_case_study_label' )
-			? iom_get_case_study_label( 'programme_area', __( 'Programme Area', 'impact-one-million' ) )
+			? iom_get_case_study_label( 'programme_area', __( 'Programme Area', 'impact-one-million' ), $post_id )
 			: __( 'Programme Area', 'impact-one-million' ),
 		'value' => $meta_prog,
 	),
 	array(
 		'label' => function_exists( 'iom_get_case_study_label' )
-			? iom_get_case_study_label( 'country', __( 'Country', 'impact-one-million' ) )
+			? iom_get_case_study_label( 'country', __( 'Country', 'impact-one-million' ), $post_id )
 			: __( 'Country', 'impact-one-million' ),
 		'value' => $meta_country,
 	),
 	array(
 		'label' => function_exists( 'iom_get_case_study_label' )
-			? iom_get_case_study_label( 'duration', __( 'Duration', 'impact-one-million' ) )
+			? iom_get_case_study_label( 'duration', __( 'Duration', 'impact-one-million' ), $post_id )
 			: __( 'Duration', 'impact-one-million' ),
 		'value' => $meta_dur,
 	),
 	array(
 		'label' => function_exists( 'iom_get_case_study_label' )
-			? iom_get_case_study_label( 'partners', __( 'Partner Organisations', 'impact-one-million' ) )
+			? iom_get_case_study_label( 'partners', __( 'Partner Organisations', 'impact-one-million' ), $post_id )
 			: __( 'Partner Organisations', 'impact-one-million' ),
 		'value' => $meta_part,
 	),
 	array(
 		'label' => function_exists( 'iom_get_case_study_label' )
-			? iom_get_case_study_label( 'funding', __( 'Funding Source', 'impact-one-million' ) )
+			? iom_get_case_study_label( 'funding', __( 'Funding Source', 'impact-one-million' ), $post_id )
 			: __( 'Funding Source', 'impact-one-million' ),
 		'value' => $meta_fund,
 	),
@@ -189,16 +189,16 @@ $btn_outline_n = 'inline-flex items-center justify-center rounded-btn border-[1.
 $link_label  = __( 'Read case study', 'impact-one-million' );
 
 $label_download_pdf = function_exists( 'iom_get_case_study_label' )
-	? iom_get_case_study_label( 'download_pdf', __( 'Download PDF', 'impact-one-million' ) )
+	? iom_get_case_study_label( 'download_pdf', __( 'Download PDF', 'impact-one-million' ), $post_id )
 	: __( 'Download PDF', 'impact-one-million' );
 $label_share = function_exists( 'iom_get_case_study_label' )
-	? iom_get_case_study_label( 'share', __( 'Share', 'impact-one-million' ) )
+	? iom_get_case_study_label( 'share', __( 'Share', 'impact-one-million' ), $post_id )
 	: __( 'Share', 'impact-one-million' );
 $label_project_overview = function_exists( 'iom_get_case_study_label' )
-	? iom_get_case_study_label( 'project_overview', __( 'Project Overview', 'impact-one-million' ) )
+	? iom_get_case_study_label( 'project_overview', __( 'Project Overview', 'impact-one-million' ), $post_id )
 	: __( 'Project Overview', 'impact-one-million' );
 $label_the_challenge = function_exists( 'iom_get_case_study_label' )
-	? iom_get_case_study_label( 'the_challenge', __( 'The Challenge', 'impact-one-million' ) )
+	? iom_get_case_study_label( 'the_challenge', __( 'The Challenge', 'impact-one-million' ), $post_id )
 	: __( 'The Challenge', 'impact-one-million' );
 
 $has_join = $join_eye || $join_head || $join_body || $join_image || ! empty( $join_pri['url'] ) || ! empty( $join_sec['url'] );
