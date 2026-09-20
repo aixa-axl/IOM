@@ -84,8 +84,18 @@
             "label": "Image Caption",
             "name": "news_image_caption",
             "type": "text",
-            "instructions": "Shown under the image (Caption: …). Leave empty to hide.",
+            "instructions": "Shown under the image (Caption: \u2026). Leave empty to hide.",
             "required": 0
+        },
+        {
+            "key": "field_iom_nd_ui_caption",
+            "label": "Caption Prefix",
+            "name": "news_ui_caption",
+            "type": "text",
+            "instructions": "Prefix before the image caption text, e.g. \u201cCaption:\u201d. Translate on ZH site.",
+            "required": 0,
+            "default_value": "Caption:",
+            "placeholder": "Caption:"
         },
         {
             "key": "field_iom_nd_show_share",
@@ -96,6 +106,56 @@
             "required": 0,
             "default_value": 1,
             "ui": 1
+        },
+        {
+            "key": "field_iom_nd_ui_share_heading",
+            "label": "Share Heading",
+            "name": "news_ui_share_heading",
+            "type": "text",
+            "instructions": "Label before the share buttons. Translate on ZH site.",
+            "required": 0,
+            "default_value": "Share this article:",
+            "placeholder": "Share this article:"
+        },
+        {
+            "key": "field_iom_nd_ui_linkedin",
+            "label": "LinkedIn Button Label",
+            "name": "news_ui_linkedin",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "LinkedIn",
+            "placeholder": "LinkedIn"
+        },
+        {
+            "key": "field_iom_nd_ui_facebook",
+            "label": "Facebook Button Label",
+            "name": "news_ui_facebook",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Facebook",
+            "placeholder": "Facebook"
+        },
+        {
+            "key": "field_iom_nd_ui_copy_link",
+            "label": "Copy Link Button Label",
+            "name": "news_ui_copy_link",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "Copy Link",
+            "placeholder": "Copy Link"
+        },
+        {
+            "key": "field_iom_nd_ui_x",
+            "label": "X / Twitter Button Label",
+            "name": "news_ui_x",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "default_value": "X (Twitter)",
+            "placeholder": "X (Twitter)"
         },
         {
             "key": "field_iom_nd_tab_related",
@@ -135,9 +195,15 @@
             "type": "relationship",
             "instructions": "Leave empty to auto-pull the latest 3 other news posts.",
             "required": 0,
-            "post_type": ["post"],
-            "filters": ["search"],
-            "elements": ["featured_image"],
+            "post_type": [
+                "post"
+            ],
+            "filters": [
+                "search"
+            ],
+            "elements": [
+                "featured_image"
+            ],
             "return_format": "id",
             "max": 3
         }
@@ -160,5 +226,5 @@
     "active": true,
     "description": "News article single template (Figma 634:21152).",
     "show_in_rest": 0,
-    "modified": 1787061600
+    "modified": 1789936820
 }

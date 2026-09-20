@@ -1,0 +1,82 @@
+{
+    "key": "group_iom_theme_news_labels",
+    "title": "Theme News Labels",
+    "fields": [
+        {
+            "key": "field_iom_nl_message",
+            "label": "News UI Labels",
+            "name": "",
+            "type": "message",
+            "message": "Site-wide labels for news article pages (share row, caption). Translate once on the Chinese site \u2014 they apply to every news post unless overridden on the post.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_iom_nl_share_heading",
+            "label": "Share Heading",
+            "name": "news_label_share_heading",
+            "type": "text",
+            "required": 0,
+            "default_value": "Share this article:"
+        },
+        {
+            "key": "field_iom_nl_linkedin",
+            "label": "LinkedIn",
+            "name": "news_label_linkedin",
+            "type": "text",
+            "required": 0,
+            "default_value": "LinkedIn"
+        },
+        {
+            "key": "field_iom_nl_facebook",
+            "label": "Facebook",
+            "name": "news_label_facebook",
+            "type": "text",
+            "required": 0,
+            "default_value": "Facebook"
+        },
+        {
+            "key": "field_iom_nl_copy_link",
+            "label": "Copy Link",
+            "name": "news_label_copy_link",
+            "type": "text",
+            "required": 0,
+            "default_value": "Copy Link"
+        },
+        {
+            "key": "field_iom_nl_x",
+            "label": "X / Twitter",
+            "name": "news_label_x",
+            "type": "text",
+            "required": 0,
+            "default_value": "X (Twitter)"
+        },
+        {
+            "key": "field_iom_nl_caption",
+            "label": "Caption Prefix",
+            "name": "news_label_caption",
+            "type": "text",
+            "required": 0,
+            "default_value": "Caption:"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "iom-theme-settings"
+            }
+        ]
+    ],
+    "menu_order": 26,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Translatable UI labels for news single templates.",
+    "show_in_rest": 0,
+    "modified": 1789936820
+}

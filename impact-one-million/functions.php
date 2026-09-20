@@ -569,6 +569,39 @@ function iom_get_case_study_label( $key, $default, $post_id = 0 ) {
 }
 
 /**
+ * News UI label: post field → Theme Settings → English default.
+ *
+ * @param string     $key     Key suffix (e.g. share_heading, linkedin, caption).
+ * @param string     $default English default.
+ * @param int|string $post_id Optional post ID (defaults to current).
+ * @return string
+ */
+function iom_get_news_label( $key, $default, $post_id = 0 ) {
+	$default = (string) $default;
+	$key     = sanitize_key( $key );
+
+	if ( ! $post_id ) {
+		$post_id = get_the_ID();
+	}
+
+	if ( function_exists( 'get_field' ) && $post_id ) {
+		$from_post = get_field( 'news_ui_' . $key, $post_id );
+		if ( is_string( $from_post ) && '' !== trim( $from_post ) ) {
+			return trim( $from_post );
+		}
+	}
+
+	if ( function_exists( 'get_field' ) ) {
+		$from_option = get_field( 'news_label_' . $key, 'option' );
+		if ( is_string( $from_option ) && '' !== trim( $from_option ) ) {
+			return trim( $from_option );
+		}
+	}
+
+	return $default;
+}
+
+/**
  * Render an ACF link array as an <a>, or nothing if URL is empty.
  *
  * @param array|false $link    ACF link field value.

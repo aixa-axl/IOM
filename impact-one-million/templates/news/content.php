@@ -104,6 +104,25 @@ $link_label = $rel_link_label;
 $share_url  = rawurlencode( $permalink );
 $share_text = rawurlencode( $display_title );
 
+$label_share_heading = function_exists( 'iom_get_news_label' )
+	? iom_get_news_label( 'share_heading', __( 'Share this article:', 'impact-one-million' ), $post_id )
+	: __( 'Share this article:', 'impact-one-million' );
+$label_linkedin = function_exists( 'iom_get_news_label' )
+	? iom_get_news_label( 'linkedin', __( 'LinkedIn', 'impact-one-million' ), $post_id )
+	: __( 'LinkedIn', 'impact-one-million' );
+$label_facebook = function_exists( 'iom_get_news_label' )
+	? iom_get_news_label( 'facebook', __( 'Facebook', 'impact-one-million' ), $post_id )
+	: __( 'Facebook', 'impact-one-million' );
+$label_copy_link = function_exists( 'iom_get_news_label' )
+	? iom_get_news_label( 'copy_link', __( 'Copy Link', 'impact-one-million' ), $post_id )
+	: __( 'Copy Link', 'impact-one-million' );
+$label_x = function_exists( 'iom_get_news_label' )
+	? iom_get_news_label( 'x', __( 'X (Twitter)', 'impact-one-million' ), $post_id )
+	: __( 'X (Twitter)', 'impact-one-million' );
+$label_caption = function_exists( 'iom_get_news_label' )
+	? iom_get_news_label( 'caption', __( 'Caption:', 'impact-one-million' ), $post_id )
+	: __( 'Caption:', 'impact-one-million' );
+
 $btn_blue   = 'inline-flex items-center justify-center rounded-btn border-[1.5px] border-solid border-transparent bg-accent-blue px-6 py-3.5 font-display text-card-title uppercase tracking-[2px] text-white no-underline transition-opacity hover:opacity-90';
 $share_btn  = 'inline-flex items-center justify-center rounded-btn border border-solid border-accent-blue px-6 py-2 font-display text-body uppercase tracking-[1px] text-blue no-underline transition-opacity hover:opacity-80';
 $share_copy = 'inline-flex items-center justify-center rounded-btn border border-solid border-accent-blue px-6 py-2 font-display text-body uppercase tracking-[1px] text-blue transition-opacity hover:opacity-80';
@@ -184,10 +203,7 @@ $share_copy = 'inline-flex items-center justify-center rounded-btn border border
 						</div>
 						<?php if ( $image_caption ) : ?>
 							<figcaption class="max-w-[37.375rem] text-center font-display text-body uppercase tracking-[1px] text-blue">
-								<?php
-								/* translators: %s: image caption text */
-								echo esc_html( sprintf( __( 'Caption: %s', 'impact-one-million' ), $image_caption ) );
-								?>
+								<?php echo esc_html( trim( $label_caption . ' ' . $image_caption ) ); ?>
 							</figcaption>
 						<?php endif; ?>
 					</figure>
@@ -196,7 +212,7 @@ $share_copy = 'inline-flex items-center justify-center rounded-btn border border
 				<?php if ( $show_share ) : ?>
 					<div class="flex w-full max-w-[47.5rem] flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
 						<p class="m-0 shrink-0 font-sans text-label leading-[1.5] text-ink">
-							<?php echo esc_html__( 'Share this article:', 'impact-one-million' ); ?>
+							<?php echo esc_html( $label_share_heading ); ?>
 						</p>
 						<ul class="m-0 flex list-none flex-wrap items-center gap-4 p-0">
 							<li>
@@ -206,7 +222,7 @@ $share_copy = 'inline-flex items-center justify-center rounded-btn border border
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									<?php echo esc_html__( 'LinkedIn', 'impact-one-million' ); ?>
+									<?php echo esc_html( $label_linkedin ); ?>
 								</a>
 							</li>
 							<li>
@@ -216,7 +232,7 @@ $share_copy = 'inline-flex items-center justify-center rounded-btn border border
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									<?php echo esc_html__( 'Facebook', 'impact-one-million' ); ?>
+									<?php echo esc_html( $label_facebook ); ?>
 								</a>
 							</li>
 							<li>
@@ -226,7 +242,7 @@ $share_copy = 'inline-flex items-center justify-center rounded-btn border border
 									data-share-copy
 									data-share-url="<?php echo esc_url( $permalink ); ?>"
 								>
-									<?php echo esc_html__( 'Copy Link', 'impact-one-million' ); ?>
+									<?php echo esc_html( $label_copy_link ); ?>
 								</button>
 							</li>
 							<li>
@@ -236,7 +252,7 @@ $share_copy = 'inline-flex items-center justify-center rounded-btn border border
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									<?php echo esc_html__( 'X (Twitter)', 'impact-one-million' ); ?>
+									<?php echo esc_html( $label_x ); ?>
 								</a>
 							</li>
 						</ul>
