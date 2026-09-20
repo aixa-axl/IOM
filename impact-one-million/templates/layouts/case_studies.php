@@ -6,7 +6,8 @@
  * with load more. Scoped to one content-type category (Case Study / News /
  * Press Release). Topic = post tags (Topics).
  *
- * Fields: content_type, posts_per_page, link_label, load_more_label, search_placeholder
+ * Fields: content_type, posts_per_page, link_label, load_more_label,
+ *         search_placeholder, year_label, region_label, topic_label
  *
  * Figma filter: 634:20514 — Figma grid: 634:20536
  */
@@ -15,6 +16,9 @@ $posts_per_page     = (int) get_sub_field( 'posts_per_page' );
 $link_label         = get_sub_field( 'link_label' );
 $load_more_label    = get_sub_field( 'load_more_label' );
 $search_placeholder = get_sub_field( 'search_placeholder' );
+$year_label         = get_sub_field( 'year_label' );
+$region_label       = get_sub_field( 'region_label' );
+$topic_label        = get_sub_field( 'topic_label' );
 $content_type       = get_sub_field( 'content_type' );
 
 $allowed_types = function_exists( 'iom_content_type_slugs' ) ? iom_content_type_slugs() : array( 'case-study', 'news', 'press-release' );
@@ -41,6 +45,25 @@ $type_defaults = array(
 );
 
 $defaults = isset( $type_defaults[ $content_type ] ) ? $type_defaults[ $content_type ] : $type_defaults['case-study'];
+
+if ( ! $year_label ) {
+	$year_label = __( 'Year', 'impact-one-million' );
+}
+if ( ! $region_label ) {
+	$region_label = __( 'Region', 'impact-one-million' );
+}
+if ( ! $topic_label ) {
+	$topic_label = __( 'Topic', 'impact-one-million' );
+}
+if ( ! $link_label ) {
+	$link_label = $defaults['link'];
+}
+if ( ! $load_more_label ) {
+	$load_more_label = __( 'Load more', 'impact-one-million' );
+}
+if ( ! $search_placeholder ) {
+	$search_placeholder = $defaults['search'];
+}
 
 if ( $posts_per_page < 1 ) {
 	$posts_per_page = 6;
@@ -108,9 +131,9 @@ $select_class = 'appearance-none rounded-btn border border-solid border-[#e5e7eb
 		<form class="flex w-full flex-col gap-4 lg:flex-row lg:flex-wrap lg:items-center lg:gap-4" data-case-studies-filters>
 			<div class="flex flex-wrap items-center gap-4">
 				<label class="relative inline-flex shrink-0">
-					<span class="sr-only"><?php echo esc_html__( 'Year', 'impact-one-million' ); ?></span>
+					<span class="sr-only"><?php echo esc_html( $year_label ); ?></span>
 					<select name="year" class="<?php echo esc_attr( $select_class ); ?>" data-filter="year">
-						<option value=""><?php echo esc_html__( 'Year', 'impact-one-million' ); ?></option>
+						<option value=""><?php echo esc_html( $year_label ); ?></option>
 						<?php foreach ( $years as $year ) : ?>
 							<option value="<?php echo esc_attr( (string) $year ); ?>"><?php echo esc_html( (string) $year ); ?></option>
 						<?php endforeach; ?>
@@ -119,9 +142,9 @@ $select_class = 'appearance-none rounded-btn border border-solid border-[#e5e7eb
 				</label>
 
 				<label class="relative inline-flex shrink-0">
-					<span class="sr-only"><?php echo esc_html__( 'Region', 'impact-one-million' ); ?></span>
+					<span class="sr-only"><?php echo esc_html( $region_label ); ?></span>
 					<select name="region" class="<?php echo esc_attr( $select_class ); ?>" data-filter="region">
-						<option value=""><?php echo esc_html__( 'Region', 'impact-one-million' ); ?></option>
+						<option value=""><?php echo esc_html( $region_label ); ?></option>
 						<?php if ( ! is_wp_error( $countries ) ) : ?>
 							<?php foreach ( $countries as $term ) : ?>
 								<option value="<?php echo esc_attr( $term->slug ); ?>"><?php echo esc_html( $term->name ); ?></option>
@@ -132,9 +155,9 @@ $select_class = 'appearance-none rounded-btn border border-solid border-[#e5e7eb
 				</label>
 
 				<label class="relative inline-flex shrink-0">
-					<span class="sr-only"><?php echo esc_html__( 'Topic', 'impact-one-million' ); ?></span>
+					<span class="sr-only"><?php echo esc_html( $topic_label ); ?></span>
 					<select name="topic" class="<?php echo esc_attr( $select_class ); ?>" data-filter="topic">
-						<option value=""><?php echo esc_html__( 'Topic', 'impact-one-million' ); ?></option>
+						<option value=""><?php echo esc_html( $topic_label ); ?></option>
 						<?php if ( ! empty( $topics ) && ! is_wp_error( $topics ) ) : ?>
 							<?php foreach ( $topics as $term ) : ?>
 								<option value="<?php echo esc_attr( $term->slug ); ?>"><?php echo esc_html( $term->name ); ?></option>

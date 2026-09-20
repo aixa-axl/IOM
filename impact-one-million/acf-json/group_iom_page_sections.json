@@ -3825,6 +3825,33 @@
                             "type": "text",
                             "required": 0,
                             "default_value": "Search case studies..."
+                        },
+                        {
+                            "key": "field_iom_cs_year_label",
+                            "label": "Year Filter Label",
+                            "name": "year_label",
+                            "type": "text",
+                            "instructions": "Placeholder / accessible label for the Year dropdown. Translate per site.",
+                            "required": 0,
+                            "default_value": "Year"
+                        },
+                        {
+                            "key": "field_iom_cs_region_label",
+                            "label": "Region Filter Label",
+                            "name": "region_label",
+                            "type": "text",
+                            "instructions": "Placeholder / accessible label for the Region dropdown. Translate per site.",
+                            "required": 0,
+                            "default_value": "Region"
+                        },
+                        {
+                            "key": "field_iom_cs_topic_label",
+                            "label": "Topic Filter Label",
+                            "name": "topic_label",
+                            "type": "text",
+                            "instructions": "Placeholder / accessible label for the Topic dropdown. Translate per site.",
+                            "required": 0,
+                            "default_value": "Topic"
                         }
                     ],
                     "min": "",
@@ -4074,5 +4101,5 @@
     "active": true,
     "description": "Flexible content sections for Impact One Million pages.",
     "show_in_rest": 0,
-    "modified": 1789403532
+    "modified": 1789933882
 }
