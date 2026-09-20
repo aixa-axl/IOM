@@ -1,0 +1,74 @@
+{
+    "key": "group_iom_theme_press_labels",
+    "title": "Theme Press Release Labels",
+    "fields": [
+        {
+            "key": "field_iom_prl_message",
+            "label": "Press Release UI Labels",
+            "name": "",
+            "type": "message",
+            "message": "Site-wide labels for press release Overview sidebar. Translate once on the Chinese site \u2014 they apply to every press release unless overridden on the post.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_iom_prl_project_overview",
+            "label": "Project Overview",
+            "name": "pr_label_project_overview",
+            "type": "text",
+            "required": 0,
+            "default_value": "Project Overview"
+        },
+        {
+            "key": "field_iom_prl_release_date",
+            "label": "Release Date",
+            "name": "pr_label_release_date",
+            "type": "text",
+            "required": 0,
+            "default_value": "Release Date"
+        },
+        {
+            "key": "field_iom_prl_region",
+            "label": "Region",
+            "name": "pr_label_region",
+            "type": "text",
+            "required": 0,
+            "default_value": "Region"
+        },
+        {
+            "key": "field_iom_prl_topic",
+            "label": "Topic",
+            "name": "pr_label_topic",
+            "type": "text",
+            "required": 0,
+            "default_value": "Topic"
+        },
+        {
+            "key": "field_iom_prl_partner",
+            "label": "Partner",
+            "name": "pr_label_partner",
+            "type": "text",
+            "required": 0,
+            "default_value": "Partner"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "iom-theme-settings"
+            }
+        ]
+    ],
+    "menu_order": 27,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Translatable UI labels for press release single templates.",
+    "show_in_rest": 0,
+    "modified": 1789937295
+}

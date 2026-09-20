@@ -4,7 +4,7 @@
  *
  * Expects in scope (already resolved with defaults):
  * $post_id, $breadcrumb_label, $breadcrumb_title, $display_title, $intro,
- * $overview, $meta_rows, $has_meta, $body, $gal_head, $gallery,
+ * $overview, $overview_heading, $meta_rows, $has_meta, $body, $gal_head, $gallery,
  * $quote, $quote_name, $quote_role, $rel_head, $rel_see_all, $related,
  * $link_label, $partner_head, $partner_intro, $partner_cards, $has_partner,
  * $show_newsletter, $nl_heading, $nl_body, $nl_placeholder, $nl_button,
@@ -64,8 +64,13 @@ if ( empty( $email_id ) ) {
 					<div class="flex w-full flex-col items-start gap-12 lg:flex-row lg:gap-[6.25rem]">
 						<?php if ( $overview ) : ?>
 							<div class="flex w-full max-w-[43.75rem] flex-col gap-8">
+								<?php
+								if ( empty( $overview_heading ) ) {
+									$overview_heading = __( 'Project Overview', 'impact-one-million' );
+								}
+								?>
 								<p class="m-0 font-display text-label uppercase tracking-[1px] text-accent">
-									<?php echo esc_html__( 'Project Overview', 'impact-one-million' ); ?>
+									<?php echo esc_html( $overview_heading ); ?>
 								</p>
 								<div class="font-sans text-label leading-[1.5] text-ink [&_p]:m-0 [&_p+p]:mt-8 [&_p+p]:text-body [&_p+p]:leading-[1.2]">
 									<?php echo wp_kses_post( $overview ); ?>

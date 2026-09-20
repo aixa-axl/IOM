@@ -97,11 +97,35 @@ if ( ! $display_title ) {
 	$display_title = $title;
 }
 
+$overview_heading = function_exists( 'iom_get_press_label' )
+	? iom_get_press_label( 'project_overview', __( 'Project Overview', 'impact-one-million' ), $post_id )
+	: __( 'Project Overview', 'impact-one-million' );
+
 $meta_rows = array(
-	array( 'label' => __( 'Release Date', 'impact-one-million' ), 'value' => $meta_date ),
-	array( 'label' => __( 'Region', 'impact-one-million' ), 'value' => $meta_region ),
-	array( 'label' => __( 'Topic', 'impact-one-million' ), 'value' => $meta_topic ),
-	array( 'label' => __( 'Partner', 'impact-one-million' ), 'value' => $meta_partner ),
+	array(
+		'label' => function_exists( 'iom_get_press_label' )
+			? iom_get_press_label( 'release_date', __( 'Release Date', 'impact-one-million' ), $post_id )
+			: __( 'Release Date', 'impact-one-million' ),
+		'value' => $meta_date,
+	),
+	array(
+		'label' => function_exists( 'iom_get_press_label' )
+			? iom_get_press_label( 'region', __( 'Region', 'impact-one-million' ), $post_id )
+			: __( 'Region', 'impact-one-million' ),
+		'value' => $meta_region,
+	),
+	array(
+		'label' => function_exists( 'iom_get_press_label' )
+			? iom_get_press_label( 'topic', __( 'Topic', 'impact-one-million' ), $post_id )
+			: __( 'Topic', 'impact-one-million' ),
+		'value' => $meta_topic,
+	),
+	array(
+		'label' => function_exists( 'iom_get_press_label' )
+			? iom_get_press_label( 'partner', __( 'Partner', 'impact-one-million' ), $post_id )
+			: __( 'Partner', 'impact-one-million' ),
+		'value' => $meta_partner,
+	),
 );
 $has_meta = false;
 foreach ( $meta_rows as $row ) {

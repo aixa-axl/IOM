@@ -23,7 +23,7 @@
             "label": "Breadcrumb Title",
             "name": "pr_breadcrumb_title",
             "type": "text",
-            "instructions": "Second part of the trail — can differ from the main heading.",
+            "instructions": "Second part of the trail \u2014 can differ from the main heading.",
             "required": 0
         },
         {
@@ -52,46 +52,97 @@
             "placement": "top"
         },
         {
+            "key": "field_iom_prd_ui_project_overview",
+            "label": "Project Overview Heading",
+            "name": "pr_ui_project_overview",
+            "type": "text",
+            "instructions": "Section title above the overview body. Translate on ZH site.",
+            "required": 0,
+            "default_value": "Project Overview",
+            "placeholder": "Project Overview"
+        },
+        {
             "key": "field_iom_prd_overview",
-            "label": "Project Overview",
+            "label": "Project Overview Body",
             "name": "pr_overview",
             "type": "wysiwyg",
-            "instructions": "Left column body (Project Overview).",
+            "instructions": "Left column body under the Project Overview heading.",
             "required": 0,
             "tabs": "all",
             "toolbar": "basic",
             "media_upload": 0
         },
         {
+            "key": "field_iom_prd_ui_release_date",
+            "label": "Release Date Label",
+            "name": "pr_ui_release_date",
+            "type": "text",
+            "instructions": "Sidebar heading on the frontend. Value field is below.",
+            "required": 0,
+            "default_value": "Release Date",
+            "placeholder": "Release Date"
+        },
+        {
             "key": "field_iom_prd_meta_release_date",
-            "label": "Release Date",
+            "label": "Release Date Value",
             "name": "pr_meta_release_date",
             "type": "text",
             "instructions": "Sidebar value. Falls back to the post publish date if empty.",
             "required": 0
         },
         {
+            "key": "field_iom_prd_ui_region",
+            "label": "Region Label",
+            "name": "pr_ui_region",
+            "type": "text",
+            "instructions": "Sidebar heading on the frontend. Value field is below.",
+            "required": 0,
+            "default_value": "Region",
+            "placeholder": "Region"
+        },
+        {
             "key": "field_iom_prd_meta_region",
-            "label": "Region",
+            "label": "Region Value",
             "name": "pr_meta_region",
             "type": "text",
             "instructions": "Sidebar value. Falls back to the Country taxonomy if empty.",
             "required": 0
         },
         {
+            "key": "field_iom_prd_ui_topic",
+            "label": "Topic Label",
+            "name": "pr_ui_topic",
+            "type": "text",
+            "instructions": "Sidebar heading on the frontend. Value field is below.",
+            "required": 0,
+            "default_value": "Topic",
+            "placeholder": "Topic"
+        },
+        {
             "key": "field_iom_prd_meta_topic",
-            "label": "Topic",
+            "label": "Topic Value",
             "name": "pr_meta_topic",
             "type": "text",
             "instructions": "Sidebar value. Falls back to the first Topic (tag) if empty.",
             "required": 0
         },
         {
+            "key": "field_iom_prd_ui_partner",
+            "label": "Partner Label",
+            "name": "pr_ui_partner",
+            "type": "text",
+            "instructions": "Sidebar heading on the frontend. Value field is below.",
+            "required": 0,
+            "default_value": "Partner",
+            "placeholder": "Partner"
+        },
+        {
             "key": "field_iom_prd_meta_partner",
-            "label": "Partner",
+            "label": "Partner Value",
             "name": "pr_meta_partner",
             "type": "text",
-            "required": 0
+            "required": 0,
+            "instructions": "Sidebar value text."
         },
         {
             "key": "field_iom_prd_body",
@@ -198,8 +249,12 @@
             "type": "relationship",
             "instructions": "Leave empty to auto-pull the latest 3 other press releases.",
             "required": 0,
-            "post_type": ["post"],
-            "filters": ["search"],
+            "post_type": [
+                "post"
+            ],
+            "filters": [
+                "search"
+            ],
             "return_format": "id",
             "max": 3
         },
@@ -329,7 +384,7 @@
             "label": "Form Action URL",
             "name": "pr_newsletter_action",
             "type": "url",
-            "instructions": "Optional override. Leave empty to use Theme Settings → Mailchimp Form Action URL.",
+            "instructions": "Optional override. Leave empty to use Theme Settings \u2192 Mailchimp Form Action URL.",
             "required": 0
         },
         {
@@ -361,5 +416,5 @@
     "active": true,
     "description": "Fields for the press release single template. Shows when the post is in the Press Release category.",
     "show_in_rest": 0,
-    "modified": 1787058000
+    "modified": 1789937295
 }
